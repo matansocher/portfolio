@@ -3,7 +3,7 @@ import municipalMainScreen from '../../../assets/municipal/municipal-main-screen
 
 function MunicipalMain() {
   return (
-    <section className="main-section-container">
+    <section className="main-container">
       <div className="content main-section">
         <div className="main-section-top">
           <div className="main-section-top-left">

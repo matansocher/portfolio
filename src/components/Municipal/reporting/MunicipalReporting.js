@@ -4,7 +4,7 @@ import municipalReporting2 from '../../../assets/municipal/municipal-reporting-2
 
 function MunicipalReporting() {
   return (
-    <section className="reporting-section-container">
+    <section className="reporting-container">
       <div className="content reporting-section">
         <div className="reporting-section-top">
           <div className="reporting-section-top-left">

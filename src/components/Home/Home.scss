@@ -1,3 +1,53 @@
-.App {
-  text-align: center;
+
+.section-container {
+
+  .section-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 0;
+    max-width: 1000px;
+    margin: 0 auto;
+    width: 90%;
+    &-left {
+      width: 50%;
+      h2 {
+        margin-bottom: 0;
+        text-decoration: none;
+        color: #21264E;
+      }
+      p {
+        margin-top: 10px;
+        text-decoration: none;
+        color: #21264E;
+      }
+    }
+    &-right {
+      margin-left: 20px;
+      width: 50%;
+    }
+  }
 }
+
+@media screen and (max-width: 1100px) {
+  .section-container {
+
+    .section-content {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 50px 0;
+      &-left {
+        width: 90%;
+      }
+      &-right {
+        width: 90%;
+        margin-left: 20px !important;
+        img {
+          margin-top: 30px;
+          width: 90%;
+        }
+      }
+    }
+  }  
+} 

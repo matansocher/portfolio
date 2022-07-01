@@ -9,7 +9,7 @@ import municipalFlow7 from '../../../assets/municipal/municipal-flow-7.png';
 
 function MunicipalFlow() {
   return (
-    <section className="flow-section-container">
+    <section className="flow-container">
       <div className="content flow-section">
         <div className="flow-section-one">
           <div className="flow-section-one-left">

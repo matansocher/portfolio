@@ -1,5 +1,5 @@
 
-.research-section-container {
+.research-container {
   background-color: #C5D8F1;
   .research-section {
     color: #404040;
@@ -16,7 +16,7 @@
       width: 90%;
     }
     &-bottom {
-      margin-top: 120px;
+      margin-top: 50px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -43,7 +43,6 @@
 
 @media screen and (max-width: 1100px) {
   .research-section {
-    padding: 50px 0;
     &-box {
       flex-direction: column;
       &-image {

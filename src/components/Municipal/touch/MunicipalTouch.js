@@ -3,7 +3,7 @@ import municipalTouch from '../../../assets/municipal/municipal-touch.png';
 
 function MunicipalTouch() {
   return (
-    <section className="touch-section-container">
+    <section className="touch-container">
       <div className="content touch-section">
         <div className="touch-section-content">
           <h3>A touch of UI - <br />Graphic elements & Colour visualization</h3>

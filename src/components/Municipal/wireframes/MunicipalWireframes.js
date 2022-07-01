@@ -5,7 +5,7 @@ import municipalWireframes3 from '../../../assets/municipal/municipal-wireframes
 
 function MunicipalWireframes() {
   return (
-    <section className="wireframes-section-container">
+    <section className="wireframes-container">
       <div className="content wireframes-section">
         <h3>Wireframes</h3>
         <div className="wireframes-section-box">

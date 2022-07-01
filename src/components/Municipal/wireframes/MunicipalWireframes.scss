@@ -1,5 +1,5 @@
 
-.wireframes-section-container {
+.wireframes-container {
   background-color: #ffffff;
   .wireframes-section {
     color: #404040;
@@ -22,7 +22,6 @@
 
 @media screen and (max-width: 1100px) {
   .wireframes-section {
-    padding: 50px 0;
     &-box {
       flex-direction: column;
       &-image {
