@@ -1,0 +1,42 @@
+
+.home-container {
+  background-color: #ffffff;
+  &-top {
+    padding: 40px 100px;
+    h2 {
+      color: #000000;
+    }
+  }
+  &-content {
+    padding: 0 0 150px;
+    max-width: 600px;
+    margin: 0 auto;
+    width: 90%;
+    p {
+      color: #4777A3;
+      font-size: 32px;
+      font-weight: 600;
+      line-height: 38px;
+    }
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .home-container {
+    &-top {
+      padding: 20px 40px;
+      h2 {
+
+      }
+    }
+    &-content {
+      padding: 0 0 50px;
+      width: 80%;
+      p {
+        font-size: 24px !important;
+        font-weight: 500 !important;
+        line-height: 30px !important;
+      }
+    }
+  }
+} 
