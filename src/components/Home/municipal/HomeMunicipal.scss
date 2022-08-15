@@ -2,7 +2,17 @@
 .municipal-container {
   background-color: #4777a31a;
   .section-content {
-    
+    &-left {
+
+    }
+    &-right {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      img {
+        max-width: 450px;
+      }
+    }
   }
 }
 

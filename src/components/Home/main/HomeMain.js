@@ -8,7 +8,8 @@ function MunicipalFlow() {
       </div>
       <div className="home-container-content">
         <p>Hey!</p>
-        <p>I’m Dekel, a UX/UI Designer<br />I specialize in complex systems, and aspire to ada value wherever I can.</p>
+        <p>I’m Dekel, a UX/UI Designer</p>
+        <p>I specialize in complex systems, and aspire to add value wherever I can.</p>
       </div>
     </section>
   );

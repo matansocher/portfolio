@@ -7,7 +7,7 @@
       display: flex;
       justify-content: space-between;
       &:first-child {
-        margin-bottom: 50px;
+        margin-bottom: 100px;
       }
       &:nth-child(2) {
         flex-direction: row-reverse;
@@ -35,6 +35,9 @@
       &-part {
         flex-direction: column !important;
         align-items: center;
+        &:first-child {
+          margin-bottom: 50px !important;
+        }
         &-left {
           width: 80%;
         }

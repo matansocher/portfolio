@@ -93,8 +93,11 @@
       h4 {
         margin-top: 100px;
       }
-      .last-p {
-        width: 80% !important;
+      .last-section {
+        width: 100%;
+        .last-p {
+          max-width: 780px;
+        }
       }
     }
     &-five {

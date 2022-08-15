@@ -5,6 +5,8 @@
     padding: 40px 100px;
     h2 {
       color: #000000;
+      font-style: italic;
+      font-weight: 400;
     }
   }
   &-content {
@@ -15,8 +17,9 @@
     p {
       color: #4777A3;
       font-size: 32px;
-      font-weight: 600;
       line-height: 38px;
+      font-family: 'ABeeZee', sans-serif;
+      font-style: italic;
     }
   }
 }

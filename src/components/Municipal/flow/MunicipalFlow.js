@@ -53,8 +53,10 @@ function MunicipalFlow() {
               <img src={municipalFlow4} />
             </div>
           </div>
-          <h4>DIGITAL ATTENDANCE CARD</h4>
-          <p className="last-p">Based on the research (User interviews & Observations) I decide on the following layout:</p>
+          <div className="last-section">
+            <h4>DIGITAL ATTENDANCE CARD</h4>
+            <p className="last-p">Based on the research (User interviews & Observations) I decide on the following layout:</p>
+          </div>
         </div>
         <div className="flow-section-five">
           <img src={municipalFlow5} />
