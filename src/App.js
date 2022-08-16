@@ -4,21 +4,21 @@ import {
   Route,
 } from 'react-router-dom';
 import { Home, Salaries, Myco, Marketist } from './components/index';
-import { Footer, Navbar, ScrollToTop } from './components/Shared';
+// import { Footer, Navbar, ScrollToTop } from './components/Shared';
 
 function App() {
   return (
     <BrowserRouter>
       <div>
         {/* <ScrollToTop /> */}
-        <Navbar />
+        {/* <Navbar /> */}
         <Routes>
           <Route path='salaries' element={<Salaries />} />
           <Route path='marketist' element={<Marketist />} />
           <Route path='myco' element={<Myco />} />
           <Route path='*' element={<Home />} />
         </Routes>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </BrowserRouter>
   );
