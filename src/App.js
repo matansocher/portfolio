@@ -10,7 +10,7 @@ function App() {
   return (
     <BrowserRouter>
       <div>
-        <ScrollToTop />
+        {/* <ScrollToTop /> */}
         <Navbar />
         <Routes>
           <Route path='salaries' element={<Salaries />} />
