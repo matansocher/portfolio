@@ -1,0 +1,27 @@
+
+.salaries-container {
+  .section-content {
+    &-left {
+      h2 {
+        color: #F8312F;
+      }
+    }
+    &-right {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      img {
+        max-width: 450px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .salaries-container {
+
+    .section-content {
+
+    }
+  }  
+} 

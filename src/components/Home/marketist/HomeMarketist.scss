@@ -1,0 +1,28 @@
+
+.marketist-container {
+  .section-content {
+    border-bottom: none;
+    &-left {
+      h2 {
+        color: #5092FF;
+      }
+    }
+    &-right {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      img {
+        max-width: 450px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .marketist-container {
+
+    .marketist-section {
+      
+    }
+  }  
+} 
