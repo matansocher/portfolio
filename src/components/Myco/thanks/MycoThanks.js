@@ -1,5 +1,5 @@
 import './MycoThanks.scss';
-import mycoThanks from '../../../assets/myco/myco-thanks.png';
+import { mycoThanks } from '../../../assets/myco';
 
 function MycoThanks() {
   return (

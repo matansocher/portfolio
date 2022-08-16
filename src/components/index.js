@@ -1,11 +1,11 @@
 import Myco from './Myco/Myco';
-import Atrea from './Atrea/Atrea';
+import Marketist from './Marketist/Marketist';
 import Home from './Home/Home';
-import Municipal from './Municipal/Municipal';
+import Salaries from './Salaries/Salaries';
 
 export {
   Myco,
-  Atrea,
+  Marketist,
   Home,
-  Municipal
+  Salaries
 }

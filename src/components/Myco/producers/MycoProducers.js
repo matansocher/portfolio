@@ -1,8 +1,5 @@
 import './MycoProducers.scss';
-import mycoProducers1 from '../../../assets/myco/myco-producers-1.png';
-import mycoProducers2 from '../../../assets/myco/myco-producers-2.png';
-import mycoProducers3 from '../../../assets/myco/myco-producers-3.png';
-import mycoProducers4 from '../../../assets/myco/myco-producers-4.png';
+import { mycoProducers1, mycoProducers2, mycoProducers3, mycoProducers4 } from '../../../assets/myco';
 
 function MycoProducers() {
   return (

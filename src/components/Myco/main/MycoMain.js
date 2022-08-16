@@ -1,5 +1,5 @@
 import './MycoMain.scss';
-import mycoMainScreen from '../../../assets/myco/myco-main.png';
+import { mycoMain } from '../../../assets/myco';
 
 function MycoMain() {
   return (
@@ -7,7 +7,7 @@ function MycoMain() {
       <div className="content main-section">
         <div className="main-section-top">
           <div className="main-section-top-left">
-            <img src={mycoMainScreen} alt="main screen example" />
+            <img src={mycoMain} alt="main screen example" />
           </div>
           <div className="main-section-top-right">
             <h1>MYCO</h1>

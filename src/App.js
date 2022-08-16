@@ -3,18 +3,22 @@ import {
   Routes,
   Route,
 } from 'react-router-dom';
-import { Home, Municipal, Myco, Atrea } from './components/index';
+import { Home, Salaries, Myco, Marketist } from './components/index';
+import { Footer, Navbar, ScrollToTop } from './components/Shared';
 
 function App() {
   return (
     <BrowserRouter>
       <div>
+        <ScrollToTop />
+        <Navbar />
         <Routes>
-          <Route path="municipal" element={<Municipal />} />
-          <Route path="atrea" element={<Atrea />} />
-          <Route path="myco" element={<Myco />} />
-          <Route path="*" element={<Home />} />
+          <Route path='salaries' element={<Salaries />} />
+          <Route path='marketist' element={<Marketist />} />
+          <Route path='myco' element={<Myco />} />
+          <Route path='*' element={<Home />} />
         </Routes>
+        <Footer />
       </div>
     </BrowserRouter>
   );

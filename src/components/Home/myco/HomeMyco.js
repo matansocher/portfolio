@@ -1,7 +1,7 @@
 import './HomeMyco.scss';
-import homeMyco from '../../../assets/home/home-myco.png';
+import { homeMyco } from '../../../assets/home';
 
-function MunicipalFlow() {
+function SalariesFlow() {
   return (
     <section className="section-container myco-container">
       <div className="content section-content">
@@ -17,4 +17,4 @@ function MunicipalFlow() {
   );
 }
 
-export default MunicipalFlow;
+export default SalariesFlow;

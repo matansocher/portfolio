@@ -71,13 +71,13 @@
 @media screen and (max-width: 1300px) {
   .research-section {
     &-top {
-      align-items: center !important;
+      // align-items: center !important;
       flex-direction: column;
       &-left {
         width: 100% !important;
       }
       &-right {
-        flex-direction: column;
+        // flex-direction: column;
         &-item {
           display: flex;
           flex-direction: column;
@@ -118,3 +118,14 @@
     }
   }
 } 
+
+@media screen and (max-width: 700px) {
+  .research-section {
+    &-top {
+      align-items: center !important;
+      &-right {
+        flex-direction: column !important;
+      }
+    }
+  }
+}

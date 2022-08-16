@@ -1,8 +1,10 @@
 
 .myco-container {
-  background-color: #fcb73f1a;
   .section-content {
-    padding: 20px 0;
+    padding: 100px 0 80px;
+    h2 {
+      color: #FFB02E;
+    }
   }
 }
 
@@ -10,13 +12,14 @@
   .myco-container {
 
     .section-content {
-      padding: 50px 0 0;
+      padding: 50px 0;
       &-left {
 
       }
       &-right {
         margin-left: 0 !important;
         img {
+          max-width: 250px;
           margin-top: 0 !important;
         }
       }

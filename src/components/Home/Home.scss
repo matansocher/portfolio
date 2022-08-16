@@ -3,12 +3,13 @@
 
   .section-content {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     padding: 100px 0;
     max-width: 1150px;
     margin: 0 auto;
     width: 90%;
+    border-bottom: 1px solid black;
     &-left {
       width: 25%;
       h2 {
@@ -25,9 +26,9 @@
     &-right {
       margin-left: 20px;
       width: 50%;
-      // display: flex;
-      // align-items: center;
-      // justify-content: flex-end;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
       img {
         
       }

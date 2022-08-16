@@ -1,9 +1,5 @@
 import './MycoResearch.scss';
-import mycoResearch1 from '../../../assets/myco/myco-research-1.png';
-import mycoResearch2 from '../../../assets/myco/myco-research-2.png';
-import mycoResearch3 from '../../../assets/myco/myco-research-3.png';
-import mycoResearch4 from '../../../assets/myco/myco-research-4.png';
-import mycoResearch5 from '../../../assets/myco/myco-research-5.png';
+import { mycoResearch1, mycoResearch2, mycoResearch3, mycoResearch4, mycoResearch5 } from '../../../assets/myco';
 
 function MycoResearch() {
   return (
@@ -32,7 +28,7 @@ function MycoResearch() {
             <h3>Wireframes & User Flows</h3>
           </div>
           <div className="research-section-middle-right">
-            <p>I had to fully understand the existing process and additions calculations & approval process. For that, I conducted several interviews with HR manager, as well as interviewed some of the HR coordinators. I also preformed observations while they we’re working, in order to understand their work flow.</p>
+            <p>In order to understand the current process and try to come up with improvements, I conducted interviews and talked to two experienced users. I tried to discover their challenges, pain points and goals to acheive.<br />From these insights, I created user flows designed to better support the users needs. </p>
           </div>
         </div>
         <div className="research-section-bottom">

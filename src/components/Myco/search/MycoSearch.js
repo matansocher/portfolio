@@ -1,10 +1,7 @@
 import './MycoSearch.scss';
-import mycoSearch1 from '../../../assets/myco/myco-search-1.png';
-import mycoSearch2 from '../../../assets/myco/myco-search-2.png';
-import mycoSearch3 from '../../../assets/myco/myco-search-3.png';
-import mycoSearch4 from '../../../assets/myco/myco-search-4.png';
+import { mycoSearch1, mycoSearch2, mycoSearch3, mycoSearch4 } from '../../../assets/myco';
 
-function MunicipalSearch() {
+function MycoSearch() {
   return (
     <section className="search-container">
       <div className="content search-section">
@@ -33,4 +30,4 @@ function MunicipalSearch() {
   );
 }
 
-export default MunicipalSearch;
+export default MycoSearch;
