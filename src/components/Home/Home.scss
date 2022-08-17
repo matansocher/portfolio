@@ -16,11 +16,13 @@
         margin-bottom: 0;
         text-decoration: none;
         color: #21264E;
+        font-size: 64px;
       }
       p {
         margin-top: 10px;
         text-decoration: none;
         color: #21264E;
+        font-size: 20px;
       }
     }
     &-right {
@@ -46,6 +48,12 @@
       padding: 50px 0;
       &-left {
         width: 90%;
+        h2 {
+          font-size: 30px !important;
+        }
+        p {
+          font-size: 20px !important;
+        }
       }
       &-right {
         width: 90%;
