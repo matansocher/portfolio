@@ -21,7 +21,7 @@ function SalariesFlow() {
           </div>
 
           <div className="home-container-content-right-fact">
-            <img alt="loudly crying face emoji" src={loudlyCryingFaceEmoji} />
+            <img alt="loudly crying face emoji" src={womanDancingEmoji} />
             <p>I love latin music</p>
           </div>
 
@@ -31,7 +31,7 @@ function SalariesFlow() {
           </div>
 
           <div className="home-container-content-right-fact">
-            <img alt="woman dancing emoji" src={womanDancingEmoji} />
+            <img alt="woman dancing emoji" src={loudlyCryingFaceEmoji} />
             <p>I painfully bump into furniture every other week</p>
           </div>
 
