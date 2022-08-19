@@ -1,11 +1,11 @@
-
+@use '~/src/styles/_colors.scss' as *;
 
 .main-container {
-  background-image: url("../../../../assets//salaries/salaries-main-bg.jpeg");
+  background-image: url("../../../../assets/salaries/salaries-main-bg.jpeg");
   background-size: cover;
   .main-section {
     padding: 100px 0 0;
-    color: #F1F1F1;
+    color: $light-text;
   
     &-top {
       display: flex;
@@ -50,9 +50,6 @@
       align-items: center !important;
       &-left {
         width: 90% !important;
-        // h1 {
-        //   font-size: 36px !important;
-        // }
       }
       &-right {
         width: 90% !important;

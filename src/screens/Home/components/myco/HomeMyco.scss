@@ -1,9 +1,10 @@
+@use '~/src/styles/_colors.scss' as *;
 
 .myco-container {
   .section-content {
     padding: 100px 0 80px;
     h2 {
-      color: #FFB02E;
+      color: $orange-hedaer;
     }
   }
 }

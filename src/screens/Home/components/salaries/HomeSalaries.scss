@@ -1,9 +1,10 @@
+@use '~/src/styles/_colors.scss' as *;
 
 .salaries-container {
   .section-content {
     &-left {
       h2 {
-        color: #F8312F;
+        color: $red-header;
       }
     }
     &-right {

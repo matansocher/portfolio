@@ -1,10 +1,11 @@
+@use '~/src/styles/_colors.scss' as *;
 
 .marketist-container {
   .section-content {
     border-bottom: none;
     &-left {
       h2 {
-        color: #5092FF;
+        color: $blue-header;
       }
     }
     &-right {

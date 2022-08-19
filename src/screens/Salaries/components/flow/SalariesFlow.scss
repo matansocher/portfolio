@@ -3,7 +3,7 @@
 .flow-container {
   background-color: $secondary-section-bg;
   .flow-section {
-    color: #61677D;
+    color: $primary-text;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -121,7 +121,6 @@
     &-one, &-two, &-three {
       flex-direction: column;
       align-items: center !important;
-      // width: 90%;
     }
     &-one {
     

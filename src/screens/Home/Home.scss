@@ -1,6 +1,6 @@
+@use '~/src/styles/_colors.scss' as *;
 
 .section-container {
-
   .section-content {
     display: flex;
     align-items: flex-start;
@@ -9,19 +9,18 @@
     max-width: 1150px;
     margin: 0 auto;
     width: 90%;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid $base-header;
     &-left {
       width: 25%;
+      color: $home-dark-blue;
       h2 {
         margin-bottom: 0;
         text-decoration: none;
-        color: #21264E;
         font-size: 64px;
       }
       p {
         margin-top: 10px;
         text-decoration: none;
-        color: #21264E;
         font-size: 20px;
       }
     }

@@ -6,7 +6,7 @@
     max-width: 1150px;
     margin: 0 auto;
     width: 90%;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid $base-header;
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
@@ -25,7 +25,7 @@
       }
     }
     &-right {
-      border-left: 1px solid black;
+      border-left: 1px solid $base-header;
       padding-left: 24px;
       p {
         font-weight: 500;

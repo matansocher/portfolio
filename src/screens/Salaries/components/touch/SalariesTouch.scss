@@ -3,7 +3,7 @@
 .touch-container {
   background-color: $primary-section-bg;
   .touch-section {
-    color: #61677D;
+    color: $primary-text;
     max-width: 90%;
     display: flex;
     flex-direction: column;
@@ -61,7 +61,7 @@
         &-item {
           span {
             position: relative;
-            color: #04C3FF;
+            color: $blue-numbers;
             font-size: 26px;
             font-weight: 600;
             &::before {
@@ -71,7 +71,7 @@
               width: 100%;
               height: 12px;
               border-radius: 5px;
-              background-color: #04C3FF;
+              background-color: $blue-numbers;
               opacity: 0.2;
             }
           }
@@ -120,7 +120,6 @@
         &-item {
           p {
             margin-top: 10px !important;
-            // font-size: 16px !important;
           }
         }
       }
