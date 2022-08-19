@@ -1,0 +1,16 @@
+@use '~/src/styles/_colors.scss' as *;
+
+
+header {
+    padding: 20px 5%;
+    a {
+      font-family: 'ABeeZee', sans-serif;
+      margin-top: 0;
+      font-weight: 400;
+      font-size: 36px;
+      color: $base-header;
+      font-style: italic;
+      font-weight: 400;
+      margin: 0;
+    }
+}

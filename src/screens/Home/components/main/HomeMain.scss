@@ -1,0 +1,84 @@
+@use '~/src/styles/_colors.scss' as *;
+
+.home-container {
+  &-content {
+    padding: 50px 0 150px;
+    max-width: 1150px;
+    margin: 0 auto;
+    width: 90%;
+    border-bottom: 1px solid black;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    color: $base-header;
+    &-left {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      &-content {
+        padding: 0 5%;
+        p {
+          font-size: 32px;
+          line-height: 38px;
+          font-family: 'ABeeZee', sans-serif;
+        }
+      }
+    }
+    &-right {
+      border-left: 1px solid black;
+      padding-left: 24px;
+      p {
+        font-weight: 500;
+      }
+      &-fact {
+        display: flex;
+        align-items: flex-start;
+        margin-top: 24px;
+        font-family: 'ABeeZee', sans-serif;
+        font-style: italic;
+        img {
+          margin-top: 2px;
+        }
+        p {
+          margin: 0;
+          font-size: 16px;
+          margin-left: 24px;
+        }
+      }
+    }
+    
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .home-container {
+    &-top {
+      padding: 20px 40px;
+      h2 {
+
+      }
+    }
+    &-content {
+      padding: 0 0 50px;
+      width: 80%;
+      flex-direction: column;
+      &-left {
+        &-content {
+          padding: 0 !important;
+          p {
+            font-size: 24px !important;
+            font-weight: 500 !important;
+            line-height: 30px !important;
+          }
+        }
+      }
+      &-right {
+        border-left: none;
+        padding-left: 0 !important;
+        &-fact {
+          
+        }
+      }
+    }
+  }
+} 

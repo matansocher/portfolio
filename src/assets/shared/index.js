@@ -5,6 +5,7 @@ import loudlyCryingFaceEmoji from './loudly-crying-face-emoji.svg';
 import mailIcon from './mail-icon.svg';
 import onionEmoji from './onion-emoji.svg';
 import womanDancingEmoji from './woman-dancing-emoji.svg';
+import arrowIcon from './arrow-icon.svg';
 
 export {
   beamingFaceWithSmilingEyesEmoji,
@@ -14,6 +15,7 @@ export {
   mailIcon,
   onionEmoji,
   womanDancingEmoji,
+  arrowIcon,
 }
 
 

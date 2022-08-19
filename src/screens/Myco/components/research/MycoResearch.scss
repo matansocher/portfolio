@@ -1,0 +1,132 @@
+@use '~/src/styles/_colors.scss' as *;
+
+.research-container {
+  background-color: #e1e6f2;
+  .research-section {
+    color: $primary-text;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      &-left {
+        width: 50%;
+      }
+      &-right {
+        width: 50%;
+        display: flex;
+        &-item {
+          margin-left: 15px;
+          &:first-child {
+            :nth-child(2) {
+              margin-top: 15px;
+            }
+          }
+        }
+      }
+    }
+    &-middle {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-top: 100px;
+      &-left {
+        width: 40%;
+      }
+      &-right {
+        width: 60%;
+        p {
+          margin: 0;
+        }
+      }
+    }
+    &-bottom {
+      img {
+
+      }
+    }
+    h3 {
+      color: $primary-text;
+    }
+    p {
+      color: #61677D;
+      text-align: left;
+      max-width: 800px;
+      width: 90%;
+    }
+    &-bottom {
+      margin-top: 120px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      img {
+        width: 95% !important;
+        margin-right: 16px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .research-section {
+    &-top {
+      // align-items: center !important;
+      flex-direction: column;
+      &-left {
+        width: 100% !important;
+      }
+      &-right {
+        // flex-direction: column;
+        &-item {
+          display: flex;
+          flex-direction: column;
+          img {
+            max-width: 250px;
+            margin-top: 10px;
+          }
+        }
+      }
+    }
+  }
+} 
+
+@media screen and (max-width: 1100px) {
+  .research-section {
+    &-bottom {
+      flex-direction: column;
+      &-image {
+        width: 75% !important;
+        margin-right: 0 !important;
+        margin-bottom: 25px;
+      }
+    }
+  }
+} 
+
+@media screen and (max-width: 800px) {
+  .research-section {
+    &-middle {
+      margin-top: 40px !important;
+      flex-direction: column;
+      &-left, &-right {
+        width: 100% !important;
+      }
+    }
+    &-bottom {
+      
+    }
+  }
+} 
+
+@media screen and (max-width: 700px) {
+  .research-section {
+    &-top {
+      align-items: center !important;
+      &-right {
+        flex-direction: column !important;
+      }
+    }
+  }
+}

@@ -1,11 +1,11 @@
-import Myco from './Myco/Myco';
-import Marketist from './Marketist/Marketist';
-import Home from './Home/Home';
-import Salaries from './Salaries/Salaries';
+import Navbar from './Navbar/Navbar';
+import Footer from './Footer/Footer';
+import ScrollToTopOnPageLoad from './ScrollToTopOnPageLoad/ScrollToTopOnPageLoad';
+import ScrollToTopOnScroll from './ScrollToTopOnScroll/ScrollToTopOnScroll';
 
 export {
-  Myco,
-  Marketist,
-  Home,
-  Salaries
+  Navbar,
+  Footer,
+  ScrollToTopOnPageLoad,
+  ScrollToTopOnScroll,
 }

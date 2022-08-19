@@ -3,14 +3,15 @@ import {
   Routes,
   Route,
 } from 'react-router-dom';
-import { Home, Salaries, Myco, Marketist } from './components/index';
-import { Footer, Navbar, ScrollToTop } from './components/Shared/index';
+import { Home, Salaries, Myco, Marketist } from './screens';
+import { Footer, Navbar, ScrollToTopOnPageLoad, ScrollToTopOnScroll } from './components';
 
 function App() {
   return (
     <BrowserRouter>
       <div>
-        <ScrollToTop />
+        <ScrollToTopOnPageLoad />
+        <ScrollToTopOnScroll />
         <Navbar />
         <Routes>
           <Route path='salaries' element={<Salaries />} />
