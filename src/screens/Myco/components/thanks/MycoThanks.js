@@ -6,7 +6,7 @@ export default function MycoThanks() {
     <section className="thanks-container">
       <div className="content thanks-section">
         <h2>Thank you</h2>
-        <img src={mycoThanks} alt="screen examples" />
+        <img src={mycoThanks} alt="screen example" />
       </div>
     </section>
   );

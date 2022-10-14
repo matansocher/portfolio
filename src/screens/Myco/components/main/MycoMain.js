@@ -11,7 +11,7 @@ export default function MycoMain() {
           </div>
           <div className="main-section-top-right">
             <h1>MYCO</h1>
-            <p>MYCO is a social communiting  gathered around values of cultural creation, ecological and spiritual views.<br />The community is mostly funded from member fees and selling tickets to events organized for community members, or anyone who wants to join.</p>
+            <p>MYCO is a social communiting gathered around values of cultural creation, ecological and spiritual views.<br />The community is mostly funded from member fees and selling tickets to events organized for community members, or anyone who wants to join.</p>
             <p>I’ve been asked to create two mobile apps:</p>
             <ol>
               <li>Ticket purchase app for Events</li>

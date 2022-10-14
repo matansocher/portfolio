@@ -6,9 +6,14 @@ export default function Home() {
   return (
     <>
       <HomeMain />
-      <Link to='/myco' style={{ textDecoration: 'none' }}><HomeMyco /></Link>
+      <HomeMyco />
+      <HomeSalaries />
+      <HomeMarketist />
+
+
+      {/* <Link to='/myco' style={{ textDecoration: 'none' }}><HomeMyco /></Link>
       <Link to='/salaries' style={{ textDecoration: 'none' }}><HomeSalaries /></Link>
-      <Link to='/marketist' style={{ textDecoration: 'none' }}><HomeMarketist /></Link>
+      <Link to='/marketist' style={{ textDecoration: 'none' }}><HomeMarketist /></Link> */}
     </>
   );
 }

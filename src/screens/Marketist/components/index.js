@@ -1,3 +1,4 @@
+import MarketistExample from './example/MarketistExample';
 import MarketistExamples from './examples/MarketistExamples';
 import MarketistFiles from './files/MarketistFiles';
 import MarketistGraphs from './graphs/MarketistGraphs';
@@ -6,6 +7,7 @@ import MarketistSystem from './system/MarketistSystem';
 import MarketistTop from './top/MarketistTop';
 
 export {
+  MarketistExample,
   MarketistExamples,
   MarketistFiles,
   MarketistGraphs,

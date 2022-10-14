@@ -1,10 +1,25 @@
 import './MarketistExamples.scss';
-import { marketistExamples } from '../../../../assets/marketist';
+import { marketistExample } from '../../../../assets/marketist';
 
 export default function MarketistExamples() {
   return (
     <section className="marketist-examples-container content">
-      <img alt="marketist app screen" src={marketistExamples} />
+      <div className="marketist-examples-container-box">
+        <img alt="marketist app screen" src={marketistExample} />
+        <img alt="marketist app screen" src={marketistExample} />
+      </div>
+      <div className="marketist-examples-container-box">
+        <img alt="marketist app screen" src={marketistExample} />
+        <img alt="marketist app screen" src={marketistExample} />
+      </div>
+      <div className="marketist-examples-container-box">
+        <img alt="marketist app screen" src={marketistExample} />
+        <img alt="marketist app screen" src={marketistExample} />
+      </div>
+      <div className="marketist-examples-container-box">
+        <img alt="marketist app screen" src={marketistExample} />
+        <img alt="marketist app screen" src={marketistExample} />
+      </div>
     </section>
   );
 }

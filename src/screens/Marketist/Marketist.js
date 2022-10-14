@@ -1,5 +1,6 @@
 import './Marketist.scss';
 import {
+  MarketistExample,
   MarketistExamples,
   MarketistFiles,
   MarketistGraphs,
@@ -13,10 +14,11 @@ export default function Marketist() {
     <>
       <MarketistTop />
       <MarketistMain />
-      <MarketistExamples />
+      <MarketistExample />
       <MarketistSystem />
       <MarketistGraphs />
       <MarketistFiles />
+      <MarketistExamples />
     </>
   );
 }
