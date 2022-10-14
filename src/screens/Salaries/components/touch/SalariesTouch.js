@@ -1,7 +1,7 @@
 import './SalariesTouch.scss';
 import { salariesTouch } from '../../../../assets/salaries';
 
-function SalariesTouch() {
+export default function SalariesTouch() {
   return (
     <section className="touch-container">
       <div className="content touch-section">
@@ -11,7 +11,7 @@ function SalariesTouch() {
           <p>Colour was almost exclusively used to draw attention & emphasize information, such as: card status, type of absence, shortage of counters (such as sick leave, vacation days etc.)</p>
         </div>
         <div className="touch-section-image">
-          <img alt="" src={salariesTouch} />
+          <img alt="salary calculation screen" src={salariesTouch} />
         </div>
         <div className="touch-section-bottom">
           <h3>Project Outcome - Acheivments</h3>
@@ -38,5 +38,3 @@ function SalariesTouch() {
     </section>
   );
 }
-
-export default SalariesTouch;

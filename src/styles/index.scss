@@ -7,11 +7,15 @@ body {
     sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Nunito', sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'ABeeZee', sans-serif;
+  font-family: 'Nunito', sans-serif;
+}
+
+p, a, span {
+  font-family: 'Nunito Sans', sans-serif;
 }
 
 h1 {

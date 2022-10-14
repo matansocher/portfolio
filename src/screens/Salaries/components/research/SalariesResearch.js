@@ -1,7 +1,7 @@
 import './SalariesResearch.scss';
 import { salariesResearch1, salariesResearch2 } from '../../../../assets/salaries';
 
-function salariesResearch() {
+export default function salariesResearch() {
   return (
     <section className="research-container">
       <div className="content research-section">
@@ -10,13 +10,10 @@ function salariesResearch() {
         For that, I conducted several interviews with HR manager, as well as interviewed some of the HR coordinators. 
         I also preformed observations while they we’re working, in order to understand their work flow.</p>
         <div className="research-section-bottom">
-          <img alt="hours calculations document" src={salariesResearch1} alt="reasearch documents" />
-          <img alt="hours calculations document" src={salariesResearch2} alt="reasearch documents" />
-          {/* <img alt="hours calculations document" src={salariesResearch3} alt="reasearch documents" /> */}
+          <img alt="hours calculations document" src={salariesResearch1} />
+          <img alt="hours calculations document" src={salariesResearch2} />
         </div>
       </div>
     </section>
   );
 }
-
-export default salariesResearch;

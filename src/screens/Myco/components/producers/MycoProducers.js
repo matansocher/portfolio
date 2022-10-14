@@ -1,7 +1,7 @@
 import './MycoProducers.scss';
 import { mycoProducers1, mycoProducers2, mycoProducers3, mycoProducers4 } from '../../../../assets/myco';
 
-function MycoProducers() {
+export default function MycoProducers() {
   return (
     <section className="producers-container">
       <div className="content producers-section">
@@ -30,5 +30,3 @@ function MycoProducers() {
     </section>
   );
 }
-
-export default MycoProducers;

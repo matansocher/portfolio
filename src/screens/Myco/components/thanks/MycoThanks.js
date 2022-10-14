@@ -1,7 +1,7 @@
 import './MycoThanks.scss';
 import { mycoThanks } from '../../../../assets/myco';
 
-function MycoThanks() {
+export default function MycoThanks() {
   return (
     <section className="thanks-container">
       <div className="content thanks-section">
@@ -11,5 +11,3 @@ function MycoThanks() {
     </section>
   );
 }
-
-export default MycoThanks;

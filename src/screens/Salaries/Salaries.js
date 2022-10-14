@@ -1,7 +1,7 @@
 import './Salaries.scss';
 import { SalariesMain, SalariesReporting, SalariesResearch, SalariesTouch, SalariesFlow, SalariesWireframes } from './components';
 
-function Salaries() {
+export default function Salaries() {
   return (
     <>
       <SalariesMain />
@@ -13,5 +13,3 @@ function Salaries() {
     </>
   );
 }
-
-export default Salaries;

@@ -1,7 +1,7 @@
 import './SalariesReporting.scss';
 import { salariesReporting1, salariesReporting2 } from '../../../../assets/salaries';
 
-function SalariesReporting() {
+export default function SalariesReporting() {
   return (
     <section className="reporting-container">
       <div className="content reporting-section">
@@ -11,7 +11,7 @@ function SalariesReporting() {
             <p>The best solution was to report hours through the existing Sanitation tasks management system. Employees preforms 1-3 tasks each day, which are already managed in this system by work manager. We added fields to the screen, allowing to report, enabling to report start & end time for each task.</p>
           </div>
           <div className="reporting-section-top-right">
-            <img src={salariesReporting1} />
+            <img src={salariesReporting1} alt="reporting attendance screen" />
           </div>
         </div>
         <div className="reporting-section-bottom">
@@ -24,7 +24,7 @@ function SalariesReporting() {
               <p>Only days with salary additions appear onthe digital card</p>
             </div>
             <div className="reporting-section-bottom-content-right">
-              <img src={salariesReporting2} />
+              <img src={salariesReporting2} alt="flow chart" />
             </div>
           </div>
         </div>
@@ -32,5 +32,3 @@ function SalariesReporting() {
     </section>
   );
 }
-
-export default SalariesReporting;

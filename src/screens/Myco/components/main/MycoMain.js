@@ -1,7 +1,7 @@
 import './MycoMain.scss';
 import { mycoMain } from '../../../../assets/myco';
 
-function MycoMain() {
+export default function MycoMain() {
   return (
     <section className="myco-main-container">
       <div className="content main-section">
@@ -23,5 +23,3 @@ function MycoMain() {
     </section>
   );
 }
-
-export default MycoMain;

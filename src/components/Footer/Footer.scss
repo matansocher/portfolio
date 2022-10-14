@@ -1,11 +1,10 @@
 @use '~/src/styles/_colors.scss' as *;
 
 footer {
-    padding: 20px 5%;
+    padding: 30px 5%;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-top: 1px solid $base-header;
     .footer-content {
         display: flex;
         align-items: center;
@@ -34,6 +33,7 @@ footer {
                 align-items: center;
                 justify-content: space-between;
                 margin: 0;
+                padding-left: 10px;
                 li {
                     a {
                         margin-left: 10px;

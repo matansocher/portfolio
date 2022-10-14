@@ -1,47 +1,83 @@
 @use '~/src/styles/_colors.scss' as *;
 
 .home-container {
+  position: relative;
+  .bg {
+    position: absolute;
+    top: -105px;
+    right: 0;
+    height: 700px;
+  }
   &-content {
-    padding: 50px 0 150px;
-    max-width: 1150px;
+    padding: 50px 0 50px;
+    max-width: 1100px;
     margin: 0 auto;
     width: 90%;
-    border-bottom: 1px solid $base-header;
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
     color: $base-header;
     &-left {
+      max-width: 510px;
       display: flex;
       justify-content: center;
       align-items: center;
       &-content {
-        padding: 0 5%;
         p {
-          font-size: 32px;
-          line-height: 38px;
-          font-family: 'ABeeZee', sans-serif;
+          font-family: 'Nunito', sans-serif;
+          margin: 0;
+          &:nth-child(1) {
+            font-size: 32px;
+            font-weight: 500;
+          }
+          &:nth-child(2) {
+            font-size: 42px;
+            font-weight: 500;
+            line-height: 50px;
+            margin-top: 10px;
+          }
+          &:nth-child(3) {
+            font-size: 24px;
+            font-weight: 300;
+            margin-top: 20px;
+          }
         }
       }
     }
     &-right {
-      border-left: 1px solid $base-header;
-      padding-left: 24px;
+      position: relative;
+      max-width: 350px;
+      background-color: #FFF9F0;
+      padding: 30px;
+      border: 2px solid #FCB73F;
+      transform: rotate(5.67deg);
+      color: $base-header;
+      font-weight: 300;
+      .elipse {
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        top: -8px;
+        left: 175px;
+        left: 45%;
+        background-color: #545454;
+        border-radius: 50%;
+      }
       p {
-        font-weight: 500;
+        margin: 0;
+        font-size: 25px;
       }
       &-fact {
         display: flex;
         align-items: flex-start;
-        margin-top: 24px;
-        font-family: 'ABeeZee', sans-serif;
-        font-style: italic;
+        margin-top: 20px;
+        font-family: 'Nunito Sans', sans-serif;
         img {
           margin-top: 2px;
         }
         p {
           margin: 0;
-          font-size: 16px;
+          font-size: 20px;
           margin-left: 24px;
         }
       }
@@ -52,6 +88,9 @@
 
 @media screen and (max-width: 1100px) {
   .home-container {
+    .bg {
+      display: none;
+    }
     &-top {
       padding: 20px 40px;
       h2 {
@@ -62,6 +101,7 @@
       padding: 0 0 50px;
       width: 80%;
       flex-direction: column;
+      align-items: center;
       &-left {
         &-content {
           padding: 0 !important;
@@ -73,8 +113,8 @@
         }
       }
       &-right {
-        border-left: none;
-        padding-left: 0 !important;
+        margin-top: 75px;
+        transform: rotate(4deg);
         &-fact {
           
         }

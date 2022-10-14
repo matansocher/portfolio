@@ -1,14 +1,22 @@
 import './Marketist.scss';
-// import {
-//   SalariesMain,
-// } from './components'
+import {
+  MarketistExamples,
+  MarketistFiles,
+  MarketistGraphs,
+  MarketistMain,
+  MarketistSystem,
+  MarketistTop,
+} from './components';
 
-function Marketist() {
+export default function Marketist() {
   return (
     <>
-        marketist
+      <MarketistTop />
+      <MarketistMain />
+      <MarketistExamples />
+      <MarketistSystem />
+      <MarketistGraphs />
+      <MarketistFiles />
     </>
   );
 }
-
-export default Marketist;

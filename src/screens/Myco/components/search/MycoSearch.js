@@ -1,7 +1,7 @@
 import './MycoSearch.scss';
 import { mycoSearch1, mycoSearch2, mycoSearch3, mycoSearch4 } from '../../../../assets/myco';
 
-function MycoSearch() {
+export default function MycoSearch() {
   return (
     <section className="search-container">
       <div className="content search-section">
@@ -29,5 +29,3 @@ function MycoSearch() {
     </section>
   );
 }
-
-export default MycoSearch;

@@ -1,9 +1,11 @@
 import './HomeMain.scss';
+import { homeMainBg } from '../../../../assets/home';
 import { onionEmoji, loudlyCryingFaceEmoji, faceHoldingBackTearsEmoji, womanDancingEmoji } from '../../../../assets/shared';
 
-function SalariesFlow() {
+export default function SalariesFlow() {
   return (
     <section className="home-container">
+      <img className="bg" alt="background" src={homeMainBg} />
       <div className="home-container-content">
         <div className="home-container-content-left">
           <div className="home-container-content-left-content">
@@ -14,6 +16,7 @@ function SalariesFlow() {
         </div>
         
         <div className="home-container-content-right">
+          <div className="elipse"></div>
           <p>Fun facts about me:</p>
           <div className="home-container-content-right-fact">
             <img alt="onion emoji" src={onionEmoji} />
@@ -40,5 +43,3 @@ function SalariesFlow() {
     </section>
   );
 }
-
-export default SalariesFlow;

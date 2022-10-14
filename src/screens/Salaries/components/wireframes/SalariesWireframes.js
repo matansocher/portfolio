@@ -1,7 +1,7 @@
 import './SalariesWireframes.scss';
 import { salariesWireframes1, salariesWireframes2, salariesWireframes3 } from '../../../../assets/salaries';
 
-function SalariesWireframes() {
+export default function SalariesWireframes() {
   return (
     <section className="wireframes-container">
       <div className="content wireframes-section">
@@ -21,5 +21,3 @@ function SalariesWireframes() {
     </section>
   );
 }
-
-export default SalariesWireframes;

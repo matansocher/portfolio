@@ -1,7 +1,7 @@
 import './MycoResearch.scss';
 import { mycoResearch1, mycoResearch2, mycoResearch3, mycoResearch4, mycoResearch5 } from '../../../../assets/myco';
 
-function MycoResearch() {
+export default function MycoResearch() {
   return (
     <section className="research-container">
       <div className="content research-section">
@@ -38,5 +38,3 @@ function MycoResearch() {
     </section>
   );
 }
-
-export default MycoResearch;

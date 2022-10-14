@@ -2,7 +2,7 @@ import './Footer.scss';
 import { Link } from 'react-router-dom';
 import { beamingFaceWithSmilingEyesEmoji, mailIcon, brandLinkedinIcon } from '../../assets/shared';
 
-function Footer() {
+export default function Footer() {
   return (
     <footer>
       <div className="footer-content">
@@ -28,5 +28,3 @@ function Footer() {
     </footer>
   );
 }
-
-export default Footer;

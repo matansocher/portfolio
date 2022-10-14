@@ -1,7 +1,7 @@
 import './SalariesFlow.scss';
 import { salariesFlow1, salariesFlow2, salariesFlow3, salariesFlow4, salariesFlow5, salariesFlow6, salariesFlow7 } from '../../../../assets/salaries';
 
-function SalariesFlow() {
+export default function SalariesFlow() {
   return (
     <section className="flow-container">
       <div className="content flow-section">
@@ -66,5 +66,3 @@ function SalariesFlow() {
     </section>
   );
 }
-
-export default SalariesFlow;

@@ -1,7 +1,7 @@
 import './SalariesMain.scss';
 import { salariesMainScreen } from '../../../../assets/salaries';
 
-function SalariesMain() {
+export default function SalariesMain() {
   return (
     <section className="main-container">
       <div className="content main-section">
@@ -19,11 +19,9 @@ function SalariesMain() {
           </div>
         </div>
         <div className="main-section-image">
-          <img src={salariesMainScreen} />
+          <img src={salariesMainScreen} alt="salary additions app screen" />
         </div>
       </div>
     </section>
   );
 }
-
-export default SalariesMain;

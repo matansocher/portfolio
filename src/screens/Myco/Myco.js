@@ -1,7 +1,7 @@
 import './Myco.scss';
 import { MycoMain, MycoResearch, MycoSearch, MycoProducers, MycoThanks } from './components';
 
-function Myco() {
+export default function Myco() {
   return (
     <>
       <MycoMain />
@@ -12,5 +12,3 @@ function Myco() {
     </>
   );
 }
-
-export default Myco;
