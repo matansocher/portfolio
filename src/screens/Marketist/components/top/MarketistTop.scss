@@ -1,0 +1,26 @@
+@use '~/src/styles/_colors.scss' as *;
+
+
+.marketist-top-container {
+  position: relative;
+  min-height: 750px;
+  background-color: #89bbdf;
+  background-image: url('../../../../assets/marketist/marketist-top-under.png');
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: 100%;
+  img {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 900px;
+  }
+}
+
+.marketist-content-container {
+    
+}
+
+@media screen and (max-width: 1100px) {
+} 
