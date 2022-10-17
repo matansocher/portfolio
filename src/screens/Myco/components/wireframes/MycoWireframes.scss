@@ -1,0 +1,74 @@
+@use '~/src/styles/_colors.scss' as *;
+
+.myco-wireframes-container {
+  .myco-wireframes-section {
+    color: $primary-text;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h3 {
+      color: $primary-text;
+    }
+    p {
+      color: $primary-text;
+      text-align: left;
+      max-width: 800px;
+      width: 90%;
+    }
+    &-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      &-left {
+        width: 40%;
+      }
+      &-right {
+        width: 60%;
+        p {
+          margin: 0;
+        }
+      }
+    }
+    &-flows {
+
+    }
+    &-wireframes {
+      margin-top: 120px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      img {
+        width: 95% !important;
+        margin-right: 16px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .myco-wireframes-section {
+    &-flows {
+
+    }
+    &-wireframes {
+      flex-direction: column;
+      &-image {
+        width: 75% !important;
+        margin-right: 0 !important;
+        margin-bottom: 25px;
+      }
+    }
+  }
+} 
+
+@media screen and (max-width: 800px) {
+  .research-section {
+    &-top {
+      margin-top: 40px !important;
+      flex-direction: column;
+      &-left, &-right {
+        width: 100% !important;
+      }
+    }
+  }
+} 
