@@ -17,7 +17,7 @@ export default function SalariesFlow() {
         <div className="flow-section-two">
           <div className="flow-section-two-left">
             <h3>Business logic & Calculations</h3>
-            <p>The business logic & salary additions calculations were documented in over 30 flow charts I created and delivered to the developer, and later on tested before moving to production.</p>
+            <p>The business logic & salary additions calculations were documented in <span className="bold">over 30</span> flow charts I created and delivered to the developer, and later on tested before moving to production.</p>
             <p>In the screenshots here, you can see the list of flow charts assembling together the calculation algorithm</p>
             <p>You can also see two examples of these flow charts - the root flow charts for basic calculations.</p>
           </div>
@@ -39,8 +39,7 @@ export default function SalariesFlow() {
             <div className="flow-section-four-content-left">
               <h4>DASHBOARD</h4>
               <p>Each HR Coordinator ia is charge of 3-4 Sanitation stations, and has to check & approve their additions.<br />
-              Here, each of them can see how many cards she has to attend, click on the column in order to see the entire unit’s attendace cards.
-              She can also use the search section to find a specific employee’s card.</p>
+              Here, each of them can see how many cards she has to attend, click on the column in order to see the entire unit’s attendace cards.<br />She can also use the search section to find a specific employee’s card.</p>
               <p>The Coordinators, as well as HR Manager, can track their progress in a glance, since as they progress the graph turns slowly from blue (status ‘unchecked’) to green (‘approved’).</p>
             </div>
             <div className="flow-section-four-content-right">

@@ -3,6 +3,7 @@
 .marketist-main-container {
 	&-content {
 		max-width: 700px;
+		padding-left: 100px;
 		h1 {
 			font-weight: 600;
 			font-size: 63px;
@@ -15,4 +16,13 @@
 }
 
 @media screen and (max-width: 1100px) {
+	.marketist-main-container {
+		&-content {
+			padding-left: 0;
+			margin-top: 100px;
+			&-item {
+				margin: 75px auto 0;
+			}
+		}
+	}	
 } 

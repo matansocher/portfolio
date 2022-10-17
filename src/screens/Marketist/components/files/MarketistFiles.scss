@@ -5,8 +5,9 @@
   align-items: flex-start;
   justify-content: space-between;
   &-left {
-    max-width: 600px;
-    width: 48%;
+    p {
+      max-width: 500px;
+    }
   }
   &-right {
     width: 48%;

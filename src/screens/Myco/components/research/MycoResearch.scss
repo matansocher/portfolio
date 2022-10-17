@@ -45,14 +45,23 @@
   }
 }
 
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 1100px) {
   .myco-research-section {
     &-content {
       flex-direction: column;
+      align-items: center !important;
       &-left {
-        width: 100% !important;
+        width: 90% !important;
+        h3 {
+           text-align: center;
+        }
+        p { 
+          margin: 0 auto;
+        }
       }
       &-right {
+        width: unset !important;
+        margin-top: 50px;
         &-item {
           display: flex;
           flex-direction: column;

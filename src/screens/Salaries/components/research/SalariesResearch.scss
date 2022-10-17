@@ -12,7 +12,7 @@
     p {
       color: $primary-text;
       text-align: left;
-      max-width: 800px;
+      max-width: 650px;
       width: 90%;
     }
     &-bottom {
@@ -53,9 +53,10 @@
   }
 } 
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1100px) {
   .salaries-research-section {
     &-bottom {
+      margin-top: 50px !important;
       flex-direction: column;
       justify-content: center !important;
       img {

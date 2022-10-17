@@ -11,7 +11,7 @@
     padding: 25px;
     border-radius: 8px;
     img {
-      width: 49%;
+      width: 50%;
     }
   }
 }
@@ -21,7 +21,6 @@
     &-box {
       flex-direction: column;
       margin-top: 25px;
-      padding: 25px;
       img {
         width: 100%;
         &:nth-child(2) {
