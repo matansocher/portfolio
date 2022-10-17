@@ -1,0 +1,52 @@
+@use '~/src/styles/_colors.scss' as *;
+
+.auth {
+    padding: 30px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 600px;
+        &-left {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            p {
+                margin: 0;
+                font-size: 20px;
+            }
+            img {
+                margin-left: 10px;
+            }
+        }
+        &-right {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 4px;
+            ul {
+                list-style: none;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin: 0;
+                padding-left: 10px;
+                li {
+                    a {
+                        margin-left: 10px;
+                        img {
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+
+} 
