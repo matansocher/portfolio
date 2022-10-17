@@ -28,7 +28,12 @@
         }
       }
       &-right {
-        
+        p {
+          max-width: 400px;
+        }
+        .big-p {
+          max-width: 490px;
+        }
       }
     }
   }

@@ -28,3 +28,18 @@ header {
     }
   }
 }
+
+@media screen and (max-width: 1100px) {
+  header {
+    .header-left {
+      a {
+        font-size: 22px;
+      }
+    }
+    .header-right {
+      a {
+        font-size: 18px;
+      }
+    }
+  }
+}

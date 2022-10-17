@@ -4,12 +4,13 @@
   background-image: $primary-section-bg;
   overflow: hidden;
   .main-section {
+    max-width: 1200px;
     padding: 50px 0 0;
   
     &-top {
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      align-items: flex-start;
       color: $primary-text;
       &-left {
         width: 50%;
@@ -21,7 +22,8 @@
       &-right {
         width: 50%;
         h1 {
-          font-size: 52px;
+          font-weight: 400;
+          font-size: 40px;
           margin: 0;
           margin-top: -20px;
         }
