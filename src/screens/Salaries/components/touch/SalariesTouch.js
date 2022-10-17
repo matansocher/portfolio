@@ -16,19 +16,27 @@ export default function SalariesTouch() {
         <div className="touch-section-bottom">
           <h3>Project Outcome - Acheivments</h3>
           <div className="touch-section-bottom-content">
-            <div className="touch-section-bottom-content-left">
-              <div className="touch-section-bottom-content-item">
+            <div className="touch-section-bottom-content-item">
+              <div className="touch-section-bottom-content-item-left">
                 <span>98.5%</span>
+              </div>
+              <div className="touch-section-bottom-content-item-right">
                 <p>Success rates in calculations</p>
               </div>
             </div>
-            <div className="touch-section-bottom-content-right">
-              <div className="touch-section-bottom-content-item">
+            <div className="touch-section-bottom-content-item">
+              <div className="touch-section-bottom-content-item-left">
                 <span>95%</span>
+              </div>
+              <div className="touch-section-bottom-content-item-right">
                 <p>Of cards approved (on average) by the 10th day of each month</p>
               </div>
-              <div className="touch-section-bottom-content-item">
+            </div>
+            <div className="touch-section-bottom-content-item">
+              <div className="touch-section-bottom-content-item-left">
                 <span>50%</span>
+              </div>
+              <div className="touch-section-bottom-content-item-right">
                 <p>Of cards approved in the first week of each month</p>
               </div>
             </div>

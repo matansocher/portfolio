@@ -20,8 +20,8 @@ export default function SalariesReporting() {
             <div className="reporting-section-bottom-content-left">
               <p>Reports from tasks management system</p>
               <p>Salary additions system creates digital attendance cards</p>
-              <p>The system examines each day andcalculates any salary addition</p>
-              <p>Only days with salary additions appear onthe digital card</p>
+              <p>The system examines each day and calculates any salary addition</p>
+              <p>Only days with salary additions appear on the digital card</p>
             </div>
             <div className="reporting-section-bottom-content-right">
               <img src={salariesReporting2} alt="flow chart" />

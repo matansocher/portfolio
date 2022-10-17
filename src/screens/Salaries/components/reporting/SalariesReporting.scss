@@ -39,7 +39,7 @@
         justify-content: space-between;
         align-items: flex-start;
         &-left {
-          width: 50%;
+          max-width: 403px;
           margin-right: 75px;
           p {
             color: $primary-text;

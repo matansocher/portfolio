@@ -13,14 +13,14 @@
       align-items: flex-start;
       color: $primary-text;
       &-left {
-        width: 50%;
+        
         margin-bottom: -7px;
         img {
           max-height: 500px;
         }
       }
       &-right {
-        width: 50%;
+        margin-top: 13px;
         h1 {
           font-weight: 400;
           font-size: 40px;

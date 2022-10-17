@@ -7,7 +7,7 @@ export default function SalariesFlow() {
       <div className="content flow-section">
         <div className="flow-section-one">
           <div className="flow-section-one-left">
-            <h2>General Flow & <br />Supporting end cases</h2>
+            <h2>General Flow & Logic</h2>
           </div>
           <div className="flow-section-one-right">
             <p>We aimed for the manual approval process to be as fluent as possible, in order to improve the existing process and shorten the overall time of approval.</p>
