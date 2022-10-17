@@ -1,50 +1,69 @@
 @use '~/src/styles/_colors.scss' as *;
 
 .auth {
-    padding: 30px 5%;
+  padding: 150px 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 300px;
+  .bg {
+    position: absolute;
+    top: -105px;
+    right: 0;
+    height: 700px;
+  }
+  &-content {
+    width: 100%;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    .content {
+    align-items: flex-start;
+    flex-direction: column;
+    max-width: 500px;
+    h2 {
+
+    }
+    p {
+
+    }
+    form {
+      margin-top: 70px;
+      width: 100%;
+      label {
+        display: flex;
+        flex-direction: column;
+        font-weight: 600;
+        font-size: 16px;
+      }
+      input {
+        height: 34px;
+        width: 60%;
+        border-radius: 5px;
+        border: none;
+        box-sizing: border-box;
+        font-size: 16px;
+      }
+      input[type='password'] {
+        background-color: #F0F0F0;
+        margin-top: 10px;
+        padding: 5px;
+      }
+      input[type='submit'] {
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        max-width: 600px;
-        &-left {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            p {
-                margin: 0;
-                font-size: 20px;
-            }
-            img {
-                margin-left: 10px;
-            }
+        justify-content: center;
+        background-color: #FFB02E;
+        margin-top: 30px;
+        color: white;
+        &:hover {
+          cursor: pointer;
         }
-        &-right {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-top: 4px;
-            ul {
-                list-style: none;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                margin: 0;
-                padding-left: 10px;
-                li {
-                    a {
-                        margin-left: 10px;
-                        img {
-
-                        }
-                    }
-                }
-            }
-        }
+      }
     }
+    .error-message {
+      color: red;
+      font-weight: 400;
+      font-size: 20px;
+    }
+  }
 }
 
 @media screen and (max-width: 600px) {

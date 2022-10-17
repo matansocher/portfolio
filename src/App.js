@@ -3,23 +3,15 @@ import {
   Routes,
   Route,
 } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
-import config from './config';
-import useGetPassword from './hooks/useGetPassword'
+import { useState } from 'react';
 import { Home, Salaries, Myco, Marketist } from './screens';
-import { Auth, Footer, Navbar, BottomNavigation, ScrollToTopOnPageLoad, ScrollToTopOnScroll } from './components';
+import { Auth, Footer, ScrollToTopOnPageLoad, ScrollToTopOnScroll } from './components';
 
 export default function App() {
-  const [path, setPath] = useState('/');
-  const { isAuthenticated } = useGetPassword();
+  const [isAuth, setIsAuth] = useState(false);
 
-  const pathChange = (pathname) => {
-    setPath(pathname);
-  }
-
-  if (!isAuthenticated) {
-    return <Auth />;
+  if (!isAuth) {
+    return <Auth setIsAuth={setIsAuth} />;
   }
 
   return (
@@ -33,8 +25,6 @@ export default function App() {
         <Route path='myco' element={<Myco />} />
         <Route path='*' element={<Home />} />
       </Routes>
-      {/* { path === '/' ? <Footer /> : <BottomNavigation pathChange={pathChange} /> } */}
-      {/* <BottomNavigation /> */}
       <Footer />
     </BrowserRouter>
   );
