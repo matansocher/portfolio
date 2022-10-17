@@ -10,9 +10,9 @@ export default function Auth({ setIsAuth }) {
 
   const isPasswordValid = async (userPassword) => {
     try {
-      // if (process.env.REACT_APP_RUN_ENV === 'dev') {
-      //   return true;
-      // }
+      if (process.env.REACT_APP_RUN_ENV === 'dev') {
+        return true;
+      }
 
       const response = await axios.post(`${config.PORTFOLIO_BACKEND}/${config.PASSWORD_ENDPOINT}`, { password: userPassword });
       const { isPasswordCorrect } = response.data;

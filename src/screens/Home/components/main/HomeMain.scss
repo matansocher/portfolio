@@ -7,10 +7,11 @@
     top: -105px;
     right: 0;
     height: 700px;
+    width: 650px;
   }
   &-content {
-    padding: 50px 0 50px;
-    max-width: 1100px;
+    padding: 50px 0 80px;
+    max-width: 1300px;
     margin: 0 auto;
     width: 90%;
     display: flex;
@@ -28,7 +29,7 @@
           margin: 0;
           &:nth-child(1) {
             font-size: 32px;
-            font-weight: 500;
+            font-weight: 600;
           }
           &:nth-child(2) {
             font-size: 42px;
@@ -38,7 +39,7 @@
           }
           &:nth-child(3) {
             font-size: 24px;
-            font-weight: 300;
+            font-weight: 400;
             margin-top: 20px;
           }
         }
@@ -46,7 +47,7 @@
     }
     &-right {
       position: relative;
-      max-width: 350px;
+      max-width: 302px;
       background-color: #FFF9F0;
       padding: 30px;
       border: 2px solid #FCB73F;
@@ -65,20 +66,23 @@
       }
       p {
         margin: 0;
-        font-size: 25px;
+        font-size: 18px;
+        font-weight: 400;
       }
       &-fact {
         display: flex;
         align-items: flex-start;
-        margin-top: 20px;
+        margin-top: 18px;
         font-family: 'Nunito Sans', sans-serif;
         img {
           margin-top: 2px;
         }
         p {
           margin: 0;
-          font-size: 20px;
+          font-size: 18px;
           margin-left: 24px;
+          font-weight: 400;
+          line-height: 26px;
         }
       }
     }

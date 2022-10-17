@@ -25,6 +25,13 @@
       align-items: center;
       justify-content: space-between;
       color: $base-header;
+      padding: 6px;
+      border-radius: 4px;
+      box-sizing: border-box;
+      transition: .5s;
+      &:hover {
+        background-color: #edeef1;
+      }
       p {
         margin: 0;
         font-weight: 400;

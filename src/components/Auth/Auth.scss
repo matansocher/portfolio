@@ -19,10 +19,10 @@
     flex-direction: column;
     max-width: 500px;
     h2 {
-
+      font-size: 40px;
     }
     p {
-
+      margin-top: -20px;
     }
     form {
       margin-top: 70px;
@@ -34,12 +34,13 @@
         font-size: 16px;
       }
       input {
-        height: 34px;
+        height: 38px;
         width: 60%;
         border-radius: 5px;
         border: none;
         box-sizing: border-box;
         font-size: 16px;
+        outline: none;
       }
       input[type='password'] {
         background-color: #F0F0F0;
@@ -51,8 +52,9 @@
         align-items: center;
         justify-content: center;
         background-color: #FFB02E;
-        margin-top: 30px;
+        margin-top: 22px;
         color: white;
+        font-size: 18px;
         &:hover {
           cursor: pointer;
         }
@@ -62,6 +64,7 @@
       color: red;
       font-weight: 400;
       font-size: 20px;
+      margin-top: 5px;
     }
   }
 }

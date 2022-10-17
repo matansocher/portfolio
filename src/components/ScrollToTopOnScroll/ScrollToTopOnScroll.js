@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import { animateScroll as scroll } from 'react-scroll';
+import { useLocation } from 'react-router-dom';
 import './ScrollToTopOnScroll.scss';
 
 export default function ScrollToTopOnScroll() {
 
+  const { pathname } = useLocation();
   const [show, setShow] = useState(false);
 
   useEffect(() => {
@@ -20,6 +22,6 @@ export default function ScrollToTopOnScroll() {
   }
 
   return show ? (
-    <div className="scroll-to-top-button" onClick={scrollTop}></div>
+    <div className="scroll-to-top-button" style={{ bottom: pathname === '/' ? '20px' : '110px' }} onClick={scrollTop}></div>
   ) : null;
 }

@@ -8,7 +8,8 @@ import { Home, Salaries, Myco, Marketist } from './screens';
 import { Auth, Footer, ScrollToTopOnPageLoad, ScrollToTopOnScroll } from './components';
 
 export default function App() {
-  const [isAuth, setIsAuth] = useState(false);
+  const defaultIsAuthState = process.env.REACT_APP_RUN_ENV === 'dev' ? true : false;
+  const [isAuth, setIsAuth] = useState(defaultIsAuthState);
 
   if (!isAuth) {
     return <Auth setIsAuth={setIsAuth} />;
