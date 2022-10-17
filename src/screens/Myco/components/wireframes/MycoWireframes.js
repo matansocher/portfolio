@@ -1,5 +1,5 @@
 import './MycoWireframes.scss';
-import { mycoResearch1, mycoResearch2, mycoResearch3, mycoResearch4 } from '../../../../assets/myco';
+import { mycoWireframes1, mycoWireframes2, mycoWireframes3, mycoWireframes4 } from '../../../../assets/myco';
 
 export default function MycoWireframes() {
   return (
