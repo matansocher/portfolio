@@ -7,7 +7,6 @@ import mycoResearch1 from './myco-research-1.png';
 import mycoResearch2 from './myco-research-2.png';
 import mycoResearch3 from './myco-research-3.png';
 import mycoResearch4 from './myco-research-4.png';
-import mycoResearch5 from './myco-research-5.png';
 import mycoSearch1 from './myco-search-1.png';
 import mycoSearch2 from './myco-search-2.png';
 import mycoSearch3 from './myco-search-3.png';
@@ -24,7 +23,6 @@ export {
   mycoResearch2,
   mycoResearch3,
   mycoResearch4,
-  mycoResearch5,
   mycoSearch1,
   mycoSearch2,
   mycoSearch3,

@@ -4,12 +4,25 @@
 header {
     padding: 30px 5%;
     background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     a {
-      font-family: 'Nunito', sans-serif;
-      margin-top: 0;
-      font-weight: 600;
-      font-size: 32px;
       color: $base-header;
       margin: 0;
+    }
+    .header-left {
+      a {
+        font-weight: 700;
+        font-size: 25px;
+        font-family: 'Nunito', sans-serif;
+      }
+    }
+    .header-right {
+      a {
+        font-weight: 400;
+        font-size: 20px;
+        font-family: 'Nunito Sans', sans-serif;
+      }
     }
 }

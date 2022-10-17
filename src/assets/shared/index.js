@@ -6,6 +6,7 @@ import mailIcon from './mail-icon.svg';
 import onionEmoji from './onion-emoji.svg';
 import womanDancingEmoji from './woman-dancing-emoji.svg';
 import arrowIcon from './arrow-icon.svg';
+import fatArrow from './fat-arrow.svg';
 
 export {
   beamingFaceWithSmilingEyesEmoji,
@@ -16,6 +17,7 @@ export {
   onionEmoji,
   womanDancingEmoji,
   arrowIcon,
+  fatArrow,
 }
 
 

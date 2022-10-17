@@ -1,8 +1,16 @@
 import './Footer.scss';
 import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import { BottomNavigation } from '../';
 import { beamingFaceWithSmilingEyesEmoji, mailIcon, brandLinkedinIcon } from '../../assets/shared';
 
 export default function Footer() {
+  const { pathname } = useLocation();
+
+  if (pathname !== '/') {
+    return <BottomNavigation pathname={pathname} />
+  }
+
   return (
     <footer>
       <div className="footer-content">
