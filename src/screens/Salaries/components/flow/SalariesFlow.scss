@@ -8,17 +8,17 @@
     flex-direction: column;
     align-items: center;
     &-one {
+      width: 100%;
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
       &-left {
-        width: 80%;
         h2 {
           margin-top: 20px;
         }
       }
       &-right {
-        width: 80%;
+        max-width: 510px;
         p {
 
         }
@@ -29,20 +29,25 @@
       align-items: flex-start;
       justify-content: space-between;
       margin-top: 100px;
+      width: 100%;
       &-left {
-        width: 80%;
+        max-width: 480px;
         h3 {
 
         }
         p {
-          
+          .bold {
+            font-weight: 600;
+          }
         }
       }
       &-right {
-        width: 80%;
+        max-width: 550px;
         margin-left: 20px;
+        text-align: center;
         img {
           width: 100%;
+          margin: 0 auto;
         }
       }
     }
@@ -70,18 +75,23 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin-top: 50px;
+      margin-top: 140px;
+      width: 100%;
       &-content {
         display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        width: 100%;
+        margin-top: 50px;
         &-left {
-          width: 80% !important;
+          max-width: 480px;
           margin-right: 20px;
           h4 {
+            font-size: 16px;
             margin-top: 0 !important;
           }
         }
         &-right {
-          width: 80% !important;
           margin-left: 20px;
           img {
             width: 100%;
@@ -92,12 +102,13 @@
         text-align: center;
       }
       h4 {
-        margin-top: 60px;
+        font-size: 14px;
+        margin-top: 100px;
       }
       .last-section {
-        width: 80%;
+        width: 100%;
         .last-p {
-          max-width: 780px;
+          max-width: 485px;
         }
       }
     }
@@ -109,6 +120,7 @@
         margin: 0 auto;
         p, img {
           width: 100%;
+          margin-top: 40px;
         }
       }
     }
@@ -123,10 +135,15 @@
       align-items: center !important;
     }
     &-one {
+      width: 90% !important;
     
     }
     &-two {
+      width: 90% !important;
       margin-top: 30px !important;
+      &-left {
+        max-width: 510px !important;
+      }
       &-right {
         margin-left: 0 !important;
       }
@@ -148,6 +165,7 @@
     }
     &-four {
       margin-top: 30px !important;
+      width: 90% !important;
       &-content {
         flex-direction: column;
         align-items: center !important;

@@ -2,14 +2,44 @@
 
 
 header {
-    padding: 30px 5%;
-    background-color: transparent;
+  // position: absolute;
+  padding: 30px 5%;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  a {
+    color: $base-header;
+    margin: 0;
+  }
+  .header-left {
     a {
+      font-weight: 700;
+      font-size: 25px;
       font-family: 'Nunito', sans-serif;
-      margin-top: 0;
-      font-weight: 600;
-      font-size: 32px;
-      color: $base-header;
-      margin: 0;
     }
+  }
+  .header-right {
+    z-index: 99;
+    a {
+      font-weight: 400;
+      font-size: 20px;
+      font-family: 'Nunito Sans', sans-serif;
+    }
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  header {
+    .header-left {
+      a {
+        font-size: 22px;
+      }
+    }
+    .header-right {
+      a {
+        font-size: 18px;
+      }
+    }
+  }
 }

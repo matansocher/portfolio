@@ -3,7 +3,6 @@
 .reporting-container {
   background-color: $primary-section-bg;
   .reporting-section {
-    padding: 100px 0;
     &-top {
       display: flex;
       justify-content: space-between;
@@ -16,10 +15,10 @@
         }
         p {
           margin: 30px 0 0;
+          max-width: 480px;
         }
       }
       &-right {
-        width: 50%;
         margin-left: 50px;
         img {
           max-width: 500px;
@@ -40,7 +39,7 @@
         justify-content: space-between;
         align-items: flex-start;
         &-left {
-          width: 50%;
+          max-width: 403px;
           margin-right: 75px;
           p {
             color: $primary-text;
@@ -52,7 +51,7 @@
               content: '';
               position: absolute;
               bottom: -28px;
-              left: 0;
+              left: 20%;
               height: 23px;
               width: 8px;
               background-image: url('../../../../assets/shared/arrow-icon.svg');

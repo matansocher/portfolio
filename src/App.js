@@ -3,22 +3,23 @@ import {
   Routes,
   Route,
 } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import useGetPassword from './hooks/useGetPassword'
+import { useState } from 'react';
 import { Home, Salaries, Myco, Marketist } from './screens';
-import { Footer, Navbar, ScrollToTopOnPageLoad, ScrollToTopOnScroll } from './components';
+import { Auth, Footer, ScrollToTopOnPageLoad, ScrollToTopOnScroll } from './components';
 
 export default function App() {
-  const { isAuthenticated } = useGetPassword();
+  const defaultIsAuthState = process.env.REACT_APP_RUN_ENV === 'dev' ? true : false;
+  const [isAuth, setIsAuth] = useState(defaultIsAuthState);
 
-  if (!isAuthenticated) {
-    return null;
+  if (!isAuth) {
+    return <Auth setIsAuth={setIsAuth} />;
   }
+
   return (
     <BrowserRouter>
       <ScrollToTopOnPageLoad />
       <ScrollToTopOnScroll />
-      <Navbar />
+      {/* <Navbar /> */}
       <Routes>
         <Route path='salaries' element={<Salaries />} />
         <Route path='marketist' element={<Marketist />} />

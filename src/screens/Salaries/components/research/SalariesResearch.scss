@@ -1,8 +1,8 @@
 @use '~/src/styles/_colors.scss' as *;
 
-.research-container {
+.salaries-research-container {
   background-color: $secondary-section-bg;
-  .research-section {
+  .salaries-research-section {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -12,31 +12,41 @@
     p {
       color: $primary-text;
       text-align: left;
-      max-width: 800px;
+      max-width: 650px;
       width: 90%;
     }
     &-bottom {
-      margin-top: 50px;
+      margin-top: 150px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       img {
         margin-right: 16px;
+        &:nth-child(1) {
+          width: 700px;
+        }
+        &:nth-child(2) {
+          width: 310px;
+        }
+        &:nth-child(3) {
+          width: 340px;
+          margin-right: 0;
+        }
       }
     }
   }
 }
 
-@media screen and (max-width: 1150px) {
-  .research-section {
+@media screen and (max-width: 1450px) {
+  .salaries-research-section {
     &-bottom {
-      flex-direction: column;
-      margin-top: 0 !important;
+      flex-wrap: wrap;
+      justify-content: center !important;
       img {
-        margin-right: 0 !important;
-        &:nth-child(2) {
-          margin-top: 20px !important;
-          max-width: 400px;
+        margin-right: 16px;
+        &:nth-child(3) {
+          margin-top: 16px;
+          margin-right: 0;
         }
       }
     }
@@ -44,13 +54,18 @@
 } 
 
 @media screen and (max-width: 1100px) {
-  .research-section {
-    &-box {
+  .salaries-research-section {
+    &-bottom {
+      margin-top: 50px !important;
       flex-direction: column;
-      &-image {
-        width: 75% !important;
+      justify-content: center !important;
+      img {
+        margin-top: 16px;
         margin-right: 0 !important;
-        margin-bottom: 25px;
+        max-width: 90%;
+        &:nth-child(1) {
+          margin-top: 0 !important;
+        }
       }
     }
   }

@@ -5,7 +5,6 @@ import salariesFlow4 from './salaries-flow-4.png';
 import salariesFlow5 from './salaries-flow-5.png';
 import salariesFlow6 from './salaries-flow-6.png';
 import salariesFlow7 from './salaries-flow-7.png';
-import salariesMainBg from './salaries-main-bg.jpeg';
 import salariesMainScreen from './salaries-main-screen.png';
 import salariesReporting1 from './salaries-reporting-1.png';
 import salariesReporting2 from './salaries-reporting-2.png';
@@ -25,7 +24,6 @@ export {
   salariesFlow5,
   salariesFlow6,
   salariesFlow7,
-  salariesMainBg,
   salariesMainScreen,
   salariesReporting1,
   salariesReporting2,

@@ -1,7 +1,7 @@
 @use '~/src/styles/_colors.scss' as *;
 
 .producers-container {
-  background-color: rgba($color: $third-section-bg, $alpha: 0.5);
+  background-color: rgba(92, 188, 227, 0.8);;
   .producers-section {
     color: $light-text;
     &-part {
@@ -27,7 +27,7 @@
   }
 }
 
-@media screen and (max-width: 1100px) {
+@media screen and (max-width: 1200px) {
   .producers-section {
     &-part {
       flex-direction: column;

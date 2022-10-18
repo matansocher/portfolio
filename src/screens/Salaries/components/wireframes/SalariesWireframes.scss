@@ -4,6 +4,9 @@
   background-color: $primary-section-bg;
   .wireframes-section {
     color: $primary-text;
+    h3 {
+      font-size: 32px;
+    }
     &-box {
       display: flex;
       justify-content: space-between;
@@ -27,6 +30,7 @@
       flex-direction: column;
       &-image {
         width: 90% !important;
+        max-width: 600px;
         margin-right: 0 !important;
         margin-bottom: 25px;
       }
