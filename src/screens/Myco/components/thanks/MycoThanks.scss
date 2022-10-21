@@ -1,0 +1,41 @@
+@use '~/src/styles/_colors.scss' as *;
+
+.thanks-container {
+  background-color: $primary-section-bg;
+  .thanks-section {
+    padding: 100px 0 0;
+    color: $primary-text;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-height: 1600px;
+    max-width: unset;
+    overflow: hidden;
+    h2 {
+      text-align: center;
+    }
+    img {
+      width: 100%;
+      margin-top: -100px;
+    }
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .thanks-container {
+    .thanks-section {
+      padding: 50px 0 0;
+    }
+  }  
+} 
+
+@media screen and (max-width: 800px) {
+  .thanks-container {
+    .thanks-section {
+      img {
+        margin-top: -50px;
+      }
+    }
+  }  
+} 
