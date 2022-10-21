@@ -3,6 +3,7 @@ import mycoProducers1 from './myco-producers-1.png';
 import mycoProducers2 from './myco-producers-2.png';
 import mycoProducers3 from './myco-producers-3.png';
 import mycoProducers4 from './myco-producers-4.png';
+import mycoProducers5 from './myco-producers-5.png';
 import mycoResearch1 from './myco-research-1.png';
 import mycoResearch2 from './myco-research-2.png';
 import mycoResearch3 from './myco-research-3.png';
@@ -25,6 +26,7 @@ export {
   mycoProducers2,
   mycoProducers3,
   mycoProducers4,
+  mycoProducers5,
   mycoResearch1,
   mycoResearch2,
   mycoResearch3,
