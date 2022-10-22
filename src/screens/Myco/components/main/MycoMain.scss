@@ -9,23 +9,23 @@
   
     &-top {
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: flex-start;
+      gap: 100px;
       color: $primary-text;
       &-left {
-        
-        margin-bottom: -7px;
+        margin-bottom: -50px;
+        margin-top: -50px;
         img {
           max-height: 500px;
         }
       }
       &-right {
-        margin-top: 13px;
+        max-width: 600px;
         h1 {
           font-weight: 400;
           font-size: 40px;
           margin: 0;
-          margin-top: -20px;
         }
         ol {
           margin-top: 0;
@@ -44,12 +44,11 @@
       &-top {
         flex-direction: column-reverse;
         align-items: center !important;
+        gap: 50px;
         &-left {
           width: 90% !important;
           display: flex;
           justify-content: center;
-          margin-top: 50px;
-          margin-bottom: 0 !important;
         }
         &-right {
           width: 90% !important;
