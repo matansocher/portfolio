@@ -1,5 +1,4 @@
 import './Marketist.scss';
-import { Navbar } from '../../components';
 import {
   MarketistExample,
   MarketistExamples,
@@ -13,8 +12,6 @@ import {
 export default function Marketist() {
   return (
     <>
-      <Navbar />
-
       <MarketistTop />
       <MarketistMain />
       <MarketistExample />
