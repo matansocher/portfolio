@@ -1,5 +1,5 @@
 import './MycoWireframes.scss';
-import { mycoUserFlows1, mycoUserFlows2, mycoWireframes1, mycoWireframes2, mycoWireframes3, mycoWireframes4 } from '../../../../assets/myco';
+import assets from '../../../../assets';
 
 export default function MycoWireframes() {
   return (
@@ -18,21 +18,21 @@ export default function MycoWireframes() {
           <div className="myco-wireframes-section-flows-content">
             <div className="myco-wireframes-section-flows-content-left">
               <p>Cancel & Receive Refund</p>
-              <img src={mycoUserFlows1} alt="user flow" />
+              <img src={assets.mycoUserFlows1} alt="user flow" />
             </div>
             <div className="myco-wireframes-section-flows-content-right">
               <p>Purchase Tickets</p>
-              <img src={mycoUserFlows2} alt="user flow" />
+              <img src={assets.mycoUserFlows2} alt="user flow" />
             </div>
           </div>
         </div>
         <div className="myco-wireframes-section-wireframes">
           <h3>Wireframes</h3>
           <div className="myco-wireframes-section-wireframes-box">
-            <img src={mycoWireframes1} alt="wireframes" />
-            <img src={mycoWireframes2} alt="wireframes" />
-            <img src={mycoWireframes3} alt="wireframes" />
-            <img src={mycoWireframes4} alt="wireframes" />
+            <img src={assets.mycoWireframes1} alt="wireframes" />
+            <img src={assets.mycoWireframes2} alt="wireframes" />
+            <img src={assets.mycoWireframes3} alt="wireframes" />
+            <img src={assets.mycoWireframes4} alt="wireframes" />
           </div>
         </div>
       </div>

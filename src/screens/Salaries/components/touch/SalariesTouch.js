@@ -1,5 +1,5 @@
 import './SalariesTouch.scss';
-import { salariesTouch } from '../../../../assets/salaries';
+import assets from '../../../../assets';
 
 export default function SalariesTouch() {
   return (
@@ -11,7 +11,7 @@ export default function SalariesTouch() {
           <p>Colour was almost exclusively used to draw attention & emphasize information, such as: card status, type of absence, shortage of counters (such as sick leave, vacation days etc.)</p>
         </div>
         <div className="touch-section-image">
-          <img alt="salary calculation screen" src={salariesTouch} />
+          <img alt="salary calculation screen" src={assets.salariesTouch} />
         </div>
         <div className="touch-section-bottom">
           <h3>Project Outcome - Acheivments</h3>

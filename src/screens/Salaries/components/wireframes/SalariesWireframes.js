@@ -1,5 +1,5 @@
 import './SalariesWireframes.scss';
-import { salariesWireframes1, salariesWireframes2, salariesWireframes3 } from '../../../../assets/salaries';
+import assets from '../../../../assets';
 
 export default function SalariesWireframes() {
   return (
@@ -8,13 +8,13 @@ export default function SalariesWireframes() {
         <h3>Wireframes</h3>
         <div className="wireframes-section-box">
           <div className="wireframes-section-box-image">
-            <img src={salariesWireframes1} alt="salaries app wireframes" />
+            <img src={assets.salariesWireframes1} alt="salaries app wireframes" />
           </div>
           <div className="wireframes-section-box-image">
-            <img src={salariesWireframes2} alt="salaries app wireframes" />
+            <img src={assets.salariesWireframes2} alt="salaries app wireframes" />
           </div>
           <div className="wireframes-section-box-image">
-            <img src={salariesWireframes3} alt="salaries app wireframes" />
+            <img src={assets.salariesWireframes3} alt="salaries app wireframes" />
           </div>
         </div>
       </div>

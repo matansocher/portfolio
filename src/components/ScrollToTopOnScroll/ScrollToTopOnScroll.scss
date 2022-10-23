@@ -9,15 +9,12 @@
   border-radius: 50%;
   background-color: rgba($color: $scroll-to-top-button-bg, $alpha: 0.3);
   cursor: pointer;
-  &::after {
-    content: '';
+  img {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) rotate(180deg);
     height: 23px;
     width: 8px;
-    background-image: url('../../assets/shared/arrow-icon.svg');
-    background-repeat: no-repeat;
   }
 }

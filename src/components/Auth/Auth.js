@@ -2,7 +2,7 @@ import './Auth.scss';
 import axios from 'axios';
 import { useState } from 'react';
 import config from '../../config';
-import { homeMainBg } from '../../assets/home';
+import assets from '../../assets';
 
 export default function Auth({ setIsAuth }) {
   const [password, setPassword] = useState('');
@@ -35,7 +35,7 @@ export default function Auth({ setIsAuth }) {
 
   return (
     <div className="auth">
-      <img className="bg" alt="background" src={homeMainBg} />
+      <img className="bg" alt="background" src={assets.homeMainBg} />
       <div className="auth-content">
         <h2>Hello there :)</h2>
         <p>Just one small thing....</p>

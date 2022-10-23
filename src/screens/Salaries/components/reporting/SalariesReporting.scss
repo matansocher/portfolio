@@ -41,27 +41,21 @@
         &-left {
           max-width: 403px;
           margin-right: 75px;
-          p {
-            color: $primary-text;
-            text-align: left;
-            margin-top: 0;
-            margin-bottom: 34px;
+          &-item {
             position: relative;
-            &::before {
-              content: '';
+            p {
+              color: $primary-text;
+              text-align: left;
+              margin-top: 0;
+              margin-bottom: 34px;
+              position: relative;
+            }
+            img {
               position: absolute;
               bottom: -28px;
               left: 20%;
               height: 23px;
               width: 8px;
-              background-image: url('../../../../assets/shared/arrow-icon.svg');
-              background-repeat: no-repeat;
-            }
-            &:last-child {
-              margin-bottom: 0;
-              &::before {
-                background-image: none;
-              }
             }
           }
         }

@@ -1,5 +1,5 @@
 import './MycoSearch.scss';
-import { mycoSearch1, mycoSearch2, mycoSearch3, mycoSearch4 } from '../../../../assets/myco';
+import assets from '../../../../assets';
 
 export default function MycoSearch() {
   return (
@@ -8,8 +8,8 @@ export default function MycoSearch() {
         <h2>High Fidelity</h2>
         <div className="search-section-part">
           <div className="search-section-part-left">
-            <img src={mycoSearch1} alt="screen example" />
-            <img src={mycoSearch2} alt="screen example" />
+            <img src={assets.mycoSearch1} alt="screen example" />
+            <img src={assets.mycoSearch2} alt="screen example" />
           </div>
           <div className="search-section-part-right">
             <h4>Search Events Pages</h4>
@@ -18,8 +18,8 @@ export default function MycoSearch() {
         </div>
         <div className="search-section-part">
           <div className="search-section-part-left">
-            <img src={mycoSearch3} alt="screen example" />
-            <img src={mycoSearch4} alt="screen example" />
+            <img src={assets.mycoSearch3} alt="screen example" />
+            <img src={assets.mycoSearch4} alt="screen example" />
           </div>
           <div className="search-section-part-right">
             <h4>Event Page</h4>

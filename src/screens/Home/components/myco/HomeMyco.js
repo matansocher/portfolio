@@ -1,6 +1,6 @@
 import './HomeMyco.scss';
 import { Link } from 'react-router-dom';
-import { homeMyco } from '../../../../assets/home';
+import assets from '../../../../assets';
 
 export default function HomeMyco() {
   return (
@@ -14,7 +14,7 @@ export default function HomeMyco() {
           </div>
         </div>
         <div className="section-content-right">
-          <img src={homeMyco} alt="screen example" />
+          <img src={assets.homeMyco} alt="screen example" />
         </div>
       </Link>
     </section>

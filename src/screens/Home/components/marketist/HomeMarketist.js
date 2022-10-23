@@ -1,6 +1,6 @@
 import './HomeMarketist.scss';
 import { Link } from 'react-router-dom';
-import { homeMarketist } from '../../../../assets/home';
+import assets from '../../../../assets';
 
 export default function HomeMarketist() {
   return (
@@ -14,7 +14,7 @@ export default function HomeMarketist() {
           </div>
         </div>
         <div className="section-content-right">
-          <img src={homeMarketist} alt="screen example" />
+          <img src={assets.homeMarketist} alt="screen example" />
         </div>
         </Link>
     </section>

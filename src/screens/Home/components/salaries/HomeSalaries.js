@@ -1,6 +1,6 @@
 import './HomeSalaries.scss';
 import { Link } from 'react-router-dom';
-import { homeSalaries } from '../../../../assets/home';
+import assets from '../../../../assets';
 
 export default function HomeSalaries() {
   return (
@@ -14,7 +14,7 @@ export default function HomeSalaries() {
           </div>
         </div>
         <div className="section-content-right">
-          <img src={homeSalaries} alt="salary additions app screen" />
+          <img src={assets.homeSalaries} alt="salary additions app screen" />
         </div>
       </Link>
     </section>

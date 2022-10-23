@@ -1,5 +1,5 @@
 import './MycoResearch.scss';
-import { mycoResearch1, mycoResearch2, mycoResearch3, mycoResearch4 } from '../../../../assets/myco';
+import assets from '../../../../assets';
 
 export default function MycoResearch() {
   return (
@@ -12,11 +12,11 @@ export default function MycoResearch() {
           </div>
           <div className="myco-research-section-content-right">
             <div className="myco-research-section-content-right-item">
-              <img src={mycoResearch1} alt="screen example" />
-              <img src={mycoResearch2} alt="screen example" />
+              <img src={assets.mycoResearch1} alt="screen example" />
+              <img src={assets.mycoResearch2} alt="screen example" />
             </div>
             <div className="myco-research-section-content-right-item">
-              <img src={mycoResearch3} alt="screen example" />
+              <img src={assets.mycoResearch3} alt="screen example" />
             </div>
           </div>
         </div>

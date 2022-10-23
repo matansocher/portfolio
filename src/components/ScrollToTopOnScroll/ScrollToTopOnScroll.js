@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 import { animateScroll as scroll } from 'react-scroll';
-import { useLocation } from 'react-router-dom';
+// import { useLocation } from 'react-router-dom';
 import './ScrollToTopOnScroll.scss';
+import assets from '../../assets';
 
 export default function ScrollToTopOnScroll() {
 
-  const { pathname } = useLocation();
+  // const { pathname } = useLocation();
   const [show, setShow] = useState(false);
 
   useEffect(() => {
@@ -22,6 +23,9 @@ export default function ScrollToTopOnScroll() {
   }
 
   return show ? (
-    <div className="scroll-to-top-button" style={{ bottom: pathname === '/' ? '20px' : '110px' }} onClick={scrollTop}></div>
+    // bottom: pathname === '/' ? '20px' : '110px'
+    <div className="scroll-to-top-button" style={{ bottom: '110px' }} onClick={scrollTop}>
+      <img alt="arrow" src={assets.arrowIcon} />
+    </div>
   ) : null;
 }
