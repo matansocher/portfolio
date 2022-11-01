@@ -18,7 +18,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <ScrollToTopOnPageLoad />
-      <ScrollToTopOnScroll />
+      {/* <ScrollToTopOnScroll /> */}
       <Navbar />
       <Routes>
         <Route path='salaries' element={<Salaries />} />

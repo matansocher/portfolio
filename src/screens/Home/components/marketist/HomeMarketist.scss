@@ -3,10 +3,8 @@
 .marketist-container {
   .section-content {
     border-bottom: none;
+    flex-direction: row-reverse;
     &-left {
-      h2 {
-        color: $blue-header;
-      }
     }
     &-right {
       display: flex;

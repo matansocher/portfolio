@@ -25,29 +25,29 @@
       align-items: center;
       &-content {
         p {
-          font-family: 'Nunito', sans-serif;
+          font-family: 'Nunito Sans', sans-serif;
           margin: 0;
           &:nth-child(1) {
-            font-size: 32px;
+            font-size: 40px;
             font-weight: 600;
           }
           &:nth-child(2) {
-            font-size: 42px;
-            font-weight: 500;
+            font-size: 40px;
+            font-weight: 700;
             line-height: 50px;
             margin-top: 10px;
           }
           &:nth-child(3) {
             font-size: 24px;
             font-weight: 400;
-            margin-top: 20px;
+            margin-top: 30px;
           }
         }
       }
     }
     &-right {
       position: relative;
-      max-width: 302px;
+      max-width: 285px;
       background-color: #FFF9F0;
       padding: 30px;
       border: 2px solid #FCB73F;

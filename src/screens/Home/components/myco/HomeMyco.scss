@@ -2,10 +2,10 @@
 
 .myco-container {
   .section-content {
+    flex-direction: row-reverse;
     &-left {
-      h2 {
-        color: $orange-hedaer;
-      }
+    }
+    &-right {
     }
   }
 }
