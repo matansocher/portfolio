@@ -1,9 +1,13 @@
 
 const homeAssets = [
   { name: 'homeMainBg', file: 'home/home-top-bg.png' },
+  { name: 'homeMainBgMobile', file: 'home/home-top-bg-mobile.png' },
   { name: 'homeMarketist', file: 'home/home-marketist.png' },
+  { name: 'homeMarketistMobile', file: 'home/home-marketist-mobile.png' },
   { name: 'homeMyco', file: 'home/home-myco.png' },
+  { name: 'homeMycoMobile', file: 'home/home-myco-mobile.png' },
   { name: 'homeSalaries', file: 'home/home-salaries.png' },
+  { name: 'homeSalariesMobile', file: 'home/home-salaries-mobile.png' },
 ];
 
 const marketistAssets = [
@@ -74,6 +78,7 @@ const salariesAssets = [
 const sharedAssets = [
   { name: 'beamingFaceWithSmilingEyesEmoji', file: 'shared/beaming-face-with-smiling-eyes-emoji.svg' },
   { name: 'brandLinkedinIcon', file: 'shared/brand-linkedin-icon.svg' },
+  { name: 'dribbbleIcon', file: 'shared/dribbble-icon.svg' },
   { name: 'faceHoldingBackTearsEmoji', file: 'shared/face-holding-back-tears-emoji.svg' },
   { name: 'loudlyCryingFaceEmoji', file: 'shared/loudly-crying-face-emoji.svg' },
   { name: 'mailIcon', file: 'shared/mail-icon.svg' },

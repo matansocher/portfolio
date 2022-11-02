@@ -48,5 +48,22 @@ footer {
 }
 
 @media screen and (max-width: 600px) {
-
+    footer {
+        border-top: 1px solid #314049;
+        margin-top: 40px;
+        padding: 20px 5%;
+        .footer-content {
+            flex-direction: column;
+            &-left {
+            }
+            &-right {
+                ul {
+                    padding-left: 0;
+                    li {
+                        margin-right: 8px;
+                    }
+                }
+            }
+        }
+    }    
 } 

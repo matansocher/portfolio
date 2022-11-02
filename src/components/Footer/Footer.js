@@ -26,6 +26,11 @@ export default function Footer() {
               </Link>
             </li>
             <li>
+              <Link to="//dribbble.com/d27" style={{ textDecoration: 'none' }}>
+                <img alt="dribbble icon" src={assets.dribbbleIcon} />
+              </Link>
+            </li>
+            <li>
               <Link to="#" onClick={(e) => {window.location.href = 'mailto:dklnsm@gmail.com'; e.preventDefault()} } style={{ textDecoration: 'none' }}>
                 <img alt="mail icon" src={assets.mailIcon} />
               </Link>

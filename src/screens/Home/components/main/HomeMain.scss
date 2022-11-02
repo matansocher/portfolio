@@ -2,6 +2,7 @@
 
 .home-container {
   position: relative;
+  margin-bottom: 260px;
   .bg {
     position: absolute;
     top: -105px;
@@ -9,9 +10,12 @@
     height: 700px;
     width: 650px;
   }
+  .mobile {
+    display: none;
+  }
   &-content {
-    padding: 50px 0 80px;
-    max-width: 1300px;
+    padding:110px 0 80px;
+    max-width: 1500px;
     margin: 0 auto;
     width: 90%;
     display: flex;
@@ -19,7 +23,7 @@
     justify-content: space-between;
     color: $base-header;
     &-left {
-      max-width: 510px;
+      max-width: 700px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -30,26 +34,29 @@
           &:nth-child(1) {
             font-size: 40px;
             font-weight: 600;
+            letter-spacing: 0.0025em;
           }
           &:nth-child(2) {
-            font-size: 40px;
+            font-size: 56px;
             font-weight: 700;
             line-height: 50px;
-            margin-top: 10px;
+            margin-top: 18px;
+            letter-spacing: 0.0025em;
           }
           &:nth-child(3) {
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 400;
             margin-top: 30px;
+            letter-spacing: 0.0015em;
           }
         }
       }
     }
     &-right {
       position: relative;
-      max-width: 285px;
+      max-width: 340px;
       background-color: #FFF9F0;
-      padding: 30px;
+      padding: 32px;
       border: 2px solid #FCB73F;
       transform: rotate(5.67deg);
       color: $base-header;
@@ -60,29 +67,29 @@
         height: 15px;
         top: -8px;
         left: 175px;
-        left: 45%;
+        left: 49%;
         background-color: #545454;
         border-radius: 50%;
       }
       p {
         margin: 0;
-        font-size: 18px;
+        font-size: 22px;
         font-weight: 400;
       }
       &-fact {
         display: flex;
         align-items: flex-start;
-        margin-top: 18px;
+        margin-top: 22px;
         font-family: 'Nunito Sans', sans-serif;
         img {
           margin-top: 2px;
         }
         p {
           margin: 0;
-          font-size: 18px;
+          font-size: 22px;
           margin-left: 24px;
           font-weight: 400;
-          line-height: 26px;
+          line-height: 33px;
         }
       }
     }
@@ -90,20 +97,14 @@
   }
 }
 
-@media screen and (max-width: 1100px) {
+@media screen and (max-width: 1300px) {
   .home-container {
     .bg {
       display: none;
     }
-    &-top {
-      padding: 20px 40px;
-      h2 {
-
-      }
-    }
     &-content {
       padding: 0 0 50px;
-      width: 80%;
+      width: 90%;
       flex-direction: column;
       align-items: center;
       &-left {
@@ -119,10 +120,55 @@
       &-right {
         margin-top: 75px;
         transform: rotate(4deg);
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .home-container {
+    margin-bottom: 40px;
+    .mobile {
+      display: block;
+      z-index: -1;
+    }
+    &-content {
+      padding-top: 30px;
+      &-left {
+        &-content {
+          p {
+            &:nth-child(1) {
+              font-size: 40px !important;
+              font-weight: 600 !important;
+              letter-spacing: 0.0025em !important;
+            }
+            &:nth-child(2) {
+              font-size: 40px !important;
+              font-weight: 700 !important;
+              line-height: 50px !important;
+              margin-top: 10px !important;
+              letter-spacing: 0.0025em !important;
+            }
+            &:nth-child(3) {
+              font-weight: 500 !important;
+              font-size: 18px !important;
+              line-height: 23px !important;
+              letter-spacing: 0.0015em !important;
+            }
+          }
+        }
+      }
+      &-right {
+        box-sizing: border-box;
+        padding: 30px;
         &-fact {
-          
+          margin-top: 16px;
+        }
+        p {
+          font-size: 18px !important;
+          line-height: 26px !important;
         }
       }
     }
   }
-} 
+}

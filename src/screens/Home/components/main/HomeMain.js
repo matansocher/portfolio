@@ -4,13 +4,14 @@ import assets from '../../../../assets';
 export default function SalariesFlow() {
   return (
     <section className="home-container">
-      <img className="bg" alt="background" src={assets.homeMainBg} />
+      <img className="bg regular" alt="background" src={assets.homeMainBg} />
+      <img className="bg mobile" alt="background" src={assets.homeMainBgMobile} />
       <div className="home-container-content">
         <div className="home-container-content-left">
           <div className="home-container-content-left-content">
             <p>Hey!</p>
             <p>I’m Dekel, UX/UI Designer</p>
-            <p>I specialize in complex systems, and aspire to add value wherever I can.</p>
+            <p>I aspire to add value wherever I can.<br />I have 4 years of experience in research & design, mostly in complex systems. I love creating smart processes, clean aestetics and exploring into the users world to come up with great solutions.</p>
           </div>
         </div>
         
