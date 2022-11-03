@@ -3,7 +3,10 @@
 .producers-container {
   background-color: rgba(92, 188, 227, 0.8);;
   .producers-section {
-    color: $light-text;
+    h2 {
+      color: #fff;
+      font-weight: 700;
+    }
     &-part {
       display: flex;
       align-items: flex-start;
@@ -19,6 +22,9 @@
         margin: 0 30px;
         &:first-child {
           margin-bottom: 75px;
+        }
+        h4 {
+          color: #fff;
         }
         img {
           width: 300px;

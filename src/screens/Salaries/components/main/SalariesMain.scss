@@ -16,9 +16,9 @@
       margin: 0 auto;
       width: 90%;
       &-left {
-
         h1 {
           margin: 0;
+          color: #fff;
           max-width: 200px;
           font-size: 40px;
           font-weight: 600;
@@ -31,9 +31,13 @@
         max-width: 610px;
         p, ol {
           margin: 0;
-          font-weight: 300;
+          font-weight: 400;
           font-size: 22px;
           line-height: 38px;
+          color: #fff;
+          li {
+            color: #fff;
+          }
         }
       }
     }
