@@ -5,7 +5,6 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  // padding-left: 300px;
   .bg {
     position: absolute;
     top: -105px;
@@ -21,12 +20,13 @@
     padding-left: 300px;
     h2 {
       font-size: 40px;
+      margin-bottom: 24px;
     }
     p {
-      margin-top: -20px;
+      margin: 0;
     }
     form {
-      margin-top: 70px;
+      margin-top: 64px;
       width: 100%;
       label {
         display: flex;
@@ -52,10 +52,11 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: #FFB02E;
-        margin-top: 22px;
-        color: white;
+        background-color: $orange-hedaer;
+        margin-top: 32px;
+        color: $light-text;
         font-size: 18px;
+        font-weight: 600;
         &:hover {
           cursor: pointer;
         }

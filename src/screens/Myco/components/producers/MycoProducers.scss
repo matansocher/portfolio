@@ -3,21 +3,28 @@
 .producers-container {
   background-color: rgba(92, 188, 227, 0.8);;
   .producers-section {
-    color: $light-text;
+    h2 {
+      color: #fff;
+      font-weight: 700;
+    }
     &-part {
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
-      &:nth-child(2) {
+      &:nth-child(3) {
         margin-top: 100px;
       }
       &-item {
+        width: 33%;
         display: flex;
         flex-direction: column;
         align-items: center;
         margin: 0 30px;
         &:first-child {
           margin-bottom: 75px;
+        }
+        h4 {
+          color: #fff;
         }
         img {
           width: 300px;
@@ -32,8 +39,8 @@
     &-part {
       flex-direction: column;
       align-items: center !important;
-      &:nth-child(2) {
-        margin-top: 25px !important;
+      &:nth-child(3) {
+        margin-top: 0 !important;
       }
       &-item {
         margin-bottom: 50px !important;

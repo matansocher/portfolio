@@ -5,7 +5,7 @@ import {
 } from 'react-router-dom';
 import { useState } from 'react';
 import { Home, Salaries, Myco, Marketist } from './screens';
-import { Auth, Footer, ScrollToTopOnPageLoad, ScrollToTopOnScroll } from './components';
+import { Auth, Navbar, Footer, ScrollToTopOnPageLoad, ScrollToTopOnScroll } from './components';
 
 export default function App() {
   const defaultIsAuthState = process.env.REACT_APP_RUN_ENV === 'dev' ? true : false;
@@ -18,8 +18,8 @@ export default function App() {
   return (
     <BrowserRouter>
       <ScrollToTopOnPageLoad />
-      <ScrollToTopOnScroll />
-      {/* <Navbar /> */}
+      {/* <ScrollToTopOnScroll /> */}
+      <Navbar />
       <Routes>
         <Route path='salaries' element={<Salaries />} />
         <Route path='marketist' element={<Marketist />} />

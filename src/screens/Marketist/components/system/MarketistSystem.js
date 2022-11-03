@@ -1,5 +1,5 @@
 import './MarketistSystem.scss';
-import { marketistSystem1, marketistSystem2, marketistSystem3 } from '../../../../assets/marketist';
+import assets from '../../../../assets';
 
 export default function MarketistSystem() {
   return (
@@ -12,7 +12,7 @@ export default function MarketistSystem() {
           <p>Colors</p>
         </div>
         <div className="marketist-system-container-item-right">
-          <img alt="marketist app colors" src={marketistSystem1} />
+          <img alt="marketist app colors" src={assets.marketistSystem1} />
         </div>
       </div>
 
@@ -21,7 +21,7 @@ export default function MarketistSystem() {
           <p>Buttons</p>
         </div>
         <div className="marketist-system-container-item-right">
-          <img alt="marketist app buttons" src={marketistSystem2} />
+          <img alt="marketist app buttons" src={assets.marketistSystem2} />
         </div>
       </div>
 
@@ -30,7 +30,7 @@ export default function MarketistSystem() {
           <p>Typography</p>
         </div>
         <div className="marketist-system-container-item-right">
-          <img alt="marketist app typography" src={marketistSystem3} />
+          <img alt="marketist app typography" src={assets.marketistSystem3} />
         </div>
       </div>
 

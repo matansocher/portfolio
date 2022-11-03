@@ -1,24 +1,40 @@
 import './MarketistExamples.scss';
-import { marketistExamples1, marketistExamples2, marketistExamples3, marketistExamples4, marketistExamples5, marketistExamples6, marketistExamples7, marketistExamples8 } from '../../../../assets/marketist';
+import assets from '../../../../assets';
 
 export default function MarketistExamples() {
   return (
     <section className="marketist-examples-container content">
       <div className="marketist-examples-container-box">
-        <img alt="marketist app screen" src={marketistExamples1} />
-        <img alt="marketist app screen" src={marketistExamples2} />
+        <div className="marketist-examples-container-box-image">
+          <img alt="marketist app screen" src={assets.marketistExamples1} />
+        </div>
+        <div className="marketist-examples-container-box-image">
+          <img alt="marketist app screen" src={assets.marketistExamples2} />
+        </div>
       </div>
       <div className="marketist-examples-container-box">
-        <img alt="marketist app screen" src={marketistExamples3} />
-        <img alt="marketist app screen" src={marketistExamples4} />
+        <div className="marketist-examples-container-box-image">
+          <img alt="marketist app screen" src={assets.marketistExamples3} />
+        </div>
+        <div className="marketist-examples-container-box-image">
+          <img alt="marketist app screen" src={assets.marketistExamples4} />
+        </div>
       </div>
       <div className="marketist-examples-container-box">
-        <img alt="marketist app screen" src={marketistExamples5} />
-        <img alt="marketist app screen" src={marketistExamples6} />
+        <div className="marketist-examples-container-box-image">
+          <img alt="marketist app screen" src={assets.marketistExamples5} />
+        </div>
+        <div className="marketist-examples-container-box-image">
+          <img alt="marketist app screen" src={assets.marketistExamples6} />
+        </div>
       </div>
       <div className="marketist-examples-container-box">
-        <img alt="marketist app screen" src={marketistExamples7} />
-        <img alt="marketist app screen" src={marketistExamples8} />
+        <div className="marketist-examples-container-box-image">
+          <img alt="marketist app screen" src={assets.marketistExamples7} />
+        </div>
+        <div className="marketist-examples-container-box-image">
+          <img alt="marketist app screen" src={assets.marketistExamples8} />
+        </div>
       </div>
     </section>
   );

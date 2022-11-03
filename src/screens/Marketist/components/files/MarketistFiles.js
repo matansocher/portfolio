@@ -1,5 +1,5 @@
 import './MarketistFiles.scss';
-import { marketistFiles } from '../../../../assets/marketist';
+import assets from '../../../../assets';
 
 export default function MarketistFiles() {
   return (
@@ -9,7 +9,7 @@ export default function MarketistFiles() {
         <p>The UI was planned to be clean & minimalistic and support the concept of an all-in-one place to manage & track the organization’s marketing operations.</p>
       </div>
       <div className="marketist-files-container-right">
-        <img alt="marketist app files screen" src={marketistFiles} />
+        <img alt="marketist app files screen" src={assets.marketistFiles} />
       </div>
     </section>
   );

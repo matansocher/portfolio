@@ -1,5 +1,5 @@
 import './SalariesFlow.scss';
-import { salariesFlow1, salariesFlow2, salariesFlow3, salariesFlow4, salariesFlow5, salariesFlow6, salariesFlow7 } from '../../../../assets/salaries';
+import assets from '../../../../assets';
 
 export default function SalariesFlow() {
   return (
@@ -7,7 +7,7 @@ export default function SalariesFlow() {
       <div className="content flow-section">
         <div className="flow-section-one">
           <div className="flow-section-one-left">
-            <h2>General Flow & Logic</h2>
+            <h2>General Flow & Supporting edge cases</h2>
           </div>
           <div className="flow-section-one-right">
             <p>We aimed for the manual approval process to be as fluent as possible, in order to improve the existing process and shorten the overall time of approval.</p>
@@ -22,15 +22,15 @@ export default function SalariesFlow() {
             <p>You can also see two examples of these flow charts - the root flow charts for basic calculations.</p>
           </div>
           <div className="flow-section-two-right">
-            <img alt="salaries flow graph" src={salariesFlow1} />
+            <img alt="salaries flow graph" src={assets.salariesFlow1} />
           </div>
         </div>
         <div className="flow-section-three">
           <div className="flow-section-three-left">
-            <img alt="salaries flow graph" src={salariesFlow2} />
+            <img alt="salaries flow graph" src={assets.salariesFlow2} />
           </div>
           <div className="flow-section-three-right">
-            <img alt="salaries flow graph" src={salariesFlow3} />
+            <img alt="salaries flow graph" src={assets.salariesFlow3} />
           </div>
         </div>
         <div className="flow-section-four">
@@ -43,7 +43,7 @@ export default function SalariesFlow() {
               <p>The Coordinators, as well as HR Manager, can track their progress in a glance, since as they progress the graph turns slowly from blue (status ‘unchecked’) to green (‘approved’).</p>
             </div>
             <div className="flow-section-four-content-right">
-              <img alt="salaries flow graph" src={salariesFlow4} />
+              <img alt="salaries flow graph" src={assets.salariesFlow4} />
             </div>
           </div>
           <div className="last-section">
@@ -52,13 +52,13 @@ export default function SalariesFlow() {
           </div>
         </div>
         <div className="flow-section-five">
-          <img alt="salaries flow graph" src={salariesFlow5} />
+          <img alt="salaries flow graph" src={assets.salariesFlow5} />
           <div className="flow-section-five-content">
             <p>The structure was based on the F shape scanning pattern (turning over in hebrew - Shanpe, in order to support the scanning flow with the basic information:</p>
-            <img alt="salaries flow graph" src={salariesFlow6} />
+            <img alt="salaries flow graph" src={assets.salariesFlow6} />
             <p>Since 60-70% of cards consist of common additions, this layout allows the Coordinator to approve cards quite fast (just as we don’t go and check a calculator’s result).</p>
             <p>For the more complex cards, they can press on each days and see the detailed calculation in a pop up:</p>
-            <img alt="salaries flow graph" src={salariesFlow7} />
+            <img alt="salaries flow graph" src={assets.salariesFlow7} />
           </div>
         </div>
       </div>

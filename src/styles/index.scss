@@ -7,14 +7,14 @@ body {
     sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Nunito Sans', sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Nunito Sans', sans-serif;
 }
 
-p, a, span {
+p, a, span, ul, li {
   font-family: 'Nunito Sans', sans-serif;
 }
 
@@ -79,7 +79,7 @@ section {
 }
 
 .content {
-  padding: 120px 0;
+  padding: 130px 0 160px;
   width: 90%;
   margin: 0 auto;
   max-width: 1300px;

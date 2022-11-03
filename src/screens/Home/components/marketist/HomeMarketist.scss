@@ -2,18 +2,22 @@
 
 .marketist-container {
   .section-content {
-    border-bottom: none;
+    max-width: unset;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    width: 100%;
+    margin: 200px auto 50px;
     &-left {
-      h2 {
-        color: $blue-header;
-      }
+      // padding-right: 7%;
+      max-width: 350px;
+      margin-top: 48px;
     }
     &-right {
       display: flex;
       align-items: center;
       justify-content: flex-end;
+      // max-width: 55%;
       img {
-        max-width: 450px;
       }
     }
   }
@@ -22,8 +26,29 @@
 @media screen and (max-width: 1100px) {
   .marketist-container {
 
-    .marketist-section {
-      
+    .section-content {
+      // flex-direction: column;
     }
   }  
 } 
+
+@media screen and (max-width: 600px) {
+  .marketist-container {
+    .section-content {
+      margin: unset;
+      width: 100%;
+      margin: 0 auto;
+      &-left {
+        width: 90%;
+        // padding-right: unset;
+        margin-top: 0;
+        .tags {
+          margin-top: 12px;
+        }
+      }
+      &-right {
+        max-width: unset;
+      }
+    }
+  }  
+}

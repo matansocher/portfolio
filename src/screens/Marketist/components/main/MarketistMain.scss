@@ -1,16 +1,19 @@
 @use '~/src/styles/_colors.scss' as *;
 
 .marketist-main-container {
+	padding-top: 80px;
 	&-content {
-		max-width: 700px;
+		max-width: 666px;
 		padding-left: 100px;
 		h1 {
 			font-weight: 600;
 			font-size: 63px;
 			margin-bottom: 20px;
+			font-family: 'Nunito Sans', sans-serif;
 		}
 		p {
 			margin: 0;
+			line-height: 30px;
 		}
 	}
 }

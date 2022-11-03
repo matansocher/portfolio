@@ -1,7 +1,7 @@
 @use '~/src/styles/_colors.scss' as *;
 
 .flow-container {
-  background-color: $secondary-section-bg;
+  background-color: $secondary-section-bg-sec;
   .flow-section {
     color: $primary-text;
     display: flex;
@@ -15,12 +15,14 @@
       &-left {
         h2 {
           margin-top: 20px;
+          max-width: 400px;
+          font-weight: 600;
         }
       }
       &-right {
         max-width: 510px;
         p {
-
+          font-weight: 400;
         }
       }
     }
@@ -33,11 +35,12 @@
       &-left {
         max-width: 480px;
         h3 {
-
+          font-weight: 600;
         }
         p {
+          font-weight: 400;
           .bold {
-            font-weight: 600;
+            font-weight: 700;
           }
         }
       }
@@ -90,6 +93,9 @@
             font-size: 16px;
             margin-top: 0 !important;
           }
+          p {
+            font-weight: 400;
+          }
         }
         &-right {
           margin-left: 20px;
@@ -102,13 +108,15 @@
         text-align: center;
       }
       h4 {
-        font-size: 14px;
+        font-weight: 700;
+        font-size: 18px;
         margin-top: 100px;
       }
       .last-section {
         width: 100%;
         .last-p {
           max-width: 485px;
+          font-weight: 400;
         }
       }
     }
@@ -121,6 +129,7 @@
         p, img {
           width: 100%;
           margin-top: 40px;
+          font-weight: 400;
         }
       }
     }

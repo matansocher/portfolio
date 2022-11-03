@@ -1,11 +1,11 @@
 import './MarketistTop.scss';
-import { marketistTopOver } from '../../../../assets/marketist';
+import assets from '../../../../assets';
 
 export default function MarketistTop() {
   return (
     <>
-      <section className="marketist-top-container">
-        <img alt="marketist app screen" src={marketistTopOver} />
+      <section className="marketist-top-container" style={{ backgroundImage: `url('${assets.marketistTopUnder}')` }}>
+        <img alt="marketist app screen" src={assets.marketistTopOver} />
       </section>
     </>
   );

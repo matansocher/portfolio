@@ -3,16 +3,10 @@
 .salaries-container {
   .section-content {
     &-left {
-      h2 {
-        color: $red-header;
-      }
     }
     &-right {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
       img {
-        max-width: 450px;
+        // max-width: 450px;
       }
     }
   }
