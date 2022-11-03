@@ -7,14 +7,13 @@ export default function MycoWireframes() {
       <div className="content myco-wireframes-section">
         <div className="myco-wireframes-section-top">
           <div className="myco-wireframes-section-top-left">
-            <h3>Wireframes &<br/>User Flows</h3>
+            <h3>Wireframes & User Flows</h3>
           </div>
           <div className="myco-wireframes-section-top-right">
             <p>In order to understand the current process and try to come up with improvements, I conducted interviews and talked to two experienced users. I tried to discover their challenges, pain points and goals to acheive.<br />From these insights, I created user flows designed to better support the users needs. </p>
           </div>
         </div>
         <div className="myco-wireframes-section-flows">
-          <h4>User Flows</h4>
           <div className="myco-wireframes-section-flows-content">
             <div className="myco-wireframes-section-flows-content-left">
               <p>Cancel & Receive Refund</p>

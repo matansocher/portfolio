@@ -4,18 +4,18 @@
   background-color: $fourthy-section-bg;
   .myco-research-section {
     max-width: 1200px;
-    color: $primary-text;
+    // color: $base-header;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     h3 {
-      color: $primary-text;
+      // color: $base-header;
     }
     p {
-      color: $primary-text;
+      // color: $base-header;
       text-align: left;
-      max-width: 475px;
+      max-width: 525px;
     }
     &-content {
       width: 100%;

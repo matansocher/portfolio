@@ -2,7 +2,7 @@
 
 .home-container {
   position: relative;
-  margin-bottom: 260px;
+  margin-bottom: 275px;
   .bg {
     position: absolute;
     top: -105px;
@@ -29,7 +29,6 @@
       align-items: center;
       &-content {
         p {
-          font-family: 'Nunito Sans', sans-serif;
           color: $base-header;
           margin: 0;
           &:nth-child(1) {
@@ -81,7 +80,6 @@
         display: flex;
         align-items: flex-start;
         margin-top: 22px;
-        font-family: 'Nunito Sans', sans-serif;
         img {
           margin-top: 2px;
         }

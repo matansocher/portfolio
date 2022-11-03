@@ -3,6 +3,7 @@
 .myco-main-container {
   background-image: $primary-section-bg;
   overflow: hidden;
+  padding-top: 80px;
   .main-section {
     max-width: 1200px;
     padding: 50px 0 0;
@@ -12,12 +13,12 @@
       justify-content: center;
       align-items: flex-start;
       gap: 100px;
-      color: $primary-text;
+      // color: $base-header;
       &-left {
         margin-bottom: -50px;
         margin-top: -50px;
         img {
-          max-height: 500px;
+          max-height: 800px;
         }
       }
       &-right {
@@ -25,6 +26,7 @@
         h1 {
           font-weight: 700;
           font-size: 40px;
+          letter-spacing: 0.0325em;
           margin: 0;
         }
         ol {
@@ -49,6 +51,9 @@
           width: 90% !important;
           display: flex;
           justify-content: center;
+          img {
+            max-height: 500px;
+          }
         }
         &-right {
           width: 90% !important;
