@@ -82,6 +82,7 @@ const sharedAssets = [
   { name: 'faceHoldingBackTearsEmoji', file: 'shared/face-holding-back-tears-emoji.svg' },
   { name: 'loudlyCryingFaceEmoji', file: 'shared/loudly-crying-face-emoji.svg' },
   { name: 'mailIcon', file: 'shared/mail-icon.svg' },
+  { name: 'copyIcon', file: 'shared/copy-icon.svg' },
   { name: 'onionEmoji', file: 'shared/onion-emoji.svg' },
   { name: 'womanDancingEmoji', file: 'shared/woman-dancing-emoji.svg' },
   { name: 'arrowIcon', file: 'shared/arrow-icon.svg' },

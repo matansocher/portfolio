@@ -1,7 +1,7 @@
 @use '~/src/styles/_colors.scss' as *;
 
 .salaries-research-container {
-  background-color: $secondary-section-bg;
+  background-color: $green-section-bg;
   .salaries-research-section {
     display: flex;
     flex-direction: column;
@@ -12,7 +12,8 @@
     p {
       color: $primary-text;
       text-align: left;
-      max-width: 650px;
+      max-width: 610px;
+      margin-top: 0;
       width: 90%;
     }
     &-bottom {

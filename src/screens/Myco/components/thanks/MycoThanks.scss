@@ -3,7 +3,7 @@
 .thanks-container {
   background-color: $primary-section-bg;
   .thanks-section {
-    padding: 100px 0 0;
+    padding: 150px 0 0;
     color: $primary-text;
     width: 100%;
     display: flex;
@@ -14,6 +14,8 @@
     overflow: hidden;
     h2 {
       text-align: center;
+      font-weight: 600;
+      font-size: 62px;
     }
     img {
       width: 100%;

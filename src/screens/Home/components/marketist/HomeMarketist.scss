@@ -8,15 +8,15 @@
     width: 100%;
     margin: 200px auto 50px;
     &-left {
-      padding-right: 7%;
-      max-width: 300px;
+      // padding-right: 7%;
+      max-width: 350px;
       margin-top: 48px;
     }
     &-right {
       display: flex;
       align-items: center;
       justify-content: flex-end;
-      max-width: 50%;
+      // max-width: 55%;
       img {
       }
     }
@@ -40,7 +40,7 @@
       margin: 0 auto;
       &-left {
         width: 90%;
-        padding-right: unset;
+        // padding-right: unset;
         margin-top: 0;
         .tags {
           margin-top: 12px;

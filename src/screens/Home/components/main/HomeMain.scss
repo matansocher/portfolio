@@ -30,6 +30,7 @@
       &-content {
         p {
           font-family: 'Nunito Sans', sans-serif;
+          color: $base-header;
           margin: 0;
           &:nth-child(1) {
             font-size: 40px;
@@ -97,7 +98,7 @@
   }
 }
 
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 1350px) {
   .home-container {
     .bg {
       display: none;
