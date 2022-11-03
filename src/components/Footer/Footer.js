@@ -30,7 +30,7 @@ export default function Footer() {
             <div className="link">
               <p>dklnsm@gmail.com</p>
               <img alt="mail icon" src={assets.copyIcon} />
-              <div className="copied" style={{ display: showCopied ? 'block': 'none' }}><p>Copied!</p></div>
+              <div className="copied" style={{ opacity: showCopied ? 1 : 0 }}><p>Copied!</p></div>
             </div>
           </CopyToClipboard>
           <Link className="link" to="//www.linkedin.com/in/dekelnissim" target="_blank" style={{ textDecoration: 'none' }}>
