@@ -26,6 +26,8 @@ export default function Footer() {
       <div className="footer-content">
         <div className="footer-content-left">
           <p>Let’s talk! I would love to hear from you:</p>
+        </div>
+        <div className="footer-content-right">
           <CopyToClipboard text="dklnsm@gmail.com" onCopy={(val) => {setShowCopied(true)}}>
             <div className="link">
               <p>dklnsm@gmail.com</p>
@@ -37,11 +39,9 @@ export default function Footer() {
             <img alt="brand linkedin icon" src={assets.brandLinkedinIcon} />
             <p>my LinkedIn</p>
           </Link>
-        </div>
-        <div className="footer-content-right">
           <Link className="link" to="//dribbble.com/d27" target="_blank" style={{ textDecoration: 'none' }}>
-            <p>See more on my Dribbble!</p>
             <img alt="dribbble icon" src={assets.dribbbleIcon} />
+            <p>Dribbble</p>
           </Link>
         </div>
       </div>
