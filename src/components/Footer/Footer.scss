@@ -9,8 +9,8 @@ footer {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 100px;
-        max-width: 1300px;
+        max-width: 1400px;
+        width: 95%;
         &-left {
             display: flex;
             align-items: center;
@@ -21,22 +21,39 @@ footer {
                 font-weight: 400;
                 color: $base-header;
             }
+        }
+        &-right {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 4px;
             .link {
                 position: relative;
                 display: flex;
                 align-items: center;
-                margin: 0 15px;
+                margin: 0 15px 0 0;
                 cursor: pointer;
+                border-right: 2px solid $base-header;
+                padding-right: 15px;
                 &:nth-child(2) {
-                    border-right: 2px solid $base-header;
-                    padding-right: 8px;
                     margin-right: 0;
                     margin-top: 1px;
+                    p {
+                        margin-right: 0;
+                    }
+                    img {
+                        width: 22px;
+                    }
                 }
                 &:nth-child(3) {
-                    margin-top: 2px;
+                    border-right: none;
+                    margin: 2px 8px 0 15px;
+                    img {
+                        width: 25px;
+                    }
                 }
                 p {
+                    color: #2E96FF;
                     margin: 0 8px;
                     font-size: 18px;
                     font-weight: 400;
@@ -59,31 +76,10 @@ footer {
                 }
             }
         }
-        &-right {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-top: 4px;
-            .link {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                p {
-                    margin: 0;
-                    color: $base-header;
-                    font-size: 18px;
-                    font-weight: 400;
-                }
-                img {
-                    margin-left: 10px;
-                    // width: 5px;
-                }
-            }
-        }
     }
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 950px) {
     footer {
         margin-top: 40px;
         padding: 20px 5%;
@@ -99,31 +95,24 @@ footer {
     }    
 } 
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 600px) {
     footer {
         border-top: 1px solid $base-header;
         .footer-content {
-            &-left {
+            &-right {
                 flex-direction: column;
+                align-items: flex-start;
                 .link {
-                    &:nth-child(2) {
-                        border-right: unset;
-                        padding-right: 0;
-                        margin-right: 0;
-                        margin-top: 5px;
-                    }
-                    &:nth-child(3) {
-                        margin-top: 8px;
+                    border: none;
+                    margin-top: 5px !important;
+                    &:nth-child(1) {
+                        margin-top: 0 !important;
                         flex-direction: row-reverse;
                     }
-                    .copied {
-                        top: 0;
-                        right: -64px;
+                    &:nth-child(3) {
+                        margin-left: 0;
                     }
                 }
-            }
-            &-right {
-                margin-top: 24px;
             }
         }
     }    

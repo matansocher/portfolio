@@ -9,7 +9,7 @@ export default function HomeMyco() {
         <div className="section-content-left">
           <h2>MYCO</h2>
           {/* <p>Events management App</p> */}
-          <p>Redesign of a ticket sale platform & new design of  an events management platform for producers.<br/>A project close to my heart for a special community </p>
+          <p>Redesign of a Ticket sales platform + Events management platform for producers (new design).<br/>A project close to my heart for a special and colorful community.</p>
           <div className="tags">
             <span className="tag">UX research</span>
             <span className="tag">UI design</span>
