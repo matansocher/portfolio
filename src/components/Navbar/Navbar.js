@@ -6,13 +6,15 @@ export default function Navbar() {
 
   return (
     <header className={pathname === '/' ? '' : 'fixed'}>
-      <div className="header-left">
-        <Link to="/" style={{ textDecoration: 'none' }}>Dekel</Link>
-      </div>
-      <div className="header-right">
-        <Link to="#" onClick={(e) => {window.location.href = 'mailto:dklnsm@gmail.com'; e.preventDefault()} } style={{ textDecoration: 'none' }}>
-          dklnsm@gmail.com
-        </Link>
+      <div className="header-content">
+        <div className="header-content-left">
+          <Link to="/" style={{ textDecoration: 'none' }}>Dekel</Link>
+        </div>
+        <div className="header-content-right">
+          <Link to="#" onClick={(e) => {window.location.href = 'mailto:dklnsm@gmail.com'; e.preventDefault()} } style={{ textDecoration: 'none' }}>
+            dklnsm@gmail.com
+          </Link>
+        </div>
       </div>
     </header>
   );
