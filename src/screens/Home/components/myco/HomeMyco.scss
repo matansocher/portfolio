@@ -4,7 +4,8 @@
   .section-content {
     flex-direction: row-reverse;
     &-left {
-      margin-top: 52px;
+      margin-top: 42px;
+      margin-right: 100px;
     }
     &-right {
       
@@ -17,6 +18,7 @@
     .section-content {
       &-left {
         margin-top: 0;
+        margin-right: 0;
       }
     }
   }  
