@@ -8,30 +8,35 @@
 header {
   padding: 24px 0;
   box-sizing: border-box;
-  width: 90%;
-  max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
   height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  
   z-index: 1;
   box-shadow: 0 0 0 rgba(0, 0, 0, .3);
-  a {
-    color: $base-header;
-    margin: 0;
-  }
-  .header-left {
+  .header-content {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     a {
-      font-weight: 700;
-      font-size: 32px;
+      color: $base-header;
+      margin: 0;
     }
-  }
-  .header-right {
-    z-index: 99;
-    a {
-      font-weight: 400;
-      font-size: 24px;
+    &-left {
+      a {
+        font-weight: 700;
+        font-size: 32px;
+      }
+    }
+    &-right {
+      z-index: 99;
+      a {
+        font-weight: 400;
+        font-size: 24px;
+      }
     }
   }
 }
