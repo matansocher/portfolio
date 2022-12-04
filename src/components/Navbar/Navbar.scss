@@ -6,9 +6,11 @@
 }
 
 header {
-  padding: 24px 5%;
+  padding: 24px 0;
   box-sizing: border-box;
-  width: 100%;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
   height: 80px;
   display: flex;
   align-items: center;

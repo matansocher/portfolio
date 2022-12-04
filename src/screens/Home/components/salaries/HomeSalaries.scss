@@ -7,15 +7,19 @@
   align-items: flex-end;
   .section-content {
     max-width: unset;
-    justify-content: space-between;
-    max-width: 1400px;
-    margin: 150px auto 50px;
+    justify-content: flex-end;
+    max-width: 1200px;
+    margin: 64px auto 50px;
+    gap: unset;
     &-left {
       max-width: 350px;
-      // margin-left: 200px;
+      margin-right: 50px;
+       p {
+        max-width: 280px;
+       }
     }
     &-right {
-      width: 45%;
+      width: 55%;
       display: flex;
       align-items: center;
       justify-content: flex-end;
@@ -31,6 +35,7 @@
       margin: 50px auto 50px;
       &-left {
         margin-top: 50px;
+        margin-right: 0;
       }
       &-right {
         width: 100%;
