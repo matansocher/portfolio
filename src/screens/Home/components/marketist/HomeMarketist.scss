@@ -8,16 +8,14 @@
     width: 100%;
     margin: 64px auto 50px;
     &-left {
-      // padding-right: 7%;
       max-width: 350px;
-      margin-top: 70px;
+      margin-top: 60px;
     }
     &-right {
       width: 55%;
       display: flex;
       align-items: center;
       justify-content: flex-end;
-      // max-width: 55%;
       img {
       }
     }

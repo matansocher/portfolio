@@ -75,6 +75,12 @@ const salariesAssets = [
   { name: 'salariesWireframes3', file: 'salaries/salaries-wireframes-3.png' },
 ];
 
+const aboutAssets = [
+  { name: 'aboutDecoration1', file: 'about/about-decoration-1.png' },
+  { name: 'aboutDecoration2', file: 'about/about-decoration-2.png' },
+  { name: 'aboutDecoration3', file: 'about/about-decoration-3.png' },
+];
+
 const sharedAssets = [
   { name: 'beamingFaceWithSmilingEyesEmoji', file: 'shared/beaming-face-with-smiling-eyes-emoji.svg' },
   { name: 'brandLinkedinIcon', file: 'shared/brand-linkedin-icon.svg' },
@@ -95,6 +101,7 @@ const assetsConfig = [
   ...marketistAssets,
   ...mycoAssets,
   ...salariesAssets,
+  ...aboutAssets,
   ...sharedAssets,
 ];
 

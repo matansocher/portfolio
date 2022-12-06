@@ -122,6 +122,12 @@
     }
     &-five {
       margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      img {
+        width: 80%;
+      }
       &-content {
         width: 90%;
         max-width: 800px;
@@ -197,7 +203,7 @@
     &-five {
       margin-top: 30px !important;
       img {
-        width: 100%;
+        width: 100% !important;
       }
       width: 90%;
     }

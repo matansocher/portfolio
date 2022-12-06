@@ -5,7 +5,7 @@ export default function Navbar() {
   const { pathname } = useLocation();
 
   return (
-    <header className={pathname === '/' ? '' : 'fixed'}>
+    <header className={pathname === '/' || pathname === '/about' ? '' : 'fixed'}>
       <div className="header-content">
         <div className="header-content-left">
           <Link to="/" style={{ textDecoration: 'none' }}>Dekel</Link>
