@@ -1,13 +1,13 @@
-import Myco from './Myco/Myco';
-import Marketist from './Marketist/Marketist';
-import Home from './Home/Home';
-import Salaries from './Salaries/Salaries';
-import About from './About/About';
+import BusinessCard from './BusinessCard';
+import Home from './Home';
+import Myco from './Myco';
+import Marketer from './Marketer';
+import Salaries from './Salaries';
 
 export {
-  Myco,
-  Marketist,
+  BusinessCard,
   Home,
+  Myco,
+  Marketer,
   Salaries,
-  About,
 }

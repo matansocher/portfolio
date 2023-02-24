@@ -1,0 +1,285 @@
+@use '~/src/styles/_colors.scss' as *;
+
+.business-card {
+  background-color: #0d0d0d;
+  h1 {
+    color: #EFF7FB;
+  }
+  h2, h3, h4, h5, p, ul, li, span, input, textarea, label {
+    color: #DEE4EA
+  }
+
+  &-top {
+    .container {
+      padding: 150px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      h1 {
+        text-align: center;
+        max-width: 500px;
+      }
+    }
+  }
+
+  &-icons {
+
+  }
+
+  &-who-am-i {
+    max-width: 1000px;
+    margin: 100px auto;
+    .content {
+      display: flex;
+      align-items: center;
+      gap: 100px;
+      &-left {
+        img {
+
+        }
+      }
+      &-right {
+        h3 {
+
+        }
+        p {
+          margin-top: 20px;
+          max-width: 400px;
+        }
+      }
+    }
+  }
+
+  &-services {
+    max-width: 1000px;
+    margin: 100px auto;
+    .content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      &-services {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 30px;
+        p {
+          max-width: 400px;
+        }
+      }
+    }
+  }
+
+  &-project {
+    position: relative;
+    height: 600px;
+    img {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+    .content {
+      // margin-top: 100px;
+      h3 {
+        
+      }
+      p {
+        margin-top: 20px;
+        max-width: 266px;
+      }
+      button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: 500;
+        font-size: 16px;
+        color: #DEE4EA;
+        background-color: transparent;
+        border: none;
+        padding: 2px 16px;
+        border: 1px solid #DEE4EA;
+        border-radius: 6px;
+        margin-top: 20px;
+      }
+    }
+  }
+
+  .marketer {
+    background: linear-gradient(90deg, rgba(13, 13, 13, 0.74) 0%, rgba(13, 13, 13, 0) 100%), linear-gradient(104.91deg, #5F8FED 0.81%, #5FED79 97.56%), #FFFFFF;;
+  }
+
+  .myco {
+    background: linear-gradient(90deg, rgba(13, 13, 13, 0.51) 35.55%, rgba(13, 13, 13, 0) 100%), linear-gradient(106.44deg, #FF8906 -0.02%, rgba(255, 6, 164, 0.56) 101.6%), #FFFFFF;;
+    img {
+      height: 80%;
+      right: 10%;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  .salaries {
+    background: linear-gradient(144.93deg, #147CCC 36.33%, rgba(90, 157, 120, 0.94) 69.26%, rgba(214, 189, 28, 0.45) 143.77%, rgba(214, 189, 28, 0) 143.77%), #FFFFFF;;
+  }
+
+  &-clients {
+    h4 {
+
+    }
+  }
+
+  &-contact {
+    .content {
+      .form-wrapper {
+        padding: 50px;
+        border: 1px solid white;
+        h4 {
+
+        }
+        p {
+          margin-top: 10px;
+        }
+      }
+    }
+  }
+
+}
+
+@media screen and (max-width: 1100px) {
+  .business-card {
+    h1 {
+      font-size: 60px !important;
+    }
+    &-top-container {
+      padding: 50px 0 !important;
+    }
+    &-project {
+      height: 400px !important;
+      img {
+        // height: 400px !important;
+      }
+      .content {
+        h3 {
+          
+        }
+        p {
+        }
+        button {
+        }
+      }
+    }
+    .myco {
+      height: 400px !important;
+      img {
+        // height: 300px !important;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .business-card {
+    &-who-am-i {
+      .content {
+        flex-direction: column;
+        gap: 40px;
+        &-right {
+          h3 {
+  
+          }
+          p {
+          }
+        }
+      }
+    }  
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .business-card {
+    &-project {
+      height: unset !important;
+      img {
+        display: none;
+      }
+      .content {
+        h3 {
+          
+        }
+        p {
+        }
+        button {
+        }
+      }
+    }
+    .myco {
+      height: unset !important;
+      img {
+        display: none;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .business-card {
+    h1 {
+      font-size: 45px !important;
+    }
+    &-who-am-i {
+      margin: 20px auto;
+    }
+    &-services {
+      margin: 20px auto;
+      .content {
+        &-services {
+          flex-direction: column;
+          gap: 20px;
+          p {
+          }
+        }
+      }
+    }
+    &-contact {
+      .content {
+        .form-wrapper {
+          padding: 20px !important;
+          h4 {
+  
+          }
+          p {
+    
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .business-card {
+    h1 {
+      font-size: 45px !important;
+    }
+    &-who-am-i {
+      .content {
+        &-left {
+          width: 90%;
+          display: flex;
+          justify-content: center;
+          img {
+            width: 100%;
+          }
+        }
+        &-right {
+          h3 {
+  
+          }
+          p {
+          }
+        }
+      }
+    }  
+  }
+}

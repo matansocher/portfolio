@@ -1,0 +1,35 @@
+@use '~/src/styles/_colors.scss' as *;
+
+.contact-form {
+    max-width: 600px;
+    .form-element {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        max-width: 600px;
+        margin-top: 25px;
+        label {
+            font-size: 16px;
+        }
+        input, textarea {
+            width: 100%;
+            background: transparent;
+            border: 1px solid #DEE4EA;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        input {
+            padding: 0 8px;
+        }
+        textarea {
+            padding: 8px;
+        }
+    }
+    button {
+
+    }
+}
+
+@media screen and (max-width: 950px) {
+
+} 
