@@ -10,10 +10,6 @@ export default function Auth({ setIsAuth }) {
 
   const isPasswordValid = async (userPassword) => {
     try {
-      if (process.env.REACT_APP_RUN_ENV === 'dev') {
-        return true;
-      }
-
       const response = await axios.post(`${config.PORTFOLIO_BACKEND}/${config.PASSWORD_ENDPOINT}`, { password: userPassword });
       const { isPasswordCorrect } = response.data;
       return isPasswordCorrect || false;
@@ -35,7 +31,7 @@ export default function Auth({ setIsAuth }) {
 
   return (
     <div className="auth">
-      <img className="bg" alt="background" src={assets.homeMainBg} />
+      <img className="bg" alt="background" src={assets.authSideImage} />
       <div className="auth-content">
         <h2>Hello there :)</h2>
         <p>Just one small thing....</p>

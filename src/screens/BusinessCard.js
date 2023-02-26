@@ -10,6 +10,10 @@ export default function BusinessCard() {
     scroll.scrollToBottom();
   }
 
+  const onMarketerClick = () => {
+    window.open(config.MARKETER_URL, '_blank');
+  }
+
   return (
     <>
       <Navbar isCardNav={true} scrollToForm={scrollToForm} isWhiteText={true} />
@@ -51,16 +55,16 @@ export default function BusinessCard() {
         </section>
 
         <section className="business-card-project marketer">
-          <img alt="Dekel" src={assets.cardMarketerImage} />
+          <img alt="marketer screen examples" src={assets.cardMarketerImage} />
           <div className="content">
             <h3>Marketer</h3>
             <p>As the first Product Designer, I created Design system for a new startup for Marketing management system.</p>
-            <button>Go to website</button>
+            <button onClick={onMarketerClick}>Go to website</button>
           </div>
         </section>
 
         <section className="business-card-project myco">
-          <img alt="Dekel" src={assets.cardMycoImage} />
+          <img alt="myco screen example" src={assets.cardMycoImage} />
           <div className="content">
             <h3>Myco</h3>
             <p>As the first Product Designer, I created Design system for a new startup for Marketing management system.</p>
@@ -68,9 +72,17 @@ export default function BusinessCard() {
         </section>
 
         <section className="business-card-project salaries">
-          <img alt="Dekel" src={assets.cardSalariesImage} />
+          <img alt="salaries screen examples" src={assets.cardSalariesImage} />
           <div className="content">
             <h3>Salary Additions</h3>
+            <p>As the first Product Designer, I created Design system for a new startup for Marketing management system.</p>
+          </div>
+        </section>
+
+        <section className="business-card-project employees">
+          <img alt="employees screen examples" src={assets.cardEmployeesImage} />
+          <div className="content">
+            <h3>Employee Onboarding page</h3>
             <p>As the first Product Designer, I created Design system for a new startup for Marketing management system.</p>
           </div>
         </section>

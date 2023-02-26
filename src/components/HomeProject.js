@@ -9,8 +9,6 @@ export default function HomeProject(props) {
     sideImage,
   } = props;
 
-  console.log(background);
-
   return (
     <div className={`content-item ${`project-${name}`}`}>
       {sideImage && <img className="content-item-image" alt="screen example" src={sideImage} />}

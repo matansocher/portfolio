@@ -9,11 +9,13 @@ const config = {
   PASSWORD_ENDPOINT: 'is-password-valid',
   CONTACT_ENDPOINT: 'contact',
 
+  MARKETER_URL: 'https://www.gomarketer.co',
+
   NAVIGATION_DICTIONARY: {
-    '/': { path: '/', prev: null, next: null, displayName: null },
-    '/myco': { path: '/myco', prev: null, next: '/salaries', displayName: 'Myco' },
-    '/salaries': { path: '/salaries', prev: '/myco', next: '/marketer', displayName: 'Salary Aadditions' },
-    '/marketer': { path: '/marketer', prev: '/salaries', next: null, displayName: 'Marketer' },
+    'marketer': { path: '/marketer', prev: null, next: 'myco', displayName: 'Marketer' },
+    'myco': { path: '/myco', prev: 'marketer', next: 'salaries', displayName: 'Myco' },
+    'salaries': { path: '/salaries', prev: 'myco', next: 'employees', displayName: 'Salary Aadditions' },
+    'employees': { path: '/employees', prev: 'salaries', next: null, displayName: 'Employee Onboarding' },
   },
 
   ICONS_MAP: {

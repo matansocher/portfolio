@@ -81,8 +81,11 @@
     }
     .content {
       // margin-top: 100px;
+      h2, h3, h4, h5, p, ul, li, span, input, textarea, label {
+        color: #ffffff
+      }
       h3 {
-        
+        max-width: 200px;
       }
       p {
         margin-top: 20px;
@@ -101,6 +104,7 @@
         border: 1px solid #DEE4EA;
         border-radius: 6px;
         margin-top: 20px;
+        cursor: pointer;
       }
     }
   }
@@ -121,6 +125,16 @@
 
   .salaries {
     background: linear-gradient(144.93deg, #147CCC 36.33%, rgba(90, 157, 120, 0.94) 69.26%, rgba(214, 189, 28, 0.45) 143.77%, rgba(214, 189, 28, 0) 143.77%), #FFFFFF;;
+  }
+
+  .employees {
+    background: linear-gradient(105.63deg, #777DFB -0.01%, #F7DAF9 78.05%), #FFFFFF;
+    img {
+      height: 80%;
+      right: 10%;
+      top: unset;
+      bottom: 0;
+    }
   }
 
   &-clients {

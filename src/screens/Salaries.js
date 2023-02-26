@@ -1,6 +1,6 @@
 import '../styles/Salaries.scss';
 import assets from '../assets';
-import { PercentageCircle, Chip, CircleIcon, Navbar } from '../components';
+import { BottomNavigation, PercentageCircle, Chip, CircleIcon, Navbar } from '../components';
 import config from '../config';
 
 export default function Salaries() {
@@ -281,6 +281,7 @@ export default function Salaries() {
           </div>
         </section>
 
+        <BottomNavigation pathname="salaries" />
       </div>
     </>
   );

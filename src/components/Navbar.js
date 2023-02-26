@@ -26,15 +26,16 @@ export default function Navbar({ isCardNav = false, scrollToForm = null, isWhite
     <header className={getClass()}>
       <div className="header-content">
         <div className="header-content-left">
-          {isCardNav ? <button>Dekel Nissim</button> : null}
-          {!isCardNav ? <Link to="/">Dekel Nissim</Link> : null}
+          {/* {isCardNav ? <button>Dekel Nissim</button> : null} */}
+          {/* {!isCardNav ? <Link to="/">Dekel Nissim</Link> : null} */}
+          <Link to="/">Dekel Nissim</Link>
         </div>
         <div className="header-content-right">
           {/* {!isCardNav ? <Link to="work">Work</Link> : null} */}
           {/* {!isCardNav ? <Link to="blog">Blog</Link> : null} */}
-          {/* {!isCardNav ? <Link to="card">Contact</Link> : null} */}
+          {!isCardNav ? <Link to="card">Contact</Link> : null}
           {isCardNav ? <button onClick={scrollToForm}>Contact Me</button> : null}
-          <Link to="#" onClick={(e) => {window.location.href = 'mailto:dklnsm@gmail.com'; e.preventDefault()} }>
+          <Link className="email" to="#" onClick={(e) => {window.location.href = 'mailto:dklnsm@gmail.com'; e.preventDefault()} }>
             dklnsm@gmail.com
           </Link>
         </div>

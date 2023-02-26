@@ -1,10 +1,6 @@
 
 import '../styles/Logos.scss';
 import assets from '../assets';
-// import { useEffect, useRef } from 'react';
-// import { Splide, SplideSlide, SplideTrack } from '@splidejs/react-splide';
-// import { Splide, SplideSlide } from '@splidejs/react-splide';
-// import '@splidejs/react-splide/css';
 
 const LOGOS = [
   { name: 'amdocs', asset: assets.logoAmdocs },
@@ -21,9 +17,7 @@ export default function Logos() {
     return LOGOS.map(logo => {
       const { name, asset } = logo
       return (
-        // <SplideSlide key={isCopy ? `copy-${name}` : name}>
-          <img alt={`logo of ${name}`} src={asset} />
-        // </SplideSlide>
+        <img key={isCopy ? `copy-${name}` : name} alt={`logo of ${name}`} src={asset} />
       );
     })
   }

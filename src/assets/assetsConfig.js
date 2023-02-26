@@ -3,6 +3,7 @@ const cardAssets = [
   { name: 'cardSalariesImage', file: 'card/card-salaries-image.png' },
   { name: 'cardMycoImage', file: 'card/card-myco-image.png' },
   { name: 'cardMarketerImage', file: 'card/card-marketer-image.png' },
+  { name: 'cardEmployeesImage', file: 'card/card-employees-image.png' },
 ];
 
 const homeAssets = [
@@ -73,20 +74,20 @@ const salariesAssets = [
 
 ];
 
-const workAssets = [
-
-];
-
-const blogAssets = [
-
-];
-
-const contactAssets = [
-
+const employeesAssets = [
+  { name: 'employeesExamples1', file: 'employees/employees-examples-1.png' },
+  { name: 'employeesExamples2', file: 'employees/employees-examples-2.png' },
+  { name: 'employeesExamples3', file: 'employees/employees-examples-3.png' },
+  { name: 'employeesInterviews', file: 'employees/employees-interviews.png' },
+  { name: 'employeesTeam1', file: 'employees/employees-team-1.png' },
+  { name: 'employeesTeam2', file: 'employees/employees-team-2.png' },
+  { name: 'employeesTeam3', file: 'employees/employees-team-3.png' },
+  { name: 'employeesTranslate', file: 'employees/employees-translate.png' },
 ];
 
 const sharedAssets = [
   { name: 'dekel', file: 'shared/dekel.png' },
+  { name: 'authSideImage', file: 'shared/auth-side-image.png' },
   { name: 'navigationArrow', file: 'shared/navigation-arrow.svg' },
   { name: 'quoteGreen', file: 'shared/quote-green.svg' },
   { name: 'logoMyco', file: 'shared/logo-myco.png' },
@@ -104,9 +105,7 @@ const assetsConfig = [
   ...mycoAssets,
   ...salariesAssets,
   ...sharedAssets,
-  ...workAssets,
-  ...blogAssets,
-  ...contactAssets,
+  ...employeesAssets,
 ];
 
 export default assetsConfig;

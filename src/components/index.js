@@ -9,6 +9,7 @@ import HomeProject from './HomeProject';
 import Logos from './Logos';
 import Navbar from './Navbar';
 import PercentageCircle from './PercentageCircle';
+import ProtectedRoute from './ProtectedRoute';
 import ScrollToTopOnPageLoad from './ScrollToTopOnPageLoad';
 import ScrollToTopOnScroll from './ScrollToTopOnScroll';
 
@@ -24,6 +25,7 @@ export {
   Logos,
   Navbar,
   PercentageCircle,
+  ProtectedRoute,
   ScrollToTopOnPageLoad,
   ScrollToTopOnScroll,
 }

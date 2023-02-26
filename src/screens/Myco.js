@@ -1,7 +1,7 @@
 import '../styles/Myco.scss';
 
 import assets from '../assets';
-import { Chip, CircleIcon, Navbar } from '../components';
+import { BottomNavigation, Chip, CircleIcon, Navbar } from '../components';
 import config from '../config';
 
 export default function Myco() {
@@ -180,6 +180,7 @@ export default function Myco() {
           </div>
         </section>
 
+        <BottomNavigation pathname="myco" />
       </div>
     </>
   );

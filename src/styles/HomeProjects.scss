@@ -1,5 +1,9 @@
 @use '~/src/styles/_colors.scss' as *;
 
+a {
+    text-decoration: none;
+}
+
 .home-projects {
     .content {
         .content-item {

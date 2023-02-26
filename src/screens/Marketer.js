@@ -1,6 +1,6 @@
 import '../styles/Marketer.scss';
 import assets from '../assets';
-import { Navbar } from '../components';
+import { BottomNavigation, Navbar } from '../components';
 
 export default function Marketer() {
   return (
@@ -50,6 +50,8 @@ export default function Marketer() {
         </section>
 
       </div>
+
+      <BottomNavigation pathname="marketer" />
     </>
   );
 }
