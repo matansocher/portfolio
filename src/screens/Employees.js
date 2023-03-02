@@ -1,4 +1,4 @@
-import '../styles/Employees.scss';
+import './styles/Employees.scss';
 import assets from '../assets';
 import config from '../config';
 import { BottomNavigation, Chip, Navbar } from '../components';

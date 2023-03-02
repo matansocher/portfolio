@@ -1,4 +1,4 @@
-import '../styles/Home.scss';
+import './styles/Home.scss';
 import { Link } from 'react-router-dom';
 import assets from '../assets';
 import config from '../config';

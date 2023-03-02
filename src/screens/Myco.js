@@ -1,4 +1,4 @@
-import '../styles/Myco.scss';
+import './styles/Myco.scss';
 
 import assets from '../assets';
 import { BottomNavigation, Chip, CircleIcon, Navbar } from '../components';

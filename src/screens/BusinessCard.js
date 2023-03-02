@@ -1,5 +1,5 @@
 import { animateScroll as scroll } from 'react-scroll';
-import '../styles/BusinessCard.scss';
+import './styles/BusinessCard.scss';
 import assets from '../assets';
 import config from '../config';
 import { Client, Logos, ContactForm, Navbar } from '../components';
@@ -67,7 +67,7 @@ export default function BusinessCard() {
           <img alt="myco screen example" src={assets.cardMycoImage} />
           <div className="content">
             <h3>Myco</h3>
-            <p>As the first Product Designer, I created Design system for a new startup for Marketing management system.</p>
+            <p>I redesigned an Event purchase website, as well as conducted research & designed a new app for Event Management.</p>
           </div>
         </section>
 
@@ -75,17 +75,17 @@ export default function BusinessCard() {
           <img alt="salaries screen examples" src={assets.cardSalariesImage} />
           <div className="content">
             <h3>Salary Additions</h3>
-            <p>As the first Product Designer, I created Design system for a new startup for Marketing management system.</p>
+            <p>I worked as the UXUI Designer as well as the Product owner, as a part of the development team in charge of the entire project.</p>
           </div>
         </section>
 
-        <section className="business-card-project employees">
+        {/* <section className="business-card-project employees">
           <img alt="employees screen examples" src={assets.cardEmployeesImage} />
           <div className="content">
             <h3>Employee Onboarding page</h3>
             <p>As the first Product Designer, I created Design system for a new startup for Marketing management system.</p>
           </div>
-        </section>
+        </section> */}
 
         <section className="business-card-clients">
           <div className="content">

@@ -1,4 +1,4 @@
-import '../styles/Marketer.scss';
+import './styles/Marketer.scss';
 import assets from '../assets';
 import { BottomNavigation, Navbar } from '../components';
 

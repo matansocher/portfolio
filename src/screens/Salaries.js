@@ -1,4 +1,4 @@
-import '../styles/Salaries.scss';
+import './styles/Salaries.scss';
 import assets from '../assets';
 import { BottomNavigation, PercentageCircle, Chip, CircleIcon, Navbar } from '../components';
 import config from '../config';
