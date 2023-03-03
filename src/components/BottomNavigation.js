@@ -1,4 +1,4 @@
-import '../styles/BottomNavigation.scss';
+import './styles/BottomNavigation.scss';
 import { useState, useEffect } from 'react';
 import config from '../config';
 import { Link } from 'react-router-dom';

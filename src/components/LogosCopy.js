@@ -1,4 +1,4 @@
-import '../styles/Logos.scss';
+import './styles/Logos.scss';
 import assets from '../assets';
 import { useEffect, useRef } from 'react';
 import Slider from 'react-slick';

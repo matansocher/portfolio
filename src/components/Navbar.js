@@ -1,10 +1,11 @@
-import { useEffect } from 'react';
-import '../styles/Navbar.scss';
+import { useState, useEffect } from 'react';
+import './styles/Navbar.scss';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
 
 export default function Navbar({ isCardNav = false, scrollToForm = null, isWhiteText = false }) {
   const [isScrolledABit, setIsScrolledABit] = useState(false);
+  const [showCopied, setShowCopied] = useState(false);
 
   useEffect(() => {
     const onScroll = () => {
@@ -14,6 +15,13 @@ export default function Navbar({ isCardNav = false, scrollToForm = null, isWhite
     document.addEventListener('scroll', onScroll, true);
     return () => document.removeEventListener('scroll', onScroll, true);
   }, []);
+
+  useEffect(() => {
+    const timeOutId = setTimeout(() => {
+      setShowCopied(false);
+    }, 3000);
+    return () => clearTimeout(timeOutId);
+  }, [showCopied]);
 
   const getClass = () => {
     const classes = [];
@@ -35,9 +43,12 @@ export default function Navbar({ isCardNav = false, scrollToForm = null, isWhite
           {/* {!isCardNav ? <Link to="blog">Blog</Link> : null} */}
           {!isCardNav ? <Link to="card">Contact</Link> : null}
           {isCardNav ? <button onClick={scrollToForm}>Contact Me</button> : null}
-          <Link className="email" to="#" onClick={(e) => {window.location.href = 'mailto:dklnsm@gmail.com'; e.preventDefault()} }>
-            dklnsm@gmail.com
-          </Link>
+          <CopyToClipboard text="dklnsm@gmail.com" onCopy={(val) => {setShowCopied(true)}}>
+            <div className="link">
+              <p>dklnsm@gmail.com</p>
+              <div className="copied" style={{ opacity: showCopied ? 1 : 0 }}><p>Copied!</p></div>
+            </div>
+          </CopyToClipboard>
         </div>
       </div>
     </header>

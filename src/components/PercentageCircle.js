@@ -1,4 +1,4 @@
-import '../styles/PercentageCircle.scss';
+import './styles/PercentageCircle.scss';
 
 export default function PercentageCircle(props) {
 

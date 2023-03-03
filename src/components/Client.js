@@ -1,11 +1,10 @@
-import '../styles/Client.scss';
-import assets from '../assets';
+import './styles/Client.scss';
 
 export default function Client({ clientData }) {
   return (
     <div className="clients-item">
-      <img alt="quote" src={assets.quoteGreen} className="quote quote-1" />
-      <img alt="quote" src={assets.quoteGreen} className="quote quote-2" />      
+      <span className="quote quote-1">“</span>
+      <span className="quote quote-2">“</span>
       <div className="clients-item-details">
         <p className="text">{clientData.text}</p>
         <div className="clients-item-details-person">

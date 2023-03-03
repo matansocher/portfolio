@@ -21,7 +21,7 @@ export default function BusinessCard() {
 
         <section className="business-card-top">
           <div className="container">
-            <h1>Finding solutions for your challenges</h1>
+            <h1>Finding Solutions for your Design Challenges</h1>
             <button className="green-btn" onClick={scrollToForm}>Let's Talk</button>
           </div>
         </section>
@@ -46,10 +46,10 @@ export default function BusinessCard() {
           <div className="content">
             <h3>My Services</h3>
             <div className="content-services">
-              <p>UX / UI</p>
-              <p>Product Strategy</p>
+              <p>UXUI Design</p>
+              <p>Design Strategy</p>
               <p>Web Design</p>
-              <p>Figma training<br />& best practice</p>
+              <p>Figma Best Practice</p>
             </div>
           </div>
         </section>

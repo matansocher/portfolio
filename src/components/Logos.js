@@ -1,5 +1,5 @@
 
-import '../styles/Logos.scss';
+import './styles/Logos.scss';
 import assets from '../assets';
 
 const LOGOS = [

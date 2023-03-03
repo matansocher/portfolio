@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { animateScroll as scroll } from 'react-scroll';
 // import { useLocation } from 'react-router-dom';
-import '../styles/ScrollToTopOnScroll.scss';
+import './styles/ScrollToTopOnScroll.scss';
 import assets from '../assets';
 
 export default function ScrollToTopOnScroll() {

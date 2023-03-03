@@ -1,4 +1,4 @@
-import '../styles/Auth.scss';
+import './styles/Auth.scss';
 import axios from 'axios';
 import { useState } from 'react';
 import config from '../config';

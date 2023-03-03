@@ -89,7 +89,6 @@ const sharedAssets = [
   { name: 'dekel', file: 'shared/dekel.png' },
   { name: 'authSideImage', file: 'shared/auth-side-image.png' },
   { name: 'navigationArrow', file: 'shared/navigation-arrow.svg' },
-  { name: 'quoteGreen', file: 'shared/quote-green.svg' },
   { name: 'logoMyco', file: 'shared/logo-myco.png' },
   { name: 'logoMarketer', file: 'shared/logo-marketer.png' },
   { name: 'logoStefansky', file: 'shared/logo-stefansky.png' },

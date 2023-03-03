@@ -1,4 +1,4 @@
-import '../styles/CircleIcon.scss';
+import './styles/CircleIcon.scss';
 import config from '../config';
 
 export default function CircleIcon(props) {

@@ -1,4 +1,4 @@
-import '../styles/Chip.scss';
+import './styles/Chip.scss';
 import config from '../config';
 
 export default function Chip(props) {

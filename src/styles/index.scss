@@ -99,3 +99,17 @@ section {
 .bold {
   font-weight: 800;
 }
+
+.error-message {
+  font-weight: 600 !important;
+  font-size: 20px !important;
+  margin-top: 5px !important;
+}
+
+.error-message {
+  color: red !important;
+}
+
+.success-message{
+  color: green !important;
+}

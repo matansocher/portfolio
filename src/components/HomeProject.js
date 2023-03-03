@@ -1,8 +1,7 @@
-import '../styles/HomeProjects.scss';
+import './styles/HomeProjects.scss';
 
 export default function HomeProject(props) {
   const {
-    background,
     name,
     header,
     text,
