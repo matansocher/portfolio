@@ -1,0 +1,119 @@
+@use '~/src/styles/_colors.scss' as *;
+
+footer {
+    padding: 30px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .footer-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 1200px;
+        width: 95%;
+        &-left {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            p {
+                margin: 0;
+                font-size: 18px;
+                font-weight: 400;
+                color: $base-header;
+            }
+        }
+        &-right {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 4px;
+            .link {
+                position: relative;
+                display: flex;
+                align-items: center;
+                margin: 0 15px 0 0;
+                cursor: pointer;
+                border-right: 2px solid $base-header;
+                padding-right: 15px;
+                &:nth-child(2) {
+                    margin-right: 0;
+                    margin-top: 1px;
+                    p {
+                        margin-right: 0;
+                    }
+                    img {
+                        width: 22px;
+                    }
+                }
+                &:nth-child(3) {
+                    border-right: none;
+                    margin: 2px 8px 0 15px;
+                    img {
+                        width: 25px;
+                    }
+                }
+                p {
+                    color: #2E96FF;
+                    margin: 0 8px;
+                    font-size: 18px;
+                    font-weight: 400;
+                }
+                img {
+
+                }
+                .copied {
+                    position: absolute;
+                    top: -34px;
+                    right: -8px;
+                    background-color: rgba(104, 203, 155, .2);
+                    border-radius: 8px;
+                    padding: 0 5px;
+                    transition: .3s;
+                    p {
+                        font-size: 14px !important;
+                        margin: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 950px) {
+    footer {
+        margin-top: 40px;
+        padding: 20px 5%;
+        .footer-content {
+            flex-direction: column;
+            gap: unset;
+            &-left {
+            }
+            &-right {
+                margin-top: 20px;
+            }
+        }
+    }    
+} 
+
+@media screen and (max-width: 600px) {
+    footer {
+        border-top: 1px solid $base-header;
+        .footer-content {
+            &-right {
+                flex-direction: column;
+                align-items: flex-start;
+                .link {
+                    border: none;
+                    margin-top: 5px !important;
+                    &:nth-child(1) {
+                        margin-top: 0 !important;
+                        flex-direction: row-reverse;
+                    }
+                    &:nth-child(3) {
+                        margin-left: 0;
+                    }
+                }
+            }
+        }
+    }    
+} 
