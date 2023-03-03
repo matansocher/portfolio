@@ -15,7 +15,7 @@ export default function Logos() {
 
   const renderLogos = (isCopy) => {
     return LOGOS.map(logo => {
-      const { name, asset } = logo
+      const { name, asset } = logo;
       return (
         <img key={isCopy ? `copy-${name}` : name} alt={`logo of ${name}`} src={asset} />
       );
@@ -23,8 +23,13 @@ export default function Logos() {
   }
 
   return (
-    <div className="logos-container splide" role="group">
-      {renderLogos(false)}
+    <div className="logos-container">
+      <div className="logos-wrapper">
+        <div className="logos-wrapper-container">
+          {renderLogos(false)}
+          {renderLogos(true)}
+        </div>
+      </div>
     </div>
   );
 }

@@ -22,10 +22,6 @@
     }
   }
 
-  &-icons {
-
-  }
-
   &-who-am-i {
     max-width: 1000px;
     margin: 100px auto;
@@ -194,29 +190,16 @@
     h1 {
       font-size: 60px !important;
     }
-    &-top-container {
-      padding: 50px 0 !important;
+    &-top {
+      .container {
+        padding: 100px 0 50px !important;
+      }
     }
     &-project {
       height: 400px !important;
-      img {
-        // height: 400px !important;
-      }
-      .content {
-        h3 {
-          
-        }
-        p {
-        }
-        button {
-        }
-      }
     }
     .myco {
       height: 400px !important;
-      img {
-        // height: 300px !important;
-      }
     }
   }
 }
@@ -227,13 +210,6 @@
       .content {
         flex-direction: column;
         gap: 40px;
-        &-right {
-          h3 {
-  
-          }
-          p {
-          }
-        }
       }
     }  
   }

@@ -9,6 +9,7 @@
         color: #151B21 !important;
         p {
           color: #151B21 !important;
+          font-weight: 500 !important;
         }
       }
     }
@@ -64,7 +65,7 @@ header {
       align-items: center;
       justify-content: space-between;
       a, button {
-        margin-left: 40px;
+        margin-left: 30px;
         font-weight: 500;
         font-size: 16px;
         text-decoration: none;
@@ -95,7 +96,7 @@ header {
           }
         }
         p {
-          margin: 0 8px;
+          margin: 0;
           font-size: 18px;
           font-weight: 500;
         }
@@ -131,7 +132,6 @@ header {
       &-right {
         a, button {
           font-size: 16px;
-          margin-left: 30px;
         }
       }
     }
@@ -147,9 +147,9 @@ header {
       }
       &-right {
         a, button {
-          margin-left: 20px;
+          margin-left: 30px;
         }
-        .email {
+        .link {
           display: none;
         }
       }
