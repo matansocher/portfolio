@@ -8,14 +8,14 @@
         position: relative;
         overflow: hidden;
         width: 200%;
-        height: 5rem;
+        height: 3rem;
         &-container {
             position: absolute;
             display: flex;
             justify-content: space-around;
             align-items: center;
             animation: scroll 15s linear infinite;
-            gap: 5rem;
+            gap: 75px;
             width: 200%;
             height: 100%;
             left: 0;

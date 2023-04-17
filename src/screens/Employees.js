@@ -9,7 +9,7 @@ export default function Employees() {
     <>
       <Navbar />
       <div className="employees">
-        <section className="employees-top" style={{ backgroundImage: `url('${assets.mycoTopBg}')` }}>
+        <section className="employees-top" style={{ backgroundImage: `url('${assets.employeesTopBg}')` }}>
           <div className="container">
             <h1>Employee Onboarding page</h1>
             <p>The task at hand presented a UX challenge: designing an onboarding page for numerous new employees, each with varying job roles and locations around the world, while also collaborating with a team of stakeholders who are working on rethinking HR processes. I had to come up with a solution that is flexible and able to adjust to different needs</p>

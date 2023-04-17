@@ -5,6 +5,7 @@
   box-shadow: 0 2px 20px rgb(0 0 0 / 20%);
   .header-content {
     &-left, &-right {
+      // a, button, .link, .contact {
       a, button, .link {
         color: #151B21 !important;
         p {
@@ -19,8 +20,12 @@
 .white-text {
   .header-content {
     &-left, &-right {
-      a, button {
+      // a, button, .link, .contact {
+      a, button, .link {
         color: #EFF7FB;
+        p {
+          color: #EFF7FB;
+        }
       }
     }
   }
@@ -77,14 +82,13 @@ header {
         position: relative;
         display: flex;
         align-items: center;
-        // margin: 0 15px 0 0;
         margin-left: 20px;
         cursor: pointer;
         &:nth-child(2) {
           margin-right: 0;
           margin-top: 1px;
           p {
-            color: #EFF7FB;
+            // color: #EFF7FB;
             margin-right: 0;
           }
         }
@@ -103,10 +107,11 @@ header {
         .copied {
           position: absolute;
           top: 36px;
-          left: 60px;
+          left: 50%;
+          transform: translate(-50%, 0);
           background-color: rgba(104, 203, 155, .8);
           border-radius: 8px;
-          padding: 0 5px;
+          padding: 0 8px;
           transition: .3s;
           p {
             font-size: 16px !important;
@@ -149,9 +154,9 @@ header {
         a, button {
           margin-left: 30px;
         }
-        .link {
-          display: none;
-        }
+        // .contact {
+          // display: none;
+        // }
       }
     }
   }

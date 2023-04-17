@@ -75,6 +75,7 @@ const salariesAssets = [
 ];
 
 const employeesAssets = [
+  { name: 'employeesTopBg', file: 'employees/employees-top-bg.png' },
   { name: 'employeesExamples1', file: 'employees/employees-examples-1.png' },
   { name: 'employeesExamples2', file: 'employees/employees-examples-2.png' },
   { name: 'employeesExamples3', file: 'employees/employees-examples-3.png' },

@@ -12,7 +12,8 @@ export default function Home() {
 
         <section className="home-top">
           <div className="container">
-            <h1>Hi. I’m Dekel<br />UXUI Designer</h1>
+            <h1 className="h1-first">Hi.</h1>
+            <h1 className="h1-second">I’m Dekel<br />UXUI Designer</h1>
           </div>
         </section>
 

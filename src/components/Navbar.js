@@ -37,8 +37,8 @@ export default function Navbar({ isCardNav = false, scrollToForm = null, isWhite
           <Link to="/">Dekel Nissim</Link>
         </div>
         <div className="header-content-right">
-          {!isCardNav ? <Link to="card">Contact</Link> : null}
-          {isCardNav ? <button onClick={scrollToForm}>Contact Me</button> : null}
+          {/* {!isCardNav ? <Link className="contact" to="business-card">Contact</Link> : null} */}
+          {isCardNav ? <button className="contact" onClick={scrollToForm}>Contact Me</button> : null}
           <CopyToClipboard text="dklnsm@gmail.com" onCopy={(val) => {setShowCopied(true)}}>
             <div className="link">
               <p>dklnsm@gmail.com</p>
