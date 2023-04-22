@@ -7,43 +7,36 @@ body {
     sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: 'Nunito Sans', sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Nunito Sans', sans-serif;
-}
-
-p, a, span, ul, li {
-  font-family: 'Nunito Sans', sans-serif;
+h1, h2, h3, h4, h5, h6, p, a, span, ul, li, input, label, button {
+  font-family: 'Raleway', sans-serif;
+  margin: 0;
+  color: #151B21;
 }
 
 h1 {
-  font-weight: 500;
-  font-size: 80px;
-  line-height: 120%;
+  font-weight: 800;
+  font-size: 90px;
 }
 
 h2 {
-  margin-top: 0;
-  font-weight: 400;
-  font-size: 36px;
+  font-weight: 800;
+  font-size: 50px;
 }
 
 h3 {
-  margin-top: 0;
-  font-weight: 400;
-  font-size: 22px;
+  font-weight: 700;
+  font-size: 32px;
 }
 
 h4 {
-  margin-top: 0;
-  font-weight: 400;
+  font-weight: 700;
   font-size: 22px;
 }
 
-p, ol {
-  font-weight: 300;
+p, ol, li, input, label, button {
+  font-weight: 400;
   font-size: 20px;
   line-height: 32px;
 }
@@ -71,7 +64,7 @@ section {
     font-weight: 600 !important;
   }
   
-  p {
+  p, li {
     font-size: 16px !important;
     line-height: 28px !important;
     font-weight: 400 !important;
@@ -79,14 +72,44 @@ section {
 }
 
 .content {
-  padding: 130px 0 160px;
+  padding: 100px 0;
   width: 90%;
   margin: 0 auto;
-  max-width: 1250px;
+  max-width: 1200px;
 }
 
 @media screen and (max-width: 1100px) {
   .content {
     padding: 50px 0;
   }
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+  max-width: 1210px;
+}
+
+@media screen and (max-width: 1100px) {
+  .container {
+    padding: 50px 0;
+  }
+}
+
+.bold {
+  font-weight: 800;
+}
+
+.error-message {
+  font-weight: 600 !important;
+  font-size: 20px !important;
+  margin-top: 5px !important;
+}
+
+.error-message {
+  color: red !important;
+}
+
+.success-message{
+  color: green !important;
 }

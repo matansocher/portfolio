@@ -1,0 +1,143 @@
+@use '~/src/styles/_colors.scss' as *;
+
+a {
+    text-decoration: none;
+}
+
+.home-projects {
+    .content {
+        .content-item {
+            position: relative;
+            background-repeat: no-repeat;
+            width: 100%;
+            margin-top: 50px;
+            height: 600px;
+            border-radius: 10px;
+            box-sizing: border-box;
+            padding: 100px;
+            img {
+                position: absolute;
+                top: 0;
+                right: 0;
+                height: 100%;
+            }
+            &-content {
+                max-width: 400px;
+                h2 {
+                    font-size: 80px;
+                    color: #ffffff;
+                }
+                p {
+                    margin-top: 20px;
+                    font-weight: 500;
+                    color: #ffffff;
+                }
+            }
+        }
+        
+        .project-marketer {
+            background: linear-gradient(104.91deg, #5F8FED 0.81%, #5FED79 97.56%), #FFFFFF;
+        }
+        
+        .project-myco {
+            background: linear-gradient(106.44deg, #FF8906 -0.02%, rgba(255, 6, 164, 0.56) 101.6%), #FFFFFF;
+            img {
+                height: 80%;
+                top: 50%;
+                right: 10%;
+                transform: translateY(-50%);
+            }
+        }
+        
+        .project-salaries {
+            background: linear-gradient(144.93deg, #147CCC 36.33%, #5A9D78 65.97%, #D6BD1C 143.77%), rgba(255, 255, 255, 0.6);
+        }
+        
+        .project-employees {
+            background: linear-gradient(105.63deg, #777DFB -0.01%, #F7DAF9 78.05%), #FFFFFF;
+            img {
+                height: 70%;
+                top: unset;
+                bottom: 0;
+                right: 5%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .home-projects {
+        .content {
+            .content-item {
+                height: 400px;
+                padding: 75px 50px;
+                img {
+                }
+                &-content {
+                    max-width: 300px;
+                    h2 {
+
+                    }
+                    p {
+                        
+                    }
+                }
+            }
+            
+            .project-marketer {
+            }
+            
+            .project-myco {
+                img {
+                    // width: 10px;
+                }
+            }
+            
+            .project-salaries {
+            }
+            
+            .project-employees {
+                img {
+                    height: 80%;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .home-projects {
+        .content {
+            .content-item {
+                padding: 50px 40px;
+                img {
+                    display: none;
+                }
+                &-content {
+                    h2 {
+
+                    }
+                    p {
+                        
+                    }
+                }
+            }
+            
+            .project-marketer {
+            }
+            
+            .project-myco {
+                img {
+                }
+            }
+            
+            .project-salaries {
+            }
+            
+            .project-employees {
+                img {
+                }
+            }
+        }
+    }
+}

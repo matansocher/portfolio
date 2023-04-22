@@ -3,31 +3,24 @@ import {
   Routes,
   Route,
 } from 'react-router-dom';
-import { useState } from 'react';
-import { Home, Salaries, Myco, Marketist, About } from './screens';
-import { Auth, Navbar, Footer, ScrollToTopOnPageLoad, ScrollToTopOnScroll } from './components';
+import { BusinessCard, Employees, Home, Salaries, Myco, Marketer } from './screens';
+import { ProtectedRoute, ScrollToTopOnPageLoad } from './components';
+import './styles/_shared.scss';
 
 export default function App() {
-  const defaultIsAuthState = process.env.REACT_APP_RUN_ENV === 'dev' ? true : false;
-  const [isAuth, setIsAuth] = useState(defaultIsAuthState);
-
-  if (!isAuth) {
-    return <Auth setIsAuth={setIsAuth} />;
-  }
-
   return (
     <BrowserRouter>
       <ScrollToTopOnPageLoad />
       {/* <ScrollToTopOnScroll /> */}
-      <Navbar />
       <Routes>
-        <Route path='salaries' element={<Salaries />} />
-        <Route path='marketist' element={<Marketist />} />
-        <Route path='myco' element={<Myco />} />
-        <Route path='about' element={<About />} />
-        <Route path='*' element={<Home />} />
+        <Route path='business-card' element={<BusinessCard />} />
+        <Route path='salaries' element={<ProtectedRoute><Salaries /></ProtectedRoute>} />
+        <Route path='marketer' element={<ProtectedRoute><Marketer /></ProtectedRoute>} />
+        <Route path='myco' element={<ProtectedRoute><Myco /></ProtectedRoute>} />
+        <Route path='employees' element={<ProtectedRoute><Employees /></ProtectedRoute>} />
+        <Route path='*' element={<ProtectedRoute><Home /></ProtectedRoute>} />
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </BrowserRouter>
   );
 }

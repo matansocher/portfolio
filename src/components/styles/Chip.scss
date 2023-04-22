@@ -1,0 +1,20 @@
+@use '~/src/styles/_colors.scss' as *;
+
+.chip {
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 2px 12px;
+  border-radius: 16px;
+  font-weight: 600;
+  .icon {
+
+  }
+  .text {
+    font-weight: 700 !important;
+    font-size: 16px;
+    margin: 0 !important;
+  }
+}
