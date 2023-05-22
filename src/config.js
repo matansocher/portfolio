@@ -14,7 +14,7 @@ const config = {
   NAVIGATION_DICTIONARY: {
     'marketer': { path: '/marketer', prev: null, next: 'myco', displayName: 'Marketer' },
     'myco': { path: '/myco', prev: 'marketer', next: 'salaries', displayName: 'Myco' },
-    'salaries': { path: '/salaries', prev: 'myco', next: 'employees', displayName: 'Salary Aadditions' },
+    'salaries': { path: '/salaries', prev: 'myco', next: 'employees', displayName: 'Salary Additions' },
     'employees': { path: '/employees', prev: 'salaries', next: null, displayName: 'Employee Onboarding' },
   },
 

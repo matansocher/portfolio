@@ -13,7 +13,7 @@ export default function Salaries() {
         
         <section className="salaries-top" style={{ backgroundImage: `url('${assets.salariesTopBg}')` }}>
           <div className="container">
-            <h1>Salary additions</h1>
+            <h1>Salary Additions</h1>
             <p>The Sanitation HR department was responsible for manually calculating and approving salary additions for employees, including attendance for absences and extra hours compensations. This web system offers an automated solution to streamline and automate this process for them.</p>
           </div>
         </section>
