@@ -1,7 +1,7 @@
 @use '~/src/styles/_colors.scss' as *;
 
 .business-card {
-  background-color: #0d0d0d;
+  background-color: $dark-black;
   h1 {
     color: #EFF7FB;
   }

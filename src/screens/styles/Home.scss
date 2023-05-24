@@ -3,7 +3,7 @@
 $page-width: 1200px;
 
 .home {
-  background-color: #0d0d0d;
+  background-color: $dark-black;
   h1 {
     color: #EFF7FB;
   }
@@ -18,7 +18,7 @@ $page-width: 1200px;
   }
 
   &-top {
-    padding: 150px 0;
+    padding: 150px 0 200px;
     .container {
       max-width: $page-width;
     }
