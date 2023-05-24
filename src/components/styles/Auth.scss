@@ -1,9 +1,11 @@
 @use '~/src/styles/_colors.scss' as *;
 
 .auth {
+  background: $dark-black;
   padding: 150px 0;
+  height: 100vh;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-start;
   .bg {
     position: absolute;
@@ -21,9 +23,11 @@
     h2 {
       font-size: 40px;
       margin-bottom: 8px;
+      color: #DEE4EA;
     }
     p {
       margin: 0;
+      color: #DEE4EA;
     }
     form {
       margin-top: 64px;
@@ -33,6 +37,7 @@
         flex-direction: column;
         font-weight: 600;
         font-size: 16px;
+        color: #DEE4EA;
       }
       input {
         height: 38px;
@@ -44,7 +49,8 @@
         outline: none;
       }
       input[type='password'] {
-        background-color: #F0F0F0;
+        background-color: #1C1C1C;
+        color: #ffffff;
         margin-top: 10px;
         padding: 5px;
       }
@@ -52,9 +58,9 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: $orange-hedaer;
+        background-color: $pink-btn;
         margin-top: 32px;
-        color: $light-text;
+        color: $dark-black;
         font-size: 18px;
         font-weight: 600;
         &:hover {
