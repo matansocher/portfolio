@@ -14,11 +14,11 @@ export default function App() {
       {/* <ScrollToTopOnScroll /> */}
       <Routes>
         <Route path='business-card' element={<BusinessCard />} />
-        <Route path='salaries' element={<ProtectedRoute><Salaries /></ProtectedRoute>} />
-        <Route path='marketer' element={<ProtectedRoute><Marketer /></ProtectedRoute>} />
-        <Route path='myco' element={<ProtectedRoute><Myco /></ProtectedRoute>} />
-        <Route path='employees' element={<ProtectedRoute><Employees /></ProtectedRoute>} />
-        <Route path='*' element={<ProtectedRoute><Home /></ProtectedRoute>} />
+        <Route path='salaries' element={<Salaries />} />
+        <Route path='marketer' element={<Marketer />} />
+        <Route path='myco' element={<Myco />} />
+        <Route path='employees' element={<Employees />} />
+        <Route path='*' element={<Home />} />
       </Routes>
       {/* <Footer /> */}
     </BrowserRouter>
