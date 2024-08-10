@@ -9,6 +9,25 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    svg {
+      position: relative;
+      width: 150px;
+      height: 150px;
+      circle {
+        width: 150px;
+        height: 150px;
+        fill: none;
+        stroke-width: 10px;
+        stroke: #000000;
+        transform: translate(5px, 5px);
+        stroke-dasharray: 440;
+        stroke-dashoffset: 440;
+        stroke-linecap: round;
+        &:nth-child(1) {
+          stroke-dashoffset: 0;
+        }
+      }
+    }
     .number {
       position: absolute;
       top: 0;

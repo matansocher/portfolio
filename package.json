@@ -10,7 +10,6 @@
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
-    "antd": "^5.20.0",
     "axios": "^1.1.2",
     "react": "^18.1.0",
     "react-copy-to-clipboard": "^5.1.0",
@@ -22,10 +21,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "node --max_old_space_size=2048 node_modules/.bin/react-scripts start",
-    "build": "node --max_old_space_size=2048 node_modules/.bin/react-scripts build",
-    "old-start": "react-scripts start",
-    "old-build": "react-scripts build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

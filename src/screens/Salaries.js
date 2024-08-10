@@ -86,7 +86,9 @@ export default function Salaries() {
               </ul>
             </div>
             <div className="content-right">
-              <PercentageCircle percent={98.5} text={'Success rates in calculations'} circleColors={['#D9F8FF']} textColor={'#D9F8FF'} emptyCircleColor={'transparent'}/>
+              <PercentageCircle percent={98.5} text={'Success rates in calculations'} circleColor={'#D9F8FF'}
+                                innerCircleColor={'transparent'} textColor={'#D9F8FF'}/>
+              {/*<PercentageCircle percent={98.5} text={'Success rates in calculations'} circleColors={['#D9F8FF']} textColor={'#D9F8FF'} emptyCircleColor={'transparent'}/>*/}
             </div>
           </div>
         </section>
@@ -290,18 +292,24 @@ export default function Salaries() {
               <div className="side-by-side-right">
                 <div className="side-by-side-right-row">
                   <div className="side-by-side-right-row-item">
-                    <PercentageCircle percent={98.5} text={'Success rates in calculations'} circleColors={['rgba(20, 170, 204, 1)', 'rgba(20, 136, 204, 1)']}
-                                      textColor={'#151B21'} />
+                    <PercentageCircle percent={98.5} text={'Success rates in calculations'} circleColor={'#1488CC'}
+                                      textColor={'#151B21'}/>
+                    {/*<PercentageCircle percent={98.5} text={'Success rates in calculations'} circleColors={['rgba(20, 170, 204, 1)', 'rgba(20, 136, 204, 1)']}*/}
+                    {/*                  textColor={'#151B21'} />*/}
                   </div>
                 </div>
                 <div className="side-by-side-right-row multiple">
                   <div className="side-by-side-right-row-item">
                     <PercentageCircle percent={95} text={'Cards approved (on average) by the 10th day of each month'}
-                                      circleColors={['rgba(20, 170, 204, 1)', 'rgba(20, 136, 204, 1)']} textColor={'#151B21'} />
+                                      circleColor={'#1488CC'} textColor={'#151B21'} />
+                    {/*<PercentageCircle percent={95} text={'Cards approved (on average) by the 10th day of each month'}*/}
+                    {/*                  circleColors={['rgba(20, 170, 204, 1)', 'rgba(20, 136, 204, 1)']} textColor={'#151B21'} />*/}
                   </div>
                   <div className="side-by-side-right-row-item">
                     <PercentageCircle percent={50} text={'Cards approved (on average) by the 10th day of each month'}
-                                      circleColors={['rgba(20, 170, 204, 1)', 'rgba(20, 136, 204, 1)']} textColor={'#151B21'} />
+                                      circleColor={'#1488CC'} textColor={'#151B21'} />
+                    {/*<PercentageCircle percent={50} text={'Cards approved (on average) by the 10th day of each month'}*/}
+                    {/*                  circleColors={['rgba(20, 170, 204, 1)', 'rgba(20, 136, 204, 1)']} textColor={'#151B21'} />*/}
                   </div>
                 </div>
               </div>
