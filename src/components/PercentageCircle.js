@@ -26,20 +26,13 @@ export default function PercentageCircle(props) {
       <div className="circle">
         <Progress
             size={size}
+            format={percent => <span style={{ color: textColor, fontWeight: 600 }}>{`${percent}%`}</span>}
             type="circle"
             percent={percent}
             strokeWidth={strokeWidth}
             strokeColor={circleColors[0]}
             trailColor={emptyCircleColor}
             strokeLinecap="round"/>
-        {/*<Progress*/}
-        {/*    size={size}*/}
-        {/*    type="circle"*/}
-        {/*    percent={percent}*/}
-        {/*    strokeWidth={strokeWidth}*/}
-        {/*    strokeColor={getColorsObj(circleColors)}*/}
-        {/*    trailColor={emptyCircleColor}*/}
-        {/*    strokeLinecap="round"/>*/}
       </div>
       <p className="text" style={{ color: textColor }}>{text}</p>
     </div>
