@@ -2,7 +2,7 @@
 
 .clients-item {
     position: relative;
-    max-width: 715px;
+    max-width: 950px;
     margin-top: 50px;
     .quote {
         position: absolute;
@@ -36,7 +36,7 @@
                 .title {
                     margin-right: 8px;
                     padding-right: 8px;
-                    border-right: 1px solid #DEE4EA;
+                    border-right: 1px solid $primary-text;
                 }
             }
         }

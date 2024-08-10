@@ -5,16 +5,17 @@ $page-width: 1200px;
 .home {
   background-color: $dark-black;
   h1 {
-    color: #EFF7FB;
+
   }
-  .h1-first {
+  .first {
+    color: $light-text;
     font-size: 80px;
   }
-  .h1-second {
-    
+  .secondary {
+    color: $primary-text;
   }
   h2, h3, h4, h5, p, ul, li, span {
-    color: #DEE4EA
+    color: $primary-text;
   }
 
   &-top {
@@ -25,7 +26,9 @@ $page-width: 1200px;
   }
 
   &-icons {
-
+    h4 {
+      margin-bottom: 50px;
+    }
   }
 
   &-clients {
@@ -37,10 +40,10 @@ $page-width: 1200px;
 
 @media screen and (max-width: 1100px) {
   .home {
-    .h1-first {
+    .first {
       font-size: 50px !important;
     }
-    .h1-second {
+    .secondary {
       font-size: 60px !important;
     }
     &-top {
@@ -59,10 +62,10 @@ $page-width: 1200px;
 
 @media screen and (max-width: 500px) {
   .home {
-    .h1-first {
+    .first {
       font-size: 40px !important;
     }
-    .h1-second {
+    .secondary {
       font-size: 45px !important;
     }
     &-top {

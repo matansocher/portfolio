@@ -34,7 +34,17 @@ a {
                 }
             }
         }
-        
+
+        .project-salaries {
+            display: flex;
+            justify-content: space-between;
+            background: linear-gradient(144.93deg, #147CCC 36.33%, #5A9D78 65.97%, #D6BD1C 143.77%), rgba(255, 255, 255, 0.6);
+            padding-right: 50px;
+            img {
+                position: relative;
+            }
+        }
+
         .project-marketer {
             background: linear-gradient(104.91deg, #5F8FED 0.81%, #5FED79 97.56%), #FFFFFF;
         }
@@ -48,11 +58,7 @@ a {
                 transform: translateY(-50%);
             }
         }
-        
-        .project-salaries {
-            background: linear-gradient(144.93deg, #147CCC 36.33%, #5A9D78 65.97%, #D6BD1C 143.77%), rgba(255, 255, 255, 0.6);
-        }
-        
+
         .project-employees {
             background: linear-gradient(105.63deg, #777DFB -0.01%, #F7DAF9 78.05%), #FFFFFF;
             img {
@@ -83,7 +89,11 @@ a {
                     }
                 }
             }
-            
+
+            .project-salaries {
+                padding-right: 50px;
+            }
+
             .project-marketer {
             }
             
@@ -92,10 +102,7 @@ a {
                     // width: 10px;
                 }
             }
-            
-            .project-salaries {
-            }
-            
+
             .project-employees {
                 img {
                     height: 80%;
@@ -114,15 +121,20 @@ a {
                     display: none;
                 }
                 &-content {
+                    max-width: 400px;
                     h2 {
 
                     }
                     p {
-                        
+
                     }
                 }
             }
-            
+
+            .project-salaries {
+
+            }
+
             .project-marketer {
             }
             
@@ -130,10 +142,7 @@ a {
                 img {
                 }
             }
-            
-            .project-salaries {
-            }
-            
+
             .project-employees {
                 img {
                 }

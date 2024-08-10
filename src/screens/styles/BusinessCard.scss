@@ -6,7 +6,7 @@
     color: #EFF7FB;
   }
   h2, h3, h4, h5, p, ul, li, span, input, textarea, label {
-    color: #DEE4EA
+    color: $primary-text;
   }
 
   &-top {
@@ -93,11 +93,10 @@
         align-items: center;
         font-weight: 500;
         font-size: 16px;
-        color: #DEE4EA;
+        color: $primary-text;
         background-color: transparent;
-        border: none;
         padding: 2px 16px;
-        border: 1px solid #DEE4EA;
+        border: 1px solid $primary-text;
         border-radius: 6px;
         margin-top: 20px;
         cursor: pointer;

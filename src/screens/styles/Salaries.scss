@@ -19,6 +19,26 @@
     }
   }
 
+  &-main-app-screen {
+    background-size: cover;
+    padding: 100px 0;
+    .screens {
+      max-width: 96%;
+      margin: 0 auto;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      &-left, &-right {
+        width: 50%;
+      }
+      &-left {
+        margin-top: 100px;
+      }
+      &-right {
+      }
+    }
+  }
+
   &-pas {
     .content {
       h2 {
@@ -209,7 +229,7 @@
               }
               &:nth-child(3) {
                 .icon-wrapper {
-                  background: #CC5714;
+                  background: #0E8F99;
                 }
               }
             } 
@@ -346,7 +366,11 @@
     }
   }
 
-  &-screens {
+  &-main-screen-and-ui {
+    background-color: #0E8F99;
+    h2, h3, h4, p, ul, li {
+      color: #EFF7FB;
+    }
     .content {
       h2 {
         margin-top: 20px;
@@ -360,63 +384,20 @@
           max-width: 840px;
         }
       }
-    }
-  }
-
-  &-general-flow {
-    background-color: #0F9BD8;
-    h2, h3, h4, p {
-      color: #EFF7FB;
-    }
-    .content {
-      h2 {
-        margin-top: 20px;
-      }
-      .side-by-side {
+      &-bottom {
         display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        &-left {
-          width: 50%;
-          p {
-            max-width: 425px;
-          }
-        }
-        &-right {
-          width: 50%;
-        }
-      }
-      &-part {
+        flex-direction: column;
+        align-items: center;
         margin-top: 50px;
-        img {
-          width: 100%;
+        h3 {
+          margin-top: 100px;
+          text-transform: uppercase;
+          text-align: center;
         }
-      }
-      &-part:not(.side-by-side) {
         img {
           margin-top: 50px;
-          width: 100%;
+          max-width: 90%;
         }
-      }
-    }
-  }
-
-  &-graphic-elements {
-    .content {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      h3 {
-        margin-top: 20px;
-      }
-      p {
-        margin-top: 20px;
-        max-width: 605px;
-      }
-      img {
-        width: 80%;
-        margin-top: 30px;
-        align-self: center;
       }
     }
   }
@@ -478,7 +459,25 @@
     &-top {
       padding: 100px 0;
     }
-  
+
+    &-main-app-screen {
+      background-size: cover;
+      padding: 100px 0;
+      .screens {
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        &-left, &-right {
+          width: 90%;
+        }
+        &-left {
+          margin-top: 0;
+        }
+        &-right {
+        }
+      }
+    }
+
     &-pas {
       .content {
         &-solutions {
@@ -547,7 +546,7 @@
       }
     }
 
-    &-general-flow {
+    &-main-screen-and-ui {
       .content {
         .side-by-side {
           flex-direction: column;
@@ -559,17 +558,18 @@
             margin-top: 20px;
           }
         }
-      }
-    }
-  
-    &-graphic-elements {
-      .content {
-        img {
-          width: 100%;
+        &-bottom {
+          margin-top: 0;
+          h3 {
+            margin-top: 50px;
+          }
+          img {
+            margin-top: 20px;
+          }
         }
       }
     }
-  
+
     &-results {
       .content {
         .side-by-side {
