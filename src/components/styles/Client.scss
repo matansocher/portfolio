@@ -22,6 +22,9 @@
     }
     &-details {
         padding: 15px 50px;
+        .text {
+            color: $primary-text;
+        }
         &-person {
             display: flex;
             align-items: center;
@@ -29,6 +32,7 @@
             .name {
                 margin-right: 12px;
                 font-weight: 700 !important;
+                color: $primary-text;
             }
             &-additional {
                 display: flex;
@@ -37,6 +41,10 @@
                     margin-right: 8px;
                     padding-right: 8px;
                     border-right: 1px solid $primary-text;
+                    color: $primary-text;
+                }
+                .company {
+                    color: $primary-text;
                 }
             }
         }

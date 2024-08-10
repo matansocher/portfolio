@@ -18,7 +18,7 @@ export default function CircleIcon(props) {
   return (
     <div className="circle-icon" style={{ width: `${width}px` }}>
       <div className="icon-wrapper" style={{ backgroundColor, width: `${size}px`, height: `${size}px` }}>
-        <i class={`uil uil-${icon}`} style={{ color: iconColor, fontSize: `${iconSize}px` }}></i>
+        <i className={`uil uil-${icon}`} style={{ color: iconColor, fontSize: `${iconSize}px` }}></i>
       </div>
       {text && <p className="text" style={{ color: textColor }}>{text}</p>}
     </div>

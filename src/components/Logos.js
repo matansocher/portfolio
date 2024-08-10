@@ -18,7 +18,7 @@ export default function Logos() {
     return LOGOS.map(logo => {
       const { name, asset } = logo;
       return (
-        <img key={name} alt={`logo of ${name}`} class={`${name}-logo`} src={asset} />
+        <img key={name} alt={`logo of ${name}`} className={`${name}-logo`} src={asset} />
       );
     })
   }
