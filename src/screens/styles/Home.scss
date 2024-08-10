@@ -10,12 +10,18 @@ $page-width: 1200px;
   .first {
     color: $light-text;
     font-size: 80px;
+    font-weight: 700;
   }
   .secondary {
-    color: $primary-text;
+    color: rgba(222, 228, 234, 0.6);
+    font-weight: 600;
   }
   h2, h3, h4, h5, p, ul, li, span {
-    color: $primary-text;
+    color: $home-page-text;
+  }
+
+  h4 {
+    font-size: 28pxZ;
   }
 
   &-top {

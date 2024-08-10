@@ -15,7 +15,7 @@ export default function Chip(props) {
 
   return (
     <div className="chip" style={{ backgroundColor }}>
-      {icon && <i class={`uil uil-${icon}`} style={{ color: iconColor }}></i>}
+      {icon && <i className={`uil uil-${icon}`} style={{ color: iconColor }}></i>}
       <p className="text" style={{ color: textColor }}>{text}</p>
     </div>
   );

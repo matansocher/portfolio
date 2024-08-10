@@ -40,7 +40,7 @@ const config = {
     {
       text: 'I am extremely satisfied with the results of our collaboration with our UX designer. She was a key member of our team, and her contributions were invaluable to the success of the project. She was able to identify and address issues early on, which made the development process more efficient and effective',
       name: 'Barak Ze’evi',
-      title: 'Operational systems Manager',
+      title: 'Head of Planning & Engineering Systems Department',
       company: 'Tel Aviv Municipality',
     },
     {

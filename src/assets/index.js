@@ -1,7 +1,7 @@
 import config from '../config';
 import assetsConfig from './assetsConfig';
 
-const query_param = `a=${new Date().getTime()}`;
+// const query_param = `a=${new Date().getTime()}`;
 
 const files = {};
 
