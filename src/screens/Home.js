@@ -12,38 +12,43 @@ export default function Home() {
 
         <section className="home-top">
           <div className="container">
-            <h1 className="h1-first">Hi.</h1>
-            <h1 className="h1-second">I’m Dekel<br />UXUI Designer</h1>
+            <h1 className="first">Hi 👋<br/>I’m Dekel</h1>
+            <h2 className="secondary">Product Designer & UX Researcher</h2>
           </div>
         </section>
 
         <section className="home-icons">
-          <Logos />
+          <div className="content">
+            <h4>My Clients</h4>
+            <Logos/>
+          </div>
         </section>
 
         <section className="home-projects">
           <div className="content">
             <h4>My Projects</h4>
 
+            <Link to="salaries">
+              <HomeProject name="salaries" header="Salary Additions" sideImage={assets.salariesMainScreenAndUI1}
+               text="An end-to-end internal system for automating salary calculations and approvals. The solution and custom algorithm I created resulted in high success rates"
+              />
+            </Link>
+
             <Link to="marketer">
               <HomeProject name="marketer" header="Marketer" sideImage={assets.homeMarketerImage}
-                text="As the first Product Designer, I created Design system for a new startup for Marketing management system."
+                text="A Design system I created for a new startup for Marketing management system, as the first Product Designer"
               />
             </Link>
 
             <Link to="myco">
               <HomeProject name="myco" header="Myco" sideImage={assets.homeMycoImage}
-                text="As the first Product Designer, I created Design system for a new startup for Marketing management system."
+                text="A Marketing management system & Producers Interface I created"
               />
             </Link>
 
-            <Link to="salaries">
-              <HomeProject name="salaries" header="Salary Additions" sideImage={assets.homeSalariesImage} />
-            </Link>
-
-            <Link to="employees">
-              <HomeProject name="employees" header="Employee Onboarding page" sideImage={assets.homeEmployeesImage} />
-            </Link>
+            {/*<Link to="employees">*/}
+            {/*  <HomeProject name="employees" header="Employee Onboarding page" sideImage={assets.homeEmployeesImage} />*/}
+            {/*</Link>*/}
           </div>
         </section>
 

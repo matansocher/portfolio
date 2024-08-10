@@ -5,22 +5,39 @@
     justify-content: center;
     align-items: center;
     .logos-wrapper {
-        position: relative;
-        overflow: hidden;
-        width: 200%;
-        height: 3rem;
         &-container {
-            position: absolute;
             display: flex;
-            justify-content: space-around;
+            justify-content: center;
             align-items: center;
-            animation: scroll 15s linear infinite;
-            gap: 75px;
-            width: 200%;
-            height: 100%;
-            left: 0;
+            flex-wrap: wrap;
+            gap: 50px;
             img {
                 height: 100%;
+            }
+
+            .amdocs-logo {
+                width: 250px;
+            }
+            .tel-aviv-municipal-logo {
+                width: 150px;
+            }
+            .controlup-logo {
+                width: 150px;
+            }
+            .hippocampus-logo {
+                width: 250px;
+            }
+            .gool-logo {
+                width: 150px;
+            }
+            .stefansky-logo {
+                width: 300px;
+            }
+            .marketer-logo {
+                width: 175px;
+            }
+            .myco-logo {
+                width: 100px;
             }
         }
     }
@@ -29,25 +46,10 @@
 @media screen and (max-width: 700px) {
     .logos-container {
         .logos-wrapper {
-            height: 50px;
             &-container {
-                gap: 50px;
                 img {
                 }
             }
         }
     }
 } 
-
-@keyframes scroll {
-    0% {
-        left: 0;
-    }
-    100% {
-        left: -100%;
-    }
-}
-
-.animate {
-    animation: scroll 15s linear infinite;
-}

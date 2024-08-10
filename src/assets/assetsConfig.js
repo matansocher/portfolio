@@ -56,6 +56,8 @@ const mycoAssets = [
 
 const salariesAssets = [
   { name: 'salariesTopBg', file: 'salaries/salaries-top-bg.png' },
+  { name: 'salariesMainAppScreen1', file: 'salaries/salaries-mainapp-screen-1.png' },
+  { name: 'salariesMainAppScreen2', file: 'salaries/salaries-mainapp-screen-2.png' },
   { name: 'salariesUserInterviewsPerson', file: 'salaries/salaries-user-interviews-person.svg' },
   { name: 'salariesUserInterviews2Persons', file: 'salaries/salaries-user-interviews-2-persons.svg' },
   { name: 'salariesObservations1', file: 'salaries/salaries-observations-1.png' },
@@ -70,8 +72,8 @@ const salariesAssets = [
   { name: 'salariesTest3', file: 'salaries/salaries-test-3.png' },
   { name: 'salariesGeneralFlow1', file: 'salaries/salaries-general-flow-1.png' },
   { name: 'salariesGeneralFlow2', file: 'salaries/salaries-general-flow-2.png' },
-  { name: 'salariesGraphicElements1', file: 'salaries/salaries-graphic-elements-1.png' },
-
+  { name: 'salariesMainScreenAndUI1', file: 'salaries/salaries-main-screen-and-ui-1.png' },
+  { name: 'salariesMainScreenAndUI2', file: 'salaries/salaries-main-screen-and-ui-2.png' },
 ];
 
 const employeesAssets = [
@@ -96,6 +98,8 @@ const sharedAssets = [
   { name: 'logoHippocampus', file: 'shared/logo-hippocampus.png' },
   { name: 'logoTlv', file: 'shared/logo-tlv.png' },
   { name: 'logoAmdocs', file: 'shared/logo-amdocs.png' },
+  { name: 'logoControlup', file: 'shared/logo-controlup.png' },
+  { name: 'logoGool', file: 'shared/logo-gool.png' },
 ];
 
 const assetsConfig = [

@@ -12,10 +12,10 @@ const config = {
   MARKETER_URL: 'https://www.gomarketer.co',
 
   NAVIGATION_DICTIONARY: {
-    'marketer': { path: '/marketer', prev: null, next: 'myco', displayName: 'Marketer' },
-    'myco': { path: '/myco', prev: 'marketer', next: 'salaries', displayName: 'Myco' },
-    'salaries': { path: '/salaries', prev: 'myco', next: 'employees', displayName: 'Salary Additions' },
-    'employees': { path: '/employees', prev: 'salaries', next: null, displayName: 'Employee Onboarding' },
+    'salaries': { path: '/salaries', displayName: 'Salary Additions', prev: null, next: 'marketer' },
+    'marketer': { path: '/marketer', displayName: 'Marketer', prev: 'salaries', next: 'myco' },
+    'myco': { path: '/myco', displayName: 'Myco', prev: 'marketer', next: null },
+    // 'employees': { path: '/employees', prev: 'salaries', next: null, displayName: 'Employee Onboarding' },
   },
 
   ICONS_MAP: {
@@ -44,10 +44,16 @@ const config = {
       company: 'Tel Aviv Municipality',
     },
     {
-      text: 'I had the pleasure of working with Dekel on our product development, where her aim was improving our understanding of UX best practices, product strategy, and effective use of Figma. It was an incredibly valuable experience that exceeded my expectations.',
+      text: 'I had the pleasure of working with Dekel on our product development, where her aim was improving our understanding of UX best practices, product strategy, and effective use of Figma. It was an incredibly valuable experience that exceeded my expectations',
       name: 'Ira Pavlova',
       title: 'Head of Design',
       company: 'Hippocampus',
+    },
+    {
+      text: 'Best ever!! I\'ve been working with Dekel for a few months. Results are amazing - an energy blast, relentless professional, an amazing addition to any team, an independent, pro-active, engaged and engaging professional. Dekel had responded to everything we asked within literally minutes. Not only she is a pro, but she manages dynamic scenarios, which is super rare. She is quick on her feet, manages complex situations very well, delivers amazing results with superb quality, runs incredibly deep research and is the type of pro anyone would wish themselves',
+      name: 'Ariel Zamir',
+      title: 'Leading Teams to Build Things That Matter',
+      company: 'NetApp',
     },
   ],
 };
