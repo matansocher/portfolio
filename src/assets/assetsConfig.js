@@ -88,6 +88,7 @@ const employeesAssets = [
   { name: 'employeesTeam2', file: 'employees/employees-team-2.png' },
   { name: 'employeesTeam3', file: 'employees/employees-team-3.png' },
   { name: 'employeesTranslate', file: 'employees/employees-translate.png' },
+  { name: 'employeesFinishedDesign', file: 'employees/employees-finished-design.png' },
 ];
 
 const sharedAssets = [
