@@ -11,6 +11,7 @@ const homeAssets = [
   { name: 'homeMycoImage', file: 'home/home-myco-image.png' },
   { name: 'homeMarketerImage', file: 'home/home-marketer-image.png' },
   { name: 'homeEmployeesImage', file: 'home/home-employees-image.png' },
+  { name: 'homeEmployeesBackground', file: 'home/home-employees-bg.png' },
 ];
 
 const marketerAssets = [
@@ -78,9 +79,10 @@ const salariesAssets = [
 
 const employeesAssets = [
   { name: 'employeesTopBg', file: 'employees/employees-top-bg.png' },
-  { name: 'employeesExamples1', file: 'employees/employees-examples-1.png' },
-  { name: 'employeesExamples2', file: 'employees/employees-examples-2.png' },
-  { name: 'employeesExamples3', file: 'employees/employees-examples-3.png' },
+  { name: 'employeesExamples1', file: 'employees/employees-examples-new-1.png' },
+  { name: 'employeesExamples2', file: 'employees/employees-examples-new-2.png' },
+  { name: 'employeesExamples3', file: 'employees/employees-examples-new-3.png' },
+  { name: 'employeesExamples4', file: 'employees/employees-examples-new-4.png' },
   { name: 'employeesInterviews', file: 'employees/employees-interviews.png' },
   { name: 'employeesTeam1', file: 'employees/employees-team-1.png' },
   { name: 'employeesTeam2', file: 'employees/employees-team-2.png' },
