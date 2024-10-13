@@ -89,7 +89,7 @@ export default function Employees() {
             <h2>Conduct User Interviews</h2>
             <p>My colleague and I created an interview protocol and proceeded to <span className="bold">conduct interviews with 6 recently hired employees</span> from various global branches. While we maintained a structured approach, we also allowed for unplanned questions on relevant topics that arose during the interviews. One participant, for instance, pointed out a notable difference between their unsatisfactory onboarding experience and their positive experiences in the actual workplace.</p>
             <p>At the end of each interview, <span className="bold">we conducted affinity mapping</span> - we took all the sticky notes where we wrote all the themes that arose during the interview, and divided them into categories of recurring issues, pain points, and insights. We then gathered the most important ones in a new category called 'key points.'</p>
-            <img alt="sketch example" src={assets.employeesInterviews} />
+            <img alt="affinity diagram" src={assets.employeesInterviews} />
           </div>
         </section>
 
@@ -100,11 +100,11 @@ export default function Employees() {
             <p>As the UX designer for the project, I needed to find a solution to tackle this challenge. To do this, <span className="bold">I organized a remote session using the IQI</span> (Insights, Questions, Ideas) methodology with 4-6 fellow designers. During the 20-minute session, I provided a brief explanation of the issue I was facing and presented the board summarizing the main themes, pain points, and insights from all the interviews. I then asked the designers to generate as many insights, questions, and ideas as possible based on the information presented, in order to brainstorm and gain different perspectives on the matter.</p>
             <div className="special-grid">
               <div className="special-grid-left">
-                <img alt="sketch example" src={assets.employeesTeam1} />
-                <img alt="sketch example" src={assets.employeesTeam2} />
+                <img alt="ideas" src={assets.employeesTeam1} />
+                <img alt="zoom meeting" src={assets.employeesTeam2} />
               </div>
               <div className="special-grid-right">
-                <img alt="sketch example" src={assets.employeesTeam3} />
+                <img alt="zoom meeting with ideas" src={assets.employeesTeam3} />
               </div>              
             </div>
             <p>Following the IQI session, it became clear that the main goal was to develop a <span className="bold">dynamic solution that provided structure while allowing for flexibility</span> in terms of adding links and categories based on individual needs. The employees required guidance but also the ability to adapt to their specific requirements, particularly during the pre-planning stage of the onboarding process.</p>
@@ -118,7 +118,15 @@ export default function Employees() {
             <p>After considering various options, <span className="bold">I decided to divide the onboarding page into 6 distinct sections</span>, each with its own structure. Some sections are more structured, but still allow for some flexibility, such as the hero section which can contain an image, video, or just text. Other sections, like the 'Useful Information' section, are highly flexible and can be customized to meet the specific needs of different departments or branches.</p>
             <p>For instance, the 'Useful Information' section is divided into two parts, 'Important Support Topics' and 'IT Support Topics,' based on the research insights. However, it's important to note that this is just a suggestion and each department or branch can decide to reorder the categories or use completely different categories to better suit their needs.</p>
             <p>The solution was presented to the stakeholders, and it was unanimously approved by all of them.</p>
-            <img alt="sketch example" src={assets.employeesTranslate} />
+            <img alt="screen example" src={assets.employeesTranslate} />
+          </div>
+        </section>
+
+        <section className="employees-finished-design">
+          <div className="content">
+            <Chip text={'Design'} backgroundColor={'rgba(78, 95, 255, 0.2)'} icon={ICONS_MAP.BRACKETS} />
+            <h2>Finished Design</h2>
+            <img alt="screen example" src={assets.employeesFinishedDesign} />
           </div>
         </section>
 
