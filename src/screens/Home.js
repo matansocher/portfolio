@@ -46,9 +46,9 @@ export default function Home() {
               />
             </Link>
 
-            {/*<Link to="employees">*/}
-            {/*  <HomeProject name="employees" header="Employee Onboarding page" sideImage={assets.homeEmployeesImage} />*/}
-            {/*</Link>*/}
+            <Link to="employees">
+              <HomeProject name="employees" header="Employee Onboarding Page" sideImage={assets.homeEmployeesImage} darkText={true} backgroundImage={assets.homeEmployeesBackground} />
+            </Link>
           </div>
         </section>
 

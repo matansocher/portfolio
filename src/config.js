@@ -14,8 +14,8 @@ const config = {
   NAVIGATION_DICTIONARY: {
     'salaries': { path: '/salaries', displayName: 'Salary Additions', prev: null, next: 'marketer' },
     'marketer': { path: '/marketer', displayName: 'Marketer', prev: 'salaries', next: 'myco' },
-    'myco': { path: '/myco', displayName: 'Myco', prev: 'marketer', next: null },
-    // 'employees': { path: '/employees', prev: 'salaries', next: null, displayName: 'Employee Onboarding' },
+    'myco': { path: '/myco', displayName: 'Myco', prev: 'marketer', next: 'employees' },
+    'employees': { path: '/employees', displayName: 'Employee Onboarding', prev: 'myco', next: null },
   },
 
   ICONS_MAP: {

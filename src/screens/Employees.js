@@ -11,7 +11,7 @@ export default function Employees() {
       <div className="employees">
         <section className="employees-top" style={{ backgroundImage: `url('${assets.employeesTopBg}')` }}>
           <div className="container">
-            <h1>Employee Onboarding page</h1>
+            <h1>Employee Onboarding Page</h1>
             <p>The task at hand presented a UX challenge: designing an onboarding page for numerous new employees, each with varying job roles and locations around the world, while also collaborating with a team of stakeholders who are working on rethinking HR processes. I had to come up with a solution that is flexible and able to adjust to different needs</p>
           </div>
         </section>
@@ -65,16 +65,20 @@ export default function Employees() {
         <section className="employees-examples">
           <div className="content">
             <div className="content-item">
-              <img alt="screen example" src={assets.employeesExamples1} />
+              <img alt="screen example" src={assets.employeesExamples1}/>
               <p>Empathize</p>
             </div>
             <div className="content-item">
-              <img alt="screen example" src={assets.employeesExamples2} />
+              <img alt="screen example" src={assets.employeesExamples2}/>
               <p>Define & Ideate </p>
             </div>
             <div className="content-item">
-              <img alt="screen example" src={assets.employeesExamples3} />
+              <img alt="screen example" src={assets.employeesExamples3}/>
               <p>Wireframe</p>
+            </div>
+            <div className="content-item">
+              <img alt="screen example" src={assets.employeesExamples4}/>
+              <p>Design</p>
             </div>
           </div>
         </section>
