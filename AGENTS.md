@@ -97,7 +97,7 @@ This is a live portfolio. Unless explicitly asked otherwise, **do not change run
 portfolio/
 ├── public/                 # Static assets served as-is (favicon, manifest, robots.txt, logos)
 ├── index.html              # Vite HTML entry (loads /src/index.tsx)
-├── vite.config.ts          # Vite config (React plugin, `~` alias, dev server, build outDir)
+├── vite.config.ts          # Vite config (React plugin, `~` + `@` aliases, dev server, build outDir)
 ├── tsconfig.json           # TypeScript config (strict, react-jsx, bundler resolution)
 ├── .agents/skills/         # Reusable SKILL.md skills (canonical copy)
 ├── .claude/skills          # symlink → ../.agents/skills
@@ -158,6 +158,7 @@ Match the existing conventions — they are consistent across the codebase:
 - **Function components only**, declared as `export default function Name(props: Props) { … }`. Hooks (`useState`, `useEffect`, `useRef`, `useLocation`) — no class components.
 - **Props:** typed with a component-local `interface` (or an inline type), destructured in the signature (`function Navbar({ isCardNav = false }: NavbarProps)`) or from `props` in the body. Shared/domain types live in `src/types.ts`.
 - **One SCSS file per component/screen**, imported at the top of the file (`import './styles/Navbar.scss';`). Global styles live in `src/styles/`.
+- **Imports:** relative paths within a folder; the `@` alias maps to `src/` (`import App from '@/App'`) and `~` maps to the repo root (used by SCSS). Barrels (`components/index.ts`, `screens/index.ts`) keep cross-folder imports shallow.
 - **Naming:** components/screens PascalCase (`BottomNavigation.tsx`), config keys SCREAMING_SNAKE (`NAVIGATION_DICTIONARY`), variables/functions camelCase.
 - **TypeScript:** strict mode is on. Prefer explicit prop interfaces; `any` is a lint warning, not an error — avoid it where a real type is cheap. Use `import type { … }` for type-only imports.
 - **Formatting:** enforced by Prettier + ESLint. 2-space indent, single quotes, semicolons, `printWidth` 120.
@@ -188,6 +189,7 @@ prefixed with `VITE_` via `import.meta.env` — add them (and document here) if 
 npm install        # install deps (Node 24 — use nvm)
 npm run dev        # dev server at http://localhost:3000 (alias: npm start)
 npm run typecheck  # tsc --noEmit (no output, just type errors)
+npm run test       # Vitest (run once); test:watch for watch mode
 npm run lint       # ESLint (flat config, TS + React + hooks + a11y)
 npm run format     # Prettier write (format:check to verify only)
 npm run build      # typecheck + production build → build/
@@ -195,7 +197,10 @@ npm run preview    # serve the production build locally (Vite preview)
 npm run serve      # serve build/ the way Heroku does (sirv, SPA fallback, honors $PORT)
 ```
 
-There are currently **no tests** in the repo.
+Tests use **Vitest** + **@testing-library/react** in a **jsdom** environment (config in
+`vitest.config.ts`, globals + jest-dom matchers set up in `src/test/setup.ts`). Tests are
+co-located as `*.test.tsx` next to the code they cover. CI runs `npm test` between typecheck
+and build.
 
 ---
 
