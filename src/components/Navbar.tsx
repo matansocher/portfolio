@@ -3,7 +3,15 @@ import './styles/Navbar.scss';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { Link } from 'react-router-dom';
 
-export default function Navbar({ isCardNav = false, scrollToForm = null, isWhiteText = false }) {
+export default function Navbar({
+  isCardNav = false,
+  scrollToForm,
+  isWhiteText = false,
+}: {
+  isCardNav?: boolean;
+  scrollToForm?: () => void;
+  isWhiteText?: boolean;
+}) {
   const [isScrolledABit, setIsScrolledABit] = useState(false);
   const [showCopied, setShowCopied] = useState(false);
 

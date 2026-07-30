@@ -1,6 +1,6 @@
 # Portfolio
 
-A single-page **portfolio site** for Dekel Nissim (Product Designer & UX Researcher). Built with **Vite** — React 19, `react-router-dom` v7, and SASS. Case-study screens plus a freelance business card with a contact form backed by a separate Heroku service.
+A single-page **portfolio site** for Dekel Nissim (Product Designer & UX Researcher). Built with **Vite** — React 19, TypeScript, `react-router-dom` v7, and SASS. Case-study screens plus a freelance business card with a contact form backed by a separate Heroku service.
 
 **🤖 [AGENTS.md](./AGENTS.md)** — canonical onboarding for AI agents and humans &nbsp;·&nbsp; **⚡ [Quick Start](#quick-start)**
 
@@ -26,15 +26,16 @@ npm run dev            # http://localhost:3000
 | `/employees`     | Case study — Employee Onboarding                                  |
 | `/business-card` | Freelance one-pager with contact form                             |
 
-Routes are declared in `src/App.jsx`.
+Routes are declared in `src/App.tsx`.
 
 ## Architecture
 
 - **Vite** (`vite` 8, `@vitejs/plugin-react`) for build tooling and the dev server.
+- **TypeScript** (strict mode) — source is `.ts` / `.tsx`; `npm run build` typechecks before bundling.
 - **React 19** function components + hooks; routing via **react-router-dom 7**.
 - **SASS** — one `.scss` per component/screen, plus global styles in `src/styles/`.
-- **Images are served from a Google Cloud Storage CDN**, not bundled. They are declared in `src/assets/assetsConfig.js` and resolved to URLs in `src/assets/index.js`, then referenced by name (`assets.homeMycoImage`).
-- **Config** (backend URLs, endpoints, navigation dictionary, icon map, testimonials) lives in `src/config.js`.
+- **Images are served from a Google Cloud Storage CDN**, not bundled. They are declared in `src/assets/assetsConfig.ts` and resolved to URLs in `src/assets/index.ts`, then referenced by name (`assets.homeMycoImage`).
+- **Config** (backend URLs, endpoints, navigation dictionary, icon map, testimonials) lives in `src/config.ts`; shared domain types in `src/types.ts`.
 - **Backend** is a separate Heroku app (`config.PORTFOLIO_BACKEND`) handling password validation and the contact form — not part of this repo.
 
 See **[AGENTS.md](./AGENTS.md)** for the full breakdown of structure, conventions, and how assets/config work.
@@ -43,7 +44,10 @@ See **[AGENTS.md](./AGENTS.md)** for the full breakdown of structure, convention
 
 ```bash
 npm run dev        # dev server at http://localhost:3000 (alias: npm start)
-npm run build      # production build → build/
+npm run typecheck  # tsc --noEmit — type errors only, no output
+npm run lint       # ESLint (TS + React + hooks + a11y)
+npm run format     # Prettier write (format:check to verify)
+npm run build      # typecheck + production build → build/
 npm run preview    # serve the production build locally (Vite preview)
 npm run serve      # serve build/ the way Heroku does (sirv, SPA fallback, honors $PORT)
 ```

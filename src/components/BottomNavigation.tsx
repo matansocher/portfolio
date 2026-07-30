@@ -3,15 +3,16 @@ import { useState, useEffect } from 'react';
 import config from '../config';
 import { Link } from 'react-router-dom';
 import assets from '../assets';
+import type { NavigationItem } from '../types';
 
-export default function BottomNavigation({ pathname }) {
-  const [navigationPrev, setNavigationPrev] = useState(null);
-  const [navigationNext, setNavigationNext] = useState(null);
+export default function BottomNavigation({ pathname }: { pathname: string }) {
+  const [navigationPrev, setNavigationPrev] = useState<NavigationItem | null>(null);
+  const [navigationNext, setNavigationNext] = useState<NavigationItem | null>(null);
 
   useEffect(() => {
     const navigationDictionaryItem = config.NAVIGATION_DICTIONARY[pathname] || config.NAVIGATION_DICTIONARY['/'];
-    setNavigationPrev(config.NAVIGATION_DICTIONARY[navigationDictionaryItem.prev]);
-    setNavigationNext(config.NAVIGATION_DICTIONARY[navigationDictionaryItem.next]);
+    setNavigationPrev(config.NAVIGATION_DICTIONARY[navigationDictionaryItem.prev as string] ?? null);
+    setNavigationNext(config.NAVIGATION_DICTIONARY[navigationDictionaryItem.next as string] ?? null);
   }, [pathname]);
 
   if (!navigationPrev && !navigationNext) {

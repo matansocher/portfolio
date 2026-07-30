@@ -1,7 +1,15 @@
 import './styles/Chip.scss';
 import config from '../config';
 
-export default function Chip(props) {
+interface ChipProps {
+  backgroundColor?: string;
+  textColor?: string;
+  text?: string;
+  icon?: string;
+  iconColor?: string;
+}
+
+export default function Chip(props: ChipProps) {
   const { ICONS_MAP } = config;
 
   const { backgroundColor, textColor = '#151B21', text = '', icon = ICONS_MAP.SEARCH, iconColor = '#000000' } = props;

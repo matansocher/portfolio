@@ -1,4 +1,6 @@
-const config = {
+import type { Config } from './types';
+
+const config: Config = {
   STORAGE_BASE_URL: 'https://storage.googleapis.com/dkl-portfolio',
 
   PORTFOLIO_BACKEND: 'https://dkl-portfolio-be.herokuapp.com',

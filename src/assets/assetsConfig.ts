@@ -1,10 +1,12 @@
-const cardAssets = [
+import type { AssetConfig } from '../types';
+
+const cardAssets: AssetConfig[] = [
   { name: 'cardSalariesImage', file: 'card/card-salaries-image.png' },
   { name: 'cardMycoImage', file: 'card/card-myco-image.png' },
   { name: 'cardMarketerImage', file: 'card/card-marketer-image.png' },
 ];
 
-const homeAssets = [
+const homeAssets: AssetConfig[] = [
   { name: 'homeSalariesImage', file: 'home/home-salaries-image.png' },
   { name: 'homeMycoImage', file: 'home/home-myco-image.png' },
   { name: 'homeMarketerImage', file: 'home/home-marketer-image.png' },
@@ -12,7 +14,7 @@ const homeAssets = [
   { name: 'homeEmployeesBackground', file: 'home/home-employees-bg.png' },
 ];
 
-const marketerAssets = [
+const marketerAssets: AssetConfig[] = [
   { name: 'marketerTopBg', file: 'marketer/marketer-top-bg.png' },
   { name: 'marketerDesignSystem1', file: 'marketer/marketer-design-system-1.png' },
   { name: 'marketerDesignSystem2', file: 'marketer/marketer-design-system-2.png' },
@@ -25,7 +27,7 @@ const marketerAssets = [
   { name: 'marketerBottom1', file: 'marketer/marketer-bottom-1.png' },
 ];
 
-const mycoAssets = [
+const mycoAssets: AssetConfig[] = [
   { name: 'mycoTopBg', file: 'myco/myco-top-bg.png' },
   { name: 'mycoPassRight', file: 'myco/myco-pass-right.png' },
   { name: 'mycoDesignProcess1', file: 'myco/myco-design-process-1.svg' },
@@ -53,7 +55,7 @@ const mycoAssets = [
   { name: 'mycoProducers6', file: 'myco/myco-producers-6.png' },
 ];
 
-const salariesAssets = [
+const salariesAssets: AssetConfig[] = [
   { name: 'salariesTopBg', file: 'salaries/salaries-top-bg.png' },
   { name: 'salariesMainAppScreen1', file: 'salaries/salaries-mainapp-screen-1.png' },
   { name: 'salariesMainAppScreen2', file: 'salaries/salaries-mainapp-screen-2.png' },
@@ -75,7 +77,7 @@ const salariesAssets = [
   { name: 'salariesMainScreenAndUI2', file: 'salaries/salaries-main-screen-and-ui-2.png' },
 ];
 
-const employeesAssets = [
+const employeesAssets: AssetConfig[] = [
   { name: 'employeesTopBg', file: 'employees/employees-top-bg.png' },
   { name: 'employeesExamples1', file: 'employees/employees-examples-new-1.png' },
   { name: 'employeesExamples2', file: 'employees/employees-examples-new-2.png' },
@@ -89,7 +91,7 @@ const employeesAssets = [
   { name: 'employeesFinishedDesign', file: 'employees/employees-finished-design.png' },
 ];
 
-const sharedAssets = [
+const sharedAssets: AssetConfig[] = [
   { name: 'dekel', file: 'shared/dekel.png' },
   { name: 'navigationArrow', file: 'shared/navigation-arrow.svg' },
   { name: 'logoMyco', file: 'shared/logo-myco.png' },
@@ -102,7 +104,7 @@ const sharedAssets = [
   { name: 'logoGool', file: 'shared/logo-gool.png' },
 ];
 
-const assetsConfig = [
+const assetsConfig: AssetConfig[] = [
   ...cardAssets,
   ...homeAssets,
   ...marketerAssets,

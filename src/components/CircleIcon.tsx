@@ -1,7 +1,18 @@
 import './styles/CircleIcon.scss';
 import config from '../config';
 
-export default function CircleIcon(props) {
+interface CircleIconProps {
+  backgroundColor?: string;
+  textColor?: string;
+  text?: string;
+  icon?: string;
+  width?: number;
+  size?: number;
+  iconSize?: number;
+  iconColor?: string;
+}
+
+export default function CircleIcon(props: CircleIconProps) {
   const { ICONS_MAP } = config;
 
   const {
