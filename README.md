@@ -1,70 +1,60 @@
-# Getting Started with Create React App
+# Portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A single-page **portfolio site** for Dekel Nissim (Product Designer & UX Researcher). Built with **Vite** — React 19, `react-router-dom` v7, and SASS. Case-study screens plus a freelance business card with a contact form backed by a separate Heroku service.
 
-## Available Scripts
+**🤖 [AGENTS.md](./AGENTS.md)** — canonical onboarding for AI agents and humans &nbsp;·&nbsp; **⚡ [Quick Start](#quick-start)**
 
-In the project directory, you can run:
+## Quick Start
 
-### `npm start`
+```bash
+git clone https://github.com/matansocher/portfolio
+cd portfolio
+nvm use            # Node 24 (see .nvmrc)
+npm install
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+npm run dev            # http://localhost:3000
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Screens
 
-### `npm test`
+| Path             | Description                                                       |
+|------------------|-------------------------------------------------------------------|
+| `/`              | Home — hero, client logos, project list, testimonials             |
+| `/salaries`      | Case study — Salary Additions                                     |
+| `/marketer`      | Case study — Marketer                                             |
+| `/myco`          | Case study — Myco                                                 |
+| `/employees`     | Case study — Employee Onboarding                                  |
+| `/business-card` | Freelance one-pager with contact form                             |
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Routes are declared in `src/App.jsx`.
 
-### `npm run build`
+## Architecture
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **Vite** (`vite` 8, `@vitejs/plugin-react`) for build tooling and the dev server.
+- **React 19** function components + hooks; routing via **react-router-dom 7**.
+- **SASS** — one `.scss` per component/screen, plus global styles in `src/styles/`.
+- **Images are served from a Google Cloud Storage CDN**, not bundled. They are declared in `src/assets/assetsConfig.js` and resolved to URLs in `src/assets/index.js`, then referenced by name (`assets.homeMycoImage`).
+- **Config** (backend URLs, endpoints, navigation dictionary, icon map, testimonials) lives in `src/config.js`.
+- **Backend** is a separate Heroku app (`config.PORTFOLIO_BACKEND`) handling password validation and the contact form — not part of this repo.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+See **[AGENTS.md](./AGENTS.md)** for the full breakdown of structure, conventions, and how assets/config work.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Development
 
-### `npm run eject`
+```bash
+npm run dev        # dev server at http://localhost:3000 (alias: npm start)
+npm run build      # production build → build/
+npm run preview    # serve the production build locally
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Environment variables
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The app currently requires **no environment variables**. Vite exposes browser vars prefixed with `VITE_` via `import.meta.env` — add them if needed.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### For AI agents (Claude Code, Copilot, Cursor, …)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+`AGENTS.md` at the repo root is the canonical onboarding doc — conventions, patterns, file layout, env vars, and how the CDN asset pipeline works. `CLAUDE.md`, `GEMINI.md`, and `.github/copilot-instructions.md` are symlinks to it, so every agent reads the same source. If you change conventions or architecture, **update `AGENTS.md`**.
 
-## Learn More
+## Deployment
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Deployed on **Heroku** via the `Procfile` (`web: npm start`).
