@@ -31,7 +31,7 @@ Routes are declared in `src/App.tsx`.
 ## Architecture
 
 - **Vite** (`vite` 8, `@vitejs/plugin-react`) for build tooling and the dev server.
-- **TypeScript** (strict mode) — source is `.ts` / `.tsx`; `npm run build` typechecks before bundling.
+- **TypeScript** (strict mode) — source is `.ts` / `.tsx`; `npm run build` typechecks before bundling. Import alias `@` → `src` (and `~` → repo root for SCSS).
 - **React 19** function components + hooks; routing via **react-router-dom 7**.
 - **SASS** — one `.scss` per component/screen, plus global styles in `src/styles/`.
 - **Images are served from a Google Cloud Storage CDN**, not bundled. They are declared in `src/assets/assetsConfig.ts` and resolved to URLs in `src/assets/index.ts`, then referenced by name (`assets.homeMycoImage`).
@@ -45,12 +45,16 @@ See **[AGENTS.md](./AGENTS.md)** for the full breakdown of structure, convention
 ```bash
 npm run dev        # dev server at http://localhost:3000 (alias: npm start)
 npm run typecheck  # tsc --noEmit — type errors only, no output
+npm run test       # Vitest run (test:watch for watch mode)
 npm run lint       # ESLint (TS + React + hooks + a11y)
 npm run format     # Prettier write (format:check to verify)
 npm run build      # typecheck + production build → build/
 npm run preview    # serve the production build locally (Vite preview)
 npm run serve      # serve build/ the way Heroku does (sirv, SPA fallback, honors $PORT)
 ```
+
+Tests use Vitest + Testing Library (jsdom), co-located as `*.test.tsx`. CI runs the full
+gate on every push/PR to `main`: install, lint, format check, typecheck, test, build.
 
 ### Environment variables
 

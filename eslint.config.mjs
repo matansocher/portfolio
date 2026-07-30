@@ -47,7 +47,24 @@ export default tseslint.config(
     },
   },
   {
-    files: ['*.{js,mjs,cjs,ts}', 'vite.config.ts'],
+    files: ['src/**/*.{test,spec}.{ts,tsx}', 'src/test/**/*.{ts,tsx}'],
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+        vi: 'readonly',
+        describe: 'readonly',
+        it: 'readonly',
+        test: 'readonly',
+        expect: 'readonly',
+        beforeAll: 'readonly',
+        afterAll: 'readonly',
+        beforeEach: 'readonly',
+        afterEach: 'readonly',
+      },
+    },
+  },
+  {
+    files: ['*.{js,mjs,cjs,ts}', 'vite.config.ts', 'vitest.config.ts'],
     languageOptions: {
       ecmaVersion: 2022,
       sourceType: 'module',
