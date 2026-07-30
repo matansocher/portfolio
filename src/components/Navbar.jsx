@@ -28,7 +28,7 @@ export default function Navbar({ isCardNav = false, scrollToForm = null, isWhite
     if (isScrolledABit) classes.push('scrolled');
     if (isWhiteText) classes.push('white-text');
     return classes.join(' ');
-  }
+  };
 
   return (
     <header className={getClass()}>
@@ -37,11 +37,22 @@ export default function Navbar({ isCardNav = false, scrollToForm = null, isWhite
           <Link to="/">Dekel Nissim</Link>
         </div>
         <div className="header-content-right">
-          {isCardNav ? <button className="contact" onClick={scrollToForm}>Contact Me</button> : null}
-          <CopyToClipboard text="dklnsm@gmail.com" onCopy={(val) => {setShowCopied(true)}}>
+          {isCardNav ? (
+            <button className="contact" onClick={scrollToForm}>
+              Contact Me
+            </button>
+          ) : null}
+          <CopyToClipboard
+            text="dklnsm@gmail.com"
+            onCopy={() => {
+              setShowCopied(true);
+            }}
+          >
             <div className="link">
               <p>dklnsm@gmail.com</p>
-              <div className="copied" style={{ opacity: showCopied ? 1 : 0 }}><p>Copied!</p></div>
+              <div className="copied" style={{ opacity: showCopied ? 1 : 0 }}>
+                <p>Copied!</p>
+              </div>
             </div>
           </CopyToClipboard>
         </div>

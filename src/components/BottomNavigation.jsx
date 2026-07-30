@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import assets from '../assets';
 
 export default function BottomNavigation({ pathname }) {
-
   const [navigationPrev, setNavigationPrev] = useState(null);
   const [navigationNext, setNavigationNext] = useState(null);
 
@@ -22,20 +21,28 @@ export default function BottomNavigation({ pathname }) {
   return (
     <div className="bottom-navigation content">
       <div className="bottom-navigation-content">
-        {navigationPrev ? <Link to={navigationPrev.path} style={{ textDecoration: 'none' }} className="bottom-navigation-content-left">
-          <div className="nav-item">
-            <span>Previous</span>
-            <img alt="previous arrow" src={assets.navigationArrow} />
-          </div>
-          <p>{ navigationPrev.displayName }</p>
-        </Link> : <div></div>}
-        {navigationNext ? <Link to={navigationNext.path} style={{ textDecoration: 'none' }} className="bottom-navigation-content-right">
-          <div className="nav-item">
-            <span>Next</span>
-            <img alt="next arrow" src={assets.navigationArrow} />
-          </div>
-          <p>{ navigationNext.displayName }</p>
-        </Link> : <div></div>}
+        {navigationPrev ? (
+          <Link to={navigationPrev.path} style={{ textDecoration: 'none' }} className="bottom-navigation-content-left">
+            <div className="nav-item">
+              <span>Previous</span>
+              <img alt="previous arrow" src={assets.navigationArrow} />
+            </div>
+            <p>{navigationPrev.displayName}</p>
+          </Link>
+        ) : (
+          <div></div>
+        )}
+        {navigationNext ? (
+          <Link to={navigationNext.path} style={{ textDecoration: 'none' }} className="bottom-navigation-content-right">
+            <div className="nav-item">
+              <span>Next</span>
+              <img alt="next arrow" src={assets.navigationArrow} />
+            </div>
+            <p>{navigationNext.displayName}</p>
+          </Link>
+        ) : (
+          <div></div>
+        )}
       </div>
     </div>
   );

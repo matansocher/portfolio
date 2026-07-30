@@ -1,55 +1,55 @@
 @use '~/src/styles/_colors.scss' as *;
 
 .logos-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    .logos-wrapper {
-        &-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 50px;
-            img {
-                height: 100%;
-            }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .logos-wrapper {
+    &-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 50px;
+      img {
+        height: 100%;
+      }
 
-            .amdocs-logo {
-                width: 250px;
-            }
-            .tel-aviv-municipal-logo {
-                width: 150px;
-            }
-            .controlup-logo {
-                width: 150px;
-            }
-            .hippocampus-logo {
-                width: 250px;
-            }
-            .gool-logo {
-                width: 150px;
-            }
-            .stefansky-logo {
-                width: 300px;
-            }
-            .marketer-logo {
-                width: 175px;
-            }
-            .myco-logo {
-                width: 100px;
-            }
-        }
+      .amdocs-logo {
+        width: 250px;
+      }
+      .tel-aviv-municipal-logo {
+        width: 150px;
+      }
+      .controlup-logo {
+        width: 150px;
+      }
+      .hippocampus-logo {
+        width: 250px;
+      }
+      .gool-logo {
+        width: 150px;
+      }
+      .stefansky-logo {
+        width: 300px;
+      }
+      .marketer-logo {
+        width: 175px;
+      }
+      .myco-logo {
+        width: 100px;
+      }
     }
+  }
 }
 
 @media screen and (max-width: 700px) {
-    .logos-container {
-        .logos-wrapper {
-            &-container {
-                img {
-                }
-            }
+  .logos-container {
+    .logos-wrapper {
+      &-container {
+        img {
         }
+      }
     }
-} 
+  }
+}

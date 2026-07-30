@@ -5,7 +5,6 @@ $page-width: 1200px;
 .home {
   background-color: $dark-black;
   h1 {
-
   }
   .first {
     color: $light-text;
@@ -16,7 +15,14 @@ $page-width: 1200px;
     color: rgba(222, 228, 234, 0.6);
     font-weight: 600;
   }
-  h2, h3, h4, h5, p, ul, li, span {
+  h2,
+  h3,
+  h4,
+  h5,
+  p,
+  ul,
+  li,
+  span {
     color: $home-page-text;
   }
 
@@ -61,8 +67,7 @@ $page-width: 1200px;
           padding: 75px;
         }
       }
-    }  
-  
+    }
   }
 }
 
@@ -76,6 +81,6 @@ $page-width: 1200px;
     }
     &-top {
       padding: 50px 0;
-    }  
+    }
   }
 }

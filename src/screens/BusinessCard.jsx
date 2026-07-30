@@ -5,24 +5,24 @@ import config from '../config';
 import { Client, Logos, ContactForm, Navbar } from '../components';
 
 export default function BusinessCard() {
-
   const scrollToForm = () => {
     scroll.scrollToBottom();
-  }
+  };
 
   const onMarketerClick = () => {
     window.open(config.MARKETER_URL, '_blank');
-  }
+  };
 
   return (
     <>
       <Navbar isCardNav={true} scrollToForm={scrollToForm} isWhiteText={true} />
       <div className="business-card">
-
         <section className="business-card-top">
           <div className="container">
             <h1>Finding Solutions for your Design Challenges</h1>
-            <button className="green-btn" onClick={scrollToForm}>Let's Talk</button>
+            <button className="green-btn" onClick={scrollToForm}>
+              Let's Talk
+            </button>
           </div>
         </section>
 
@@ -37,7 +37,13 @@ export default function BusinessCard() {
             </div>
             <div className="content-right">
               <h3>Who am I?</h3>
-              <p>I’m Dekel, freelance UX designer.<br />With 4 years of experience in complex systems, for both Desktop & Mobile.<br />I like coming up with solutions to all sort of problems, and provide the best fit for my clients needs.</p>
+              <p>
+                I’m Dekel, freelance UX designer.
+                <br />
+                With 4 years of experience in complex systems, for both Desktop & Mobile.
+                <br />I like coming up with solutions to all sort of problems, and provide the best fit for my clients
+                needs.
+              </p>
             </div>
           </div>
         </section>
@@ -58,7 +64,9 @@ export default function BusinessCard() {
           <img alt="marketer screen examples" src={assets.cardMarketerImage} />
           <div className="content">
             <h3>Marketer</h3>
-            <p>As the first Product Designer, I created Design system for a new startup for Marketing management system.</p>
+            <p>
+              As the first Product Designer, I created Design system for a new startup for Marketing management system.
+            </p>
             <button onClick={onMarketerClick}>Go to website</button>
           </div>
         </section>
@@ -67,7 +75,10 @@ export default function BusinessCard() {
           <img alt="myco screen example" src={assets.cardMycoImage} />
           <div className="content">
             <h3>Myco</h3>
-            <p>I redesigned an Event purchase website, as well as conducted research & designed a new app for Event Management.</p>
+            <p>
+              I redesigned an Event purchase website, as well as conducted research & designed a new app for Event
+              Management.
+            </p>
           </div>
         </section>
 
@@ -75,15 +86,18 @@ export default function BusinessCard() {
           <img alt="salaries screen examples" src={assets.cardSalariesImage} />
           <div className="content">
             <h3>Salary Additions</h3>
-            <p>I worked as the UXUI Designer as well as the Product owner, as a part of the development team in charge of the entire project.</p>
+            <p>
+              I worked as the UXUI Designer as well as the Product owner, as a part of the development team in charge of
+              the entire project.
+            </p>
           </div>
         </section>
 
         <section className="business-card-clients">
           <div className="content">
             <h4>What clients say</h4>
-            {config.CLIENTS_DATA.map(clientData => {
-                return <Client key={clientData.name} clientData={clientData} />
+            {config.CLIENTS_DATA.map((clientData) => {
+              return <Client key={clientData.name} clientData={clientData} />;
             })}
           </div>
         </section>
@@ -92,12 +106,15 @@ export default function BusinessCard() {
           <div className="content">
             <div className="form-wrapper">
               <h4>Let’s talk</h4>
-              <p>About your business, or a problem you want to solve.<br />You can even just say hi - I like to meet new people</p>
+              <p>
+                About your business, or a problem you want to solve.
+                <br />
+                You can even just say hi - I like to meet new people
+              </p>
               <ContactForm />
             </div>
           </div>
         </section>
-
       </div>
     </>
   );

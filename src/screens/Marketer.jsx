@@ -7,11 +7,15 @@ export default function Marketer() {
     <>
       <Navbar />
       <div className="marketer">
-
         <section className="marketer-top" style={{ backgroundImage: `url('${assets.marketerTopBg}')` }}>
           <div className="container">
             <h1>Marketer</h1>
-            <p>Marketer is a SaaS platform designed to manage internal marketing operations. It allows to keep track, organize and efficiently cooperate with different departments and functions within the organization. This is a web app for a startup at the early stages, so at this stage it was decided to focus on desktop and postpone the design for mobile resolution.</p>
+            <p>
+              Marketer is a SaaS platform designed to manage internal marketing operations. It allows to keep track,
+              organize and efficiently cooperate with different departments and functions within the organization. This
+              is a web app for a startup at the early stages, so at this stage it was decided to focus on desktop and
+              postpone the design for mobile resolution.
+            </p>
           </div>
         </section>
 
@@ -23,7 +27,10 @@ export default function Marketer() {
             </div>
             <div className="middle">
               <h2>Design System</h2>
-              <p>The UI was planned to be clean & minimalistic and support the concept of an all-in-one place to manage & track the organization’s marketing operations.</p>
+              <p>
+                The UI was planned to be clean & minimalistic and support the concept of an all-in-one place to manage &
+                track the organization’s marketing operations.
+              </p>
               <img alt="design system example" src={assets.marketerDesignSystem3} />
               <img alt="design system example" src={assets.marketerDesignSystem4} />
             </div>
@@ -48,7 +55,6 @@ export default function Marketer() {
         <section className="marketer-bottom">
           <img alt="app screens examples" src={assets.marketerBottom1} />
         </section>
-
       </div>
 
       <BottomNavigation pathname="marketer" />

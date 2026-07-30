@@ -5,7 +5,7 @@ const query_param = `a=${new Date().getTime()}`;
 
 const files = {};
 
-assetsConfig.forEach(asset => {
+assetsConfig.forEach((asset) => {
   files[asset.name] = `${config.STORAGE_BASE_URL}/new/${asset.file}?${query_param}`;
 });
 

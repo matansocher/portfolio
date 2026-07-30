@@ -20,4 +20,4 @@ export {
   Navbar,
   PercentageCircle,
   ScrollToTopOnPageLoad,
-}
+};

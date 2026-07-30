@@ -10,25 +10,20 @@ const LOGOS = [
   { name: 'stefansky', asset: assets.logoStefansky },
   { name: 'marketer', asset: assets.logoMarketer },
   { name: 'myco', asset: assets.logoMyco },
-]
+];
 
 export default function Logos() {
-
   const renderLogos = () => {
-    return LOGOS.map(logo => {
+    return LOGOS.map((logo) => {
       const { name, asset } = logo;
-      return (
-        <img key={name} alt={`logo of ${name}`} className={`${name}-logo`} src={asset} />
-      );
-    })
-  }
+      return <img key={name} alt={`logo of ${name}`} className={`${name}-logo`} src={asset} />;
+    });
+  };
 
   return (
     <div className="logos-container">
       <div className="logos-wrapper">
-        <div className="logos-wrapper-container">
-          {renderLogos()}
-        </div>
+        <div className="logos-wrapper-container">{renderLogos()}</div>
       </div>
     </div>
   );

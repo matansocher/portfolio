@@ -12,10 +12,23 @@
     "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "^19.2.8",
     "react-router-dom": "^7.18.2",
-    "react-scroll": "^1.8.7"
+    "react-scroll": "^1.8.7",
+    "sirv-cli": "^3.0.1"
   },
   "devDependencies": {
+    "@commitlint/cli": "^21.2.1",
+    "@commitlint/config-conventional": "^21.2.0",
+    "@eslint/js": "^9.39.5",
     "@vitejs/plugin-react": "^6.0.5",
+    "eslint": "^9.39.5",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "globals": "^17.8.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.2.0",
+    "prettier": "^3.9.6",
     "sass": "^1.52.2",
     "vite": "^8.2.0"
   },
@@ -23,7 +36,23 @@
     "start": "vite",
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "serve": "sirv build --single --host --port ${PORT:-3000}",
+    "heroku-postbuild": "npm run build",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write \"src/**/*.{js,jsx,scss,css}\"",
+    "format:check": "prettier --check \"src/**/*.{js,jsx,scss,css}\"",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "src/**/*.{scss,css}": [
+      "prettier --write"
+    ]
   },
   "browserslist": {
     "production": [

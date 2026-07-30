@@ -10,10 +10,23 @@ body {
   zoom: 90%;
 }
 
-h1, h2, h3, h4, h5, h6, p, a, span, ul, li, input, label, button {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+span,
+ul,
+li,
+input,
+label,
+button {
   font-family: 'Raleway', sans-serif;
   margin: 0;
-  color: #151B21;
+  color: #151b21;
 }
 
 h1 {
@@ -36,7 +49,12 @@ h4 {
   font-size: 22px;
 }
 
-p, ol, li, input, label, button {
+p,
+ol,
+li,
+input,
+label,
+button {
   font-weight: 400;
   font-size: 20px;
   line-height: 32px;
@@ -50,22 +68,23 @@ section {
   h1 {
     font-size: 36px !important;
   }
-  
+
   h2 {
     font-size: 24px !important;
   }
-  
+
   h3 {
     font-size: 20px !important;
     font-weight: 600 !important;
   }
-  
+
   h4 {
     font-size: 18px !important;
     font-weight: 600 !important;
   }
-  
-  p, li {
+
+  p,
+  li {
     font-size: 16px !important;
     line-height: 28px !important;
     font-weight: 400 !important;
@@ -111,6 +130,6 @@ section {
   color: red !important;
 }
 
-.success-message{
+.success-message {
   color: green !important;
 }

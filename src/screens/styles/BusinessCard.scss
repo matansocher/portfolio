@@ -3,9 +3,19 @@
 .business-card {
   background-color: $dark-black;
   h1 {
-    color: #EFF7FB;
+    color: #eff7fb;
   }
-  h2, h3, h4, h5, p, ul, li, span, input, textarea, label {
+  h2,
+  h3,
+  h4,
+  h5,
+  p,
+  ul,
+  li,
+  span,
+  input,
+  textarea,
+  label {
     color: $primary-text;
   }
 
@@ -31,12 +41,10 @@
       gap: 100px;
       &-left {
         img {
-
         }
       }
       &-right {
         h3 {
-
         }
         p {
           margin-top: 20px;
@@ -77,8 +85,18 @@
     }
     .content {
       // margin-top: 100px;
-      h2, h3, h4, h5, p, ul, li, span, input, textarea, label {
-        color: #ffffff
+      h2,
+      h3,
+      h4,
+      h5,
+      p,
+      ul,
+      li,
+      span,
+      input,
+      textarea,
+      label {
+        color: #ffffff;
       }
       h3 {
         max-width: 200px;
@@ -105,11 +123,15 @@
   }
 
   .marketer {
-    background: linear-gradient(90deg, rgba(13, 13, 13, 0.74) 0%, rgba(13, 13, 13, 0) 100%), linear-gradient(104.91deg, #5F8FED 0.81%, #5FED79 97.56%), #FFFFFF;;
+    background:
+      linear-gradient(90deg, rgba(13, 13, 13, 0.74) 0%, rgba(13, 13, 13, 0) 100%),
+      linear-gradient(104.91deg, #5f8fed 0.81%, #5fed79 97.56%), #ffffff;
   }
 
   .myco {
-    background: linear-gradient(90deg, rgba(13, 13, 13, 0.51) 35.55%, rgba(13, 13, 13, 0) 100%), linear-gradient(106.44deg, #FF8906 -0.02%, rgba(255, 6, 164, 0.56) 101.6%), #FFFFFF;;
+    background:
+      linear-gradient(90deg, rgba(13, 13, 13, 0.51) 35.55%, rgba(13, 13, 13, 0) 100%),
+      linear-gradient(106.44deg, #ff8906 -0.02%, rgba(255, 6, 164, 0.56) 101.6%), #ffffff;
     img {
       height: 80%;
       right: 10%;
@@ -124,7 +146,15 @@
   }
 
   .salaries {
-    background: linear-gradient(144.93deg, #147CCC 36.33%, rgba(90, 157, 120, 0.94) 69.26%, rgba(214, 189, 28, 0.45) 143.77%, rgba(214, 189, 28, 0) 143.77%), #FFFFFF;;
+    background:
+      linear-gradient(
+        144.93deg,
+        #147ccc 36.33%,
+        rgba(90, 157, 120, 0.94) 69.26%,
+        rgba(214, 189, 28, 0.45) 143.77%,
+        rgba(214, 189, 28, 0) 143.77%
+      ),
+      #ffffff;
     img {
       height: 65%;
       right: 1%;
@@ -139,7 +169,7 @@
   }
 
   .employees {
-    background: linear-gradient(105.63deg, #777DFB -0.01%, #F7DAF9 78.05%), #FFFFFF;
+    background: linear-gradient(105.63deg, #777dfb -0.01%, #f7daf9 78.05%), #ffffff;
     img {
       height: 80%;
       right: 10%;
@@ -150,7 +180,6 @@
 
   &-clients {
     h4 {
-
     }
   }
 
@@ -159,7 +188,6 @@
       .form-wrapper {
         padding: 50px;
         h4 {
-
         }
         p {
           margin-top: 10px;
@@ -167,7 +195,6 @@
       }
     }
   }
-
 }
 
 @media screen and (max-width: 1300px) {
@@ -210,7 +237,7 @@
         flex-direction: column;
         gap: 40px;
       }
-    }  
+    }
   }
 }
 
@@ -223,7 +250,6 @@
       }
       .content {
         h3 {
-          
         }
         p {
         }
@@ -264,10 +290,8 @@
         .form-wrapper {
           padding: 20px !important;
           h4 {
-  
           }
           p {
-    
           }
         }
       }
@@ -292,12 +316,11 @@
         }
         &-right {
           h3 {
-  
           }
           p {
           }
         }
       }
-    }  
+    }
   }
 }

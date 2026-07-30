@@ -44,7 +44,8 @@ See **[AGENTS.md](./AGENTS.md)** for the full breakdown of structure, convention
 ```bash
 npm run dev        # dev server at http://localhost:3000 (alias: npm start)
 npm run build      # production build → build/
-npm run preview    # serve the production build locally
+npm run preview    # serve the production build locally (Vite preview)
+npm run serve      # serve build/ the way Heroku does (sirv, SPA fallback, honors $PORT)
 ```
 
 ### Environment variables
@@ -57,4 +58,8 @@ The app currently requires **no environment variables**. Vite exposes browser va
 
 ## Deployment
 
-Deployed on **Heroku** via the `Procfile` (`web: npm start`).
+Deployed on **Heroku**. On deploy, the Node buildpack runs `heroku-postbuild`
+(`vite build`) to produce `build/`, then the `Procfile` (`web: npm run serve`)
+serves that static output with [`sirv`](https://github.com/lukeed/sirv) — SPA
+fallback enabled (client-side routes resolve to `index.html`) and binding to
+Heroku's `$PORT`.

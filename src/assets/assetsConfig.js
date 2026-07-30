@@ -1,4 +1,3 @@
-
 const cardAssets = [
   { name: 'cardSalariesImage', file: 'card/card-salaries-image.png' },
   { name: 'cardMycoImage', file: 'card/card-myco-image.png' },
