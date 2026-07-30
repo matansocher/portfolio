@@ -87,7 +87,7 @@ This is a live portfolio. Unless explicitly asked otherwise, **do not change run
 - Icons come from **Unicons** (`uil uil-<name>` classes; the font/CSS is loaded in `index.html`), driven by `config.ICONS_MAP`.
 
 ### Deployment
-- `Procfile` (`web: npm start`) → deployed on **Heroku**.
+- `Procfile` (`web: npm run serve`) → deployed on **Heroku**. On deploy the Node buildpack runs `heroku-postbuild` (`vite build`) to produce `build/`, then `npm run serve` serves that static output with `sirv` (SPA fallback so client-side routes resolve to `index.html`, binds to Heroku's `$PORT`). `sirv-cli` is a runtime **dependency** (not devDependency) because Heroku prunes dev deps in production.
 
 ---
 
@@ -185,7 +185,8 @@ prefixed with `VITE_` via `import.meta.env` — add them (and document here) if 
 npm install        # install deps (Node 24 — use nvm)
 npm run dev        # dev server at http://localhost:3000 (alias: npm start)
 npm run build      # production build → build/
-npm run preview    # serve the production build locally
+npm run preview    # serve the production build locally (Vite preview)
+npm run serve      # serve build/ the way Heroku does (sirv, SPA fallback, honors $PORT)
 ```
 
 There are currently **no tests** in the repo.

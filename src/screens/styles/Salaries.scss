@@ -1,13 +1,13 @@
 @use '~/src/styles/_colors.scss' as *;
 
 .salaries {
-
   &-top {
     background-size: cover;
     padding: 250px 0;
-    h1, p {
-      color: #EFF7FB;
-    }  
+    h1,
+    p {
+      color: #eff7fb;
+    }
     .container {
       h1 {
         max-width: 500px;
@@ -28,7 +28,8 @@
       display: flex;
       align-items: flex-start;
       justify-content: center;
-      &-left, &-right {
+      &-left,
+      &-right {
         width: 50%;
       }
       &-left {
@@ -88,24 +89,30 @@
         padding: 36px;
         margin-top: 75px;
         h3 {
-
         }
         p {
           margin-top: 25px;
         }
         ul {
           li {
-
-          }   
+          }
         }
       }
     }
   }
 
   &-tldr {
-    background: linear-gradient(102.41deg, #147CCC -33.99%, #00FAFE 170.87%);
-    h1, h2, h3, h4, h5, p, ul, li, span {
-      color: #EFF7FB;
+    background: linear-gradient(102.41deg, #147ccc -33.99%, #00fafe 170.87%);
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    p,
+    ul,
+    li,
+    span {
+      color: #eff7fb;
     }
     .content {
       display: flex;
@@ -113,7 +120,6 @@
       justify-content: space-between;
       &-left {
         h5 {
-
         }
         h3 {
           margin-top: 10px;
@@ -129,7 +135,6 @@
         }
       }
       &-right {
-
       }
     }
   }
@@ -161,7 +166,6 @@
             box-shadow: 0px 4px 48px rgba(0, 0, 0, 0.03);
             border-radius: 48px;
             img {
-  
             }
           }
           p {
@@ -212,27 +216,25 @@
                 img {
                   width: 100%;
                 }
-                
               }
               p {
-  
               }
               &:nth-child(1) {
                 .icon-wrapper {
-                  background: #0C202E;
+                  background: #0c202e;
                 }
               }
               &:nth-child(2) {
                 .icon-wrapper {
-                  background: #1488CC;
+                  background: #1488cc;
                 }
               }
               &:nth-child(3) {
                 .icon-wrapper {
-                  background: #0E8F99;
+                  background: #0e8f99;
                 }
               }
-            } 
+            }
           }
           .multiple {
             justify-content: space-between;
@@ -243,11 +245,12 @@
   }
 
   &-observations {
-    background-color: #0C202E;
+    background-color: #0c202e;
     .content {
       width: 70%;
-      h3, p {
-        color: #EFF7FB;
+      h3,
+      p {
+        color: #eff7fb;
       }
       p {
         margin-top: 20px;
@@ -323,7 +326,8 @@
         align-items: flex-start;
         margin-top: 30px;
         gap: 50px;
-        &-left, &-right {
+        &-left,
+        &-right {
           &-top {
             .text-by-the-icon {
               font-weight: 700 !important;
@@ -339,7 +343,8 @@
         &-right {
           width: 50%;
         }
-        &-left, &-right {
+        &-left,
+        &-right {
           &-top {
             display: flex;
             align-items: center;
@@ -351,7 +356,6 @@
             }
           }
           &-middle {
-
           }
         }
       }
@@ -366,9 +370,14 @@
   }
 
   &-main-screen-and-ui {
-    background-color: #0E8F99;
-    h2, h3, h4, p, ul, li {
-      color: #EFF7FB;
+    background-color: #0e8f99;
+    h2,
+    h3,
+    h4,
+    p,
+    ul,
+    li {
+      color: #eff7fb;
     }
     .content {
       h2 {
@@ -403,7 +412,6 @@
 
   &-results {
     .content {
-
       h2 {
         margin-top: 20px;
       }
@@ -414,7 +422,6 @@
         &-left {
           width: 50%;
           h2 {
-
           }
           p {
             margin-top: 20px;
@@ -450,12 +457,10 @@
       }
     }
   }
-
 }
 
 @media screen and (max-width: 1100px) {
   .salaries {
-
     &-top {
       padding: 100px 0;
     }
@@ -467,7 +472,8 @@
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
-        &-left, &-right {
+        &-left,
+        &-right {
           width: 90%;
         }
         &-left {
@@ -510,7 +516,7 @@
         }
       }
     }
-  
+
     &-user-interviews {
       .content {
         &-content {
@@ -586,8 +592,7 @@
         }
       }
     }
-  
-  }   
+  }
 }
 
 @media screen and (max-width: 800px) {
@@ -627,7 +632,8 @@
       .content {
         .side-by-side {
           flex-direction: column;
-          &-left, &-right {
+          &-left,
+          &-right {
             width: unset;
           }
         }
@@ -654,16 +660,15 @@
         }
       }
     }
-  }  
+  }
 }
 
 @media screen and (max-width: 500px) {
   .salaries {
-
     &-top {
       padding: 70px 0 50px;
     }
-  
+
     &-user-interviews {
       .content {
         &-content {
@@ -677,6 +682,5 @@
         }
       }
     }
-  
-  }   
+  }
 }

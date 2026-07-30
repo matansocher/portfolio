@@ -4,12 +4,15 @@
   background-color: white;
   box-shadow: 0 2px 20px rgb(0 0 0 / 20%);
   .header-content {
-    &-left, &-right {
+    &-left,
+    &-right {
       // a, button, .link, .contact {
-      a, button, .link {
-        color: #151B21 !important;
+      a,
+      button,
+      .link {
+        color: #151b21 !important;
         p {
-          color: #151B21 !important;
+          color: #151b21 !important;
           font-weight: 500 !important;
         }
       }
@@ -19,12 +22,15 @@
 
 .white-text {
   .header-content {
-    &-left, &-right {
+    &-left,
+    &-right {
       // a, button, .link, .contact {
-      a, button, .link {
-        color: #EFF7FB;
+      a,
+      button,
+      .link {
+        color: #eff7fb;
         p {
-          color: #EFF7FB;
+          color: #eff7fb;
         }
       }
     }
@@ -39,10 +45,10 @@ header {
   width: 100%;
   margin: 0 auto;
   height: 80px;
-  transition: .3s;
-  
+  transition: 0.3s;
+
   z-index: 1;
-  box-shadow: 0 0 0 rgba(0, 0, 0, .3);
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0.3);
   .header-content {
     width: 90%;
     max-width: 1200px;
@@ -50,15 +56,17 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    a, button {
-      color: #151B21;
+    a,
+    button {
+      color: #151b21;
       margin: 0;
       background-color: transparent;
       border: none;
       cursor: pointer;
     }
     &-left {
-      a, button {
+      a,
+      button {
         font-weight: 800;
         font-size: 22px;
         text-decoration: none;
@@ -69,7 +77,8 @@ header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      a, button {
+      a,
+      button {
         margin-left: 30px;
         font-weight: 500;
         font-size: 16px;
@@ -109,10 +118,10 @@ header {
           top: 36px;
           left: 50%;
           transform: translate(-50%, 0);
-          background-color: rgba(104, 203, 155, .8);
+          background-color: rgba(104, 203, 155, 0.8);
           border-radius: 8px;
           padding: 0 8px;
-          transition: .3s;
+          transition: 0.3s;
           p {
             font-size: 16px !important;
             font-weight: 500;
@@ -130,12 +139,14 @@ header {
     height: 60px;
     .header-content {
       &-left {
-        a, button {
+        a,
+        button {
           font-size: 18px;
         }
       }
       &-right {
-        a, button {
+        a,
+        button {
           font-size: 16px;
         }
       }
@@ -147,15 +158,17 @@ header {
   header {
     .header-content {
       &-left {
-        a, button {
+        a,
+        button {
         }
       }
       &-right {
-        a, button {
+        a,
+        button {
           margin-left: 30px;
         }
         // .contact {
-          // display: none;
+        // display: none;
         // }
       }
     }

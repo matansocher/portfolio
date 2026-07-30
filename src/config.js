@@ -1,4 +1,3 @@
-
 const config = {
   STORAGE_BASE_URL: 'https://storage.googleapis.com/dkl-portfolio',
 
@@ -9,10 +8,10 @@ const config = {
   MARKETER_URL: 'https://www.gomarketer.co',
 
   NAVIGATION_DICTIONARY: {
-    'salaries': { path: '/salaries', displayName: 'Salary Additions', prev: null, next: 'marketer' },
-    'marketer': { path: '/marketer', displayName: 'Marketer', prev: 'salaries', next: 'myco' },
-    'myco': { path: '/myco', displayName: 'Myco', prev: 'marketer', next: 'employees' },
-    'employees': { path: '/employees', displayName: 'Employee Onboarding', prev: 'myco', next: null },
+    salaries: { path: '/salaries', displayName: 'Salary Additions', prev: null, next: 'marketer' },
+    marketer: { path: '/marketer', displayName: 'Marketer', prev: 'salaries', next: 'myco' },
+    myco: { path: '/myco', displayName: 'Myco', prev: 'marketer', next: 'employees' },
+    employees: { path: '/employees', displayName: 'Employee Onboarding', prev: 'myco', next: null },
   },
 
   ICONS_MAP: {
@@ -47,7 +46,7 @@ const config = {
       company: 'Hippocampus',
     },
     {
-      text: 'Best ever!! I\'ve been working with Dekel for a few months. Results are amazing - an energy blast, relentless professional, an amazing addition to any team, an independent, pro-active, engaged and engaging professional. Dekel had responded to everything we asked within literally minutes. Not only she is a pro, but she manages dynamic scenarios, which is super rare. She is quick on her feet, manages complex situations very well, delivers amazing results with superb quality, runs incredibly deep research and is the type of pro anyone would wish themselves',
+      text: "Best ever!! I've been working with Dekel for a few months. Results are amazing - an energy blast, relentless professional, an amazing addition to any team, an independent, pro-active, engaged and engaging professional. Dekel had responded to everything we asked within literally minutes. Not only she is a pro, but she manages dynamic scenarios, which is super rare. She is quick on her feet, manages complex situations very well, delivers amazing results with superb quality, runs incredibly deep research and is the type of pro anyone would wish themselves",
       name: 'Ariel Zamir',
       title: 'Leading Teams to Build Things That Matter',
       company: 'NetApp',
