@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { BusinessCard, Home, Salaries, Myco, Marketer, Employees } from './screens';
-import { ScrollToTopOnPageLoad } from './components';
-import './styles/_shared.scss';
+import { BusinessCard, Home, Salaries, Myco, Marketer, Employees } from '@/screens';
+import { ScrollToTopOnPageLoad } from '@/components';
+import '@/styles/_shared.scss';
 
 export default function App() {
   return (
