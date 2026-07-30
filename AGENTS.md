@@ -8,11 +8,11 @@ Read this top-to-bottom on first contact with the repo. It is intentionally dens
 
 ## TL;DR for a fresh agent
 
-- **What this is:** A single-page **portfolio site** for Dekel Nissim (Product Designer & UX Researcher), built with **Vite**. Plain JavaScript (no TypeScript), React 19, `react-router-dom` v7, SASS for styling.
-- **Entry point:** `src/index.jsx` renders `src/App.jsx`, which defines the routes.
-- **Routing:** 5 case-study screens (`salaries`, `marketer`, `myco`, `employees`) plus a `business-card` screen and a catch-all `Home`. See `src/App.jsx`.
-- **Assets:** Images are **not** bundled. They are served from a Google Cloud Storage CDN and resolved at runtime from `src/assets/assetsConfig.js` via `src/assets/index.js` → imported as `assets` and referenced by name (e.g. `assets.homeMycoImage`).
-- **Config:** `src/config.js` holds the backend URLs, endpoints, navigation dictionary, icon map, and client testimonial data.
+- **What this is:** A single-page **portfolio site** for Dekel Nissim (Product Designer & UX Researcher), built with **Vite**. **TypeScript**, React 19, `react-router-dom` v7, SASS for styling.
+- **Entry point:** `src/index.tsx` renders `src/App.tsx`, which defines the routes.
+- **Routing:** 5 case-study screens (`salaries`, `marketer`, `myco`, `employees`) plus a `business-card` screen and a catch-all `Home`. See `src/App.tsx`.
+- **Assets:** Images are **not** bundled. They are served from a Google Cloud Storage CDN and resolved at runtime from `src/assets/assetsConfig.ts` via `src/assets/index.ts` → imported as `assets` and referenced by name (e.g. `assets.homeMycoImage`).
+- **Config:** `src/config.ts` holds the backend URLs, endpoints, navigation dictionary, icon map, and client testimonial data. Shared domain types live in `src/types.ts`.
 - **Backend:** A separate Heroku service (`config.PORTFOLIO_BACKEND`) handles two things: password validation (`Auth`) and the contact form (`ContactForm`). It is not in this repo.
 - **Local dev:** `npm install`, then `npm run dev` (or `npm start`). No env vars are required.
 
@@ -77,7 +77,7 @@ This is a live portfolio. Unless explicitly asked otherwise, **do not change run
 - **React 19** with `ReactDOM.createRoot` and `<React.StrictMode>`.
 - **react-router-dom 7** — declarative `<Routes>` / `<Route>`.
 - **SASS** (`sass`, Dart Sass) — component-scoped `.scss` files.
-- **Plain JavaScript** — no TypeScript. JSX-containing files use the `.jsx` extension.
+- **TypeScript** (`typescript` 5.9, strict mode) — source is `.ts` / `.tsx`. Typecheck with `npm run typecheck` (`tsc --noEmit`); it also runs before `vite build`. Shared domain types live in `src/types.ts`.
 - **Node 24** — pinned in `package.json` `engines` and `.nvmrc`.
 
 ### Notable dependencies
@@ -96,20 +96,23 @@ This is a live portfolio. Unless explicitly asked otherwise, **do not change run
 ```
 portfolio/
 ├── public/                 # Static assets served as-is (favicon, manifest, robots.txt, logos)
-├── index.html              # Vite HTML entry (loads /src/index.jsx)
-├── vite.config.js          # Vite config (React plugin, `~` alias, dev server, build outDir)
+├── index.html              # Vite HTML entry (loads /src/index.tsx)
+├── vite.config.ts          # Vite config (React plugin, `~` alias, dev server, build outDir)
+├── tsconfig.json           # TypeScript config (strict, react-jsx, bundler resolution)
 ├── .agents/skills/         # Reusable SKILL.md skills (canonical copy)
 ├── .claude/skills          # symlink → ../.agents/skills
 ├── src/
-│   ├── index.jsx           # React entry — mounts <App /> in StrictMode
-│   ├── App.jsx             # BrowserRouter + route table
-│   ├── config.js           # Backend URLs, endpoints, nav dictionary, icon map, testimonials
+│   ├── index.tsx           # React entry — mounts <App /> in StrictMode
+│   ├── App.tsx             # BrowserRouter + route table
+│   ├── config.ts           # Backend URLs, endpoints, nav dictionary, icon map, testimonials
+│   ├── types.ts            # Shared domain types (Config, ClientData, NavigationItem, ...)
+│   ├── vite-env.d.ts       # Vite client type reference
 │   ├── assets/
-│   │   ├── assetsConfig.js # [{ name, file }] list of every CDN image, grouped by screen
-│   │   └── index.js        # Builds `{ name: cdnUrl }` map from assetsConfig (default export `assets`)
-│   ├── components/         # Reusable UI (default-exported), re-exported from components/index.js
+│   │   ├── assetsConfig.ts # AssetConfig[] list of every CDN image, grouped by screen
+│   │   └── index.ts        # Builds `{ name: cdnUrl }` map from assetsConfig (default export `assets`)
+│   ├── components/         # Reusable UI (default-exported), re-exported from components/index.ts
 │   │   └── styles/         # One .scss per component
-│   ├── screens/            # Route-level pages, re-exported from screens/index.js
+│   ├── screens/            # Route-level pages, re-exported from screens/index.ts
 │   │   └── styles/         # One .scss per screen
 │   └── styles/             # Global SASS: index.scss (base), _shared.scss, _colors.scss
 ├── .nvmrc                  # Node version
@@ -120,7 +123,7 @@ portfolio/
 
 ## Screens & Routing
 
-Routes are declared in `src/App.jsx`. All screens are default-exported and re-exported through `src/screens/index.js`.
+Routes are declared in `src/App.tsx`. All screens are default-exported and re-exported through `src/screens/index.ts`.
 
 | Path             | Screen         | Notes                                                        |
 |------------------|----------------|-------------------------------------------------------------|
@@ -139,25 +142,25 @@ Routes are declared in `src/App.jsx`. All screens are default-exported and re-ex
 
 **Images are never imported/bundled.** The flow:
 
-1. `src/assets/assetsConfig.js` lists every image as `{ name, file }`, grouped by screen (`cardAssets`, `homeAssets`, `marketerAssets`, …).
-2. `src/assets/index.js` maps each entry to a CDN URL: `` `${config.STORAGE_BASE_URL}/new/${asset.file}?a=<timestamp>` `` (the timestamp is a cache-buster).
+1. `src/assets/assetsConfig.ts` lists every image as `{ name, file }` (typed `AssetConfig`), grouped by screen (`cardAssets`, `homeAssets`, `marketerAssets`, …).
+2. `src/assets/index.ts` maps each entry to a CDN URL: `` `${config.STORAGE_BASE_URL}/new/${asset.file}?a=<timestamp>` `` (the timestamp is a cache-buster).
 3. Components import the default `assets` object and reference images by name: `<img src={assets.homeMycoImage} />`.
 
-**To add an image:** upload it to the CDN bucket under the right folder, add a `{ name, file }` entry to the matching group in `assetsConfig.js`, then reference `assets.<name>` in the component. Do not add binary files to the repo.
+**To add an image:** upload it to the CDN bucket under the right folder, add a `{ name, file }` entry to the matching group in `assetsConfig.ts`, then reference `assets.<name>` in the component. Do not add binary files to the repo.
 
 ---
 
-## Code Style (as it exists today)
+## Code Style
 
 Match the existing conventions — they are consistent across the codebase:
 
-- **Default exports** for every component and screen; a barrel `index.js` re-exports them (`components/index.js`, `screens/index.js`). This differs from other repos — keep default exports here.
-- **Function components only**, declared as `export default function Name(props) { … }`. Hooks (`useState`, `useEffect`, `useRef`, `useLocation`) — no class components.
-- **Props:** either destructured in the signature (`function Navbar({ isCardNav = false })`) or destructured from `props` in the body (`const { text, icon } = props;`). Both patterns are in use.
+- **Default exports** for every component and screen; a barrel `index.ts` re-exports them (`components/index.ts`, `screens/index.ts`). This differs from other repos — keep default exports here.
+- **Function components only**, declared as `export default function Name(props: Props) { … }`. Hooks (`useState`, `useEffect`, `useRef`, `useLocation`) — no class components.
+- **Props:** typed with a component-local `interface` (or an inline type), destructured in the signature (`function Navbar({ isCardNav = false }: NavbarProps)`) or from `props` in the body. Shared/domain types live in `src/types.ts`.
 - **One SCSS file per component/screen**, imported at the top of the file (`import './styles/Navbar.scss';`). Global styles live in `src/styles/`.
-- **Naming:** components/screens PascalCase (`BottomNavigation.js`), config keys SCREAMING_SNAKE (`NAVIGATION_DICTIONARY`), variables/functions camelCase.
-- **No prop-types, no TypeScript, no JSDoc.** Keep components small and self-explanatory.
-- **Formatting:** 2-space indent, single quotes, semicolons. No Prettier/ESLint config.
+- **Naming:** components/screens PascalCase (`BottomNavigation.tsx`), config keys SCREAMING_SNAKE (`NAVIGATION_DICTIONARY`), variables/functions camelCase.
+- **TypeScript:** strict mode is on. Prefer explicit prop interfaces; `any` is a lint warning, not an error — avoid it where a real type is cheap. Use `import type { … }` for type-only imports.
+- **Formatting:** enforced by Prettier + ESLint. 2-space indent, single quotes, semicolons, `printWidth` 120.
 
 ---
 
@@ -184,7 +187,10 @@ prefixed with `VITE_` via `import.meta.env` — add them (and document here) if 
 ```bash
 npm install        # install deps (Node 24 — use nvm)
 npm run dev        # dev server at http://localhost:3000 (alias: npm start)
-npm run build      # production build → build/
+npm run typecheck  # tsc --noEmit (no output, just type errors)
+npm run lint       # ESLint (flat config, TS + React + hooks + a11y)
+npm run format     # Prettier write (format:check to verify only)
+npm run build      # typecheck + production build → build/
 npm run preview    # serve the production build locally (Vite preview)
 npm run serve      # serve build/ the way Heroku does (sirv, SPA fallback, honors $PORT)
 ```
@@ -211,18 +217,18 @@ Each skill is `.agents/skills/{name}/SKILL.md` with standard frontmatter (`name`
 
 ## Quick Reference
 
-- Add a route → `src/App.jsx` + a screen in `src/screens/` + export from `src/screens/index.js`.
-- Add a reusable component → `src/components/` + a `styles/*.scss` + export from `src/components/index.js`.
+- Add a route → `src/App.tsx` + a screen in `src/screens/` + export from `src/screens/index.ts`.
+- Add a reusable component → `src/components/` + a `styles/*.scss` + export from `src/components/index.ts`.
 - Add/adjust prev-next case-study nav → `config.NAVIGATION_DICTIONARY`.
 - Add a testimonial → `config.CLIENTS_DATA`.
 - Change colors → prefer `src/styles/_colors.scss` (note: several components still hardcode hex values inline).
-- Change backend URL/endpoints → `src/config.js`.
+- Change backend URL/endpoints → `src/config.ts`.
 
 ---
 
 ## When in doubt
 
 - Don't change visual output or behavior unless that is the task.
-- Don't add binary assets to the repo — use the CDN + `assetsConfig.js`.
-- Keep default exports and the barrel-`index.js` pattern intact.
+- Don't add binary assets to the repo — use the CDN + `assetsConfig.ts`.
+- Keep default exports and the barrel-`index.ts` pattern intact.
 - Ask before committing, pushing, or opening a PR.

@@ -1,17 +1,19 @@
 import js from '@eslint/js';
+import tseslint from 'typescript-eslint';
 import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
 import globals from 'globals';
 import prettier from 'eslint-config-prettier';
 
-export default [
+export default tseslint.config(
   {
     ignores: ['build/**', 'node_modules/**', 'public/**'],
   },
   js.configs.recommended,
+  ...tseslint.configs.recommended,
   {
-    files: ['src/**/*.{js,jsx}'],
+    files: ['src/**/*.{ts,tsx}'],
     languageOptions: {
       ecmaVersion: 2022,
       sourceType: 'module',
@@ -39,11 +41,13 @@ export default [
       'react/no-unescaped-entities': 'off',
       'jsx-a11y/label-has-associated-control': 'warn',
       'react-hooks/set-state-in-effect': 'warn',
-      'no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+      'no-unused-vars': 'off',
+      '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+      '@typescript-eslint/no-explicit-any': 'warn',
     },
   },
   {
-    files: ['*.{js,mjs,cjs}', 'vite.config.js'],
+    files: ['*.{js,mjs,cjs,ts}', 'vite.config.ts'],
     languageOptions: {
       ecmaVersion: 2022,
       sourceType: 'module',
@@ -53,4 +57,4 @@ export default [
     },
   },
   prettier,
-];
+);

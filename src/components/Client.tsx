@@ -1,6 +1,11 @@
 import './styles/Client.scss';
+import type { ClientData } from '../types';
 
-export default function Client({ clientData }) {
+interface ClientProps {
+  clientData: ClientData;
+}
+
+export default function Client({ clientData }: ClientProps) {
   return (
     <div className="clients-item">
       <span className="quote quote-1">“</span>

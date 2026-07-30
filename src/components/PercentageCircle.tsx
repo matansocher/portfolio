@@ -1,6 +1,14 @@
 import './styles/PercentageCircle.scss';
 
-export default function PercentageCircle(props) {
+interface PercentageCircleProps {
+  percent: number;
+  text?: string;
+  circleColor?: string;
+  textColor?: string;
+  innerCircleColor?: string;
+}
+
+export default function PercentageCircle(props: PercentageCircleProps) {
   const { percent, text = '', circleColor, textColor, innerCircleColor = '#d6d6d6' } = props;
 
   const circleSize = 70;

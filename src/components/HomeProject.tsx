@@ -1,6 +1,15 @@
 import './styles/HomeProjects.scss';
 
-export default function HomeProject(props) {
+interface HomeProjectProps {
+  name: string;
+  header?: string;
+  text?: string;
+  sideImage?: string;
+  darkText?: boolean;
+  backgroundImage?: string;
+}
+
+export default function HomeProject(props: HomeProjectProps) {
   const { name, header, text, sideImage, darkText = false, backgroundImage } = props;
 
   return (
