@@ -8,13 +8,13 @@ Read this top-to-bottom on first contact with the repo. It is intentionally dens
 
 ## TL;DR for a fresh agent
 
-- **What this is:** A single-page **portfolio site** for Dekel Nissim (Product Designer & UX Researcher), bootstrapped with **Create React App**. Plain JavaScript (no TypeScript), React 18, `react-router-dom` v6, SASS for styling.
-- **Entry point:** `src/index.js` renders `src/App.js`, which defines the routes.
-- **Routing:** 5 case-study screens (`salaries`, `marketer`, `myco`, `employees`) plus a `business-card` screen and a catch-all `Home`. See `src/App.js`.
+- **What this is:** A single-page **portfolio site** for Dekel Nissim (Product Designer & UX Researcher), built with **Vite**. Plain JavaScript (no TypeScript), React 19, `react-router-dom` v7, SASS for styling.
+- **Entry point:** `src/index.jsx` renders `src/App.jsx`, which defines the routes.
+- **Routing:** 5 case-study screens (`salaries`, `marketer`, `myco`, `employees`) plus a `business-card` screen and a catch-all `Home`. See `src/App.jsx`.
 - **Assets:** Images are **not** bundled. They are served from a Google Cloud Storage CDN and resolved at runtime from `src/assets/assetsConfig.js` via `src/assets/index.js` → imported as `assets` and referenced by name (e.g. `assets.homeMycoImage`).
 - **Config:** `src/config.js` holds the backend URLs, endpoints, navigation dictionary, icon map, and client testimonial data.
 - **Backend:** A separate Heroku service (`config.PORTFOLIO_BACKEND`) handles two things: password validation (`Auth`) and the contact form (`ContactForm`). It is not in this repo.
-- **Local dev:** `cp .env.example .env` (defaults `REACT_APP_RUN_ENV=dev` to skip the password gate), then `npm start`.
+- **Local dev:** `npm install`, then `npm run dev` (or `npm start`). No env vars are required.
 
 ---
 
@@ -73,18 +73,18 @@ This is a live portfolio. Unless explicitly asked otherwise, **do not change run
 ## Tech Stack
 
 ### Core
-- **Create React App** (`react-scripts` 5) — build tooling, dev server, Jest test runner. Not ejected.
-- **React 18** with `ReactDOM.createRoot` and `<React.StrictMode>`.
-- **react-router-dom 6** — declarative `<Routes>` / `<Route>`.
+- **Vite** (`vite` 8, `@vitejs/plugin-react`) — build tooling and dev server.
+- **React 19** with `ReactDOM.createRoot` and `<React.StrictMode>`.
+- **react-router-dom 7** — declarative `<Routes>` / `<Route>`.
 - **SASS** (`sass`, Dart Sass) — component-scoped `.scss` files.
-- **Plain JavaScript** — no TypeScript.
-- **Node 22.17.0 / npm 9.6.7** — pinned in `package.json` `engines` and `.nvmrc`.
+- **Plain JavaScript** — no TypeScript. JSX-containing files use the `.jsx` extension.
+- **Node 24** — pinned in `package.json` `engines` and `.nvmrc`.
 
 ### Notable dependencies
 - `axios` — HTTP calls to the backend (auth + contact form).
-- `react-copy-to-clipboard` — the "copy email" affordance in `Navbar` / `Footer`.
+- `react-copy-to-clipboard` — the "copy email" affordance in `Navbar`.
 - `react-scroll` — smooth scroll-to-form / scroll-to-top.
-- Icons come from **Unicons** (`uil uil-<name>` classes; the font/CSS is loaded in `public/index.html`), driven by `config.ICONS_MAP`.
+- Icons come from **Unicons** (`uil uil-<name>` classes; the font/CSS is loaded in `index.html`), driven by `config.ICONS_MAP`.
 
 ### Deployment
 - `Procfile` (`web: npm start`) → deployed on **Heroku**.
@@ -95,12 +95,14 @@ This is a live portfolio. Unless explicitly asked otherwise, **do not change run
 
 ```
 portfolio/
-├── public/                 # CRA static shell (index.html, favicon, manifest, robots.txt)
+├── public/                 # Static assets served as-is (favicon, manifest, robots.txt, logos)
+├── index.html              # Vite HTML entry (loads /src/index.jsx)
+├── vite.config.js          # Vite config (React plugin, `~` alias, dev server, build outDir)
 ├── .agents/skills/         # Reusable SKILL.md skills (canonical copy)
 ├── .claude/skills          # symlink → ../.agents/skills
 ├── src/
-│   ├── index.js            # React entry — mounts <App /> in StrictMode
-│   ├── App.js              # BrowserRouter + route table
+│   ├── index.jsx           # React entry — mounts <App /> in StrictMode
+│   ├── App.jsx             # BrowserRouter + route table
 │   ├── config.js           # Backend URLs, endpoints, nav dictionary, icon map, testimonials
 │   ├── assets/
 │   │   ├── assetsConfig.js # [{ name, file }] list of every CDN image, grouped by screen
@@ -110,7 +112,6 @@ portfolio/
 │   ├── screens/            # Route-level pages, re-exported from screens/index.js
 │   │   └── styles/         # One .scss per screen
 │   └── styles/             # Global SASS: index.scss (base), _shared.scss, _colors.scss
-├── .env.example            # Documents REACT_APP_RUN_ENV
 ├── .nvmrc                  # Node version
 └── Procfile                # Heroku start command
 ```
@@ -119,7 +120,7 @@ portfolio/
 
 ## Screens & Routing
 
-Routes are declared in `src/App.js`. All screens are default-exported and re-exported through `src/screens/index.js`.
+Routes are declared in `src/App.jsx`. All screens are default-exported and re-exported through `src/screens/index.js`.
 
 | Path             | Screen         | Notes                                                        |
 |------------------|----------------|-------------------------------------------------------------|
@@ -156,7 +157,7 @@ Match the existing conventions — they are consistent across the codebase:
 - **One SCSS file per component/screen**, imported at the top of the file (`import './styles/Navbar.scss';`). Global styles live in `src/styles/`.
 - **Naming:** components/screens PascalCase (`BottomNavigation.js`), config keys SCREAMING_SNAKE (`NAVIGATION_DICTIONARY`), variables/functions camelCase.
 - **No prop-types, no TypeScript, no JSDoc.** Keep components small and self-explanatory.
-- **Formatting:** 2-space indent, single quotes, semicolons. No Prettier/ESLint config beyond CRA's built-in `react-app` eslint extends.
+- **Formatting:** 2-space indent, single quotes, semicolons. No Prettier/ESLint config.
 
 ---
 
@@ -173,26 +174,21 @@ The backend is a separate Heroku app and is **not** in this repo.
 
 ## Environment Variables
 
-CRA only exposes browser vars prefixed with `REACT_APP_`. See `.env.example`.
-
-| Variable             | Purpose                                                                                  |
-|----------------------|------------------------------------------------------------------------------------------|
-| `REACT_APP_RUN_ENV`  | When `dev`, `ProtectedRoute` starts authenticated (skips the password gate). Otherwise the `Auth` gate is shown. |
-
-Note: `ProtectedRoute` exists but is not currently wired into `App.js`'s route table.
+The app currently requires **no environment variables**. Vite exposes browser vars
+prefixed with `VITE_` via `import.meta.env` — add them (and document here) if needed.
 
 ---
 
 ## Common Commands
 
 ```bash
-npm install        # install deps (Node 22.17.0 — use nvm)
-npm start          # dev server at http://localhost:3000
+npm install        # install deps (Node 24 — use nvm)
+npm run dev        # dev server at http://localhost:3000 (alias: npm start)
 npm run build      # production build → build/
-npm test           # CRA/Jest test runner (watch mode)
+npm run preview    # serve the production build locally
 ```
 
-There are currently **no tests** in the repo despite `@testing-library/*` being installed.
+There are currently **no tests** in the repo.
 
 ---
 
@@ -214,7 +210,7 @@ Each skill is `.agents/skills/{name}/SKILL.md` with standard frontmatter (`name`
 
 ## Quick Reference
 
-- Add a route → `src/App.js` + a screen in `src/screens/` + export from `src/screens/index.js`.
+- Add a route → `src/App.jsx` + a screen in `src/screens/` + export from `src/screens/index.js`.
 - Add a reusable component → `src/components/` + a `styles/*.scss` + export from `src/components/index.js`.
 - Add/adjust prev-next case-study nav → `config.NAVIGATION_DICTIONARY`.
 - Add a testimonial → `config.CLIENTS_DATA`.
