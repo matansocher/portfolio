@@ -3,7 +3,6 @@ const cardAssets = [
   { name: 'cardSalariesImage', file: 'card/card-salaries-image.png' },
   { name: 'cardMycoImage', file: 'card/card-myco-image.png' },
   { name: 'cardMarketerImage', file: 'card/card-marketer-image.png' },
-  { name: 'cardEmployeesImage', file: 'card/card-employees-image.png' },
 ];
 
 const homeAssets = [
@@ -93,7 +92,6 @@ const employeesAssets = [
 
 const sharedAssets = [
   { name: 'dekel', file: 'shared/dekel.png' },
-  { name: 'authSideImage', file: 'shared/auth-side-image.png' },
   { name: 'navigationArrow', file: 'shared/navigation-arrow.svg' },
   { name: 'logoMyco', file: 'shared/logo-myco.png' },
   { name: 'logoMarketer', file: 'shared/logo-marketer.png' },

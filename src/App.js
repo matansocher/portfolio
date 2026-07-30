@@ -7,7 +7,6 @@ export default function App() {
   return (
     <BrowserRouter>
       <ScrollToTopOnPageLoad />
-      {/* <ScrollToTopOnScroll /> */}
       <Routes>
         <Route path='business-card' element={<BusinessCard />} />
         <Route path='salaries' element={<Salaries />} />
@@ -16,7 +15,6 @@ export default function App() {
         <Route path='employees' element={<Employees />} />
         <Route path='*' element={<Home />} />
       </Routes>
-      {/* <Footer /> */}
     </BrowserRouter>
   );
 }

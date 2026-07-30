@@ -79,14 +79,6 @@ export default function BusinessCard() {
           </div>
         </section>
 
-        {/* <section className="business-card-project employees">
-          <img alt="employees screen examples" src={assets.cardEmployeesImage} />
-          <div className="content">
-            <h3>Employee Onboarding page</h3>
-            <p>As the first Product Designer, I created Design system for a new startup for Marketing management system.</p>
-          </div>
-        </section> */}
-
         <section className="business-card-clients">
           <div className="content">
             <h4>What clients say</h4>

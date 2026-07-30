@@ -10,7 +10,6 @@ export default function Chip(props) {
     text = '',
     icon = ICONS_MAP.SEARCH,
     iconColor = '#000000',
-    // size = 18,
   } = props;
 
   return (
