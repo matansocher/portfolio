@@ -91,6 +91,8 @@ const employeesAssets: AssetConfig[] = [
   { name: 'employeesFinishedDesign', file: 'employees/employees-finished-design.png' },
 ];
 
+const articleAssets: AssetConfig[] = [{ name: 'articleAccessibleData', file: 'articles/accessible-data.png' }];
+
 const sharedAssets: AssetConfig[] = [
   { name: 'dekel', file: 'shared/dekel.png' },
   { name: 'navigationArrow', file: 'shared/navigation-arrow.svg' },
@@ -112,6 +114,7 @@ const assetsConfig: AssetConfig[] = [
   ...salariesAssets,
   ...sharedAssets,
   ...employeesAssets,
+  ...articleAssets,
 ];
 
 export default assetsConfig;

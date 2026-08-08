@@ -34,20 +34,34 @@ export interface NavLink {
   path: string;
 }
 
-export interface ArticleBlock {
-  type: 'paragraph' | 'heading' | 'list' | 'quote';
-  text?: string;
-  items?: string[];
+export type ArticleLanguage = 'en' | 'he';
+
+export interface ArticleLocaleMeta {
+  title: string;
+  excerpt: string;
+}
+
+export interface ArticleMeta {
+  slug: string;
+  date: string;
+  image: string;
+  tags: string[];
+  en: ArticleLocaleMeta;
+  he: ArticleLocaleMeta;
+}
+
+export interface ArticleLocaleContent extends ArticleLocaleMeta {
+  markdown: string;
+  readingTime: string;
 }
 
 export interface Article {
   slug: string;
-  title: string;
-  excerpt: string;
   date: string;
-  readingTime: string;
+  image: string;
   tags: string[];
-  body: ArticleBlock[];
+  en: ArticleLocaleContent;
+  he: ArticleLocaleContent;
 }
 
 export type Assets = Record<string, string>;

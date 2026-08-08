@@ -40,14 +40,16 @@ describe('App routing', () => {
     render(<App />);
 
     expect(screen.getByRole('heading', { level: 1, name: 'Articles' })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: /From Research to Decisions/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /Making Financial Information Accessible/i })).toBeInTheDocument();
   });
 
   it('renders an article detail screen for a valid slug', () => {
-    window.history.pushState({}, '', '/articles/designing-for-trust');
+    window.history.pushState({}, '', '/articles/making-financial-information-accessible');
     render(<App />);
 
-    expect(screen.getByRole('heading', { level: 1, name: /Designing for Trust/i })).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { level: 1, name: /Making Financial Information Accessible/i }),
+    ).toBeInTheDocument();
   });
 
   it('shows a not-found state for an unknown article slug', () => {

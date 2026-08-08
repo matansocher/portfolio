@@ -5,6 +5,13 @@ $text-muted: #52606d;
 $accent: #2e97ff;
 
 .article {
+  font-family: system-ui;
+
+  &,
+  * {
+    font-family: system-ui;
+  }
+
   &-hero {
     padding: 40px 0 24px;
     border-bottom: 1px solid #eef0f3;
@@ -18,6 +25,83 @@ $accent: #2e97ff;
       line-height: 1.15;
       color: $text-dark;
       margin: 16px 0 20px;
+      letter-spacing: -1.5px;
+    }
+  }
+
+  &-hero-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  &-lang {
+    display: inline-flex;
+    gap: 2px;
+    padding: 3px;
+    border: 1px solid #e4e7ec;
+    border-radius: 999px;
+    background-color: #f7f8fa;
+
+    button {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      appearance: none;
+      border: none;
+      background: transparent;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      color: $text-muted;
+      cursor: pointer;
+      transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        box-shadow 0.2s ease;
+
+      &:hover {
+        color: $text-dark;
+      }
+
+      &.is-active {
+        background-color: #fff;
+        color: $text-dark;
+        box-shadow: 0 1px 3px rgba(16, 24, 40, 0.12);
+      }
+    }
+  }
+
+  &-lang-flag {
+    display: inline-flex;
+    width: 17px;
+    height: 12px;
+    border-radius: 2px;
+    overflow: hidden;
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+
+    svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &-image {
+    padding: 32px 0 0;
+
+    .container {
+      max-width: 800px;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
     }
   }
 
@@ -29,7 +113,6 @@ $accent: #2e97ff;
     text-decoration: none;
     font-weight: 600;
     font-size: 16px;
-    margin-bottom: 20px;
 
     i {
       font-size: 20px;
@@ -79,6 +162,30 @@ $accent: #2e97ff;
       margin: 40px 0 16px;
     }
 
+    h1,
+    h3 {
+      color: $text-dark;
+      margin: 36px 0 16px;
+    }
+
+    h1 {
+      font-size: 34px;
+    }
+
+    h3 {
+      font-size: 24px;
+    }
+
+    strong {
+      font-weight: 700;
+      color: $text-dark;
+    }
+
+    a {
+      color: $accent;
+      text-decoration: underline;
+    }
+
     ul {
       margin: 0 0 24px;
       padding-left: 24px;
@@ -99,6 +206,21 @@ $accent: #2e97ff;
       line-height: 34px;
       font-weight: 600;
       color: $text-dark;
+    }
+
+    &[dir='rtl'] {
+      text-align: right;
+
+      ul {
+        padding-left: 0;
+        padding-right: 24px;
+      }
+
+      blockquote {
+        border-left: none;
+        border-right: 4px solid $accent;
+        padding: 8px 24px 8px 0;
+      }
     }
   }
 
