@@ -2,6 +2,7 @@ import './styles/Articles.scss';
 import { Link } from 'react-router-dom';
 import { SiteNav } from '../components';
 import articles from '../data/articles';
+import assets from '../assets';
 
 export default function Articles() {
   return (
@@ -24,26 +25,33 @@ export default function Articles() {
             <div className="articles-list">
               {articles.map((article) => (
                 <Link key={article.slug} to={`/articles/${article.slug}`} className="article-card">
-                  <div className="article-card-meta">
-                    <span>{article.date}</span>
-                    <span className="dot" aria-hidden="true">
-                      •
-                    </span>
-                    <span>{article.readingTime}</span>
-                  </div>
-                  <h2>{article.title}</h2>
-                  <p>{article.excerpt}</p>
-                  <div className="article-card-tags">
-                    {article.tags.map((tag) => (
-                      <span key={tag} className="article-tag">
-                        {tag}
+                  {assets[article.image] ? (
+                    <div className="article-card-image">
+                      <img src={assets[article.image]} alt={article.en.title} loading="lazy" />
+                    </div>
+                  ) : null}
+                  <div className="article-card-body">
+                    <div className="article-card-meta">
+                      <span>{article.date}</span>
+                      <span className="dot" aria-hidden="true">
+                        •
                       </span>
-                    ))}
+                      <span>{article.en.readingTime}</span>
+                    </div>
+                    <h2>{article.en.title}</h2>
+                    <p>{article.en.excerpt}</p>
+                    <div className="article-card-tags">
+                      {article.tags.map((tag) => (
+                        <span key={tag} className="article-tag">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <span className="article-card-link">
+                      Read article
+                      <i className="uil uil-arrow-right" aria-hidden="true" />
+                    </span>
                   </div>
-                  <span className="article-card-link">
-                    Read article
-                    <i className="uil uil-arrow-right" aria-hidden="true" />
-                  </span>
                 </Link>
               ))}
             </div>

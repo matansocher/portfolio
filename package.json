@@ -11,6 +11,7 @@
     "react": "^19.2.8",
     "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "^19.2.8",
+    "react-markdown": "^10.1.0",
     "react-router-dom": "^7.18.2",
     "react-scroll": "^1.8.7",
     "sirv-cli": "^3.0.1"
