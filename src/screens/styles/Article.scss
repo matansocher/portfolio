@@ -1,0 +1,160 @@
+@use '~/src/styles/_colors.scss' as *;
+
+$text-dark: #151b21;
+$text-muted: #52606d;
+$accent: #2e97ff;
+
+.article {
+  &-hero {
+    padding: 40px 0 24px;
+    border-bottom: 1px solid #eef0f3;
+
+    .container {
+      max-width: 800px;
+    }
+
+    h1 {
+      font-size: 48px;
+      line-height: 1.15;
+      color: $text-dark;
+      margin: 16px 0 20px;
+    }
+  }
+
+  &-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: $accent;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 20px;
+
+    i {
+      font-size: 20px;
+      transition: transform 0.2s ease;
+    }
+
+    &:hover i {
+      transform: translateX(-4px);
+    }
+  }
+
+  &-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: $text-muted;
+    font-size: 15px;
+
+    .dot {
+      color: #c4ccd6;
+    }
+  }
+
+  &-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  &-body {
+    padding: 40px 0 100px;
+
+    .container {
+      max-width: 720px;
+    }
+
+    p {
+      color: #2c3540;
+      font-size: 20px;
+      line-height: 34px;
+      margin-bottom: 24px;
+    }
+
+    h2 {
+      font-size: 30px;
+      color: $text-dark;
+      margin: 40px 0 16px;
+    }
+
+    ul {
+      margin: 0 0 24px;
+      padding-left: 24px;
+
+      li {
+        color: #2c3540;
+        font-size: 19px;
+        line-height: 30px;
+        margin-bottom: 10px;
+      }
+    }
+
+    blockquote {
+      margin: 32px 0;
+      padding: 8px 0 8px 24px;
+      border-left: 4px solid $accent;
+      font-size: 24px;
+      line-height: 34px;
+      font-weight: 600;
+      color: $text-dark;
+    }
+  }
+
+  &-missing {
+    padding: 60px 0 120px;
+    text-align: center;
+
+    h1 {
+      font-size: 40px;
+      color: $text-dark;
+      margin-bottom: 16px;
+    }
+
+    p {
+      color: $text-muted;
+      margin-bottom: 24px;
+    }
+
+    &-link {
+      color: $accent;
+      font-weight: 600;
+      text-decoration: none;
+    }
+  }
+}
+
+.article-tag {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background-color: #eef4ff;
+  color: #2e6bd6;
+  font-size: 14px !important;
+  font-weight: 600;
+}
+
+@media screen and (max-width: 1100px) {
+  .article {
+    &-hero h1 {
+      font-size: 30px !important;
+    }
+
+    &-body {
+      p {
+        font-size: 17px;
+        line-height: 30px;
+      }
+
+      h2 {
+        font-size: 24px !important;
+      }
+
+      blockquote {
+        font-size: 20px;
+        line-height: 30px;
+      }
+    }
+  }
+}

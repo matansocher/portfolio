@@ -1,0 +1,244 @@
+@use '~/src/styles/_colors.scss' as *;
+
+$nav-text: #151b21;
+$nav-accent: #2e97ff;
+$nav-height: 80px;
+$nav-height-mobile: 60px;
+
+.site-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: $nav-height;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e4e4e7;
+  box-shadow: 0 1px 12px rgba(0, 0, 0, 0.04);
+  z-index: 10;
+  box-sizing: border-box;
+  transition:
+    background-color 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+
+  &-inner {
+    width: 90%;
+    max-width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  &-brand {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    color: $nav-text;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  &-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+  }
+
+  &-item {
+    position: relative;
+  }
+
+  .has-dropdown:hover .site-nav-dropdown {
+    display: block;
+  }
+
+  &-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: $nav-text;
+    text-decoration: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition:
+      color 0.2s ease,
+      background-color 0.2s ease;
+
+    i {
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    &:hover {
+      color: $nav-accent;
+      background-color: #f4f7fb;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $nav-accent;
+      outline-offset: 2px;
+    }
+
+    &.active {
+      color: $nav-accent;
+    }
+  }
+
+  &-email {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    p {
+      margin: 0;
+      font-family: 'Raleway', sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+      color: $nav-text;
+      transition: color 0.3s ease;
+    }
+  }
+
+  &-copied {
+    position: absolute;
+    top: 32px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    background-color: rgba(104, 203, 155, 0.9);
+    border-radius: 8px;
+    padding: 2px 8px;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+
+    p {
+      font-size: 14px !important;
+      font-weight: 500;
+      margin: 0;
+      color: #ffffff !important;
+    }
+  }
+
+  &-dropdown {
+    position: absolute;
+    top: calc(100% + 4px);
+    right: 0;
+    min-width: 240px;
+    list-style: none;
+    margin: 0;
+    padding: 8px;
+    background-color: #ffffff;
+    border: 1px solid #e4e4e7;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    display: none;
+
+    &.open {
+      display: block;
+    }
+
+    li {
+      list-style: none;
+    }
+
+    &-link {
+      display: block;
+      font-family: 'Raleway', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      color: $nav-text;
+      text-decoration: none;
+      padding: 10px 12px;
+      border-radius: 6px;
+      transition: background-color 0.2s ease;
+
+      &:hover {
+        background-color: #f4f7fb;
+        color: $nav-accent;
+      }
+
+      &:focus-visible {
+        outline: 2px solid $nav-accent;
+        outline-offset: 2px;
+      }
+
+      &.all {
+        font-weight: 700;
+        border-bottom: 1px solid #eef0f3;
+        border-radius: 6px 6px 0 0;
+        margin-bottom: 4px;
+      }
+    }
+  }
+
+  &.transparent {
+    background-color: transparent;
+    border-bottom-color: transparent;
+    box-shadow: none;
+
+    .site-nav-brand,
+    .site-nav-link,
+    .site-nav-email p {
+      color: #eff7fb;
+    }
+
+    .site-nav-link:hover {
+      color: #ffffff;
+      background-color: rgba(255, 255, 255, 0.12);
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .site-nav {
+    height: $nav-height-mobile;
+
+    &-inner {
+      gap: 12px;
+    }
+
+    &-brand {
+      font-size: 18px;
+    }
+
+    &-right {
+      gap: 6px;
+    }
+
+    &-links {
+      gap: 2px;
+    }
+
+    &-link {
+      font-size: 14px;
+      padding: 6px 8px;
+    }
+
+    &-email {
+      display: none;
+    }
+
+    &-dropdown {
+      right: 0;
+      min-width: 220px;
+    }
+  }
+}

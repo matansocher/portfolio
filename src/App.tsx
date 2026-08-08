@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { BusinessCard, Home, Salaries, Myco, Marketer, Employees } from '@/screens';
+import { BusinessCard, Home, Salaries, Myco, Marketer, Employees, About, Projects, Articles, Article } from '@/screens';
 import { ScrollToTopOnPageLoad } from '@/components';
 import '@/styles/_shared.scss';
 
@@ -13,6 +13,10 @@ export default function App() {
         <Route path="marketer" element={<Marketer />} />
         <Route path="myco" element={<Myco />} />
         <Route path="employees" element={<Employees />} />
+        <Route path="about" element={<About />} />
+        <Route path="projects" element={<Projects />} />
+        <Route path="articles" element={<Articles />} />
+        <Route path="articles/:slug" element={<Article />} />
         <Route path="*" element={<Home />} />
       </Routes>
     </BrowserRouter>

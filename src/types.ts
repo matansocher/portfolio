@@ -21,6 +21,35 @@ export interface AssetConfig {
   file: string;
 }
 
+export interface ProjectItem {
+  key: string;
+  path: string;
+  title: string;
+  summary: string;
+  imageKey: string;
+}
+
+export interface NavLink {
+  label: string;
+  path: string;
+}
+
+export interface ArticleBlock {
+  type: 'paragraph' | 'heading' | 'list' | 'quote';
+  text?: string;
+  items?: string[];
+}
+
+export interface Article {
+  slug: string;
+  title: string;
+  excerpt: string;
+  date: string;
+  readingTime: string;
+  tags: string[];
+  body: ArticleBlock[];
+}
+
 export type Assets = Record<string, string>;
 
 export interface Config {
@@ -31,4 +60,6 @@ export interface Config {
   NAVIGATION_DICTIONARY: NavigationDictionary;
   ICONS_MAP: IconsMap;
   CLIENTS_DATA: ClientData[];
+  NAV_LINKS: NavLink[];
+  PROJECTS: ProjectItem[];
 }

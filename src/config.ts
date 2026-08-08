@@ -16,6 +16,45 @@ const config: Config = {
     employees: { path: '/employees', displayName: 'Employee Onboarding', prev: 'myco', next: null },
   },
 
+  NAV_LINKS: [
+    { label: 'About', path: '/about' },
+    { label: 'Projects', path: '/projects' },
+    { label: 'Articles', path: '/articles' },
+  ],
+
+  PROJECTS: [
+    {
+      key: 'salaries',
+      path: '/salaries',
+      title: 'Salary Additions',
+      summary:
+        'An end-to-end internal system for automating salary calculations and approvals. The solution and custom algorithm I created resulted in high success rates.',
+      imageKey: 'salariesMainScreenAndUI1',
+    },
+    {
+      key: 'marketer',
+      path: '/marketer',
+      title: 'Marketer',
+      summary:
+        'A design system I created for a new startup building a marketing management system, as the first Product Designer.',
+      imageKey: 'homeMarketerImage',
+    },
+    {
+      key: 'myco',
+      path: '/myco',
+      title: 'Myco',
+      summary: 'A marketing management system and producers interface I designed end to end.',
+      imageKey: 'homeMycoImage',
+    },
+    {
+      key: 'employees',
+      path: '/employees',
+      title: 'Employee Onboarding Page',
+      summary: 'An onboarding experience that helps new employees ramp up faster and feel at home from day one.',
+      imageKey: 'homeEmployeesImage',
+    },
+  ],
+
   ICONS_MAP: {
     SEARCH: 'search',
     LIGHTBULB: 'lightbulb-alt',

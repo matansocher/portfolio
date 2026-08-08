@@ -8,6 +8,7 @@ import Logos from './Logos';
 import Navbar from './Navbar';
 import PercentageCircle from './PercentageCircle';
 import ScrollToTopOnPageLoad from './ScrollToTopOnPageLoad';
+import SiteNav from './SiteNav';
 
 export {
   BottomNavigation,
@@ -20,4 +21,5 @@ export {
   Navbar,
   PercentageCircle,
   ScrollToTopOnPageLoad,
+  SiteNav,
 };
