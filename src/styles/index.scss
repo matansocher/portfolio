@@ -116,6 +116,17 @@ section {
   }
 }
 
+.page {
+  padding-top: 80px;
+  background-color: #ffffff;
+}
+
+@media screen and (max-width: 800px) {
+  .page {
+    padding-top: 60px;
+  }
+}
+
 .bold {
   font-weight: 800;
 }

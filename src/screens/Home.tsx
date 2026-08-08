@@ -2,12 +2,12 @@ import './styles/Home.scss';
 import { Link } from 'react-router-dom';
 import assets from '../assets';
 import config from '../config';
-import { Client, Logos, HomeProject, Navbar } from '../components';
+import { Client, Logos, HomeProject, SiteNav } from '../components';
 
 export default function Home() {
   return (
     <>
-      <Navbar isWhiteText={true} />
+      <SiteNav transparent={true} />
       <div className="home">
         <section className="home-top">
           <div className="container">

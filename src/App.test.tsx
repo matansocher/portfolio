@@ -15,9 +15,45 @@ describe('App routing', () => {
     window.history.pushState({}, '', '/');
     render(<App />);
 
-    expect(screen.getByText('Salary Additions')).toBeInTheDocument();
-    expect(screen.getByText('Marketer')).toBeInTheDocument();
-    expect(screen.getByText('Myco')).toBeInTheDocument();
-    expect(screen.getByText('Employee Onboarding Page')).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Salary Additions' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Marketer' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Myco' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Employee Onboarding Page' })).toBeInTheDocument();
+  });
+
+  it('renders the About screen', () => {
+    window.history.pushState({}, '', '/about');
+    render(<App />);
+
+    expect(screen.getByRole('heading', { name: /designs with evidence/i })).toBeInTheDocument();
+  });
+
+  it('renders the Projects index screen', () => {
+    window.history.pushState({}, '', '/projects');
+    render(<App />);
+
+    expect(screen.getByRole('heading', { level: 1, name: 'Projects' })).toBeInTheDocument();
+  });
+
+  it('renders the Articles list screen', () => {
+    window.history.pushState({}, '', '/articles');
+    render(<App />);
+
+    expect(screen.getByRole('heading', { level: 1, name: 'Articles' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /From Research to Decisions/i })).toBeInTheDocument();
+  });
+
+  it('renders an article detail screen for a valid slug', () => {
+    window.history.pushState({}, '', '/articles/designing-for-trust');
+    render(<App />);
+
+    expect(screen.getByRole('heading', { level: 1, name: /Designing for Trust/i })).toBeInTheDocument();
+  });
+
+  it('shows a not-found state for an unknown article slug', () => {
+    window.history.pushState({}, '', '/articles/does-not-exist');
+    render(<App />);
+
+    expect(screen.getByRole('heading', { name: /Article not found/i })).toBeInTheDocument();
   });
 });
