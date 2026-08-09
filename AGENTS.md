@@ -206,10 +206,16 @@ and build.
 
 ## Project-Local Skills
 
-Reusable skills live in `.agents/skills/` (the vendor-neutral `SKILL.md` convention that pairs with `AGENTS.md`) and are shared across agents with zero duplication: **GitHub Copilot CLI** discovers `.agents/skills/` natively, and **Claude Code** picks them up through the `.claude/skills → ../.agents/skills` symlink. There is exactly one real copy of each skill.
+Reusable skills live in `.agents/skills/` (the vendor-neutral `SKILL.md` convention that pairs with `AGENTS.md`) and are shared across agents with zero duplication:
+
+- **GitHub Copilot CLI** discovers project skills natively from `.github/skills/`, `.agents/skills/`, or `.claude/skills/` (verify with `copilot skill list`).
+- **Claude Code** discovers project skills from `.claude/skills/`, which here is a symlink: `.claude/skills → ../.agents/skills`.
+
+So `.agents/skills/` is read directly by Copilot CLI and, through the symlink, by Claude Code — there is exactly one real copy of each skill. Each skill needs valid YAML frontmatter with `name` (matching the folder) and `description` (the trigger text both tools match against).
 
 | Skill            | Use for                                                                 |
 |------------------|-------------------------------------------------------------------------|
+| `add-article`    | Add a new bilingual (EN/HE) article to the Articles section from Google Docs text + a CDN image. |
 | `ui-ux-pro-max`  | UI/UX design intelligence — styles, palettes, font pairings, UX guidelines (React stack). |
 | `playwright`     | Browser automation — test pages, fill forms, screenshots, responsive/UX checks. |
 | `fact-checker`   | Verify factual claims in docs via web search + propose corrections.     |

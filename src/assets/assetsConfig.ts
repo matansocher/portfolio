@@ -91,7 +91,10 @@ const employeesAssets: AssetConfig[] = [
   { name: 'employeesFinishedDesign', file: 'employees/employees-finished-design.png' },
 ];
 
-const articleAssets: AssetConfig[] = [{ name: 'articleAccessibleData', file: 'articles/accessible-data.png' }];
+const articleAssets: AssetConfig[] = [
+  { name: 'articleAccessibleData', file: 'articles/accessible-data.png' },
+  { name: 'articleFeelsTooFamiliar', file: 'articles/feels-too-familiar.png' },
+];
 
 const sharedAssets: AssetConfig[] = [
   { name: 'dekel', file: 'shared/dekel.png' },
