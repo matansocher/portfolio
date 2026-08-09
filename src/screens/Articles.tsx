@@ -32,7 +32,7 @@ export default function Articles() {
                   ) : null}
                   <div className="article-card-body">
                     <div className="article-card-meta">
-                      <span>{article.date}</span>
+                      <span>{article.displayDate}</span>
                       <span className="dot" aria-hidden="true">
                         •
                       </span>

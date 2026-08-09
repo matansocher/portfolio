@@ -28,6 +28,46 @@ function readingTime(markdown: string): string {
   return `${minutes} min read`;
 }
 
+function dateValue(date: string): number {
+  const [day, month, year] = date.split('-').map(Number);
+  return new Date(year, month - 1, day).getTime();
+}
+
+const MONTHS_EN = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
+
+const MONTHS_HE = [
+  'ינואר',
+  'פברואר',
+  'מרץ',
+  'אפריל',
+  'מאי',
+  'יוני',
+  'יולי',
+  'אוגוסט',
+  'ספטמבר',
+  'אוקטובר',
+  'נובמבר',
+  'דצמבר',
+];
+
+function displayDate(date: string, months: string[]): string {
+  const [, month, year] = date.split('-').map(Number);
+  return `${months[month - 1]} ${year}`;
+}
+
 const articles: Article[] = Object.entries(metaModules)
   .map(([path, module]) => {
     const meta = module.default;
@@ -38,12 +78,23 @@ const articles: Article[] = Object.entries(metaModules)
     return {
       slug: meta.slug,
       date: meta.date,
+      displayDate: displayDate(meta.date, MONTHS_EN),
       image: meta.image,
       tags: meta.tags,
-      en: { ...meta.en, markdown: enMarkdown, readingTime: readingTime(enMarkdown) },
-      he: { ...meta.he, markdown: heMarkdown, readingTime: readingTime(heMarkdown) },
+      en: {
+        ...meta.en,
+        markdown: enMarkdown,
+        readingTime: readingTime(enMarkdown),
+        displayDate: displayDate(meta.date, MONTHS_EN),
+      },
+      he: {
+        ...meta.he,
+        markdown: heMarkdown,
+        readingTime: readingTime(heMarkdown),
+        displayDate: displayDate(meta.date, MONTHS_HE),
+      },
     };
   })
-  .sort((a, b) => b.date.localeCompare(a.date));
+  .sort((a, b) => dateValue(b.date) - dateValue(a.date));
 
 export default articles;
