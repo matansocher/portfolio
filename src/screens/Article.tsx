@@ -93,7 +93,7 @@ export default function Article() {
               </div>
             </div>
             <div className="article-meta" dir={isRtl ? 'rtl' : 'ltr'}>
-              <span>{article.date}</span>
+              <span>{content.displayDate}</span>
               <span className="dot" aria-hidden="true">
                 •
               </span>

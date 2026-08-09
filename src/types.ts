@@ -53,11 +53,13 @@ export interface ArticleMeta {
 export interface ArticleLocaleContent extends ArticleLocaleMeta {
   markdown: string;
   readingTime: string;
+  displayDate: string;
 }
 
 export interface Article {
   slug: string;
   date: string;
+  displayDate: string;
   image: string;
   tags: string[];
   en: ArticleLocaleContent;

@@ -99,7 +99,7 @@ export default meta;
 
 ### Date format (IMPORTANT)
 
-Use **`DD-MM-YYYY`** (e.g. `21-08-2026`), matching the existing articles. The list is sorted by `date.localeCompare` **descending**, so all articles MUST use the same format or sorting breaks. If the user gives another format (e.g. `2026-08-21`), convert it to `DD-MM-YYYY`. The date is displayed raw to visitors.
+Use **`DD-MM-YYYY`** (e.g. `21-08-2026`), matching the existing articles. The loader (`src/data/articles.ts`) parses this format into a real date, sorts newest-first, and derives the human-facing label from it: articles display as month + year only (e.g. "August 2026" on English, "אוגוסט 2026" on Hebrew) via the loader's `displayDate`. You do NOT write the display string yourself — just provide `date` in `DD-MM-YYYY` and both the day and the exact display formatting are handled. If the user gives another format (e.g. `2026-08-21`), convert it to `DD-MM-YYYY`.
 
 ### Step 5: Register the image in assetsConfig.ts
 
@@ -140,7 +140,7 @@ Start the dev server on a unique port for the worktree (any free port, e.g. 3141
 npm run dev -- --port 3141
 ```
 
-- `/articles` — the new card appears (correct sort position by date), image loads.
+- `/articles` — the new card appears (correct chronological position, newest first), the date reads as month + year (e.g. "June 2026"), image loads.
 - `/articles/<slug>` — English renders (LTR), toggle to Hebrew renders correctly RTL, links are correct (no leading-space underline in English), TL;DR is bold.
 
 ## Adding future articles

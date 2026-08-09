@@ -94,6 +94,7 @@ const employeesAssets: AssetConfig[] = [
 const articleAssets: AssetConfig[] = [
   { name: 'articleAccessibleData', file: 'articles/accessible-data.png' },
   { name: 'articleFeelsTooFamiliar', file: 'articles/feels-too-familiar.png' },
+  { name: 'articleBuildingUnderstanding', file: 'articles/building-understanding.png' },
 ];
 
 const sharedAssets: AssetConfig[] = [
