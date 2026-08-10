@@ -36,6 +36,8 @@ $accent: #2e97ff;
     grid-template-columns: repeat(2, 1fr);
     gap: 24px;
     max-width: 1100px;
+    margin: 0 auto;
+    justify-items: stretch;
   }
 }
 
@@ -68,7 +70,7 @@ $accent: #2e97ff;
 
   &-body {
     flex: 1;
-    padding: 32px;
+    padding: 20px;
     min-width: 0;
   }
 
@@ -77,8 +79,8 @@ $accent: #2e97ff;
     align-items: center;
     gap: 8px;
     color: $text-muted;
-    font-size: 15px;
-    margin-bottom: 12px;
+    font-size: 13px;
+    margin-bottom: 8px;
 
     .dot {
       color: #c4ccd6;
@@ -86,17 +88,17 @@ $accent: #2e97ff;
   }
 
   h2 {
-    font-size: 30px;
+    font-size: 22px;
     color: $text-dark;
-    margin-bottom: 12px;
-    line-height: 1.2;
+    margin-bottom: 8px;
+    line-height: 1.15;
   }
 
   p {
     color: $text-muted;
-    font-size: 18px;
-    line-height: 28px;
-    margin-bottom: 18px;
+    font-size: 15px;
+    line-height: 24px;
+    margin-bottom: 12px;
   }
 
   &-tags {
@@ -112,10 +114,10 @@ $accent: #2e97ff;
     gap: 6px;
     color: $accent;
     font-weight: 600;
-    font-size: 17px;
+    font-size: 14px;
 
     i {
-      font-size: 20px;
+      font-size: 16px;
       transition: transform 0.2s ease;
     }
   }
@@ -136,11 +138,11 @@ $accent: #2e97ff;
 
 .article-tag {
   display: inline-block;
-  padding: 4px 12px;
+  padding: 4px 10px;
   border-radius: 999px;
   background-color: #eef4ff;
   color: #2e6bd6;
-  font-size: 14px !important;
+  font-size: 12px !important;
   font-weight: 600;
 }
 

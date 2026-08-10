@@ -95,6 +95,12 @@ const articleAssets: AssetConfig[] = [
   { name: 'articleAccessibleData', file: 'articles/accessible-data.png' },
   { name: 'articleFeelsTooFamiliar', file: 'articles/feels-too-familiar.png' },
   { name: 'articleBuildingUnderstanding', file: 'articles/building-understanding.png' },
+  { name: 'articleOutsourceUnderstanding', file: 'articles/outsource-understanding.png' },
+  { name: 'articleReallyNeedIt', file: 'articles/really-need-it.png' },
+  { name: 'articleMissingAiValue', file: 'articles/missing-ai-value.png' },
+  { name: 'articleHateLies', file: 'articles/hate-lies.png' },
+  { name: 'articleWhatsReal', file: 'articles/whats-real.png' },
+  { name: 'articleSocialMedia', file: 'articles/social-media.png' },
 ];
 
 const sharedAssets: AssetConfig[] = [
