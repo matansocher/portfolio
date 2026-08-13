@@ -1,7 +1,6 @@
 import './styles/SiteNav.scss';
 import { useState, useRef, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { CopyToClipboard } from 'react-copy-to-clipboard';
 import config from '../config';
 
 export default function SiteNav({ transparent = false }: { transparent?: boolean }) {
@@ -95,14 +94,9 @@ export default function SiteNav({ transparent = false }: { transparent?: boolean
             })}
           </ul>
 
-          <CopyToClipboard text="dklnsm@gmail.com" onCopy={() => setShowCopied(true)}>
-            <div className="site-nav-email">
-              <p>dklnsm@gmail.com</p>
-              <div className="site-nav-copied" style={{ opacity: showCopied ? 1 : 0 }}>
-                <p>Copied!</p>
-              </div>
-            </div>
-          </CopyToClipboard>
+          <Link to="/contact" className="site-nav-contact">
+            Contact
+          </Link>
         </div>
       </div>
     </header>

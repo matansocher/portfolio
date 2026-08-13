@@ -1,0 +1,14 @@
+@use '~/src/styles/_colors.scss' as *;
+
+.contact-page {
+  padding: 60px 20px;
+  max-width: 900px;
+}
+
+.contact-page h1 {
+  margin-bottom: 8px;
+}
+
+.contact-page p {
+  margin-bottom: 24px;
+}

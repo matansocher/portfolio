@@ -9,6 +9,7 @@ import Navbar from './Navbar';
 import PercentageCircle from './PercentageCircle';
 import ScrollToTopOnPageLoad from './ScrollToTopOnPageLoad';
 import SiteNav from './SiteNav';
+import ContactButton from './ContactButton';
 
 export {
   BottomNavigation,
@@ -22,4 +23,5 @@ export {
   PercentageCircle,
   ScrollToTopOnPageLoad,
   SiteNav,
+  ContactButton,
 };
