@@ -1,18 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import {
-  BusinessCard,
-  Home,
-  Salaries,
-  Myco,
-  Marketer,
-  Employees,
-  About,
-  Projects,
-  Articles,
-  Article,
-  Contact,
-} from '@/screens';
+import { BusinessCard, Home, Salaries, Myco, Marketer, Employees, About, Articles, Article, Contact } from '@/screens';
 import { ScrollToTopOnPageLoad, ContactButton } from '@/components';
+import { Navigate } from 'react-router-dom';
 import '@/styles/_shared.scss';
 
 export default function App() {
@@ -27,7 +16,7 @@ export default function App() {
         <Route path="myco" element={<Myco />} />
         <Route path="employees" element={<Employees />} />
         <Route path="about" element={<About />} />
-        <Route path="projects" element={<Projects />} />
+        <Route path="projects" element={<Navigate to="/" replace />} />
         <Route path="articles" element={<Articles />} />
         <Route path="articles/:slug" element={<Article />} />
         <Route path="contact" element={<Contact />} />
