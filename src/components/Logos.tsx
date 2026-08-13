@@ -2,21 +2,13 @@ import './styles/Logos.scss';
 import assets from '../assets';
 
 const LOGOS = [
-  { name: 'personetics', asset: assets.logoPersonetics },
-  { name: 'jfrog', asset: assets.logoJfrog },
-  { name: 'controlup', asset: assets.logoControlup },
-  { name: 'hippocampus', asset: assets.logoHippoCampus },
-  { name: 'gool', asset: assets.logoGool },
-  { name: 'trustech', asset: assets.logoTrustech },
   { name: 'amdocs', asset: assets.logoAmdocs },
-  { name: 'tlv-muni', asset: assets.logoTlvMuni },
-  { name: 'sqlink', asset: assets.logoSqlink },
-  { name: 'teva', asset: assets.logoTeva },
-  { name: 'beacon', asset: assets.logoBeacon },
+  { name: 'tel-aviv-municipal', asset: assets.logoTlv },
+  { name: 'controlup', asset: assets.logoControlup },
+  { name: 'hippocampus', asset: assets.logoHippocampus },
+  { name: 'gool', asset: assets.logoGool },
+  { name: 'stefansky', asset: assets.logoStefansky },
   { name: 'marketer', asset: assets.logoMarketer },
-  { name: 'practitest', asset: assets.logoPractitest },
-  { name: 'brinks', asset: assets.logoBrinks },
-  { name: 'team-stefansky', asset: assets.logoTeamStefansky },
   { name: 'myco', asset: assets.logoMyco },
 ];
 

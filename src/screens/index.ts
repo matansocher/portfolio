@@ -5,9 +5,7 @@ import Myco from './Myco';
 import Marketer from './Marketer';
 import Salaries from './Salaries';
 import About from './About';
-import Projects from './Projects';
 import Articles from './Articles';
 import Article from './Article';
-import Contact from './Contact';
 
-export { BusinessCard, Employees, Home, Myco, Marketer, Salaries, About, Projects, Articles, Article, Contact };
+export { BusinessCard, Employees, Home, Myco, Marketer, Salaries, About, Articles, Article };

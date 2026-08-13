@@ -32,7 +32,11 @@ export default function Contact() {
                 <a href="tel:2504197636">Phone: 250-419-7636</a>
               </li>
               <li>
-                <a href="https://maps.google.com/?q=3+Fan+Tan+Alley+Suite+400+Victoria+BC+V8W+3G9" target="_blank" rel="noreferrer">
+                <a
+                  href="https://maps.google.com/?q=3+Fan+Tan+Alley+Suite+400+Victoria+BC+V8W+3G9"
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   Address: 3 Fan Tan Alley Suite 400, Victoria, BC, V8W 3G9
                 </a>
               </li>
