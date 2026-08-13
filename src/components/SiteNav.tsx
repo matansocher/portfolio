@@ -73,11 +73,6 @@ export default function SiteNav({ transparent = false }: { transparent?: boolean
                       <i className="uil uil-angle-down" aria-hidden="true" />
                     </button>
                     <ul className={`site-nav-dropdown ${isProjectsOpen ? 'open' : ''}`}>
-                      <li>
-                        <Link to="/projects" className="site-nav-dropdown-link all">
-                          All projects
-                        </Link>
-                      </li>
                       {config.PROJECTS.map((project) => (
                         <li key={project.key}>
                           <Link to={project.path} className="site-nav-dropdown-link">
