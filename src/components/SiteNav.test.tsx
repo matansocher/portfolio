@@ -27,7 +27,6 @@ describe('SiteNav', () => {
 
     await user.click(screen.getByRole('button', { name: /Projects/i }));
 
-    expect(screen.getByRole('link', { name: 'All projects' })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'Salary Additions' })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'Myco' })).toBeInTheDocument();
   });

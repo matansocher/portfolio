@@ -2,7 +2,8 @@ import './styles/Home.scss';
 import { Link } from 'react-router-dom';
 import assets from '../assets';
 import config from '../config';
-import { Client, Logos, HomeProject, SiteNav } from '../components';
+import { Client, Logos, SiteNav } from '../components';
+import './styles/Projects.scss';
 
 export default function Home() {
   return (
@@ -31,42 +32,23 @@ export default function Home() {
           <div className="content">
             <h4>My Projects</h4>
 
-            <Link to="salaries">
-              <HomeProject
-                name="salaries"
-                header="Salary Additions"
-                sideImage={assets.salariesMainScreenAndUI1}
-                text="An end-to-end internal system for automating salary calculations and approvals. The solution and custom algorithm I created resulted in high success rates"
-              />
-            </Link>
-
-            <Link to="marketer">
-              <HomeProject
-                name="marketer"
-                header="Marketer"
-                sideImage={assets.homeMarketerImage}
-                text="A Design system I created for a new startup for Marketing management system, as the first Product Designer"
-              />
-            </Link>
-
-            <Link to="myco">
-              <HomeProject
-                name="myco"
-                header="Myco"
-                sideImage={assets.homeMycoImage}
-                text="A Marketing management system & Producers Interface I created"
-              />
-            </Link>
-
-            <Link to="employees">
-              <HomeProject
-                name="employees"
-                header="Employee Onboarding Page"
-                sideImage={assets.homeEmployeesImage}
-                darkText={true}
-                backgroundImage={assets.homeEmployeesBackground}
-              />
-            </Link>
+            <div className="projects-grid">
+              {config.PROJECTS.map((project) => (
+                <Link key={project.key} to={project.path} className="projects-card">
+                  <div className="projects-card-image">
+                    <img src={assets[project.imageKey]} alt={project.title} />
+                  </div>
+                  <div className="projects-card-body">
+                    <h2>{project.title}</h2>
+                    <p>{project.summary}</p>
+                    <span className="projects-card-link">
+                      View case study
+                      <i className="uil uil-arrow-right" aria-hidden="true" />
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
           </div>
         </section>
 

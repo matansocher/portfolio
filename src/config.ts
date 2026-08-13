@@ -18,7 +18,7 @@ const config: Config = {
 
   NAV_LINKS: [
     { label: 'About', path: '/about' },
-    { label: 'Projects', path: '/projects' },
+    { label: 'Projects', path: '/' },
     { label: 'Articles', path: '/articles' },
   ],
 
