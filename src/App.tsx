@@ -1,5 +1,17 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { BusinessCard, Home, Salaries, Myco, Marketer, Employees, About, Projects, Articles, Article, Contact } from '@/screens';
+import {
+  BusinessCard,
+  Home,
+  Salaries,
+  Myco,
+  Marketer,
+  Employees,
+  About,
+  Projects,
+  Articles,
+  Article,
+  Contact,
+} from '@/screens';
 import { ScrollToTopOnPageLoad, ContactButton } from '@/components';
 import '@/styles/_shared.scss';
 
