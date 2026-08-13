@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import './styles/Navbar.scss';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { Link } from 'react-router-dom';
 
 export default function Navbar({
@@ -49,9 +50,19 @@ export default function Navbar({
               Contact Me
             </button>
           ) : null}
-          <Link to="/contact" className="link contact-link">
-            <p>Contact</p>
-          </Link>
+          <CopyToClipboard
+            text="dklnsm@gmail.com"
+            onCopy={() => {
+              setShowCopied(true);
+            }}
+          >
+            <div className="link">
+              <p>dklnsm@gmail.com</p>
+              <div className="copied" style={{ opacity: showCopied ? 1 : 0 }}>
+                <p>Copied!</p>
+              </div>
+            </div>
+          </CopyToClipboard>
         </div>
       </div>
     </header>
