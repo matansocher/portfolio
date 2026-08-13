@@ -1,15 +1,23 @@
 import './styles/Logos.scss';
-import assets from '../assets';
+import assets from '@/assets';
 
 const LOGOS = [
-  { name: 'amdocs', asset: assets.logoAmdocs },
-  { name: 'tel-aviv-municipal', asset: assets.logoTlv },
+  { name: 'practitest', asset: assets.logoPractitest },
+  { name: 'personetics', asset: assets.logoPersonetics },
+  { name: 'jfrog', asset: assets.logoJfrog },
   { name: 'controlup', asset: assets.logoControlup },
-  { name: 'hippocampus', asset: assets.logoHippocampus },
+  { name: 'hippocampus', asset: assets.logoHippoCampus },
   { name: 'gool', asset: assets.logoGool },
-  { name: 'stefansky', asset: assets.logoStefansky },
+  { name: 'trustech', asset: assets.logoTrustech },
+  { name: 'amdocs', asset: assets.logoAmdocs },
+  { name: 'tlv-muni', asset: assets.logoTlvMuni },
+  { name: 'sqlink', asset: assets.logoSqlink },
+  { name: 'teva', asset: assets.logoTeva },
+  { name: 'beacon', asset: assets.logoBeacon },
   { name: 'marketer', asset: assets.logoMarketer },
   { name: 'myco', asset: assets.logoMyco },
+  { name: 'team-stefansky', asset: assets.logoTeamStefansky },
+  { name: 'brinks', asset: assets.logoBrinks },
 ];
 
 export default function Logos() {

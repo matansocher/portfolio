@@ -106,14 +106,22 @@ const articleAssets: AssetConfig[] = [
 const sharedAssets: AssetConfig[] = [
   { name: 'dekel', file: 'shared/dekel.png' },
   { name: 'navigationArrow', file: 'shared/navigation-arrow.svg' },
-  { name: 'logoMyco', file: 'shared/logo-myco.png' },
-  { name: 'logoMarketer', file: 'shared/logo-marketer.png' },
-  { name: 'logoStefansky', file: 'shared/logo-stefansky.png' },
-  { name: 'logoHippocampus', file: 'shared/logo-hippocampus.png' },
-  { name: 'logoTlv', file: 'shared/logo-tlv.png' },
-  { name: 'logoAmdocs', file: 'shared/logo-amdocs.png' },
+  { name: 'logoPractitest', file: 'shared/logo-practitest.png' },
+  { name: 'logoPersonetics', file: 'shared/logo-personetics.png' },
+  { name: 'logoJfrog', file: 'shared/logo-Jfrog.png' },
   { name: 'logoControlup', file: 'shared/logo-controlup.png' },
+  { name: 'logoHippoCampus', file: 'shared/logo-HippoCampus.png' },
   { name: 'logoGool', file: 'shared/logo-gool.png' },
+  { name: 'logoTrustech', file: 'shared/logo-trustech.png' },
+  { name: 'logoAmdocs', file: 'shared/logo-amdocs.png' },
+  { name: 'logoTlvMuni', file: 'shared/logo-TLV-muni.png' },
+  { name: 'logoSqlink', file: 'shared/logo-sqlink.png' },
+  { name: 'logoTeva', file: 'shared/logo-teva.png' },
+  { name: 'logoBeacon', file: 'shared/logo-beacon.png' },
+  { name: 'logoMarketer', file: 'shared/logo-marketer.png' },
+  { name: 'logoMyco', file: 'shared/logo-myco.png' },
+  { name: 'logoTeamStefansky', file: 'shared/logo-TeamStefansky.png' },
+  { name: 'logoBrinks', file: 'shared/logo-brinks.png' },
 ];
 
 const assetsConfig: AssetConfig[] = [
