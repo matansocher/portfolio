@@ -16,10 +16,12 @@
   border-radius: 999px;
   text-decoration: none;
   font-weight: 600;
-  transition: background 150ms ease, color 150ms ease;
+  transition:
+    background 150ms ease,
+    color 150ms ease;
 }
 
 .contact-button:hover {
   background: $primary-text;
-  color: $background;
+  color: $dark-black;
 }
