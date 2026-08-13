@@ -189,6 +189,27 @@ $nav-height-mobile: 60px;
     }
   }
 
+  &-contact {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 24px;
+    border-radius: 6px;
+    background: linear-gradient(135deg, #f4a8f5 0%, #e9c2ff 100%);
+    color: #1d2c3b;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    border: none;
+    box-shadow: 0 8px 18px rgba(238, 155, 240, 0.25);
+    transition: transform 0.2s ease, opacity 0.2s ease;
+
+    &:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+  }
+
   &.transparent {
     background-color: transparent;
     border-bottom-color: transparent;
@@ -197,12 +218,18 @@ $nav-height-mobile: 60px;
     .site-nav-brand,
     .site-nav-link,
     .site-nav-email p {
-      color: #eff7fb;
+      color: #1b2d3e;
     }
 
     .site-nav-link:hover {
-      color: #ffffff;
-      background-color: rgba(255, 255, 255, 0.12);
+      color: #1b2d3e;
+      background-color: rgba(27, 45, 62, 0.06);
+    }
+
+    .site-nav-contact {
+      background: linear-gradient(135deg, #f4a8f5 0%, #e9c2ff 100%);
+      color: #1d2c3b;
+      border: none;
     }
   }
 }
