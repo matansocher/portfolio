@@ -7,18 +7,18 @@ describe('App routing', () => {
     window.history.pushState({}, '', '/');
     render(<App />);
 
-    expect(screen.getByRole('heading', { name: /I’m Dekel/i })).toBeInTheDocument();
-    expect(screen.getByText('Product Designer & UX Researcher')).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /Dekel Nissim/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Salary Additions' })).toBeInTheDocument();
   });
 
-  it('lists all case-study projects on Home', () => {
+  it('lists the case-study projects on Home', () => {
     window.history.pushState({}, '', '/');
     render(<App />);
 
     expect(screen.getByRole('heading', { name: 'Salary Additions' })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: 'Marketer' })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: 'Myco' })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: 'Employee Onboarding Page' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'AppDX — Experience Monitoring' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'B2B New Homepage' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Employee Onboarding Screen' })).toBeInTheDocument();
   });
 
   it('renders the About screen', () => {
@@ -32,7 +32,7 @@ describe('App routing', () => {
     window.history.pushState({}, '', '/projects');
     render(<App />);
 
-    expect(screen.getByRole('heading', { name: /I’m Dekel/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /Dekel Nissim/i })).toBeInTheDocument();
   });
 
   it('renders the Articles list screen', () => {
