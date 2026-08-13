@@ -42,7 +42,7 @@ export default function ContactForm() {
 
     try {
       const body = getFormValues();
-      await axios.post(`${config.PORTFOLIO_BACKEND}/${config.CONTACT_ENDPOINT}`, body);
+      await axios.post(`${config.PORTFOLIO_BACKEND}/portfolio/${config.CONTACT_ENDPOINT}`, body);
       setShowSuccessText(true);
     } catch {
       setShowErrorText(true);

@@ -1,0 +1,25 @@
+@use '~/src/styles/_colors.scss' as *;
+
+.contact-button-wrapper {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 1200;
+}
+
+.contact-button {
+  display: inline-block;
+  padding: 10px 16px;
+  background: transparent;
+  border: 1px solid $primary-text;
+  color: $primary-text;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 150ms ease, color 150ms ease;
+}
+
+.contact-button:hover {
+  background: $primary-text;
+  color: $background;
+}
