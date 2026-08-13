@@ -28,11 +28,11 @@ describe('App routing', () => {
     expect(screen.getByRole('heading', { name: /designs with evidence/i })).toBeInTheDocument();
   });
 
-  it('renders the Projects index screen', () => {
+  it('redirects /projects to the Home screen', () => {
     window.history.pushState({}, '', '/projects');
     render(<App />);
 
-    expect(screen.getByRole('heading', { level: 1, name: 'Projects' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /I’m Dekel/i })).toBeInTheDocument();
   });
 
   it('renders the Articles list screen', () => {

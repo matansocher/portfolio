@@ -61,7 +61,7 @@ export default function About() {
                 human-centered experiences.
               </p>
               <div className="about-hero-cta">
-                <Link to="/projects" className="about-btn primary">
+                <Link to="/" className="about-btn primary">
                   View my work
                 </Link>
                 <Link to="/articles" className="about-btn secondary">
