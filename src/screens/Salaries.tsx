@@ -1,6 +1,6 @@
 import './styles/Salaries.scss';
 import assets from '../assets';
-import { BottomNavigation, PercentageCircle, Chip, CircleIcon, Navbar } from '../components';
+import { BottomNavigation, PercentageCircle, Chip, CircleIcon, SiteNav } from '../components';
 import config from '../config';
 
 export default function Salaries() {
@@ -8,7 +8,7 @@ export default function Salaries() {
 
   return (
     <>
-      <Navbar isWhiteText={true} />
+      <SiteNav transparent={true} />
       <div className="salaries">
         <section className="salaries-top" style={{ backgroundImage: `url('${assets.salariesTopBg}')` }}>
           <div className="container">

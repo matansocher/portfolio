@@ -12,6 +12,13 @@ const homeAssets: AssetConfig[] = [
   { name: 'homeMarketerImage', file: 'home/home-marketer-image.png' },
   { name: 'homeEmployeesImage', file: 'home/home-employees-image.png' },
   { name: 'homeEmployeesBackground', file: 'home/home-employees-bg.png' },
+  { name: 'homeCaseSalaries', file: 'home/home-salaries.png' },
+  { name: 'homeCaseAppdx', file: 'home/home-appdx.png' },
+  { name: 'homeCaseEmployee', file: 'home/home-employee.png' },
+  { name: 'homeCaseB2bHp', file: 'home/home-b2b-hp.png' },
+  { name: 'homeCaseMyco', file: 'home/home-myco.png' },
+  { name: 'homeCaseReports', file: 'home/home-reports.png' },
+  { name: 'homeCaseMarketer', file: 'home/home-marketer.png' },
 ];
 
 const marketerAssets: AssetConfig[] = [
