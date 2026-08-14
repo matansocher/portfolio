@@ -8,15 +8,15 @@ describe('App routing', () => {
     render(<App />);
 
     expect(screen.getByRole('heading', { name: /Dekel Nissim/i })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: 'Salary Additions' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Salary Exceptions & HR Dashboard' })).toBeInTheDocument();
   });
 
   it('lists the case-study projects on Home', () => {
     window.history.pushState({}, '', '/');
     render(<App />);
 
-    expect(screen.getByRole('heading', { name: 'Salary Additions' })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: 'AppDX — Experience Monitoring' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Salary Exceptions & HR Dashboard' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'AppDX – Experience Monitoring' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'B2B New Homepage' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Employee Onboarding Screen' })).toBeInTheDocument();
   });
