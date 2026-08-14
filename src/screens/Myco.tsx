@@ -1,7 +1,7 @@
 import './styles/Myco.scss';
 
 import assets from '../assets';
-import { BottomNavigation, Chip, CircleIcon, Navbar } from '../components';
+import { BottomNavigation, Chip, CircleIcon, SiteNav } from '../components';
 import config from '../config';
 
 export default function Myco() {
@@ -9,7 +9,7 @@ export default function Myco() {
 
   return (
     <>
-      <Navbar />
+      <SiteNav transparent={true} />
       <div className="myco">
         <section className="myco-top" style={{ backgroundImage: `url('${assets.mycoTopBg}')` }}>
           <div className="container">

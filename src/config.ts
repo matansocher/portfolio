@@ -65,6 +65,8 @@ const config: Config = {
     USERS: 'users-alt',
     CALCULATOR: 'calculator-alt',
     MONITOR: 'monitor',
+    ARROW_LEFT: 'angle-left',
+    ARROW_RIGHT: 'angle-right',
   },
 
   CLIENTS_DATA: [

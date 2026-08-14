@@ -1,11 +1,11 @@
 import './styles/Marketer.scss';
 import assets from '../assets';
-import { BottomNavigation, Navbar } from '../components';
+import { BottomNavigation, SiteNav } from '../components';
 
 export default function Marketer() {
   return (
     <>
-      <Navbar />
+      <SiteNav transparent={true} />
       <div className="marketer">
         <section className="marketer-top" style={{ backgroundImage: `url('${assets.marketerTopBg}')` }}>
           <div className="container">

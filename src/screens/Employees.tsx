@@ -1,13 +1,13 @@
 import './styles/Employees.scss';
 import assets from '../assets';
 import config from '../config';
-import { BottomNavigation, Chip, Navbar } from '../components';
+import { BottomNavigation, Chip, SiteNav } from '../components';
 
 export default function Employees() {
   const { ICONS_MAP } = config;
   return (
     <>
-      <Navbar />
+      <SiteNav transparent={true} />
       <div className="employees">
         <section className="employees-top" style={{ backgroundImage: `url('${assets.employeesTopBg}')` }}>
           <div className="container">
