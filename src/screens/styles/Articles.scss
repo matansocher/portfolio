@@ -14,13 +14,24 @@ $accent: #2e97ff;
     margin-bottom: 16px;
   }
 
+  &-header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+
+    .articles-eyebrow {
+      margin-bottom: 0;
+    }
+  }
+
   &-header {
     padding: 40px 0 20px;
 
     h1 {
       font-size: 64px;
       color: $text-dark;
-      margin-bottom: 20px;
+      margin: 20px 0;
     }
   }
 
@@ -31,12 +42,14 @@ $accent: #2e97ff;
     max-width: 720px;
   }
 
+  &-list-section {
+    padding: 40px 0 100px;
+  }
+
   &-list {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 24px;
-    max-width: 1100px;
-    margin: 0 auto;
     justify-items: stretch;
   }
 }
@@ -55,7 +68,7 @@ $accent: #2e97ff;
 
   &-image {
     width: 100%;
-    aspect-ratio: 16 / 7;
+    aspect-ratio: 16 / 11;
     background-color: #f4f6f9;
     overflow: hidden;
 
@@ -157,16 +170,16 @@ $accent: #2e97ff;
       line-height: 28px;
     }
 
+    &-list-section {
+      padding: 20px 0 50px;
+    }
+
     &-list {
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 
   .article-card {
-    &-image {
-      aspect-ratio: 16 / 9;
-    }
-
     &-body {
       padding: 24px;
     }
@@ -174,5 +187,11 @@ $accent: #2e97ff;
     h2 {
       font-size: 24px !important;
     }
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .articles-list {
+    grid-template-columns: 1fr;
   }
 }
