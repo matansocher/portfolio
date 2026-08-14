@@ -1,11 +1,12 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { BusinessCard, Home, Salaries, Myco, Marketer, Employees, About, Articles, Article } from '@/screens';
-import { ScrollToTopOnPageLoad } from '@/components';
+import { Analytics, ScrollToTopOnPageLoad } from '@/components';
 import '@/styles/_shared.scss';
 
 export default function App() {
   return (
     <BrowserRouter>
+      <Analytics />
       <ScrollToTopOnPageLoad />
       <Routes>
         <Route path="business-card" element={<BusinessCard />} />

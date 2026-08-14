@@ -69,6 +69,7 @@ export interface Article {
 export type Assets = Record<string, string>;
 
 export interface Config {
+  GA_MEASUREMENT_ID: string;
   STORAGE_BASE_URL: string;
   PORTFOLIO_BACKEND: string;
   CONTACT_ENDPOINT: string;
