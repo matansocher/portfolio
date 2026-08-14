@@ -1,6 +1,8 @@
 import type { Config } from './types';
 
 const config: Config = {
+  GA_MEASUREMENT_ID: 'G-6B683KPZ1Y',
+
   STORAGE_BASE_URL: 'https://storage.googleapis.com/dkl-portfolio',
 
   PORTFOLIO_BACKEND: 'https://dkl-portfolio-be.herokuapp.com',

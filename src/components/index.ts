@@ -1,3 +1,4 @@
+import Analytics from './Analytics';
 import BottomNavigation from './BottomNavigation';
 import Chip from './Chip';
 import CircleIcon from './CircleIcon';
@@ -12,6 +13,7 @@ import ScrollToTopOnPageLoad from './ScrollToTopOnPageLoad';
 import SiteNav from './SiteNav';
 
 export {
+  Analytics,
   BottomNavigation,
   Chip,
   CircleIcon,
