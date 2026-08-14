@@ -8,12 +8,12 @@ const meta: ArticleMeta = {
   en: {
     title: 'Why Does a Familiar Solution Feel So Right?',
     excerpt:
-      'When we do not have enough data, a familiar solution can feel like the right solution, not because it fits the problem better, but because it is easier to process, explain and defend. That is exactly why we must not confuse familiarity with proof that the solution works.',
+      'With too little data, a familiar solution can feel right — not because it fits the problem, but because it is easier to process and defend. Don’t confuse familiarity with proof.',
   },
   he: {
     title: 'למה פתרון מוכר מרגיש לנו כל כך נכון?',
     excerpt:
-      'כשאין לנו מספיק דאטה, פתרון מוכר יכול להרגיש כמו פתרון נכון. לא כי הוא בהכרח מתאים יותר לבעיה, אלא כי קל לנו יותר לעבד אותו, להסביר אותו ולהגן עליו. זו בדיוק הסיבה שצריך להיזהר לא לבלבל בין תחושת מוכרות לבין הוכחה שהפתרון עובד.',
+      'כשאין מספיק דאטה, פתרון מוכר יכול להרגיש נכון — לא כי הוא מתאים לבעיה, אלא כי קל יותר לעבד ולהגן עליו. אסור לבלבל בין מוכרות לבין הוכחה.',
   },
 };
 

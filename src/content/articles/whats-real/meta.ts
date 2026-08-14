@@ -8,12 +8,12 @@ const meta: ArticleMeta = {
   en: {
     title: 'An Assembly Line for Fakes - Have We Lost the Ability to Know What Is Real?',
     excerpt:
-      'The assembly line of fakes — deepfakes, synthetic content, and expertly edited media — creates a new layer of uncertainty. As fake content scales, our ability to distinguish what is real becomes strained, and that has implications not only for media literacy but for trust, institutions and the social fabric that depends on a shared reality.',
+      'As deepfakes and synthetic media scale, our ability to tell what is real gets strained — with implications not just for media literacy, but for trust, institutions and a shared reality.',
   },
   he: {
     title: 'האם איבדנו את היכולת לדעת מה אמיתי?',
     excerpt:
-      'כשקו הייצור של זיופים — דיפפייקים, תוכן סינתטי ומדיה שנערכה במיומנות — מתרחב, יכולתנו להבחין מה אמיתי נמתחת, ויש לכך השלכות לא רק על אוריינות מדיה אלא על אמון, מוסדות והרקמה החברתית שתלויה במציאות משותפת.',
+      'ככל שדיפפייקים ותוכן סינתטי מתרחבים, היכולת שלנו להבחין מה אמיתי נמתחת — עם השלכות לא רק על אוריינות מדיה אלא על אמון, מוסדות ומציאות משותפת.',
   },
 };
 

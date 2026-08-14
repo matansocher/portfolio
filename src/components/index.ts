@@ -4,6 +4,7 @@ import CircleIcon from './CircleIcon';
 import Client from './Client';
 import ContactForm from './ContactForm';
 import HomeProject from './HomeProject';
+import LanguageToggle from './LanguageToggle';
 import Logos from './Logos';
 import Navbar from './Navbar';
 import PercentageCircle from './PercentageCircle';
@@ -17,6 +18,7 @@ export {
   Client,
   ContactForm,
   HomeProject,
+  LanguageToggle,
   Logos,
   Navbar,
   PercentageCircle,

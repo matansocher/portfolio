@@ -8,12 +8,12 @@ const meta: ArticleMeta = {
   en: {
     title: 'When an Interface Acts Like Someone You Can’t Trust',
     excerpt:
-      'Bugs in an interface are not only a usability problem. Sometimes they are a breach of a small agreement between the system and the user. When a system sends me a verification code and then says the code is wrong, it does not only prevent me from logging in. It damages my trust in it.',
+      'A bug is not only a usability problem. When a system sends a verification code and then rejects it, it breaks a small agreement and damages trust.',
   },
   he: {
     title: 'כשממשק מתנהג כמו מישהו שאי אפשר לסמוך עליו',
     excerpt:
-      'באגים בממשק הם לא רק בעיית שימושיות. לפעמים הם הפרה של הסכם קטן בין המערכת לבין המשתמש. כשהמערכת שולחת לי קוד אימות ואז אומרת שהקוד שגוי, היא לא רק מונעת ממני להתחבר. היא פוגעת באמון שלי בה.',
+      'באג הוא לא רק בעיית שימושיות. כשמערכת שולחת קוד אימות ואז אומרת שהוא שגוי, היא מפרה הסכם קטן ופוגעת באמון.',
   },
 };
 

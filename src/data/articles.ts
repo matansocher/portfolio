@@ -22,10 +22,10 @@ function markdownFor(folder: string, language: ArticleLanguage): string {
   return entry ? entry[1] : '';
 }
 
-function readingTime(markdown: string): string {
+function readingTime(markdown: string, language: ArticleLanguage): string {
   const words = markdown.trim().split(/\s+/).filter(Boolean).length;
   const minutes = Math.max(1, Math.round(words / 200));
-  return `${minutes} min read`;
+  return language === 'he' ? `${minutes} דקות קריאה` : `${minutes} min read`;
 }
 
 function dateValue(date: string): number {
@@ -84,13 +84,13 @@ const articles: Article[] = Object.entries(metaModules)
       en: {
         ...meta.en,
         markdown: enMarkdown,
-        readingTime: readingTime(enMarkdown),
+        readingTime: readingTime(enMarkdown, 'en'),
         displayDate: displayDate(meta.date, MONTHS_EN),
       },
       he: {
         ...meta.he,
         markdown: heMarkdown,
-        readingTime: readingTime(heMarkdown),
+        readingTime: readingTime(heMarkdown, 'he'),
         displayDate: displayDate(meta.date, MONTHS_HE),
       },
     };

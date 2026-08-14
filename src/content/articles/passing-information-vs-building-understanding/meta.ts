@@ -8,12 +8,12 @@ const meta: ArticleMeta = {
   en: {
     title: 'There Is a Huge Difference Between Passing Information Along and Building Understanding',
     excerpt:
-      'We often overload people with information because it gives us a sense of confidence, but too much information can create the opposite - confusion and insecurity. The goal is not to transfer as much information as possible, but to help the other side build understanding.',
+      'We overload people with information because it feels reassuring, but too much of it creates confusion. The goal is not to transfer information, but to help the other side build understanding.',
   },
   he: {
     title: 'יש הבדל ענק בין להעביר מידע לבין לבנות הבנה',
     excerpt:
-      'הרבה פעמים אנחנו מעמיסים מידע כי זה נותן לנו תחושת ביטחון, אבל עודף מידע יכול ליצור בדיוק את ההפך - בלבול וחוסר ביטחון. המטרה היא לא להעביר כמה שיותר מידע, אלא לעזור לצד השני לבנות הבנה.',
+      'אנחנו מעמיסים מידע כי זה נותן תחושת ביטחון, אבל עודף מידע יוצר בלבול. המטרה היא לא להעביר כמה שיותר מידע, אלא לעזור לצד השני לבנות הבנה.',
   },
 };
 
