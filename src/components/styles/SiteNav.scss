@@ -1,7 +1,9 @@
 @use '~/src/styles/_colors.scss' as *;
 
-$nav-text: #151b21;
-$nav-accent: #2e97ff;
+$nav-text: #17181b;
+$nav-secondary: #4c4e54;
+$nav-accent: #8a3ed4;
+$nav-border: #e3e2dd;
 $nav-height: 80px;
 $nav-height-mobile: 60px;
 
@@ -11,9 +13,11 @@ $nav-height-mobile: 60px;
   left: 0;
   width: 100%;
   height: $nav-height;
-  background-color: #ffffff;
-  border-bottom: 1px solid #e4e4e7;
-  box-shadow: 0 1px 12px rgba(0, 0, 0, 0.04);
+  background-color: rgba(248, 249, 250, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid $nav-border;
+  box-shadow: none;
   z-index: 10;
   box-sizing: border-box;
   transition:
@@ -33,9 +37,10 @@ $nav-height-mobile: 60px;
   }
 
   &-brand {
-    font-family: 'Raleway', sans-serif;
-    font-weight: 800;
-    font-size: 22px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: -0.01em;
     color: $nav-text;
     text-decoration: none;
     transition: color 0.3s ease;
@@ -68,10 +73,10 @@ $nav-height-mobile: 60px;
     display: inline-flex;
     align-items: center;
     gap: 4px;
-    font-family: 'Raleway', sans-serif;
-    font-size: 16px;
-    font-weight: 600;
-    color: $nav-text;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: $nav-secondary;
     text-decoration: none;
     padding: 8px 14px;
     border-radius: 6px;
@@ -89,7 +94,7 @@ $nav-height-mobile: 60px;
 
     &:hover {
       color: $nav-accent;
-      background-color: #f4f7fb;
+      background-color: rgba(138, 62, 212, 0.08);
     }
 
     &:focus-visible {
@@ -102,38 +107,29 @@ $nav-height-mobile: 60px;
     }
   }
 
-  &-email {
-    position: relative;
-    display: flex;
+  &-contact {
+    display: inline-flex;
     align-items: center;
+    justify-content: center;
+    background: #8a3ed4;
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 8px 22px;
+    border-radius: 4px;
+    border: none;
     cursor: pointer;
+    transition: background 0.2s ease;
 
-    p {
-      margin: 0;
-      font-family: 'Raleway', sans-serif;
-      font-size: 16px;
-      font-weight: 500;
-      color: $nav-text;
-      transition: color 0.3s ease;
+    &:hover {
+      background: #7a2fc4;
     }
-  }
 
-  &-copied {
-    position: absolute;
-    top: 32px;
-    left: 50%;
-    transform: translate(-50%, 0);
-    background-color: rgba(104, 203, 155, 0.9);
-    border-radius: 8px;
-    padding: 2px 8px;
-    transition: opacity 0.3s ease;
-    pointer-events: none;
-
-    p {
-      font-size: 14px !important;
-      font-weight: 500;
-      margin: 0;
-      color: #ffffff !important;
+    &:focus-visible {
+      outline: 2px solid $nav-accent;
+      outline-offset: 2px;
     }
   }
 
@@ -146,7 +142,7 @@ $nav-height-mobile: 60px;
     margin: 0;
     padding: 8px;
     background-color: #ffffff;
-    border: 1px solid #e4e4e7;
+    border: 1px solid $nav-border;
     border-radius: 10px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
     display: none;
@@ -161,17 +157,17 @@ $nav-height-mobile: 60px;
 
     &-link {
       display: block;
-      font-family: 'Raleway', sans-serif;
+      font-family: 'DM Sans', sans-serif;
       font-size: 15px;
       font-weight: 500;
-      color: $nav-text;
+      color: $nav-secondary;
       text-decoration: none;
       padding: 10px 12px;
       border-radius: 6px;
       transition: background-color 0.2s ease;
 
       &:hover {
-        background-color: #f4f7fb;
+        background-color: rgba(138, 62, 212, 0.08);
         color: $nav-accent;
       }
 
@@ -191,18 +187,27 @@ $nav-height-mobile: 60px;
 
   &.transparent {
     background-color: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     border-bottom-color: transparent;
     box-shadow: none;
 
     .site-nav-brand,
-    .site-nav-link,
-    .site-nav-email p {
-      color: #eff7fb;
+    .site-nav-link {
+      color: #ffffff;
+    }
+
+    .site-nav-link {
+      color: rgba(255, 255, 255, 0.82);
     }
 
     .site-nav-link:hover {
       color: #ffffff;
-      background-color: rgba(255, 255, 255, 0.12);
+      background-color: rgba(255, 255, 255, 0.14);
+    }
+
+    .site-nav-link.active {
+      color: #ffffff;
     }
   }
 }
@@ -232,8 +237,9 @@ $nav-height-mobile: 60px;
       padding: 6px 8px;
     }
 
-    &-email {
-      display: none;
+    &-contact {
+      font-size: 14px;
+      padding: 7px 16px;
     }
 
     &-dropdown {

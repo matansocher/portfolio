@@ -7,7 +7,7 @@ describe('App routing', () => {
     window.history.pushState({}, '', '/');
     render(<App />);
 
-    expect(screen.getByRole('heading', { name: /Dekel Nissim/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /decisions teams can trust/i })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Salary Exceptions & HR Dashboard' })).toBeInTheDocument();
   });
 
@@ -17,22 +17,15 @@ describe('App routing', () => {
 
     expect(screen.getByRole('heading', { name: 'Salary Exceptions & HR Dashboard' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'AppDX – Experience Monitoring' })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: 'B2B New Homepage' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Marketer – Internal Marketing Platform' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Employee Onboarding Screen' })).toBeInTheDocument();
-  });
-
-  it('renders the About screen', () => {
-    window.history.pushState({}, '', '/about');
-    render(<App />);
-
-    expect(screen.getByRole('heading', { name: /designs with evidence/i })).toBeInTheDocument();
   });
 
   it('redirects /projects to the Home screen', () => {
     window.history.pushState({}, '', '/projects');
     render(<App />);
 
-    expect(screen.getByRole('heading', { name: /Dekel Nissim/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /decisions teams can trust/i })).toBeInTheDocument();
   });
 
   it('renders the Articles list screen', () => {
