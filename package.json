@@ -49,7 +49,8 @@
   "scripts": {
     "start": "vite",
     "dev": "vite",
-    "build": "tsc --noEmit && vite build",
+    "sitemap": "node scripts/generate-sitemap.mjs",
+    "build": "npm run sitemap && tsc --noEmit && vite build",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",

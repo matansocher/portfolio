@@ -48,7 +48,8 @@ npm run typecheck  # tsc --noEmit — type errors only, no output
 npm run test       # Vitest run (test:watch for watch mode)
 npm run lint       # ESLint (TS + React + hooks + a11y)
 npm run format     # Prettier write (format:check to verify)
-npm run build      # typecheck + production build → build/
+npm run build      # sitemap + typecheck + production build → build/
+npm run sitemap    # regenerate public/sitemap.xml + robots.txt Sitemap line
 npm run preview    # serve the production build locally (Vite preview)
 npm run serve      # serve build/ the way Heroku does (sirv, SPA fallback, honors $PORT)
 ```

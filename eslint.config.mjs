@@ -64,12 +64,21 @@ export default tseslint.config(
     },
   },
   {
-    files: ['*.{js,mjs,cjs,ts}', 'vite.config.ts', 'vitest.config.ts'],
+    files: ['*.{js,mjs,cjs,ts}', 'scripts/**/*.mjs', 'vite.config.ts', 'vitest.config.ts'],
     languageOptions: {
       ecmaVersion: 2022,
       sourceType: 'module',
       globals: {
         ...globals.node,
+      },
+    },
+  },
+  {
+    files: ['scripts/**/*.test.mjs'],
+    languageOptions: {
+      globals: {
+        ...globals.node,
+        ...globals.browser,
       },
     },
   },

@@ -1,3 +1,5 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Disallow:
+
+Sitemap: https://dkl-portfolio.herokuapp.com/sitemap.xml

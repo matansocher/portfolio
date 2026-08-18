@@ -192,7 +192,8 @@ npm run typecheck  # tsc --noEmit (no output, just type errors)
 npm run test       # Vitest (run once); test:watch for watch mode
 npm run lint       # ESLint (flat config, TS + React + hooks + a11y)
 npm run format     # Prettier write (format:check to verify only)
-npm run build      # typecheck + production build → build/
+npm run build      # sitemap + typecheck + production build → build/
+npm run sitemap    # regenerate public/sitemap.xml + robots.txt Sitemap line
 npm run preview    # serve the production build locally (Vite preview)
 npm run serve      # serve build/ the way Heroku does (sirv, SPA fallback, honors $PORT)
 ```
@@ -234,6 +235,7 @@ Each skill is `.agents/skills/{name}/SKILL.md` with standard frontmatter (`name`
 - Add a testimonial → `config.CLIENTS_DATA`.
 - Change colors → prefer `src/styles/_colors.scss` (note: several components still hardcode hex values inline).
 - Change backend URL/endpoints → `src/config.ts`.
+- Add a route → also add it to `STATIC_ROUTES` in `scripts/generate-sitemap.mjs` (article URLs are picked up automatically).
 
 ---
 

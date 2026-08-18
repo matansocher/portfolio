@@ -124,11 +124,14 @@ const articleAssets: AssetConfig[] = [
 ### Step 6: Validate
 
 ```bash
+npm run sitemap     # regenerate public/sitemap.xml with the new article URL
 npm run typecheck   # tsc --noEmit
 npm run lint        # 0 errors expected (a few pre-existing warnings are fine)
 npm run test        # Vitest
-npm run build       # typecheck + production build
+npm run build       # sitemap + typecheck + production build
 ```
+
+Commit the regenerated `public/sitemap.xml` alongside the article. (`npm run build` regenerates it too, so this is mainly so the committed file stays in sync.)
 
 If `App.test.tsx` asserts on specific article slugs/titles/counts, update it. (The chunk >500kB build warning is pre-existing and not an error.)
 
