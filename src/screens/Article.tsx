@@ -1,7 +1,7 @@
 import './styles/Article.scss';
 import { Link, useParams } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
-import { SiteNav } from '../components';
+import { SiteNav, StructuredData } from '../components';
 import useArticleLanguage from '../hooks/useArticleLanguage';
 import articles from '../data/articles';
 import assets from '../assets';
@@ -33,9 +33,24 @@ export default function Article() {
   const content = article[language];
   const isRtl = language === 'he';
   const image = assets[article.image];
+  const [day, month, year] = article.date.split('-');
+
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: content.title,
+    description: content.excerpt,
+    datePublished: `${year}-${month}-${day}`,
+    inLanguage: language,
+    keywords: article.tags.join(', '),
+    url: `https://dkl-portfolio.herokuapp.com/articles/${article.slug}`,
+    ...(image ? { image } : {}),
+    author: { '@type': 'Person', name: 'Dekel Nissim', url: 'https://dkl-portfolio.herokuapp.com/' },
+  };
 
   return (
     <>
+      <StructuredData data={articleSchema} />
       <SiteNav />
       <main className="article page">
         <div className="article-hero">

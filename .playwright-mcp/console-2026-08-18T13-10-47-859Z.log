@@ -1,0 +1,5 @@
+[     117ms] [WARNING] Failed to decode downloaded font: https://unicons.iconscout.com/release/v4.0.0/fonts/line/unicons-14.woff2 @ http://localhost:4319/articles/hate-lies:110
+[     117ms] [WARNING] OTS parsing error: invalid sfntVersion: 571149071 @ http://localhost:4319/articles/hate-lies:110
+[     162ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:4319/node_modules/.vite/deps/react-dom_client.js?v=dbac67b9:14333
+[     535ms] [WARNING] Failed to decode downloaded font: https://unicons.iconscout.com/release/v4.0.0/fonts/line/unicons-15.woff2 @ http://localhost:4319/articles/hate-lies:0
+[     535ms] [WARNING] OTS parsing error: invalid sfntVersion: -1981001572 @ http://localhost:4319/articles/hate-lies:0

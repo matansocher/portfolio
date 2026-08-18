@@ -11,6 +11,7 @@ import Navbar from './Navbar';
 import PercentageCircle from './PercentageCircle';
 import ScrollToTopOnPageLoad from './ScrollToTopOnPageLoad';
 import SiteNav from './SiteNav';
+import StructuredData from './StructuredData';
 
 export {
   Analytics,
@@ -26,4 +27,5 @@ export {
   PercentageCircle,
   ScrollToTopOnPageLoad,
   SiteNav,
+  StructuredData,
 };

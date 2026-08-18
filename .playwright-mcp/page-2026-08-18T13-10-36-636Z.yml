@@ -1,0 +1,185 @@
+- generic [ref=e2]:
+  - banner "Primary" [ref=e3]:
+    - generic [ref=e4]:
+      - link "Dekel Nissim" [ref=e5] [cursor=pointer]:
+        - /url: /
+      - generic [ref=e6]:
+        - list [ref=e7]:
+          - listitem [ref=e8]:
+            - link "About" [ref=e9] [cursor=pointer]:
+              - /url: /about
+          - listitem [ref=e10]:
+            - button "Projects" [ref=e11] [cursor=pointer]:
+              - text: Projects
+              - generic [ref=e12]: 
+          - listitem [ref=e13]:
+            - link "Articles" [ref=e14] [cursor=pointer]:
+              - /url: /articles
+        - generic [ref=e15] [cursor=pointer]:
+          - paragraph [ref=e16]: dklnsm@gmail.com
+          - generic:
+            - paragraph: Copied!
+  - generic [ref=e18]:
+    - generic [ref=e20]:
+      - heading "Hi, I'm Dekel Nissim" [level=1] [ref=e21]:
+        - text: Hi, I'm
+        - generic [ref=e22]: Dekel Nissim
+      - paragraph [ref=e23]: I specialize in UX for complex systems — from internal tools to dashboards and mobile platforms.
+      - paragraph [ref=e24]: This is a curated selection of projects. Some include full case studies.
+    - generic [ref=e25]:
+      - generic [ref=e26]: Some Clients & Partners
+      - generic [ref=e30]:
+        - img "logo of practitest"
+        - img "logo of personetics"
+        - img "logo of jfrog"
+        - img "logo of controlup"
+        - img "logo of hippocampus"
+        - img "logo of gool"
+        - img "logo of trustech"
+        - img "logo of amdocs"
+        - img "logo of tlv-muni"
+        - img "logo of sqlink"
+        - img "logo of teva"
+        - img "logo of beacon"
+        - img "logo of marketer"
+        - img "logo of myco"
+        - img "logo of team-stefansky"
+        - img "logo of brinks"
+    - generic [ref=e31]:
+      - article [ref=e32]:
+        - generic [ref=e33]:
+          - generic [ref=e34]: Internal HR System / B2B
+          - heading "Salary Exceptions & HR Dashboard" [level=2] [ref=e35]
+          - generic [ref=e36]:
+            - generic [ref=e37]: UX for complex workflows
+            - generic [ref=e38]: Data dashboards
+            - generic [ref=e39]: Form logic
+            - generic [ref=e40]: Stakeholder collaboration
+            - generic [ref=e41]: Data visualization
+          - paragraph [ref=e42]: Led UX from start to finish – research, logic definition, and interface design – for a digital system handling salary exceptions in a large municipal HR department. Built the calculation logic and worked closely with developers.
+          - link "View case study" [ref=e43] [cursor=pointer]:
+            - /url: /salaries
+        - generic [ref=e44]:
+          - img "Salary Exceptions & HR Dashboard"
+      - article [ref=e45]:
+        - generic [ref=e46]:
+          - generic [ref=e47]: Web Monitoring Dashboard / B2B SaaS
+          - heading "AppDX – Experience Monitoring" [level=2] [ref=e48]
+          - generic [ref=e49]:
+            - generic [ref=e50]: UX for technical users
+            - generic [ref=e51]: Widget-based dashboards
+            - generic [ref=e52]: Research-led design
+            - generic [ref=e53]: Data visualization
+          - paragraph [ref=e54]: Defined and designed a modular dashboard for monitoring real-user experience in web apps. Led a design sprint and validated the concept with internal experts.
+        - generic [ref=e55]:
+          - img "AppDX – Experience Monitoring"
+      - article [ref=e56]:
+        - generic [ref=e57]:
+          - generic [ref=e58]: Web Monitoring Dashboard / B2B SaaS
+          - heading "B2B New Homepage" [level=2] [ref=e59]
+          - generic [ref=e60]:
+            - generic [ref=e61]: UX for technical users
+            - generic [ref=e62]: Widget-based dashboards
+            - generic [ref=e63]: Research-led design
+            - generic [ref=e64]: Data visualization
+            - generic [ref=e65]: Design sprint
+          - paragraph [ref=e66]: Defined and designed a modular dashboard for monitoring real-user experience in web apps. Led a design sprint and validated the concept with internal experts.
+        - generic [ref=e67]:
+          - img "B2B New Homepage"
+      - article [ref=e68]:
+        - generic [ref=e69]:
+          - generic [ref=e70]: Internal HR Tool / B2B SaaS
+          - heading "Employee Onboarding Screen" [level=2] [ref=e71]
+          - generic [ref=e72]:
+            - generic [ref=e73]: UX for technical users
+            - generic [ref=e74]: Widget-based dashboards
+            - generic [ref=e75]: Research-led design
+            - generic [ref=e76]: Data visualization
+            - generic [ref=e77]: Design sprint
+          - paragraph [ref=e78]: Designed a screen for onboarding hundreds of employees. Conducted interviews with HR staff from global offices. Balanced automation with flexibility.
+          - link "View case study" [ref=e79] [cursor=pointer]:
+            - /url: /employees
+        - generic [ref=e80]:
+          - img "Employee Onboarding Screen"
+      - article [ref=e81]:
+        - generic [ref=e82]:
+          - generic [ref=e83]: Mobile App / B2C
+          - heading "Myco – Mobile Apps for Community Events" [level=2] [ref=e84]
+          - generic [ref=e85]:
+            - generic [ref=e86]: Mobile UX
+            - generic [ref=e87]: UI
+            - generic [ref=e88]: B2C
+            - generic [ref=e89]: Data visualization
+            - generic [ref=e90]: User research
+            - generic [ref=e91]: Competitor research
+          - paragraph [ref=e92]: Designed two mobile apps – one for ticket purchasing and one for event producers. Conducted user interviews and competitive analysis.
+          - link "View case study" [ref=e93] [cursor=pointer]:
+            - /url: /myco
+        - generic [ref=e94]:
+          - img "Myco – Mobile Apps for Community Events"
+      - article [ref=e95]:
+        - generic [ref=e96]:
+          - generic [ref=e97]: Reporting System / B2B Internal Tool
+          - heading "Automated Reports" [level=2] [ref=e98]
+          - generic [ref=e99]:
+            - generic [ref=e100]: Mobile UX
+            - generic [ref=e101]: UI
+            - generic [ref=e102]: B2C
+            - generic [ref=e103]: Data visualization
+            - generic [ref=e104]: User research
+            - generic [ref=e105]: Competitor research
+          - paragraph [ref=e106]: Designed two mobile apps – one for ticket purchasing and one for event producers. Conducted user interviews and competitive analysis.
+        - generic [ref=e107]:
+          - img "Automated Reports"
+      - article [ref=e108]:
+        - generic [ref=e109]:
+          - generic [ref=e110]: Startup Tool / B2B
+          - heading "Marketer – Internal Marketing Platform" [level=2] [ref=e111]
+          - generic [ref=e112]:
+            - generic [ref=e113]: UI design
+            - generic [ref=e114]: Design systems
+            - generic [ref=e115]: Accessibility
+            - generic [ref=e116]: Visual hierarchy
+          - paragraph [ref=e117]: Sole designer in an early-stage startup. Designed the internal platform for marketing and campaign tracking. Delivered both UX and UI, and created a basic design system.
+          - link "View case study" [ref=e118] [cursor=pointer]:
+            - /url: /marketer
+        - generic [ref=e119]:
+          - img "Marketer – Internal Marketing Platform"
+    - generic [ref=e120]:
+      - heading "What People Say" [level=2] [ref=e121]
+      - generic [ref=e122]:
+        - generic [ref=e124]:
+          - generic [ref=e125]:
+            - article [ref=e126]:
+              - paragraph [ref=e127]: "\"Dekel brought a lot of expertise in UX/UI design and a deep understanding of how to make the product user-oriented. She helped guide my vision to create a product that not only looks great, but provides real value to users. She has a strategic view that knows how to look at the content she creates as part of a bigger plan for her clients\""
+              - generic [ref=e128]:
+                - generic [ref=e129]:
+                  - generic [ref=e130]: Yarden Strfansky
+                  - generic [ref=e131]: CEO
+                - img "Team Stefansky"
+            - article [ref=e132]:
+              - paragraph [ref=e133]: "\"I am extremely satisfied with the results of our collaboration with our UX designer. She was a key member of our team, and her contributions were invaluable to the success of the project. She was able to identify and address issues early on, which made the development process more efficient and effective\""
+              - generic [ref=e134]:
+                - generic [ref=e135]:
+                  - generic [ref=e136]: Barak Ze’evi
+                  - generic [ref=e137]: Head of Planning & Engineering Systems Department
+                - img "Tel Aviv Municipality"
+          - generic [ref=e138]:
+            - article [ref=e139]:
+              - paragraph [ref=e140]: "\"I had the pleasure of working with Dekel on our product development, where her aim was improving our understanding of UX best practices, product strategy, and effective use of Figma. It was an incredibly valuable experience that exceeded my expectations\""
+              - generic [ref=e142]:
+                - generic [ref=e143]: Ira Pavlova
+                - generic [ref=e144]: Head of Design
+            - article [ref=e145]:
+              - paragraph [ref=e146]: "\"Best ever!! I've been working with Dekel for a few months. Results are amazing - an energy blast, relentless professional, an amazing addition to any team, an independent, pro-active, engaged and engaging professional. Dekel had responded to everything we asked within literally minutes. Not only she is a pro, but she manages dynamic scenarios, which is super rare. She is quick on her feet, manages complex situations very well, delivers amazing results with superb quality, runs incredibly deep research and is the type of pro anyone would wish themselves\""
+              - generic [ref=e148]:
+                - generic [ref=e149]: Ariel Zamir
+                - generic [ref=e150]: Leading Teams to Build Things That Matter
+        - generic [ref=e151]:
+          - button "Previous testimonials" [ref=e152] [cursor=pointer]:
+            - generic [ref=e153]: 
+          - generic [ref=e154]:
+            - button "Go to testimonials 1" [ref=e155] [cursor=pointer]
+            - button "Go to testimonials 2" [ref=e156] [cursor=pointer]
+          - button "Next testimonials" [ref=e157] [cursor=pointer]:
+            - generic [ref=e158]: 
