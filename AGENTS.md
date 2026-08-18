@@ -95,7 +95,7 @@ This is a live portfolio. Unless explicitly asked otherwise, **do not change run
 
 ```
 portfolio/
-├── public/                 # Static assets served as-is (favicon, manifest, robots.txt, logos)
+├── public/                 # Static assets served as-is (favicon, manifest, robots.txt, llms.txt, sitemap.xml, logos)
 ├── index.html              # Vite HTML entry (loads /src/index.tsx)
 ├── vite.config.ts          # Vite config (React plugin, `~` + `@` aliases, dev server, build outDir)
 ├── tsconfig.json           # TypeScript config (strict, react-jsx, bundler resolution)
@@ -234,6 +234,8 @@ Each skill is `.agents/skills/{name}/SKILL.md` with standard frontmatter (`name`
 - Add a testimonial → `config.CLIENTS_DATA`.
 - Change colors → prefer `src/styles/_colors.scss` (note: several components still hardcode hex values inline).
 - Change backend URL/endpoints → `src/config.ts`.
+- Add an article → also update `public/llms.txt` and `public/sitemap.xml` (both are hand-maintained; see the `add-article` skill).
+- Change site-wide JSON-LD (Person, WebSite, case-study list) → `index.html`; per-article JSON-LD → `src/screens/Article.tsx` via the `StructuredData` component.
 
 ---
 

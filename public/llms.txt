@@ -1,0 +1,37 @@
+# Dekel Nissim
+
+> Product Designer & UX Researcher. Partners with startups, enterprises, and public-sector teams to turn messy problems into clear, human-centered products, backed by research rather than opinion.
+
+Services: UX research, product design, design systems, and product strategy. Contact: dklnsm@gmail.com
+
+## Pages
+
+- [Home](https://dkl-portfolio.herokuapp.com/): Overview, selected case studies, and client testimonials.
+- [About](https://dkl-portfolio.herokuapp.com/about): Background, services, and the four-step Understand / Define / Design / Deliver process.
+- [Articles](https://dkl-portfolio.herokuapp.com/articles): Essays on product, UX, and AI, each published in English and Hebrew.
+- [Business Card](https://dkl-portfolio.herokuapp.com/business-card): Freelance one-pager with a contact form.
+
+## Case studies
+
+- [Salary Additions](https://dkl-portfolio.herokuapp.com/salaries): End-to-end internal system automating salary calculations and approvals, including a custom algorithm.
+- [Marketer](https://dkl-portfolio.herokuapp.com/marketer): Design system built as the first product designer at a marketing-management startup.
+- [Myco](https://dkl-portfolio.herokuapp.com/myco): Marketing management system and producers interface, designed end to end.
+- [Employee Onboarding Page](https://dkl-portfolio.herokuapp.com/employees): Onboarding experience that helps new employees ramp up faster.
+
+## Articles
+
+- [Why Does a Familiar Solution Feel So Right?](https://dkl-portfolio.herokuapp.com/articles/why-familiar-solution-feels-right)
+- [Making Financial Information Accessible Is a Huge Step Forward. That Is Exactly Why We Need to Be Careful About the Next Step.](https://dkl-portfolio.herokuapp.com/articles/making-financial-information-accessible)
+- [An Assembly Line for Fakes - Have We Lost the Ability to Know What Is Real?](https://dkl-portfolio.herokuapp.com/articles/whats-real)
+- [When an Interface Acts Like Someone You Can't Trust](https://dkl-portfolio.herokuapp.com/articles/hate-lies)
+- [Not Every Product Needs AI. Definitely Not Everywhere.](https://dkl-portfolio.herokuapp.com/articles/missing-ai-value)
+- [Not Every Slow Process Needs to Be Optimized With AI](https://dkl-portfolio.herokuapp.com/articles/outsource-understanding)
+- [There Is a Huge Difference Between Passing Information Along and Building Understanding](https://dkl-portfolio.herokuapp.com/articles/passing-information-vs-building-understanding)
+- [A Good Product Is Often the Result of Someone Insisting](https://dkl-portfolio.herokuapp.com/articles/really-need-it)
+- [What Lowers Attention, Increases Anxiety, Causes Fatigue and Drains Us Emotionally?](https://dkl-portfolio.herokuapp.com/articles/social-media)
+
+## Notes
+
+- The site is a client-rendered single-page app; content is rendered by JavaScript.
+- Articles are available in English and Hebrew via a language toggle on the page.
+- There is no public API. The only backend endpoint is the contact form submission.

@@ -36,8 +36,9 @@ Add Article Progress:
 - [ ] Step 3: Fix Google Docs link/formatting quirks in en.md
 - [ ] Step 4: Create meta.ts
 - [ ] Step 5: Register the image in assetsConfig.ts
-- [ ] Step 6: Validate (typecheck, lint, test, build)
-- [ ] Step 7: Browser-verify EN + HE, card, and image
+- [ ] Step 6: Add the article to public/llms.txt and public/sitemap.xml
+- [ ] Step 7: Validate (typecheck, lint, test, build)
+- [ ] Step 8: Browser-verify EN + HE, card, and image
 ```
 
 ### Step 1: Pick a slug
@@ -121,7 +122,14 @@ const articleAssets: AssetConfig[] = [
   ```
   A `200` means it's live. If it's not up yet, the card/hero image will just be blank until the user uploads it — that's expected, not a bug.
 
-### Step 6: Validate
+### Step 6: Update the discovery files
+
+These two files are hand-maintained and must list every article, or AI crawlers and search engines will miss the new one:
+
+- `public/llms.txt` — add the English title + article URL to the `## Articles` list (newest first).
+- `public/sitemap.xml` — add a `<url>` entry with `<loc>https://dkl-portfolio.herokuapp.com/articles/<slug></loc>` and `<lastmod>` in `YYYY-MM-DD` (note: `meta.ts` dates are `DD-MM-YYYY`, so reorder them).
+
+### Step 7: Validate
 
 ```bash
 npm run typecheck   # tsc --noEmit
@@ -132,7 +140,7 @@ npm run build       # typecheck + production build
 
 If `App.test.tsx` asserts on specific article slugs/titles/counts, update it. (The chunk >500kB build warning is pre-existing and not an error.)
 
-### Step 7: Browser-verify
+### Step 8: Browser-verify
 
 Start the dev server on a unique port for the worktree (any free port, e.g. 3141) and check the new article:
 
