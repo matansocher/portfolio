@@ -1,3 +1,0 @@
-[     418ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:4319/node_modules/.vite/deps/react-dom_client.js?v=dbac67b9:14333
-[     908ms] [WARNING] Failed to decode downloaded font: https://unicons.iconscout.com/release/v4.0.0/fonts/line/unicons-14.woff2 @ http://localhost:4319/:0
-[     908ms] [WARNING] OTS parsing error: invalid sfntVersion: 571149071 @ http://localhost:4319/:0
