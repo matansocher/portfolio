@@ -68,6 +68,8 @@ The app currently requires **no environment variables**. Vite exposes browser va
 
 Deployed on **Heroku**. On deploy, the Node buildpack runs `heroku-postbuild`
 (`vite build`) to produce `build/`, then the `Procfile` (`web: npm run serve`)
-serves that static output with [`sirv`](https://github.com/lukeed/sirv) — SPA
-fallback enabled (client-side routes resolve to `index.html`) and binding to
-Heroku's `$PORT`.
+serves that static output via `server.js` — a thin Node server around
+[`sirv`](https://github.com/lukeed/sirv) with SPA fallback enabled (client-side
+routes resolve to `index.html`), binding to Heroku's `$PORT`, and attaching
+[RFC 8288](https://www.rfc-editor.org/rfc/rfc8288) `Link` headers to HTML
+responses for agent discovery (see `linkHeaders.js`).

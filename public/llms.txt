@@ -1,0 +1,25 @@
+# Dekel Nissim — Portfolio
+
+> Portfolio site of Dekel Nissim, a Product Designer and UX Researcher. It presents
+> case studies of product design work, written articles, and contact details.
+> The site is a client-rendered single-page app, so this file describes its content
+> for agents that do not execute JavaScript.
+
+## Pages
+
+- [Home](/): Introduction, client list, case-study overview, and client testimonials.
+- [About](/about): Background, approach to evidence-based design, and experience.
+- [Articles](/articles): Index of articles, available in English and Hebrew.
+- [Business card](/business-card): Freelance one-pager with a contact form.
+
+## Case studies
+
+- [Salary Additions](/salaries): Internal system automating salary calculations and approvals.
+- [Marketer](/marketer): Marketing product design work.
+- [Myco](/myco): Product design case study.
+- [Employee Onboarding](/employees): Onboarding experience design.
+
+## Notes
+
+- Individual articles live at `/articles/{slug}`; the slugs are listed on the articles page.
+- There is no public API. The contact form posts to a private backend service.

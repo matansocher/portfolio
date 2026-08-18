@@ -87,7 +87,17 @@ This is a live portfolio. Unless explicitly asked otherwise, **do not change run
 - Icons come from **Unicons** (`uil uil-<name>` classes; the font/CSS is loaded in `index.html`), driven by `config.ICONS_MAP`.
 
 ### Deployment
-- `Procfile` (`web: npm run serve`) → deployed on **Heroku**. On deploy the Node buildpack runs `heroku-postbuild` (`vite build`) to produce `build/`, then `npm run serve` serves that static output with `sirv` (SPA fallback so client-side routes resolve to `index.html`, binds to Heroku's `$PORT`). `sirv-cli` is a runtime **dependency** (not devDependency) because Heroku prunes dev deps in production.
+- `Procfile` (`web: npm run serve`) → deployed on **Heroku**. On deploy the Node buildpack runs `heroku-postbuild` (`vite build`) to produce `build/`, then `npm run serve` runs `server.js` — a thin Node server around `sirv` (SPA fallback so client-side routes resolve to `index.html`, binds to Heroku's `$PORT`). `sirv` is a runtime **dependency** (not devDependency) because Heroku prunes dev deps in production.
+
+### Link headers (agent discovery)
+
+HTML responses carry RFC 8288 `Link` headers pointing agents at machine-readable descriptions of the site:
+
+```
+Link: </llms.txt>; rel="describedby"; type="text/plain", </manifest.json>; rel="manifest"
+```
+
+The header value and the "is this a document request?" rule live in `linkHeaders.js` (plain JS so both Node and Vite can import it). `server.js` applies it in production; a small `link-headers` plugin in `vite.config.ts` mirrors it for `npm run dev` and `npm run preview`. `public/llms.txt` is the plain-text site description the header points to — keep it in sync when routes change.
 
 ---
 
@@ -97,6 +107,8 @@ This is a live portfolio. Unless explicitly asked otherwise, **do not change run
 portfolio/
 ├── public/                 # Static assets served as-is (favicon, manifest, robots.txt, logos)
 ├── index.html              # Vite HTML entry (loads /src/index.tsx)
+├── server.js               # Production static server (sirv + SPA fallback + Link headers)
+├── linkHeaders.js          # Shared RFC 8288 Link header value + document-request rule
 ├── vite.config.ts          # Vite config (React plugin, `~` + `@` aliases, dev server, build outDir)
 ├── tsconfig.json           # TypeScript config (strict, react-jsx, bundler resolution)
 ├── .agents/skills/         # Reusable SKILL.md skills (canonical copy)
