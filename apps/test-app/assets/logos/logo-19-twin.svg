@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
+  <!-- Palm 19 · Twin — stroked outline -->
+  <g fill="none" stroke="#111111" stroke-width="4" stroke-linejoin="miter">
+    <path d="M203.3 140.6 L104.0 116.0 L196.7 159.4 Z"/>
+    <path d="M208.2 144.3 L150.0 78.0 L191.8 155.7 Z"/>
+    <path d="M210.0 150.0 L200.0 58.0 L190.0 150.0 Z"/>
+    <path d="M208.2 155.7 L250.0 78.0 L191.8 144.3 Z"/>
+    <path d="M203.3 159.4 L296.0 116.0 L196.7 140.6 Z"/>
+    <path d="M192 152 L208 152 L204 298 L196 298 Z"/>
+  </g>
+</svg>

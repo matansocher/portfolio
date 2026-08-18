@@ -1,0 +1,548 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dekel Nissim — Portfolio · Option 4 · Bold Statement</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --bg: #f4f1ea;
+        --ink: #131210;
+        --paper: #ffffff;
+        --secondary: #4c4a44;
+        --muted: #7d7a70;
+        --accent: #ff4d24;
+        --yellow: #ffd43a;
+        --border: var(--ink);
+        --shadow: 6px 6px 0 var(--ink);
+        --ease: cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        background: var(--bg); color: var(--ink);
+        font-family: 'Inter', system-ui, sans-serif;
+        font-size: 16.5px; line-height: 1.65;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+      h1, h2, h3 { font-family: 'Archivo', sans-serif; letter-spacing: -0.025em; }
+      a { color: inherit; text-decoration: none; cursor: pointer; }
+      img { max-width: 100%; display: block; }
+      a:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+      .content { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+      .label {
+        display: inline-block; font-family: 'Archivo', sans-serif; font-size: 12px; font-weight: 800;
+        text-transform: uppercase; letter-spacing: 0.12em;
+        background: var(--yellow); border: 2px solid var(--ink); padding: 6px 12px;
+        box-shadow: 3px 3px 0 var(--ink);
+      }
+
+      .reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.55s var(--ease), transform 0.55s var(--ease); }
+      .reveal.in { opacity: 1; transform: none; }
+      @media (prefers-reduced-motion: reduce) {
+        .reveal { opacity: 1; transform: none; transition: none; }
+        * { animation: none !important; transition: none !important; }
+      }
+
+      /* Header */
+      .site-header {
+        position: sticky; top: 0; z-index: 100;
+        display: flex; justify-content: space-between; align-items: center;
+        padding: 16px 28px;
+        background: var(--bg); border-bottom: 3px solid var(--ink);
+      }
+      .brand { font-family: 'Archivo', sans-serif; font-weight: 900; font-size: 19px; text-transform: uppercase; letter-spacing: -0.01em; }
+      .nav { display: flex; gap: 10px; font-family: 'Archivo', sans-serif; font-size: 13.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
+      .nav a { padding: 8px 14px; border: 2px solid transparent; transition: background 0.15s, border-color 0.15s, box-shadow 0.15s, transform 0.15s; }
+      .nav a:hover { background: var(--paper); border-color: var(--ink); box-shadow: 3px 3px 0 var(--ink); transform: translate(-1px, -1px); }
+
+      /* Hero */
+      .hero { padding: 90px 0 80px; border-bottom: 3px solid var(--ink); position: relative; }
+      .hero-inner { max-width: 1140px; margin: 0 auto; padding: 0 24px; position: relative; }
+      .hero h1 {
+        font-size: clamp(46px, 7.4vw, 96px); line-height: 0.98; font-weight: 900;
+        text-transform: uppercase; max-width: 14ch; margin-top: 28px;
+      }
+      .hero h1 .hl { position: relative; display: inline-block; color: var(--accent); }
+      .hero h1 .hl::after {
+        content: ''; position: absolute; left: 0; bottom: 6px; width: 100%; height: 0.16em;
+        background: var(--yellow); z-index: -1; transform: scaleX(0); transform-origin: left;
+        animation: underline 0.7s var(--ease) 0.7s forwards;
+      }
+      @keyframes underline { to { transform: scaleX(1); } }
+      .hero-subcopy { margin-top: 32px; max-width: 60ch; color: var(--secondary); font-size: 18px; }
+      .hero-cta { margin-top: 40px; display: flex; gap: 18px; flex-wrap: wrap; }
+      .btn {
+        display: inline-flex; align-items: center; gap: 10px;
+        font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 15px;
+        text-transform: uppercase; letter-spacing: 0.04em;
+        background: var(--accent); color: #fff;
+        border: 2px solid var(--ink); box-shadow: var(--shadow);
+        padding: 15px 30px;
+        transition: transform 0.15s var(--ease), box-shadow 0.15s var(--ease), background 0.15s;
+      }
+      .btn:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 var(--ink); }
+      .btn:active { transform: translate(3px, 3px); box-shadow: 2px 2px 0 var(--ink); }
+      .btn--ghost { background: var(--paper); color: var(--ink); }
+      .btn--ghost:hover { background: var(--yellow); }
+      .hero-sticker {
+        position: absolute; right: 40px; top: 10px;
+        width: 130px; height: 130px; border-radius: 50%;
+        background: var(--yellow); border: 2px solid var(--ink); box-shadow: 4px 4px 0 var(--ink);
+        display: grid; place-items: center; text-align: center;
+        font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 13px; text-transform: uppercase;
+        line-height: 1.25; padding: 14px; rotate: 8deg;
+        animation: floaty 5s ease-in-out infinite;
+      }
+      @keyframes floaty { 0%, 100% { translate: 0 0; rotate: 8deg; } 50% { translate: 0 -10px; rotate: 5deg; } }
+
+      /* Clients */
+      .clients { padding: 0; border-bottom: 3px solid var(--ink); background: var(--ink); overflow: hidden; }
+      .marquee { display: flex; overflow: hidden; gap: 56px; padding: 26px 0; }
+      .marquee-track { display: flex; align-items: center; gap: 56px; flex-shrink: 0; min-width: 100%; justify-content: space-around; animation: scroll 40s linear infinite; }
+      .marquee:hover .marquee-track { animation-play-state: paused; }
+      @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(calc(-100% - 56px)); } }
+      @media (prefers-reduced-motion: reduce) {
+        .marquee { flex-wrap: wrap; justify-content: center; }
+        .marquee-track { animation: none; flex-wrap: wrap; justify-content: center; min-width: 0; }
+        .marquee-track[aria-hidden="true"] { display: none; }
+      }
+      .marquee img { height: 26px; width: auto; object-fit: contain; filter: grayscale(1) brightness(4); opacity: 0.75; transition: opacity 0.2s, filter 0.2s; }
+      .marquee img:hover { opacity: 1; filter: grayscale(0) brightness(1.6); }
+      .logo-beacon { display: inline-flex; align-items: center; gap: 6px; font-weight: 700; color: #f4f1ea; opacity: 0.8; white-space: nowrap; }
+      .logo-beacon img { height: 20px; }
+
+      /* Section head */
+      .section-head { padding: 86px 0 46px; }
+      .section-head h2 {
+        font-size: clamp(32px, 5vw, 58px); font-weight: 900; text-transform: uppercase;
+        line-height: 1.02; margin-top: 22px; max-width: 20ch;
+      }
+
+      /* Problems */
+      .problems { border-bottom: 3px solid var(--ink); }
+      .problem-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; padding-bottom: 90px; }
+      .problem-grid article {
+        background: var(--paper); border: 2px solid var(--ink); padding: 30px 26px;
+        box-shadow: var(--shadow); position: relative;
+        transition: transform 0.18s var(--ease), box-shadow 0.18s var(--ease), background 0.18s;
+      }
+      .problem-grid article:hover { transform: translate(-3px, -3px); box-shadow: 9px 9px 0 var(--ink); background: var(--yellow); }
+      .problem-grid article::before {
+        counter-increment: prob; content: counter(prob, decimal-leading-zero);
+        font-family: 'Archivo', sans-serif; font-size: 15px; font-weight: 900;
+        color: #fff; background: var(--ink); display: inline-block;
+        padding: 3px 9px; margin-bottom: 18px;
+      }
+      .problem-grid { counter-reset: prob; }
+      .problem-grid h3 { font-size: 19px; font-weight: 800; margin-bottom: 10px; line-height: 1.25; }
+      .problem-grid p { font-size: 14.5px; color: var(--secondary); }
+
+      /* Work */
+      .work { border-bottom: 3px solid var(--ink); padding-bottom: 96px; }
+      .case {
+        max-width: 1140px; margin: 0 auto 60px; padding: 0 24px;
+        display: grid; grid-template-columns: 1fr 1.15fr; gap: 46px; align-items: center;
+      }
+      .case:nth-of-type(even) .case-info { order: 2; }
+      .case:nth-of-type(even) .case-media { order: 1; }
+      .meta {
+        font-family: 'Archivo', sans-serif; font-size: 12px; font-weight: 800;
+        text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 14px;
+      }
+      .case h3 { font-size: 28px; font-weight: 900; line-height: 1.1; text-transform: uppercase; margin-bottom: 14px; }
+      .case-lede { font-weight: 600; margin-bottom: 10px; }
+      .case-helped { color: var(--secondary); font-size: 15px; margin-bottom: 20px; }
+      .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+      .tags span {
+        font-family: 'Archivo', sans-serif; font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em;
+        border: 2px solid var(--ink); background: var(--paper); padding: 5px 10px;
+        transition: background 0.15s;
+      }
+      .tags span:hover { background: var(--yellow); }
+      .project-visual {
+        border: 2px solid var(--ink); background: var(--paper); overflow: hidden;
+        box-shadow: var(--shadow);
+        transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
+      }
+      .case:hover .project-visual { transform: translate(-3px, -3px); box-shadow: 10px 10px 0 var(--ink); }
+      .project-visual img { width: 100%; height: auto; }
+      .project-visual--crop { aspect-ratio: 16 / 10; }
+      .project-visual--crop img { height: 100%; object-fit: cover; object-position: top; }
+
+      .artifact-placeholder {
+        border: 2px solid var(--ink); background: var(--paper); padding: 22px;
+        box-shadow: var(--shadow);
+        transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
+      }
+      .case:hover .artifact-placeholder { transform: translate(-3px, -3px); box-shadow: 10px 10px 0 var(--ink); }
+      .artifact-head {
+        display: flex; justify-content: space-between;
+        font-family: 'Archivo', sans-serif; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em;
+        border-bottom: 2px solid var(--ink); padding-bottom: 12px; margin-bottom: 18px;
+      }
+      .artifact-grid, .concept-cards, .technical-flow { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+      .artifact-column, .concept-cards > span, .technical-flow > span {
+        display: flex; flex-direction: column; gap: 4px;
+        border: 2px solid var(--ink); background: var(--bg); padding: 13px;
+        transition: background 0.15s;
+      }
+      .artifact-column:hover, .concept-cards > span:hover, .technical-flow > span:hover { background: var(--yellow); }
+      .artifact-column span { font-family: 'Archivo', sans-serif; font-size: 12px; font-weight: 900; color: var(--accent); }
+      .artifact-column strong, .concept-cards strong, .technical-flow strong { font-size: 14px; font-weight: 700; }
+      .artifact-column em, .concept-cards em, .technical-flow em { font-style: normal; font-size: 12.5px; color: var(--secondary); }
+
+      /* Testimonials */
+      .testimonials { border-bottom: 3px solid var(--ink); padding-bottom: 96px; }
+      .testimonial-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
+      .testimonial {
+        background: var(--paper); border: 2px solid var(--ink); box-shadow: var(--shadow);
+        padding: 34px; display: flex; flex-direction: column; gap: 24px;
+        transition: transform 0.18s var(--ease), box-shadow 0.18s var(--ease);
+      }
+      .testimonial:hover { transform: translate(-3px, -3px); box-shadow: 9px 9px 0 var(--ink); }
+      .testimonial:nth-child(2) { rotate: 0.6deg; }
+      .testimonial:nth-child(1) { rotate: -0.6deg; }
+      .testimonial blockquote { font-size: 15.5px; color: var(--secondary); }
+      .testimonial blockquote::before { content: '“'; display: block; font-family: 'Archivo', sans-serif; font-size: 56px; font-weight: 900; line-height: 0.7; color: var(--accent); margin-bottom: 14px; }
+      .testimonial figcaption { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-top: auto; border-top: 2px solid var(--ink); padding-top: 20px; }
+      .testimonial figcaption strong { display: block; font-family: 'Archivo', sans-serif; font-size: 15px; font-weight: 800; text-transform: uppercase; }
+      .testimonial figcaption em { font-style: normal; font-size: 13px; color: var(--muted); }
+      .testimonial figcaption img { height: 26px; width: auto; object-fit: contain; }
+      .testimonial-logo-text { display: inline-flex; align-items: center; gap: 6px; font-weight: 700; font-size: 14px; }
+      .testimonial-logo-text img { height: 20px; }
+
+      /* Writing */
+      .writing { border-bottom: 3px solid var(--ink); padding-bottom: 96px; }
+      .writing-sub { color: var(--secondary); margin: -20px 0 40px; }
+      .article-list { border: 2px solid var(--ink); background: var(--paper); box-shadow: var(--shadow); }
+      .article-list a {
+        display: flex; align-items: center; gap: 20px;
+        padding: 24px 26px; border-bottom: 2px solid var(--ink);
+        font-family: 'Archivo', sans-serif; font-size: clamp(16px, 2vw, 20px); font-weight: 700;
+        transition: background 0.15s, padding-left 0.2s var(--ease);
+      }
+      .article-list a:last-child { border-bottom: 0; }
+      .article-list a::before {
+        counter-increment: art; content: counter(art, decimal-leading-zero);
+        font-size: 13px; font-weight: 900; color: #fff; background: var(--ink);
+        padding: 3px 8px; flex-shrink: 0;
+      }
+      .article-list { counter-reset: art; }
+      .article-list a:hover { background: var(--yellow); padding-left: 38px; }
+      .quiet-link {
+        display: inline-block; margin-top: 30px;
+        font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 14px; text-transform: uppercase;
+        border-bottom: 3px solid var(--accent); padding-bottom: 3px;
+        transition: color 0.15s;
+      }
+      .quiet-link:hover { color: var(--accent); }
+
+      /* Final CTA */
+      .final-cta { padding: 110px 0 120px; background: var(--accent); border-bottom: none; text-align: center; position: relative; overflow: hidden; }
+      .final-cta h2 {
+        font-size: clamp(34px, 5.6vw, 66px); font-weight: 900; text-transform: uppercase;
+        line-height: 1.0; max-width: 16ch; margin: 0 auto 44px; color: #fff;
+        text-shadow: 3px 3px 0 var(--ink);
+      }
+      .final-cta .btn { background: var(--yellow); color: var(--ink); font-size: 17px; padding: 18px 40px; }
+      .footer-note { margin-top: 56px; font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.75); }
+
+      @media (max-width: 900px) {
+        .problem-grid { grid-template-columns: 1fr; }
+        .testimonial-grid { grid-template-columns: 1fr; }
+        .case { grid-template-columns: 1fr; gap: 28px; }
+        .case:nth-of-type(even) .case-info { order: 1; }
+        .case:nth-of-type(even) .case-media { order: 2; }
+        .nav { display: none; }
+        .hero-sticker { display: none; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header" aria-label="Site header">
+      <a class="brand" href="#">Dekel Nissim</a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="#">About</a>
+        <a href="#work">Projects</a>
+        <a href="#writing">Articles</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-inner">
+          <span class="label reveal">UX Research × Product Strategy</span>
+          <div class="hero-sticker" aria-hidden="true">Clarity over noise</div>
+          <h1 id="hero-title" class="reveal">I help product leaders make <span class="hl">clearer decisions.</span></h1>
+          <p class="hero-subcopy reveal">Through UX research, product thinking, and systems thinking, I turn complex product questions into direction teams can trust. Selected work on complex workflows, competitive research, AI-assisted design processes, and UX that helps teams move from uncertainty to clearer product decisions.</p>
+          <div class="hero-cta reveal">
+            <a class="btn" href="#work">View selected work</a>
+            <a class="btn btn--ghost" href="#contact">Let’s talk</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="clients" aria-label="Clients">
+        <div class="marquee" aria-label="Client logos">
+          <div class="marquee-track">
+            <img src="assets/logo-personetics.png" alt="Personetics">
+            <img src="assets/logo-jfrog.svg" alt="JFrog">
+            <img src="assets/logo-controlup.png" alt="ControlUp">
+            <img src="assets/logo-hippocampus.png" alt="HippoCampus">
+            <img src="assets/logo-gool.png" alt="GOOL">
+            <img src="assets/logo-trustech.png" alt="TRUSTech">
+            <img src="assets/logo-amdocs.svg" alt="Amdocs">
+            <img src="assets/logo-tlv.png" alt="Tel Aviv Municipality">
+            <img src="assets/logo-sqlink.png" alt="SQLINK">
+            <img src="assets/logo-ramatgan.png" alt="Ramat Gan">
+            <span class="logo-beacon"><img src="assets/logo-beacon.svg" alt=""><span>Beacon</span></span>
+            <img src="assets/logo-marketer.svg" alt="Marketer">
+            <img src="assets/logo-practitest.png" alt="PractiTest">
+            <img src="assets/logo-brinks.png" alt="BRINKS">
+            <img src="assets/logo-team-stefansky.svg" alt="Team Stefansky">
+            <img src="assets/logo-myco.png" alt="Myco">
+          </div>
+          <div class="marquee-track" aria-hidden="true">
+            <img src="assets/logo-personetics.png" alt="">
+            <img src="assets/logo-jfrog.svg" alt="">
+            <img src="assets/logo-controlup.png" alt="">
+            <img src="assets/logo-hippocampus.png" alt="">
+            <img src="assets/logo-gool.png" alt="">
+            <img src="assets/logo-trustech.png" alt="">
+            <img src="assets/logo-amdocs.svg" alt="">
+            <img src="assets/logo-tlv.png" alt="">
+            <img src="assets/logo-sqlink.png" alt="">
+            <img src="assets/logo-ramatgan.png" alt="">
+            <span class="logo-beacon"><img src="assets/logo-beacon.svg" alt=""><span>Beacon</span></span>
+            <img src="assets/logo-marketer.svg" alt="">
+            <img src="assets/logo-practitest.png" alt="">
+            <img src="assets/logo-brinks.png" alt="">
+            <img src="assets/logo-team-stefansky.svg" alt="">
+            <img src="assets/logo-myco.png" alt="">
+          </div>
+        </div>
+      </section>
+
+      <section class="problems" aria-labelledby="problems-title">
+        <div class="content">
+          <div class="section-head reveal">
+            <span class="label">Where I Help</span>
+            <h2 id="problems-title">Where product teams get more clarity</h2>
+          </div>
+          <div class="problem-grid reveal">
+            <article>
+              <h3>Complex workflows that need structure</h3>
+              <p>Roles, states, edge cases, dependencies, and decision points become clearer product flows teams can use and build.</p>
+            </article>
+            <article>
+              <h3>AI workflows that save real team time</h3>
+              <p>Practical AI-assisted workflows support development handoff, design-system maintenance, fast validation, and stakeholder-ready research summaries.</p>
+            </article>
+            <article>
+              <h3>Competitive research that sharpens the product</h3>
+              <p>Competitor patterns and market best practices become sharper UX decisions, fewer reinventions, and stronger product advantage.</p>
+            </article>
+            <article>
+              <h3>Design systems that are easier to use and maintain</h3>
+              <p>Components, usage rules, documentation, and handoff logic become easier to understand, update, and connect to implementation.</p>
+            </article>
+            <article>
+              <h3>From product idea to stronger UX flow</h3>
+              <p>Requirements, constraints, business goals, and research become complete UX flows ready for review, testing, and build.</p>
+            </article>
+            <article>
+              <h3>Evidence you can act on quickly</h3>
+              <p>Quick tests, interviews, product data, FullStory, and stakeholder input become clear signals on what works, what is risky, and what to do next.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="work" id="work" aria-labelledby="work-title">
+        <div class="content">
+          <div class="section-head reveal">
+            <span class="label">Case Studies</span>
+            <h2 id="work-title">Selected Work</h2>
+          </div>
+        </div>
+
+        <article class="case reveal">
+          <div class="case-info">
+            <p class="meta">Municipal HR system / Complex internal workflow</p>
+            <h3>Salary Exceptions &amp; HR Dashboard</h3>
+            <p class="case-lede">From paper-based calculations to a reliable digital workflow for complex salary approvals.</p>
+            <p class="case-helped">I helped map the manual process, define calculation logic, align stakeholders, and shape the approval flow.</p>
+            <div class="tags"><span>Complex workflows</span><span>Calculation logic</span><span>Internal tools</span><span>Stakeholder alignment</span><span>Data-heavy UX</span></div>
+          </div>
+          <div class="case-media">
+            <figure class="artifact-placeholder" aria-label="Contextual salary calculation workflow map, not a product screenshot">
+              <div class="artifact-head"><span>Workflow map</span><span>Salary exception logic</span></div>
+              <div class="artifact-grid">
+                <div class="artifact-column"><span>01</span><strong>Request intake</strong><em>Role, date, employee state</em></div>
+                <div class="artifact-column"><span>02</span><strong>Eligibility rules</strong><em>Constraints and dependencies</em></div>
+                <div class="artifact-column"><span>03</span><strong>Calculation logic</strong><em>Exceptions, totals, approval path</em></div>
+                <div class="artifact-column"><span>04</span><strong>Payroll handoff</strong><em>Reviewable decision output</em></div>
+              </div>
+            </figure>
+          </div>
+        </article>
+
+        <article class="case reveal">
+          <div class="case-info">
+            <p class="meta">Mobile fintech / AI-powered banking</p>
+            <h3>Personetics — Mobile Fintech Product Work</h3>
+            <p class="case-lede">Mobile UX work across budgeting, savings, onboarding, filters, and usability testing for AI-powered banking experiences.</p>
+            <p class="case-helped">I helped make financial actions and product flows clearer across new-feature mobile experiences.</p>
+            <div class="tags"><span>Fintech UX</span><span>Mobile flows</span><span>AI banking</span><span>New features</span><span>Usability testing</span><span>Product clarity</span></div>
+          </div>
+          <div class="case-media">
+            <figure class="artifact-placeholder" aria-label="Contextual mobile fintech concept cards, not a product screenshot">
+              <div class="artifact-head"><span>Fintech concept cards</span><span>Mobile product clarity</span></div>
+              <div class="concept-cards">
+                <span><strong>Budgeting</strong><em>Decision support</em></span>
+                <span><strong>Savings</strong><em>Goal progress</em></span>
+                <span><strong>Onboarding</strong><em>First-use flow</em></span>
+                <span><strong>Filters</strong><em>Findability</em></span>
+              </div>
+            </figure>
+          </div>
+        </article>
+
+        <article class="case reveal">
+          <div class="case-info">
+            <p class="meta">AI product / Developer tools</p>
+            <h3>JFrog Fly — AI Product for Developers</h3>
+            <p class="case-lede">AI-powered developer product for binary artifact workflows.</p>
+            <p class="case-helped">I helped clarify technical AI workflows through product screens, design-system components, analytics, and research.</p>
+            <div class="tags"><span>AI product</span><span>Developer tools</span><span>Design system</span><span>Product analytics</span><span>User research</span><span>Technical UX</span></div>
+          </div>
+          <div class="case-media">
+            <figure class="artifact-placeholder" aria-label="Contextual AI developer workflow diagram, not a product screenshot">
+              <div class="artifact-head"><span>AI workflow diagram</span><span>Developer tool flow</span></div>
+              <div class="technical-flow">
+                <span><strong>Input</strong><em>Artifact context</em></span>
+                <span><strong>AI assist</strong><em>Suggested action</em></span>
+                <span><strong>Review</strong><em>Human validation</em></span>
+                <span><strong>Handoff</strong><em>Team-ready output</em></span>
+              </div>
+            </figure>
+          </div>
+        </article>
+
+        <article class="case reveal">
+          <div class="case-info">
+            <p class="meta">B2B SaaS / Technical dashboard</p>
+            <h3>AppDX — Experience Monitoring</h3>
+            <p class="case-lede">A modular dashboard for monitoring real-user experience in web apps.</p>
+            <p class="case-helped">I helped the team align around priorities and translate technical monitoring needs into a clearer product direction.</p>
+            <div class="tags"><span>Technical UX</span><span>Data-heavy UX</span><span>Dashboard strategy</span><span>Design sprint</span><span>Product facilitation</span></div>
+          </div>
+          <div class="case-media">
+            <figure class="project-visual"><img src="assets/project-appdx.png" alt="AppDX Experience Monitoring visual" loading="lazy"></figure>
+          </div>
+        </article>
+
+        <article class="case reveal">
+          <div class="case-info">
+            <p class="meta">Startup product / B2B SaaS</p>
+            <h3>Marketer — Internal Marketing Platform</h3>
+            <p class="case-lede">A startup product for managing marketing operations, campaign tracking, and cross-team workflows.</p>
+            <p class="case-helped">I helped create structure, consistency, and reusable patterns for a growing internal product.</p>
+            <div class="tags"><span>B2B SaaS</span><span>Startup product</span><span>Design system from scratch</span><span>End-to-end ownership</span><span>Product UX</span></div>
+          </div>
+          <div class="case-media">
+            <figure class="project-visual project-visual--crop"><img src="assets/project-marketer.png" alt="Marketer Internal Marketing Platform visual" loading="lazy"></figure>
+          </div>
+        </article>
+
+        <article class="case reveal">
+          <div class="case-info">
+            <p class="meta">Mobile apps / Two-sided product</p>
+            <h3>Myco — Mobile Apps for Community Events</h3>
+            <p class="case-lede">Two connected mobile apps for ticket buyers and event producers.</p>
+            <p class="case-helped">I helped shape both sides of the experience through interviews, competitive research, and product flow design.</p>
+            <div class="tags"><span>Mobile UX</span><span>Two-sided product</span><span>Competitive research</span><span>User research</span><span>Flow design</span></div>
+          </div>
+          <div class="case-media">
+            <figure class="project-visual project-visual--crop"><img src="assets/project-myco.png" alt="Myco mobile apps visual" loading="lazy"></figure>
+          </div>
+        </article>
+
+        <article class="case reveal">
+          <div class="case-info">
+            <p class="meta">Enterprise HR tool / Global onboarding</p>
+            <h3>Employee Onboarding Screen</h3>
+            <p class="case-lede">A flexible onboarding structure for hundreds of employees across countries, branches, and roles.</p>
+            <p class="case-helped">I helped turn broad requirements and many user contexts into a template-based UX structure the team could maintain.</p>
+            <div class="tags"><span>Complex workflows</span><span>User interviews</span><span>Template strategy</span><span>Stakeholder alignment</span><span>Enterprise UX</span></div>
+          </div>
+          <div class="case-media">
+            <figure class="project-visual"><img src="assets/project-employee.png" alt="Employee Onboarding Screen visual" loading="lazy"></figure>
+          </div>
+        </article>
+      </section>
+
+      <section class="testimonials" aria-labelledby="testimonials-title">
+        <div class="content">
+          <div class="section-head reveal">
+            <span class="label">Receipts</span>
+            <h2 id="testimonials-title">What People Say</h2>
+          </div>
+          <div class="testimonial-grid reveal">
+            <figure class="testimonial">
+              <blockquote>Collaborating with Dekel was instrumental in driving our projects at TrusTech forward. She consistently delivered results that exceeded expectations in both web and mobile products. Dekel worked closely with our design and development teams, always flexible and attuned to the changing needs of our organization, while ensuring our clients received exceptional service.</blockquote>
+              <figcaption>
+                <span><strong>Roy Akoka</strong><em>CEO &amp; Co-Founder</em></span>
+                <img src="assets/logo-trustech.png" alt="TRUSTech">
+              </figcaption>
+            </figure>
+            <figure class="testimonial">
+              <blockquote>Best ever!! I've been working with Dekel for a few months. Results are amazing — an energy blast, relentless professional, an amazing addition to any team, an independent, pro-active, engaged and engaging professional.</blockquote>
+              <figcaption>
+                <span><strong>Ariel Zamir</strong><em>CEO</em></span>
+                <span class="testimonial-logo-text"><img src="assets/logo-beacon.svg" alt="">Beacon</span>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="writing" id="writing" aria-labelledby="writing-title">
+        <div class="content">
+          <div class="section-head reveal">
+            <span class="label">Writing</span>
+            <h2 id="writing-title">Writing on UX, AI, fintech, trust, and product decisions</h2>
+          </div>
+          <p class="writing-sub reveal">Practical thinking from real product questions, not design theory.</p>
+          <div class="article-list reveal">
+            <a href="#">Making Financial Information Accessible Is a Huge Step Forward. We Still Need to Be Careful.</a>
+            <a href="#">There Is a Huge Difference Between Passing Information Along and Building Understanding.</a>
+            <a href="#">When an Interface Acts Like Someone You Can’t Trust.</a>
+          </div>
+          <a class="quiet-link" href="#">View all articles →</a>
+        </div>
+      </section>
+
+      <section class="final-cta" id="contact" aria-labelledby="cta-title">
+        <div class="content reveal">
+          <h2 id="cta-title">Have a complex product decision to move forward?</h2>
+          <a class="btn" href="#">Let’s talk</a>
+          <p class="footer-note">Dekel Nissim — UX Research &amp; Product Strategy</p>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+      }, { threshold: 0.12 });
+      document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+    </script>
+  </body>
+</html>

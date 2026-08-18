@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
+  <!-- Palm 22 · Starburst -->
+  <g>
+    <line x1="200.0" y1="152.0" x2="97.0" y2="137.5" stroke="#111111" stroke-width="4" stroke-linecap="butt"/>
+    <line x1="200.0" y1="152.0" x2="104.3" y2="111.4" stroke="#111111" stroke-width="4" stroke-linecap="butt"/>
+    <line x1="200.0" y1="152.0" x2="118.0" y2="88.0" stroke="#111111" stroke-width="4" stroke-linecap="butt"/>
+    <line x1="200.0" y1="152.0" x2="137.4" y2="68.9" stroke="#111111" stroke-width="4" stroke-linecap="butt"/>
+    <line x1="200.0" y1="152.0" x2="161.0" y2="55.6" stroke="#111111" stroke-width="4" stroke-linecap="butt"/>
+    <line x1="200.0" y1="152.0" x2="187.3" y2="48.8" stroke="#111111" stroke-width="4" stroke-linecap="butt"/>
+    <line x1="200.0" y1="152.0" x2="214.5" y2="49.0" stroke="#111111" stroke-width="4" stroke-linecap="butt"/>
+    <line x1="200.0" y1="152.0" x2="240.6" y2="56.3" stroke="#111111" stroke-width="4" stroke-linecap="butt"/>
+    <line x1="200.0" y1="152.0" x2="264.0" y2="70.0" stroke="#111111" stroke-width="4" stroke-linecap="butt"/>
+    <line x1="200.0" y1="152.0" x2="283.1" y2="89.4" stroke="#111111" stroke-width="4" stroke-linecap="butt"/>
+    <line x1="200.0" y1="152.0" x2="296.4" y2="113.0" stroke="#111111" stroke-width="4" stroke-linecap="butt"/>
+    <line x1="200.0" y1="152.0" x2="200.0" y2="300.0" stroke="#111111" stroke-width="6" stroke-linecap="butt"/>
+  </g>
+</svg>

@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dekel Nissim — Brand Directions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --bg: #f4f4f2;
+        --card: #ffffff;
+        --fg: #141414;
+        --muted: #77776f;
+        --border: #e3e3de;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { background: var(--bg); color: var(--fg); font-family: 'Inter', system-ui, sans-serif; padding: 48px 28px 80px; }
+      .head { max-width: 1280px; margin: 0 auto 40px; display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+      h1 { font-size: 30px; font-weight: 700; letter-spacing: -0.02em; }
+      .sub { margin-top: 8px; color: var(--muted); font-size: 14.5px; max-width: 680px; line-height: 1.5; }
+      .toggle { display: inline-flex; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: var(--card); }
+      .toggle button {
+        border: 0; background: transparent; font-family: inherit; font-size: 13px; font-weight: 600;
+        padding: 9px 18px; cursor: pointer; color: var(--muted); transition: background 0.15s, color 0.15s;
+      }
+      .toggle button.active { background: var(--fg); color: #fff; }
+      .toggle button:focus-visible { outline: 2px solid var(--fg); outline-offset: -2px; }
+
+      .group { max-width: 1280px; margin: 0 auto 14px; font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); padding-top: 20px; }
+      .grid { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 22px; }
+      .cell { background: var(--card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; transition: transform 0.25s ease, box-shadow 0.25s ease; }
+      .cell:hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(20, 20, 20, 0.09); }
+      .preview { height: 220px; position: relative; background: #fff; transition: background 0.25s; display: flex; align-items: center; justify-content: center; }
+      body.dark-preview .preview { background: #141414; }
+      body.dark-preview .preview img { filter: invert(1); }
+      .preview img { max-width: calc(100% - 64px); max-height: calc(100% - 56px); object-fit: contain; transition: filter 0.25s; }
+      .info { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 18px; border-top: 1px solid var(--border); }
+      .info b { font-size: 14px; font-weight: 600; text-transform: capitalize; }
+      .info span { display: block; font-size: 12px; color: var(--muted); margin-top: 2px; }
+      .info a {
+        font-size: 12px; font-weight: 600; color: var(--fg); text-decoration: none;
+        border: 1px solid var(--border); border-radius: 7px; padding: 6px 11px; white-space: nowrap;
+        transition: background 0.15s, color 0.15s;
+      }
+      .info a:hover { background: var(--fg); color: #fff; }
+      .num { font-size: 11px; font-weight: 700; color: var(--muted); letter-spacing: 0.1em; }
+      @media (max-width: 700px) { .preview { height: 180px; } }
+    </style>
+  </head>
+  <body>
+    <header class="head">
+      <div>
+        <h1>Brand Directions — Dekel Nissim</h1>
+        <p class="sub">Name-based, typographic explorations · wordmarks, custom letter details, and D/N marks · warm but professional, senior, research-led. Toggle a dark background and click "Open" for the raw SVG.</p>
+      </div>
+      <div class="toggle" role="group" aria-label="Preview background">
+        <button id="lightBtn" class="active" type="button">On light</button>
+        <button id="darkBtn" type="button">On dark</button>
+      </div>
+    </header>
+
+    <main id="root"></main>
+
+    <script>
+      const logos = [
+        { file: 'brand-01-sans-title.svg', name: 'Sans title', desc: 'Full wordmark · humanist sans (Avenir)', group: '1 · Full wordmark' },
+        { file: 'brand-02-sans-caps.svg', name: 'Sans caps', desc: 'Wordmark · tracked grotesk caps (tech)', group: '1 · Full wordmark' },
+        { file: 'brand-04-lower.svg', name: 'Lowercase', desc: 'Wordmark · lowercase, quiet & modern', group: '1 · Full wordmark' },
+        { file: 'brand-05-period.svg', name: 'Period', desc: 'Custom detail · decisive full stop', group: '2 · Custom letter detail' },
+        { file: 'brand-06-sep-square.svg', name: 'Square separator', desc: 'Custom detail · square between the words', group: '2 · Custom letter detail' },
+        { file: 'brand-07-warm-dot.svg', name: 'Warm stop', desc: 'Wordmark · warm accent full stop', group: '2 · Custom letter detail' },
+        { file: 'brand-15-lockup.svg', name: 'Lockup', desc: 'D/N mark + wordmark, horizontal lockup', group: '3 · Symbol + wordmark' },
+        { file: 'brand-11-mark-dn.svg', name: 'DN initials', desc: 'Mark · refined DN initials', group: '3 · Symbol + wordmark' },
+        { file: 'brand-10-mark-d.svg', name: 'd. mark', desc: 'Favicon · lowercase “d.” from Dekel', group: '4 · Favicon / avatar' },
+        { file: 'brand-13-mark-square.svg', name: 'dn tile', desc: 'Avatar · solid tile, white “dn”', group: '4 · Favicon / avatar' },
+        { file: 'brand-14-mark-warm.svg', name: 'dn tile · warm', desc: 'Avatar · warm tile variant', group: '4 · Favicon / avatar' },
+        { file: 'brand-03-serif-title.svg', name: 'Serif title', desc: 'Wordmark · editorial serif (Charter)', group: '5 · Editorial / serif' },
+        { file: 'brand-08-stack-serif.svg', name: 'Stacked serif', desc: 'Two-line editorial serif lockup', group: '5 · Editorial / serif' },
+        { file: 'brand-12-mark-dn-line.svg', name: 'DN · linked', desc: 'Mark · DN joined by a baseline rule', group: '5 · Editorial / serif' },
+        { file: 'brand-09-stack-caps.svg', name: 'Stacked caps', desc: 'Two-line tracked caps, product/tech', group: '6 · Product / tech sans' },
+        { file: 'brand-16-hebrew.svg', name: 'Hebrew serif', desc: 'Wordmark · דקל נסים (bonus)', group: '6 · Product / tech sans' },
+        { file: 'brand-17-sq-word.svg', name: 'Indigo wordmark', desc: 'SQlink-style · heavy geometric wordmark', group: '7 · SQlink-style · hero letter' },
+        { file: 'brand-18-sq-split.svg', name: 'Weight contrast', desc: 'Bold + light, like SQ | link', group: '7 · SQlink-style · hero letter' },
+        { file: 'brand-19-sq-d-solid.svg', name: 'D mark', desc: 'Hero letter · heavy geometric “D” from Dekel', group: '7 · SQlink-style · hero letter' },
+        { file: 'brand-20-sq-d-lower.svg', name: 'd lowercase', desc: 'Hero letter · lowercase “d” mark', group: '7 · SQlink-style · hero letter' },
+        { file: 'brand-21-sq-d-tile.svg', name: 'D tile', desc: 'Avatar · indigo tile, white “D”', group: '7 · SQlink-style · hero letter' },
+        { file: 'brand-22-sq-d-lockup.svg', name: 'D lockup', desc: 'Lockup · “D” mark + wordmark', group: '7 · SQlink-style · hero letter' },
+        { file: 'brand-23-sq-d-period.svg', name: 'D.', desc: 'Hero letter · decisive full stop', group: '7 · SQlink-style · hero letter' },
+        { file: 'brand-24-sq-d-ring.svg', name: 'D ring', desc: 'Mark · “D” in a thin ring', group: '7 · SQlink-style · hero letter' },
+        { file: 'brand-25-sq-d-badge.svg', name: 'D badge', desc: 'Avatar · circular badge, white “D”', group: '7 · SQlink-style · hero letter' },
+        { file: 'brand-26-sq-d-tail.svg', name: 'D tail', desc: 'Custom detail · “D” with a bar tail', group: '7 · SQlink-style · hero letter' },
+        { file: 'brand-27-sq-d-underline.svg', name: 'D rule', desc: 'Mark · “D” on a baseline rule', group: '7 · SQlink-style · hero letter' },
+        { file: 'brand-28-sq-d-hero.svg', name: 'Hero D wordmark', desc: 'Wordmark · enlarged hero “D”', group: '7 · SQlink-style · hero letter' },
+        { file: 'brand-29-sq-d-stack.svg', name: 'D stacked lockup', desc: 'Lockup · “D” mark + stacked name', group: '7 · SQlink-style · hero letter' },
+        { file: 'brand-30-sq-d-mono.svg', name: 'D mono', desc: 'Hero letter · monospaced/tech “D”', group: '7 · SQlink-style · hero letter' },
+        { file: 'brand-31-sq-d-outline.svg', name: 'D outline tile', desc: 'Avatar · outline tile, indigo “D”', group: '7 · SQlink-style · hero letter' },
+        { file: 'brand-32-sq-d-serif.svg', name: 'D serif', desc: 'Hero letter · editorial serif “D”', group: '7 · SQlink-style · hero letter' },
+      ];
+
+      const groups = [];
+      logos.forEach((l) => {
+        let g = groups.find((x) => x.name === l.group);
+        if (!g) { g = { name: l.group, items: [] }; groups.push(g); }
+        g.items.push(l);
+      });
+
+      document.getElementById('root').innerHTML = groups
+        .map((g) => `
+          <div class="group">${g.name}</div>
+          <section class="grid">
+            ${g.items.map((l) => `
+              <div class="cell">
+                <div class="preview"><img src="assets/brand/${l.file}" alt="${l.name}"></div>
+                <div class="info">
+                  <div><b>${l.name}</b><span>${l.desc}</span></div>
+                  <a href="assets/brand/${l.file}" target="_blank" rel="noopener">Open</a>
+                </div>
+              </div>`).join('')}
+          </section>`)
+        .join('');
+
+      const lightBtn = document.getElementById('lightBtn');
+      const darkBtn = document.getElementById('darkBtn');
+      lightBtn.addEventListener('click', () => { document.body.classList.remove('dark-preview'); lightBtn.classList.add('active'); darkBtn.classList.remove('active'); });
+      darkBtn.addEventListener('click', () => { document.body.classList.add('dark-preview'); darkBtn.classList.add('active'); lightBtn.classList.remove('active'); });
+    </script>
+  </body>
+</html>

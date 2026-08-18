@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dekel Nissim — Design Options Gallery</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --bg: #101216;
+        --bar: #16181d;
+        --border: #2a2d35;
+        --fg: #f0f1f4;
+        --muted: #9aa0ab;
+        --accent: #5b8cff;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { height: 100%; }
+      body {
+        display: flex; flex-direction: column;
+        background: var(--bg); color: var(--fg);
+        font-family: 'Inter', system-ui, sans-serif;
+      }
+      /* Top bar */
+      .bar {
+        display: flex; align-items: center; gap: 16px;
+        padding: 10px 18px;
+        background: var(--bar); border-bottom: 1px solid var(--border);
+        flex-wrap: wrap;
+      }
+      .bar-title { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 15px; margin-right: 8px; white-space: nowrap; }
+      .bar-title span { color: var(--accent); }
+      .tabs { display: flex; gap: 6px; flex-wrap: wrap; }
+      .tab {
+        border: 1px solid var(--border); background: transparent; color: var(--muted);
+        font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500;
+        padding: 7px 14px; border-radius: 8px; cursor: pointer;
+        transition: color 0.15s, background 0.15s, border-color 0.15s;
+      }
+      .tab:hover { color: var(--fg); border-color: #3d4150; }
+      .tab.active { color: #fff; background: var(--accent); border-color: var(--accent); }
+      .tab:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+      .tab .num { opacity: 0.65; margin-right: 6px; font-weight: 600; }
+      .bar-right { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+      .hint { font-size: 12px; color: var(--muted); white-space: nowrap; }
+      .hint kbd {
+        font-family: inherit; font-size: 11px; border: 1px solid var(--border);
+        border-radius: 4px; padding: 1px 6px; background: #1d2026;
+      }
+      .open-new {
+        display: inline-flex; align-items: center; gap: 6px;
+        font-size: 13px; font-weight: 500; color: var(--muted); text-decoration: none;
+        border: 1px solid var(--border); border-radius: 8px; padding: 7px 12px;
+        transition: color 0.15s, border-color 0.15s;
+      }
+      .open-new:hover { color: var(--fg); border-color: #3d4150; }
+      .open-new:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+      /* Frame */
+      .frame-wrap { flex: 1; position: relative; background: #fff; }
+      iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+      @media (max-width: 760px) {
+        .hint { display: none; }
+        .bar-title { font-size: 14px; }
+        .tab { padding: 6px 10px; font-size: 12px; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="bar">
+      <span class="bar-title">Dekel Nissim <span>— Design Options</span></span>
+      <nav class="tabs" aria-label="Design options">
+        <button class="tab" data-src="index.html"><span class="num">0</span>Original</button>
+        <button class="tab" data-src="option-1-swiss.html"><span class="num">1</span>Swiss Grid</button>
+        <button class="tab" data-src="option-2-dark.html"><span class="num">2</span>Cinematic Dark</button>
+        <button class="tab" data-src="option-3-editorial.html"><span class="num">3</span>Warm Editorial</button>
+        <button class="tab" data-src="option-4-bold.html"><span class="num">4</span>Bold Statement</button>
+        <button class="tab" data-src="option-5-gradient.html"><span class="num">5</span>Soft Gradient</button>
+        <button class="tab" data-src="option-6-glass.html"><span class="num">6</span>Glass</button>
+        <button class="tab" data-src="option-7-terminal.html"><span class="num">7</span>Terminal</button>
+        <button class="tab" data-src="option-8-sidebar.html"><span class="num">8</span>Split Studio</button>
+        <button class="tab" data-src="option-9-organic.html"><span class="num">9</span>Organic Calm</button>
+        <button class="tab" data-src="option-10-minimal.html"><span class="num">M</span>Mono Minimal</button>
+      </nav>
+      <div class="bar-right">
+        <span class="hint">Switch with keys <kbd>0</kbd>–<kbd>9</kbd>, <kbd>M</kbd> or <kbd>←</kbd> <kbd>→</kbd></span>
+        <a class="open-new" id="openNew" href="option-1-swiss.html" target="_blank" rel="noopener">
+          Open in new tab
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6M10 14L21 3"/></svg>
+        </a>
+      </div>
+    </header>
+
+    <div class="frame-wrap">
+      <iframe id="frame" title="Design option preview" src="option-1-swiss.html"></iframe>
+    </div>
+
+    <script>
+      const tabs = Array.from(document.querySelectorAll('.tab'));
+      const frame = document.getElementById('frame');
+      const openNew = document.getElementById('openNew');
+
+      function select(i) {
+        const tab = tabs[i];
+        if (!tab) return;
+        tabs.forEach((t) => t.classList.remove('active'));
+        tab.classList.add('active');
+        const src = tab.dataset.src;
+        if (frame.getAttribute('src') !== src) frame.setAttribute('src', src);
+        openNew.href = src;
+        location.hash = src.replace('.html', '');
+      }
+
+      tabs.forEach((tab, i) => tab.addEventListener('click', () => select(i)));
+
+      document.addEventListener('keydown', (e) => {
+        if (e.metaKey || e.ctrlKey || e.altKey) return;
+        const current = tabs.findIndex((t) => t.classList.contains('active'));
+        if (e.key >= '0' && e.key <= '9') select(Number(e.key));
+        else if (e.key === 'm' || e.key === 'M') select(10);
+        else if (e.key === 'ArrowRight') select((current + 1) % tabs.length);
+        else if (e.key === 'ArrowLeft') select((current - 1 + tabs.length) % tabs.length);
+      });
+
+      // Restore from URL hash, default to option 1
+      const fromHash = tabs.findIndex((t) => t.dataset.src.replace('.html', '') === location.hash.slice(1));
+      select(fromHash >= 0 ? fromHash : 1);
+    </script>
+  </body>
+</html>

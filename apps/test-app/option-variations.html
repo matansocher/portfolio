@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dekel Nissim - Editorial Variations</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --bg: #f5f6f8;
+        --bar: #ffffff;
+        --border: #e2e4e8;
+        --border-strong: #cfd2d8;
+        --fg: #14161c;
+        --muted: #868b94;
+        --accent: #2f4d7a;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { height: 100%; }
+      body {
+        display: flex; flex-direction: column;
+        background: var(--bg); color: var(--fg);
+        font-family: 'IBM Plex Sans', system-ui, sans-serif;
+      }
+      .bar {
+        display: flex; align-items: center; gap: 16px;
+        padding: 11px 20px;
+        background: var(--bar); border-bottom: 1px solid var(--border);
+        flex-wrap: wrap;
+      }
+      .bar-title { font-family: 'IBM Plex Serif', serif; font-weight: 600; font-size: 16px; letter-spacing: -0.01em; margin-right: 6px; white-space: nowrap; }
+      .bar-title span { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.1em; color: var(--accent); text-transform: uppercase; margin-left: 6px; }
+      .tabs { display: flex; gap: 6px; flex-wrap: wrap; }
+      .tab {
+        border: 1px solid var(--border-strong); background: transparent; color: var(--muted);
+        font-family: 'IBM Plex Sans', sans-serif; font-size: 13px; font-weight: 500;
+        padding: 7px 14px; border-radius: 2px; cursor: pointer;
+        display: inline-flex; align-items: center; gap: 8px;
+        transition: color 0.15s, background 0.15s, border-color 0.15s;
+      }
+      .tab:hover { color: var(--fg); border-color: var(--fg); }
+      .tab.active { color: #fff; background: var(--fg); border-color: var(--fg); }
+      .tab:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+      .tab .num { font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.7; font-weight: 500; }
+      .tab .sw { width: 10px; height: 10px; border-radius: 50%; border: 1px solid rgba(0,0,0,0.15); }
+      .tab.active .sw { border-color: rgba(255,255,255,0.4); }
+      .bar-right { margin-left: auto; display: flex; align-items: center; gap: 12px; }
+      .hint { font-size: 12px; color: var(--muted); white-space: nowrap; }
+      .hint kbd {
+        font-family: 'JetBrains Mono', monospace; font-size: 11px; border: 1px solid var(--border-strong);
+        border-radius: 3px; padding: 1px 6px; background: var(--bg);
+      }
+      .open-new {
+        display: inline-flex; align-items: center; gap: 6px;
+        font-size: 13px; font-weight: 500; color: var(--muted); text-decoration: none;
+        border: 1px solid var(--border-strong); border-radius: 2px; padding: 7px 12px;
+        transition: color 0.15s, border-color 0.15s;
+      }
+      .open-new:hover { color: var(--fg); border-color: var(--fg); }
+      .open-new:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+      .frame-wrap { flex: 1; position: relative; background: #fff; }
+      iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+      @media (max-width: 820px) {
+        .hint { display: none; }
+        .tab .name { display: none; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="bar">
+      <span class="bar-title">Dekel Nissim <span>Editorial Variations</span></span>
+      <nav class="tabs" aria-label="Editorial variations">
+        <button class="tab" data-src="option-combined.html" data-color="#8a8d95"><span class="num">0</span><span class="sw" style="background:#8a8d95"></span><span class="name">Base</span></button>
+        <button class="tab" data-src="option-v1-ledger.html" data-color="#2f4d7a"><span class="num">1</span><span class="sw" style="background:#2f4d7a"></span><span class="name">Ledger</span></button>
+        <button class="tab" data-src="option-v2-blueprint.html" data-color="#3f4a5a"><span class="num">2</span><span class="sw" style="background:#3f4a5a"></span><span class="name">Blueprint</span></button>
+        <button class="tab" data-src="option-v3-aubergine.html" data-color="#6d4160"><span class="num">3</span><span class="sw" style="background:#6d4160"></span><span class="name">Aubergine</span></button>
+        <button class="tab" data-src="option-v4-clay.html" data-color="#8a5a40"><span class="num">4</span><span class="sw" style="background:#8a5a40"></span><span class="name">Clay</span></button>
+      </nav>
+      <div class="bar-right">
+        <span class="hint">Switch with <kbd>0</kbd>-<kbd>4</kbd> or <kbd>&larr;</kbd> <kbd>&rarr;</kbd></span>
+        <a class="open-new" id="openNew" href="option-v1-ledger.html" target="_blank" rel="noopener">Open in new tab</a>
+      </div>
+    </header>
+
+    <div class="frame-wrap">
+      <iframe id="frame" title="Variation preview" src="option-v1-ledger.html"></iframe>
+    </div>
+
+    <script>
+      const tabs = Array.from(document.querySelectorAll('.tab'));
+      const frame = document.getElementById('frame');
+      const openNew = document.getElementById('openNew');
+
+      function select(i) {
+        const tab = tabs[i];
+        if (!tab) return;
+        tabs.forEach((t) => t.classList.remove('active'));
+        tab.classList.add('active');
+        const src = tab.dataset.src;
+        if (frame.getAttribute('src') !== src) frame.setAttribute('src', src);
+        openNew.href = src;
+        location.hash = src.replace('.html', '');
+      }
+
+      tabs.forEach((tab, i) => tab.addEventListener('click', () => select(i)));
+
+      document.addEventListener('keydown', (e) => {
+        if (e.metaKey || e.ctrlKey || e.altKey) return;
+        const current = tabs.findIndex((t) => t.classList.contains('active'));
+        if (e.key >= '0' && e.key <= '4') select(Number(e.key));
+        else if (e.key === 'ArrowRight') select((current + 1) % tabs.length);
+        else if (e.key === 'ArrowLeft') select((current - 1 + tabs.length) % tabs.length);
+      });
+
+      const fromHash = tabs.findIndex((t) => t.dataset.src.replace('.html', '') === location.hash.slice(1));
+      select(fromHash >= 0 ? fromHash : 1);
+    </script>
+  </body>
+</html>

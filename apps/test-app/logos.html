@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dekel Nissim — Logo Options</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --bg: #f4f4f2;
+        --card: #ffffff;
+        --fg: #141414;
+        --muted: #77776f;
+        --border: #e3e3de;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { background: var(--bg); color: var(--fg); font-family: 'Inter', system-ui, sans-serif; padding: 48px 28px 80px; }
+      .head { max-width: 1200px; margin: 0 auto 40px; display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+      h1 { font-size: 30px; font-weight: 700; letter-spacing: -0.02em; }
+      .sub { margin-top: 8px; color: var(--muted); font-size: 14.5px; }
+      .toggle {
+        display: inline-flex; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: var(--card);
+      }
+      .toggle button {
+        border: 0; background: transparent; font-family: inherit; font-size: 13px; font-weight: 600;
+        padding: 9px 18px; cursor: pointer; color: var(--muted); transition: background 0.15s, color 0.15s;
+      }
+      .toggle button.active { background: var(--fg); color: #fff; }
+      .toggle button:focus-visible { outline: 2px solid var(--fg); outline-offset: -2px; }
+
+      .grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 22px; }
+      .cell { background: var(--card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; transition: transform 0.25s ease, box-shadow 0.25s ease; }
+      .cell:hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(20, 20, 20, 0.09); }
+      .preview { height: 280px; position: relative; background: #fff; transition: background 0.25s; }
+      body.dark-preview .preview { background: #141414; }
+      body.dark-preview .preview img { filter: invert(1); }
+      .preview img { position: absolute; inset: 26px; width: calc(100% - 52px); height: calc(100% - 52px); object-fit: contain; transition: filter 0.25s; }
+      .info { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 18px; border-top: 1px solid var(--border); }
+      .info b { font-size: 14px; font-weight: 600; }
+      .info span { display: block; font-size: 12px; color: var(--muted); margin-top: 2px; }
+      .info a {
+        font-size: 12px; font-weight: 600; color: var(--fg); text-decoration: none;
+        border: 1px solid var(--border); border-radius: 7px; padding: 6px 11px; white-space: nowrap;
+        transition: background 0.15s, color 0.15s;
+      }
+      .info a:hover { background: var(--fg); color: #fff; }
+      .num { font-size: 11px; font-weight: 700; color: var(--muted); letter-spacing: 0.1em; }
+      @media (max-width: 700px) { .preview { height: 220px; } }
+    </style>
+  </head>
+  <body>
+    <header class="head">
+      <div>
+        <h1>Logo Options — Dekel Nissim</h1>
+        <p class="sub">10 simple palm-tree marks · black &amp; white, no lettering · click "Open" to view the raw SVG</p>
+      </div>
+      <div class="toggle" role="group" aria-label="Preview background">
+        <button id="lightBtn" class="active" type="button">On light</button>
+        <button id="darkBtn" type="button">On dark</button>
+      </div>
+    </header>
+
+    <main class="grid" id="grid"></main>
+
+    <script>
+      const logos = [
+        { file: 'logo-01-blade.svg', name: 'Blade', desc: 'Sharp triangular fronds, tapered trunk' },
+        { file: 'logo-02-monoline.svg', name: 'Monoline', desc: 'Thin straight strokes, sharp ends' },
+        { file: 'logo-03-chevron.svg', name: 'Chevron', desc: 'Feathered fronds with sharp barbs' },
+        { file: 'logo-04-disc.svg', name: 'Disc', desc: 'White sharp palm inside black disc' },
+        { file: 'logo-05-geometric.svg', name: 'Geometric', desc: 'Radiating sharp rays, triangle trunk' },
+        { file: 'logo-06-minimal.svg', name: 'Minimal', desc: 'Five sharp strokes, nothing more' },
+        { file: 'logo-07-crown.svg', name: 'Crown', desc: 'Five upright crown points' },
+        { file: 'logo-08-prism.svg', name: 'Prism', desc: 'Bold angular triangular fronds' },
+        { file: 'logo-09-compass.svg', name: 'Compass', desc: 'Sharp palm framed in a thin ring' },
+        { file: 'logo-10-leaning.svg', name: 'Leaning', desc: 'Sharp crown on a leaning trunk' },
+        { file: 'logo-11-wire.svg', name: 'Wire', desc: 'Hairline sharp monoline' },
+        { file: 'logo-12-arrowhead.svg', name: 'Arrowhead', desc: 'Fronds capped with arrow points' },
+        { file: 'logo-13-split.svg', name: 'Split', desc: 'Three bold blades, one trunk' },
+        { file: 'logo-14-fan.svg', name: 'Fan', desc: 'Symmetric thin ray fan' },
+        { file: 'logo-15-notch.svg', name: 'Notch', desc: 'Blade crown over a notched trunk' },
+        { file: 'logo-16-solid.svg', name: 'Solid', desc: 'Bold filled sharp silhouette' },
+        { file: 'logo-17-diagonal.svg', name: 'Diagonal', desc: 'Wind-swept fronds, one direction' },
+        { file: 'logo-18-square.svg', name: 'Square', desc: 'Sharp palm in a thin square' },
+        { file: 'logo-19-twin.svg', name: 'Twin', desc: 'Outlined sharp blades' },
+        { file: 'logo-20-apex.svg', name: 'Apex', desc: 'Tall, narrow, elegant blades' },
+        { file: 'logo-21-beam.svg', name: 'Beam', desc: 'Three bold blades, wide trunk' },
+        { file: 'logo-22-starburst.svg', name: 'Starburst', desc: 'Dense radial ray burst' },
+        { file: 'logo-23-fold.svg', name: 'Fold', desc: 'Faceted origami fan' },
+        { file: 'logo-24-sundot.svg', name: 'Sundot', desc: 'Sharp palm with a solid sun dot' },
+        { file: 'logo-25-zigzag.svg', name: 'Zigzag', desc: 'Blade crown on a zigzag trunk' },
+        { file: 'logo-26-pennant.svg', name: 'Pennant', desc: 'Long narrow pennant fronds' },
+        { file: 'logo-27-lattice.svg', name: 'Lattice', desc: 'Crossing-line lattice crown' },
+        { file: 'logo-28-mirror.svg', name: 'Mirror', desc: 'Crown reflected over a ground line' },
+        { file: 'logo-29-bracket.svg', name: 'Bracket', desc: 'Angular boomerang fronds' },
+        { file: 'logo-30-needle.svg', name: 'Needle', desc: 'Dense fine needle fronds' },
+        { file: 'logo-31-wedge.svg', name: 'Wedge', desc: 'Three heavy angular wedges' },
+        { file: 'logo-32-arcbase.svg', name: 'Arcbase', desc: 'Sharp palm on a semicircle base' },
+        { file: 'logo-33-heavy.svg', name: 'Heavy', desc: 'Thick uniform mitred strokes' },
+        { file: 'logo-34-ascend.svg', name: 'Ascend', desc: 'Fronds rising left to right' },
+        { file: 'logo-35-hatch.svg', name: 'Hatch', desc: 'Blade crown over hatched trunk' },
+        { file: 'logo-36-dart.svg', name: 'Dart', desc: 'Fronds shaped like sharp darts' },
+        { file: 'logo-37-sunrise.svg', name: 'Sunrise', desc: 'Palm over a rising-ray horizon' },
+        { file: 'logo-38-steps.svg', name: 'Steps', desc: 'Stepped block trunk' },
+        { file: 'logo-39-duo.svg', name: 'Duo', desc: 'Two feathered fronds in a V' },
+        { file: 'logo-40-quill.svg', name: 'Quill', desc: 'Single elegant feathered frond' },
+      ];
+      document.getElementById('grid').innerHTML = logos
+        .map((l, i) => `
+          <div class="cell">
+            <div class="preview"><img src="assets/logos/${l.file}" alt="${l.name} logo option"></div>
+            <div class="info">
+              <div><span class="num">${String(i + 1).padStart(2, '0')}</span><b> ${l.name}</b><span>${l.desc}</span></div>
+              <a href="assets/logos/${l.file}" target="_blank" rel="noopener">Open</a>
+            </div>
+          </div>`)
+        .join('');
+
+      const lightBtn = document.getElementById('lightBtn');
+      const darkBtn = document.getElementById('darkBtn');
+      lightBtn.addEventListener('click', () => { document.body.classList.remove('dark-preview'); lightBtn.classList.add('active'); darkBtn.classList.remove('active'); });
+      darkBtn.addEventListener('click', () => { document.body.classList.add('dark-preview'); darkBtn.classList.add('active'); lightBtn.classList.remove('active'); });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
+  <!-- Palm 10 · Leaning -->
+  <g fill="#111111" transform="translate(196 150) rotate(-10)">
+    <path d="M2.7 -8.6 L-96.0 -30.0 L-2.7 8.6 Z"/>
+    <path d="M7.3 -5.3 L-52.0 -72.0 L-7.3 5.3 Z"/>
+    <path d="M9.0 0.0 L0.0 -92.0 L-9.0 0.0 Z"/>
+    <path d="M7.3 5.3 L52.0 -72.0 L-7.3 -5.3 Z"/>
+    <path d="M2.7 8.6 L96.0 -30.0 L-2.7 -8.6 Z"/>
+  </g>
+  <path d="M196 150 L176 300 L196 300 L214 150 Z" fill="#111111"/>
+</svg>

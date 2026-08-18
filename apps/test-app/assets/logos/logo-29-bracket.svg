@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
+  <!-- Palm 29 · Bracket — bold boomerang fronds -->
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <line x1="200.0" y1="150.0" x2="149.0" y2="116.2" stroke="#111111" stroke-width="8" stroke-linecap="round"/>
+    <line x1="149.0" y1="116.2" x2="98.0" y2="120.0" stroke="#111111" stroke-width="8" stroke-linecap="round"/>
+    <line x1="200.0" y1="150.0" x2="186.1" y2="99.0" stroke="#111111" stroke-width="8" stroke-linecap="round"/>
+    <line x1="186.1" y1="99.0" x2="148.0" y2="76.0" stroke="#111111" stroke-width="8" stroke-linecap="round"/>
+    <line x1="200.0" y1="150.0" x2="218.0" y2="98.3" stroke="#111111" stroke-width="8" stroke-linecap="round"/>
+    <line x1="218.0" y1="98.3" x2="200.0" y2="56.0" stroke="#111111" stroke-width="8" stroke-linecap="round"/>
+    <line x1="200.0" y1="150.0" x2="243.3" y2="119.6" stroke="#111111" stroke-width="8" stroke-linecap="round"/>
+    <line x1="243.3" y1="119.6" x2="252.0" y2="76.0" stroke="#111111" stroke-width="8" stroke-linecap="round"/>
+    <line x1="200.0" y1="150.0" x2="261.2" y2="150.8" stroke="#111111" stroke-width="8" stroke-linecap="round"/>
+    <line x1="261.2" y1="150.8" x2="302.0" y2="120.0" stroke="#111111" stroke-width="8" stroke-linecap="round"/>
+    <line x1="200.0" y1="150.0" x2="200.0" y2="298.0" stroke="#111111" stroke-width="9" stroke-linecap="round"/>
+  </g>
+</svg>

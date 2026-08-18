@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
+  <!-- Palm 02 · Monoline — clean straight lines -->
+  <g>
+    <line x1="200" y1="150" x2="96" y2="116" stroke="#111111" stroke-width="6" stroke-linecap="butt"/>
+    <line x1="200" y1="150" x2="132" y2="80" stroke="#111111" stroke-width="6" stroke-linecap="butt"/>
+    <line x1="200" y1="150" x2="200" y2="52" stroke="#111111" stroke-width="6" stroke-linecap="butt"/>
+    <line x1="200" y1="150" x2="268" y2="80" stroke="#111111" stroke-width="6" stroke-linecap="butt"/>
+    <line x1="200" y1="150" x2="304" y2="116" stroke="#111111" stroke-width="6" stroke-linecap="butt"/>
+    <line x1="200" y1="150" x2="200" y2="298" stroke="#111111" stroke-width="6" stroke-linecap="butt"/>
+  </g>
+</svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
+  <!-- Palm 14 · Fan -->
+  <g>
+    <line x1="200" y1="152" x2="106.03073792140916" y2="117.79798566743312" stroke="#111111" stroke-width="4" stroke-linecap="butt"/>
+    <line x1="200" y1="152" x2="117.09624274449581" y2="96.08070965292532" stroke="#111111" stroke-width="4" stroke-linecap="butt"/>
+    <line x1="200" y1="152" x2="133.0869393641142" y2="77.68551745226057" stroke="#111111" stroke-width="4" stroke-linecap="butt"/>
+    <line x1="200" y1="152" x2="153.0528437214109" y2="63.705240714107305" stroke="#111111" stroke-width="4" stroke-linecap="butt"/>
+    <line x1="200" y1="152" x2="175.80781044003322" y2="54.97042737240035" stroke="#111111" stroke-width="4" stroke-linecap="butt"/>
+    <line x1="200" y1="152" x2="199.99999999999997" y2="52.0" stroke="#111111" stroke-width="4" stroke-linecap="butt"/>
+    <line x1="200" y1="152" x2="224.19218955996675" y2="54.97042737240034" stroke="#111111" stroke-width="4" stroke-linecap="butt"/>
+    <line x1="200" y1="152" x2="246.94715627858903" y2="63.70524071410729" stroke="#111111" stroke-width="4" stroke-linecap="butt"/>
+    <line x1="200" y1="152" x2="266.9130606358858" y2="77.68551745226054" stroke="#111111" stroke-width="4" stroke-linecap="butt"/>
+    <line x1="200" y1="152" x2="282.90375725550416" y2="96.08070965292535" stroke="#111111" stroke-width="4" stroke-linecap="butt"/>
+    <line x1="200" y1="152" x2="293.9692620785909" y2="117.79798566743314" stroke="#111111" stroke-width="4" stroke-linecap="butt"/>
+    <line x1="200" y1="152" x2="200" y2="300" stroke="#111111" stroke-width="6" stroke-linecap="butt"/>
+  </g>
+</svg>

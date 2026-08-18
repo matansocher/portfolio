@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
+  <!-- Palm 27 · Lattice -->
+  <g>
+    <line x1="200.0" y1="150.0" x2="104.0" y2="116.0" stroke="#111111" stroke-width="4" stroke-linecap="butt"/>
+    <line x1="200.0" y1="150.0" x2="150.0" y2="74.0" stroke="#111111" stroke-width="4" stroke-linecap="butt"/>
+    <line x1="200.0" y1="150.0" x2="250.0" y2="74.0" stroke="#111111" stroke-width="4" stroke-linecap="butt"/>
+    <line x1="200.0" y1="150.0" x2="296.0" y2="116.0" stroke="#111111" stroke-width="4" stroke-linecap="butt"/>
+    <line x1="104.0" y1="116.0" x2="150.0" y2="74.0" stroke="#111111" stroke-width="4" stroke-linecap="butt"/>
+    <line x1="150.0" y1="74.0" x2="250.0" y2="74.0" stroke="#111111" stroke-width="4" stroke-linecap="butt"/>
+    <line x1="250.0" y1="74.0" x2="296.0" y2="116.0" stroke="#111111" stroke-width="4" stroke-linecap="butt"/>
+    <line x1="200.0" y1="150.0" x2="200.0" y2="300.0" stroke="#111111" stroke-width="6" stroke-linecap="butt"/>
+  </g>
+</svg>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
+  <!-- Palm 18 · Square -->
+  <rect x="56" y="56" width="288" height="288" fill="none" stroke="#111111" stroke-width="6"/>
+  <g fill="#111111">
+    <path d="M202.5 189.5 L128.0 168.0 L197.5 202.5 Z"/>
+    <path d="M206.1 192.5 L164.0 134.0 L193.9 199.5 Z"/>
+    <path d="M207.0 196.0 L200.0 120.0 L193.0 196.0 Z"/>
+    <path d="M206.1 199.5 L236.0 134.0 L193.9 192.5 Z"/>
+    <path d="M202.5 202.5 L272.0 168.0 L197.5 189.5 Z"/>
+    <path d="M194 198 L206 198 L203 280 L197 280 Z"/>
+  </g>
+</svg>
