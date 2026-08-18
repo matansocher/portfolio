@@ -47,7 +47,7 @@ export default tseslint.config(
     },
   },
   {
-    files: ['src/**/*.{test,spec}.{ts,tsx}', 'src/test/**/*.{ts,tsx}'],
+    files: ['src/**/*.{test,spec}.{ts,tsx}', 'src/test/**/*.{ts,tsx}', 'scripts/**/*.{test,spec}.ts'],
     languageOptions: {
       globals: {
         ...globals.browser,
@@ -64,7 +64,7 @@ export default tseslint.config(
     },
   },
   {
-    files: ['*.{js,mjs,cjs,ts}', 'vite.config.ts', 'vitest.config.ts'],
+    files: ['*.{js,mjs,cjs,ts}', 'scripts/**/*.{js,mjs}', 'vite.config.ts', 'vitest.config.ts'],
     languageOptions: {
       ecmaVersion: 2022,
       sourceType: 'module',
