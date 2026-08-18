@@ -64,7 +64,7 @@ export default tseslint.config(
     },
   },
   {
-    files: ['*.{js,mjs,cjs,ts}', 'vite.config.ts', 'vitest.config.ts'],
+    files: ['*.{js,mjs,cjs,ts}', 'scripts/**/*.{js,mjs,cjs}', 'vite.config.ts', 'vitest.config.ts'],
     languageOptions: {
       ecmaVersion: 2022,
       sourceType: 'module',
