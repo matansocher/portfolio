@@ -1,14 +1,12 @@
 import './styles/SiteNav.scss';
 import { useState, useRef, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { CopyToClipboard } from 'react-copy-to-clipboard';
 import config from '../config';
 
 export default function SiteNav({ transparent = false }: { transparent?: boolean }) {
   const location = useLocation();
   const [isProjectsOpen, setIsProjectsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [showCopied, setShowCopied] = useState(false);
   const projectsRef = useRef<HTMLLIElement>(null);
 
   useEffect(() => {
@@ -21,12 +19,6 @@ export default function SiteNav({ transparent = false }: { transparent?: boolean
     document.addEventListener('scroll', onScroll, true);
     return () => document.removeEventListener('scroll', onScroll, true);
   }, []);
-
-  useEffect(() => {
-    if (!showCopied) return;
-    const timeoutId = setTimeout(() => setShowCopied(false), 3000);
-    return () => clearTimeout(timeoutId);
-  }, [showCopied]);
 
   useEffect(() => {
     const onDocumentClick = (event: MouseEvent) => {
@@ -45,7 +37,10 @@ export default function SiteNav({ transparent = false }: { transparent?: boolean
     };
   }, []);
 
-  const isActive = (path: string) => location.pathname === path || location.pathname.startsWith(`${path}/`);
+  const isActive = (path: string) =>
+    path === '/' ? location.pathname === '/' : location.pathname === path || location.pathname.startsWith(`${path}/`);
+
+  const isProjectsActive = config.PROJECTS.some((project) => isActive(project.path));
 
   const classNames = ['site-nav'];
   if (transparent && !isScrolled) classNames.push('transparent');
@@ -65,7 +60,7 @@ export default function SiteNav({ transparent = false }: { transparent?: boolean
                   <li key={link.path} className="site-nav-item has-dropdown" ref={projectsRef}>
                     <button
                       type="button"
-                      className={`site-nav-link ${isActive(link.path) ? 'active' : ''}`}
+                      className={`site-nav-link ${isProjectsActive ? 'active' : ''}`}
                       aria-haspopup="true"
                       aria-expanded={isProjectsOpen}
                       onClick={() => setIsProjectsOpen((open) => !open)}
@@ -95,14 +90,9 @@ export default function SiteNav({ transparent = false }: { transparent?: boolean
             })}
           </ul>
 
-          <CopyToClipboard text="dklnsm@gmail.com" onCopy={() => setShowCopied(true)}>
-            <div className="site-nav-email">
-              <p>dklnsm@gmail.com</p>
-              <div className="site-nav-copied" style={{ opacity: showCopied ? 1 : 0 }}>
-                <p>Copied!</p>
-              </div>
-            </div>
-          </CopyToClipboard>
+          <Link to="/business-card" className="site-nav-contact">
+            Contact
+          </Link>
         </div>
       </div>
     </header>

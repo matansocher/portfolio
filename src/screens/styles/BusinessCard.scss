@@ -1,326 +1,296 @@
-@use '~/src/styles/_colors.scss' as *;
+/* Contact ("business card") page — matches the Home page look and feel.
+   Scoped under .contact-page so it overrides the global element styles in
+   styles/index.scss (Raleway, oversized h1, etc.). */
 
-.business-card {
-  background-color: $dark-black;
-  h1 {
-    color: #eff7fb;
-  }
+.contact-page {
+  --cp-bg: #f8f9fa;
+  --cp-paper: #ffffff;
+  --cp-fg: #17181b;
+  --cp-secondary: #4c4e54;
+  --cp-muted: #8b8d92;
+  --cp-border: #e3e2dd;
+  --cp-border-strong: #d3d2cc;
+  --cp-accent: #8a3ed4;
+  --cp-accent-strong: #7a2fc4;
+  --cp-accent-soft: rgba(138, 62, 212, 0.12);
+  --cp-ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  min-height: 100vh;
+  background: var(--cp-bg);
+  color: var(--cp-fg);
+  font-family: 'IBM Plex Sans', system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+
+  h1,
   h2,
   h3,
   h4,
-  h5,
   p,
-  ul,
-  li,
+  a,
   span,
-  input,
-  textarea,
+  li,
   label {
-    color: $primary-text;
+    color: inherit;
+    font-family: inherit;
+    margin: 0;
+    font-weight: inherit;
+    font-size: inherit;
+    line-height: inherit;
   }
 
-  &-top {
-    .container {
-      padding: 150px 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      h1 {
-        text-align: center;
-        max-width: 500px;
-      }
-    }
+  a {
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
   }
 
-  &-who-am-i {
-    max-width: 1000px;
-    margin: 100px auto;
-    .content {
-      display: flex;
-      align-items: center;
-      gap: 100px;
-      &-left {
-        img {
-        }
-      }
-      &-right {
-        h3 {
-        }
-        p {
-          margin-top: 20px;
-          max-width: 400px;
-        }
-      }
-    }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
   }
 
-  &-services {
-    max-width: 1000px;
-    margin: 100px auto;
-    .content {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      &-services {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-top: 30px;
-        p {
-          max-width: 400px;
-        }
-      }
-    }
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible {
+    outline: 2px solid var(--cp-accent);
+    outline-offset: 3px;
   }
 
-  &-project {
+  .cp-content {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 30px;
+  }
+
+  .cp-mono {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--cp-accent-strong);
+    margin-bottom: 20px;
+  }
+
+  /* Hero / layout */
+  .cp-hero {
     position: relative;
-    height: 600px;
-    img {
+    padding: calc(80px + 90px) 0 110px;
+    overflow: hidden;
+
+    &::before {
+      content: '';
       position: absolute;
-      top: 0;
-      right: 0;
-      height: 100%;
-    }
-    .content {
-      // margin-top: 100px;
-      h2,
-      h3,
-      h4,
-      h5,
-      p,
-      ul,
-      li,
-      span,
-      input,
-      textarea,
-      label {
-        color: #ffffff;
-      }
-      h3 {
-        max-width: 200px;
-      }
-      p {
-        margin-top: 20px;
-        max-width: 365px;
-      }
-      button {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-weight: 500;
-        font-size: 16px;
-        color: $primary-text;
-        background-color: transparent;
-        padding: 2px 16px;
-        border: 1px solid $primary-text;
-        border-radius: 6px;
-        margin-top: 20px;
-        cursor: pointer;
-      }
+      z-index: 0;
+      pointer-events: none;
+      top: -22%;
+      right: -8%;
+      width: min(680px, 60vw);
+      height: min(680px, 60vw);
+      background: radial-gradient(circle at 60% 40%, var(--cp-accent-soft) 0%, rgba(138, 62, 212, 0) 70%);
     }
   }
 
-  .marketer {
-    background:
-      linear-gradient(90deg, rgba(13, 13, 13, 0.74) 0%, rgba(13, 13, 13, 0) 100%),
-      linear-gradient(104.91deg, #5f8fed 0.81%, #5fed79 97.56%), #ffffff;
+  .cp-content {
+    position: relative;
+    z-index: 1;
   }
 
-  .myco {
-    background:
-      linear-gradient(90deg, rgba(13, 13, 13, 0.51) 35.55%, rgba(13, 13, 13, 0) 100%),
-      linear-gradient(106.44deg, #ff8906 -0.02%, rgba(255, 6, 164, 0.56) 101.6%), #ffffff;
-    img {
-      height: 80%;
-      right: 10%;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-    .content {
-      p {
-        max-width: 400px;
-      }
-    }
+  .cp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: start;
   }
 
-  .salaries {
-    background:
-      linear-gradient(
-        144.93deg,
-        #147ccc 36.33%,
-        rgba(90, 157, 120, 0.94) 69.26%,
-        rgba(214, 189, 28, 0.45) 143.77%,
-        rgba(214, 189, 28, 0) 143.77%
-      ),
-      #ffffff;
-    img {
-      height: 65%;
-      right: 1%;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-    .content {
-      p {
-        max-width: 415px;
-      }
-    }
-  }
-
-  .employees {
-    background: linear-gradient(105.63deg, #777dfb -0.01%, #f7daf9 78.05%), #ffffff;
-    img {
-      height: 80%;
-      right: 10%;
-      top: unset;
-      bottom: 0;
-    }
-  }
-
-  &-clients {
-    h4 {
-    }
-  }
-
-  &-contact {
-    .content {
-      .form-wrapper {
-        padding: 50px;
-        h4 {
-        }
-        p {
-          margin-top: 10px;
-        }
-      }
-    }
-  }
-}
-
-@media screen and (max-width: 1300px) {
-  .business-card {
+  /* Left column */
+  .cp-intro {
     h1 {
+      font-family: 'DM Sans', 'IBM Plex Sans', sans-serif;
+      font-weight: 600;
+      font-size: clamp(38px, 5vw, 60px);
+      line-height: 1.06;
+      letter-spacing: -0.025em;
+      color: var(--cp-fg);
     }
-    &-top-container {
+
+    .cp-lead {
+      margin-top: 26px;
+      max-width: 42ch;
+      color: var(--cp-secondary);
+      font-size: 16.5px;
+      line-height: 1.65;
     }
-    .salaries {
-      img {
-        height: 5%;
+  }
+
+  .cp-details {
+    margin-top: 42px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+
+    li {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .cp-details-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--cp-muted);
+    }
+
+    a {
+      font-size: 17px;
+      font-weight: 500;
+      color: var(--cp-fg);
+      width: fit-content;
+      border-bottom: 1px solid transparent;
+      transition:
+        color 0.2s,
+        border-color 0.2s;
+
+      &:hover {
+        color: var(--cp-accent);
+        border-color: var(--cp-accent);
       }
     }
   }
-}
 
-@media screen and (max-width: 1100px) {
-  .business-card {
-    h1 {
-      font-size: 60px !important;
+  /* Right column — form card */
+  .cp-form-card {
+    background: var(--cp-paper);
+    border: 1px solid var(--cp-border);
+    border-radius: 16px;
+    padding: 38px 36px;
+    box-shadow: 0 20px 50px -30px rgba(23, 24, 27, 0.4);
+  }
+
+  /* Restyle the shared ContactForm to fit the clean white card */
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+
+    .form-element {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin: 0;
     }
-    &-top {
-      .container {
-        padding: 100px 0 50px !important;
+
+    label {
+      font-family: 'DM Sans', 'IBM Plex Sans', sans-serif;
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--cp-fg);
+      text-transform: none;
+      letter-spacing: 0;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      box-sizing: border-box;
+      font-family: 'IBM Plex Sans', system-ui, sans-serif;
+      font-size: 15px;
+      color: var(--cp-fg);
+      background: var(--cp-bg);
+      border: 1px solid var(--cp-border-strong);
+      border-radius: 8px;
+      padding: 12px 14px;
+      transition:
+        border-color 0.2s,
+        box-shadow 0.2s;
+
+      &::placeholder {
+        color: var(--cp-muted);
+      }
+
+      &:focus {
+        outline: none;
+        border-color: var(--cp-accent);
+        box-shadow: 0 0 0 3px var(--cp-accent-soft);
       }
     }
-    &-project {
-      height: 400px !important;
+
+    textarea {
+      resize: vertical;
+      min-height: 130px;
     }
-    .myco {
-      height: 400px !important;
+
+    .green-btn {
+      align-self: flex-start;
+      margin-top: 4px;
+      background: var(--cp-accent);
+      color: #fff;
+      font-family: 'DM Sans', 'IBM Plex Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      border: 1px solid var(--cp-accent);
+      border-radius: 8px;
+      padding: 12px 30px;
+      box-shadow: 0 6px 20px -8px rgba(138, 62, 212, 0.6);
+      transition:
+        background 0.2s,
+        border-color 0.2s,
+        transform 0.2s var(--cp-ease),
+        box-shadow 0.2s,
+        opacity 0.2s;
+
+      &:hover {
+        opacity: 1;
+        background: var(--cp-accent-strong);
+        border-color: var(--cp-accent-strong);
+        transform: translateY(-1px);
+        box-shadow: 0 10px 26px -8px rgba(138, 62, 212, 0.7);
+      }
+    }
+
+    .error-message,
+    .success-message {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .error-message {
+      color: #d64545;
+    }
+
+    .success-message {
+      color: #2f9e6f;
     }
   }
-}
 
-@media screen and (max-width: 900px) {
-  .business-card {
-    &-who-am-i {
-      .content {
-        flex-direction: column;
-        gap: 40px;
-      }
+  @media (max-width: 900px) {
+    .cp-hero {
+      padding: calc(60px + 60px) 0 80px;
+    }
+
+    .cp-grid {
+      grid-template-columns: 1fr;
+      gap: 44px;
     }
   }
-}
 
-@media screen and (max-width: 800px) {
-  .business-card {
-    &-project {
-      height: unset !important;
-      img {
-        display: none;
-      }
-      .content {
-        h3 {
-        }
-        p {
-        }
-        button {
-        }
-      }
+  @media (max-width: 600px) {
+    .cp-content {
+      padding: 0 20px;
     }
-    .myco {
-      height: unset !important;
-      img {
-        display: none;
-      }
-    }
-  }
-}
 
-@media screen and (max-width: 700px) {
-  .business-card {
-    h1 {
-      font-size: 45px !important;
-    }
-    &-who-am-i {
-      margin: 20px auto;
-    }
-    &-services {
-      margin: 20px auto;
-      .content {
-        &-services {
-          flex-direction: column;
-          gap: 20px;
-          p {
-          }
-        }
-      }
-    }
-    &-contact {
-      .content {
-        .form-wrapper {
-          padding: 20px !important;
-          h4 {
-          }
-          p {
-          }
-        }
-      }
-    }
-  }
-}
-
-@media screen and (max-width: 500px) {
-  .business-card {
-    h1 {
-      font-size: 45px !important;
-    }
-    &-who-am-i {
-      .content {
-        &-left {
-          width: 90%;
-          display: flex;
-          justify-content: center;
-          img {
-            width: 100%;
-          }
-        }
-        &-right {
-          h3 {
-          }
-          p {
-          }
-        }
-      }
+    .cp-form-card {
+      padding: 30px 22px;
     }
   }
 }

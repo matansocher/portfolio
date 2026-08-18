@@ -13,12 +13,19 @@ function renderSiteNav(initialPath = '/') {
 }
 
 describe('SiteNav', () => {
-  it('renders the three primary navigation links', () => {
+  it('renders the primary navigation links', () => {
     renderSiteNav();
 
-    expect(screen.getByRole('link', { name: 'About' })).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /Projects/i })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'Articles' })).toBeInTheDocument();
+  });
+
+  it('renders a Contact button linking to the business card page', () => {
+    renderSiteNav();
+
+    const contact = screen.getByRole('link', { name: 'Contact' });
+    expect(contact).toBeInTheDocument();
+    expect(contact).toHaveAttribute('href', '/business-card');
   });
 
   it('opens the projects dropdown with links to each case study', async () => {

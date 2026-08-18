@@ -1,9 +1,28 @@
 import './styles/Home.scss';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import assets from '@/assets';
 import config from '@/config';
-import { Logos, SiteNav } from '@/components';
+import articles from '@/data/articles';
+import { SiteNav } from '@/components';
+
+const CLIENT_LOGOS: { key: string; alt: string; className: string }[] = [
+  { key: 'logoPersonetics', alt: 'Personetics', className: 'logo-personetics' },
+  { key: 'logoJfrog', alt: 'JFrog', className: 'logo-jfrog' },
+  { key: 'logoControlup', alt: 'ControlUp', className: 'logo-controlup' },
+  { key: 'logoHippoCampus', alt: 'HippoCampus', className: 'logo-hippocampus' },
+  { key: 'logoGool', alt: 'GOOL', className: 'logo-gool' },
+  { key: 'logoTrustech', alt: 'TRUSTech', className: 'logo-trustech' },
+  { key: 'logoAmdocs', alt: 'Amdocs', className: 'logo-amdocs' },
+  { key: 'logoTlvMuni', alt: 'Tel Aviv Municipality', className: 'logo-tlv' },
+  { key: 'logoSqlink', alt: 'SQLINK', className: 'logo-sqlink' },
+  { key: 'logoBeacon', alt: 'Beacon', className: 'logo-beacon' },
+  { key: 'logoMarketer', alt: 'Marketer', className: 'logo-marketer' },
+  { key: 'logoPractitest', alt: 'PractiTest', className: 'logo-practitest' },
+  { key: 'logoBrinks', alt: 'BRINKS', className: 'logo-brinks' },
+  { key: 'logoTeamStefansky', alt: 'Team Stefansky', className: 'logo-team' },
+  { key: 'logoMyco', alt: 'Myco', className: 'logo-myco' },
+];
 
 const TESTIMONIAL_LOGOS: Record<string, string> = {
   'Yarden Strfansky': 'logoTeamStefansky',
@@ -12,246 +31,367 @@ const TESTIMONIAL_LOGOS: Record<string, string> = {
   'Ariel Zamir': 'logoBeacon',
 };
 
-const TESTIMONIALS_PER_SLIDE = 2;
-const TESTIMONIAL_SLIDES = Array.from(
-  { length: Math.ceil(config.CLIENTS_DATA.length / TESTIMONIALS_PER_SLIDE) },
-  (_, slide) =>
-    config.CLIENTS_DATA.slice(slide * TESTIMONIALS_PER_SLIDE, slide * TESTIMONIALS_PER_SLIDE + TESTIMONIALS_PER_SLIDE),
-);
+const HELP_ITEMS: { title: string; description: string }[] = [
+  {
+    title: 'Complex workflows that need structure',
+    description: 'Roles, states, edge cases, and dependencies become flows teams can build.',
+  },
+  {
+    title: 'AI workflows that save real team time',
+    description: 'Practical AI-assisted steps for handoff, design-system upkeep, and fast validation.',
+  },
+  {
+    title: 'Competitive research that sharpens the product',
+    description: 'Competitor and market patterns become sharper decisions and fewer reinventions.',
+  },
+  {
+    title: 'Design systems that are easier to maintain',
+    description: 'Components, rules, and docs that connect cleanly to implementation.',
+  },
+  {
+    title: 'From product idea to stronger UX flow',
+    description: 'Requirements, constraints, and research shaped into complete, testable flows.',
+  },
+  {
+    title: 'Evidence teams can act on quickly',
+    description: 'Tests, interviews, and product data turned into clear next steps.',
+  },
+];
 
-interface HomeCase {
+interface HomeProject {
   key: string;
-  eyebrow: string;
+  meta: string;
   title: string;
-  tags: string[];
   description: string;
+  tags: string[];
   imageKey: string;
   path?: string;
 }
 
-const HOME_CASES: HomeCase[] = [
+const HOME_PROJECTS: HomeProject[] = [
   {
     key: 'salaries',
-    eyebrow: 'Internal HR System / B2B',
+    meta: 'Municipal HR system · Complex internal workflow',
     title: 'Salary Exceptions & HR Dashboard',
-    tags: [
-      'UX for complex workflows',
-      'Data dashboards',
-      'Form logic',
-      'Stakeholder collaboration',
-      'Data visualization',
-    ],
     description:
-      'Led UX from start to finish – research, logic definition, and interface design – for a digital system handling salary exceptions in a large municipal HR department. Built the calculation logic and worked closely with developers.',
+      'Paper-based salary calculations reshaped into a reliable digital approval workflow — mapping the process, calculation logic, and stakeholder alignment.',
+    tags: ['Complex workflows', 'Calculation logic', 'Internal tools', 'Stakeholder alignment', 'Data-heavy UX'],
     imageKey: 'homeCaseSalaries',
     path: '/salaries',
   },
   {
     key: 'appdx',
-    eyebrow: 'Web Monitoring Dashboard / B2B SaaS',
+    meta: 'B2B SaaS · Technical dashboard',
     title: 'AppDX – Experience Monitoring',
-    tags: ['UX for technical users', 'Widget-based dashboards', 'Research-led design', 'Data visualization'],
     description:
-      'Defined and designed a modular dashboard for monitoring real-user experience in web apps. Led a design sprint and validated the concept with internal experts.',
+      'A modular dashboard for monitoring real-user experience in web apps, aligned around clear priorities and a sharper product direction.',
+    tags: ['Technical UX', 'Data-heavy UX', 'Dashboard strategy', 'Design sprint', 'Product facilitation'],
     imageKey: 'homeCaseAppdx',
   },
   {
-    key: 'b2b-homepage',
-    eyebrow: 'Web Monitoring Dashboard / B2B SaaS',
-    title: 'B2B New Homepage',
-    tags: [
-      'UX for technical users',
-      'Widget-based dashboards',
-      'Research-led design',
-      'Data visualization',
-      'Design sprint',
-    ],
+    key: 'marketer',
+    meta: 'Startup product · B2B SaaS',
+    title: 'Marketer – Internal Marketing Platform',
     description:
-      'Defined and designed a modular dashboard for monitoring real-user experience in web apps. Led a design sprint and validated the concept with internal experts.',
-    imageKey: 'homeCaseEmployee',
-  },
-  {
-    key: 'employees',
-    eyebrow: 'Internal HR Tool / B2B SaaS',
-    title: 'Employee Onboarding Screen',
-    tags: [
-      'UX for technical users',
-      'Widget-based dashboards',
-      'Research-led design',
-      'Data visualization',
-      'Design sprint',
-    ],
-    description:
-      'Designed a screen for onboarding hundreds of employees. Conducted interviews with HR staff from global offices. Balanced automation with flexibility.',
-    imageKey: 'homeCaseB2bHp',
-    path: '/employees',
+      'A marketing-operations platform built end to end, with structure and reusable patterns for a growing product.',
+    tags: ['B2B SaaS', 'Startup product', 'Design system from scratch', 'End-to-end ownership'],
+    imageKey: 'homeCaseMarketer',
+    path: '/marketer',
   },
   {
     key: 'myco',
-    eyebrow: 'Mobile App / B2C',
+    meta: 'Mobile apps · Two-sided product',
     title: 'Myco – Mobile Apps for Community Events',
-    tags: ['Mobile UX', 'UI', 'B2C', 'Data visualization', 'User research', 'Competitor research'],
     description:
-      'Designed two mobile apps – one for ticket purchasing and one for event producers. Conducted user interviews and competitive analysis.',
+      'Two connected apps for ticket buyers and event producers, shaped through interviews, competitive research, and product flow design.',
+    tags: ['Mobile UX', 'Two-sided product', 'Competitive research', 'User research', 'Flow design'],
     imageKey: 'homeCaseMyco',
     path: '/myco',
   },
   {
-    key: 'reports',
-    eyebrow: 'Reporting System / B2B Internal Tool',
-    title: 'Automated Reports',
-    tags: ['Mobile UX', 'UI', 'B2C', 'Data visualization', 'User research', 'Competitor research'],
+    key: 'employees',
+    meta: 'Enterprise HR tool · Global onboarding',
+    title: 'Employee Onboarding Screen',
     description:
-      'Designed two mobile apps – one for ticket purchasing and one for event producers. Conducted user interviews and competitive analysis.',
-    imageKey: 'homeCaseReports',
-  },
-  {
-    key: 'marketer',
-    eyebrow: 'Startup Tool / B2B',
-    title: 'Marketer – Internal Marketing Platform',
-    tags: ['UI design', 'Design systems', 'Accessibility', 'Visual hierarchy'],
-    description:
-      'Sole designer in an early-stage startup. Designed the internal platform for marketing and campaign tracking. Delivered both UX and UI, and created a basic design system.',
-    imageKey: 'homeCaseMarketer',
-    path: '/marketer',
+      'A template-based onboarding structure spanning countries, branches, and roles — built to scale and to maintain.',
+    tags: ['Complex workflows', 'User interviews', 'Template strategy', 'Stakeholder alignment', 'Enterprise UX'],
+    imageKey: 'homeCaseEmployee',
+    path: '/employees',
   },
 ];
 
-export default function Home() {
-  const [activeSlide, setActiveSlide] = useState(0);
-  const slideCount = TESTIMONIAL_SLIDES.length;
+const FEATURED_TESTIMONIALS = config.CLIENTS_DATA;
 
-  const goToSlide = (index: number) => {
-    setActiveSlide((index + slideCount) % slideCount);
+const FEATURED_ARTICLES = articles.slice(0, 3);
+
+function useReveal() {
+  const rootRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const root = rootRef.current;
+    if (!root) return;
+
+    const elements = Array.from(root.querySelectorAll<HTMLElement>('.reveal'));
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      elements.forEach((el) => el.classList.add('in'));
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 },
+    );
+
+    elements.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
+  return rootRef;
+}
+
+export default function Home() {
+  const rootRef = useReveal();
+  const [testimonialIndex, setTestimonialIndex] = useState(0);
+  const testimonialCount = FEATURED_TESTIMONIALS.length;
+
+  const goToTestimonial = (index: number) => {
+    setTestimonialIndex((index + testimonialCount) % testimonialCount);
   };
 
   return (
     <>
       <SiteNav />
-      <div className="home">
-        <div className="home-shell">
-          <section className="home-hero home-section">
-            <div className="home-hero__inner">
-              <h1>
-                Hi, I'm
-                <span> Dekel Nissim</span>
+      <div className="home-page" ref={rootRef}>
+        <main>
+          <section className="hp-hero" aria-labelledby="hp-hero-title">
+            <div className="hp-content">
+              <p className="hp-hero-eyebrow hp-mono reveal">UX Research · Product Strategy</p>
+              <h1 id="hp-hero-title" className="reveal">
+                Turning complex product questions into <span className="hp-accent">decisions teams can trust.</span>
               </h1>
-              <p className="home-hero__subtitle">
-                I specialize in UX for complex systems — from internal tools to dashboards and mobile platforms.
+              <p className="hp-hero-subcopy reveal">
+                UX research, product thinking, and systems thinking — applied to <strong>complex workflows</strong>,{' '}
+                <strong>competitive research</strong>, and <strong>AI-assisted design processes</strong>.
               </p>
-              <p className="home-hero__note">
-                This is a curated selection of projects. Some include full case studies.
-              </p>
+              <div className="hp-hero-cta reveal">
+                <a className="hp-btn hp-btn-accent" href="#work">
+                  View selected work
+                </a>
+                <Link className="hp-text-link" to="/business-card">
+                  Get in touch
+                </Link>
+              </div>
             </div>
           </section>
 
-          <div className="home-divider" />
-
-          <section className="home-logos">
-            <div className="home-section-label home-section">Some Clients &amp; Partners</div>
-            <div className="home-logos__row">
-              <Logos />
-            </div>
-          </section>
-
-          <section className="home-cases home-section">
-            {HOME_CASES.map((project) => (
-              <article key={project.key} className="home-case">
-                <div className="home-case__content">
-                  <div className="home-case__meta">{project.eyebrow}</div>
-                  <h2>{project.title}</h2>
-                  <div className="case-tags">
-                    {project.tags.map((tag) => (
-                      <span key={tag}>{tag}</span>
-                    ))}
-                  </div>
-                  <p>{project.description}</p>
-                  {project.path ? (
-                    <Link to={project.path} className="case-link">
-                      View case study
-                    </Link>
-                  ) : null}
-                </div>
-                <div className="home-case__visual">
-                  <img src={assets[project.imageKey]} alt={project.title} />
-                </div>
-              </article>
-            ))}
-          </section>
-
-          <section className="home-testimonials home-section">
-            <h2>What People Say</h2>
-            <div className="testimonials-carousel">
-              <div className="testimonials-carousel__viewport">
-                <div
-                  className="testimonials-carousel__track"
-                  style={{ transform: `translateX(-${activeSlide * 100}%)` }}
-                >
-                  {TESTIMONIAL_SLIDES.map((slide, slideIndex) => (
-                    <div
-                      className="testimonials-carousel__slide"
-                      key={slideIndex}
-                      aria-hidden={slideIndex !== activeSlide}
-                    >
-                      {slide.map((item) => {
-                        const logoKey = TESTIMONIAL_LOGOS[item.name] ?? null;
-                        return (
-                          <article key={item.name} className="testimonial-card">
-                            <p className="testimonial-card__quote">"{item.text}"</p>
-                            <div className="testimonial-card__person">
-                              <div className="testimonial-card__name-wrap">
-                                <span className="testimonial-card__name">{item.name}</span>
-                                <span className="testimonial-card__meta">{item.title}</span>
-                              </div>
-                              {logoKey ? (
-                                <img className="testimonial-card__logo" src={assets[logoKey]} alt={item.company} />
-                              ) : (
-                                <span className="testimonial-card__brand">{item.company}</span>
-                              )}
-                            </div>
-                          </article>
-                        );
-                      })}
-                    </div>
+          <section className="hp-clients" aria-label="Clients">
+            <p className="hp-clients-label hp-mono">Trusted by teams at</p>
+            <div className="hp-marquee" aria-label="Client logos">
+              {[false, true].map((isClone) => (
+                <div className="hp-marquee-track" aria-hidden={isClone || undefined} key={isClone ? 'clone' : 'main'}>
+                  {CLIENT_LOGOS.map((logo) => (
+                    <img
+                      key={`${isClone ? 'c-' : ''}${logo.key}`}
+                      className={logo.className}
+                      src={assets[logo.key]}
+                      alt={isClone ? '' : logo.alt}
+                    />
                   ))}
                 </div>
+              ))}
+            </div>
+          </section>
+
+          <section className="hp-problems" aria-labelledby="hp-problems-title">
+            <div className="hp-content">
+              <div className="hp-section-head reveal">
+                <span className="hp-mono">Where I Help</span>
+                <h2 id="hp-problems-title">Where product teams get more clarity</h2>
+              </div>
+              <div className="hp-problem-grid reveal">
+                {HELP_ITEMS.map((item) => (
+                  <article key={item.title}>
+                    <h3>{item.title}</h3>
+                    <p>{item.description}</p>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          <section className="hp-work" id="work" aria-labelledby="hp-work-title">
+            <div className="hp-content">
+              <div className="hp-section-head reveal">
+                <span className="hp-mono">Selected Work</span>
+                <h2 id="hp-work-title">Projects that turned complexity into clarity</h2>
               </div>
 
-              {slideCount > 1 ? (
-                <div className="testimonials-carousel__controls">
+              <div className="hp-work-list">
+                {HOME_PROJECTS.map((project) => {
+                  const Visual = (
+                    <figure className="hp-project-visual">
+                      <img src={assets[project.imageKey]} alt={project.title} loading="lazy" />
+                    </figure>
+                  );
+                  return (
+                    <article className="hp-project reveal" key={project.key}>
+                      <p className="hp-project-meta">{project.meta}</p>
+                      <h3>{project.title}</h3>
+                      <p className="hp-case-desc">{project.description}</p>
+                      <div className="hp-tags">
+                        {project.tags.map((tag) => (
+                          <span key={tag}>{tag}</span>
+                        ))}
+                      </div>
+                      {project.path ? (
+                        <>
+                          <Link
+                            to={project.path}
+                            className="hp-project-link"
+                            aria-label={`View ${project.title} case study`}
+                          >
+                            {Visual}
+                          </Link>
+                          <Link to={project.path} className="hp-text-link hp-project-cta">
+                            View case study
+                          </Link>
+                        </>
+                      ) : (
+                        Visual
+                      )}
+                    </article>
+                  );
+                })}
+              </div>
+            </div>
+          </section>
+
+          <section className="hp-testimonials" aria-labelledby="hp-testimonials-title">
+            <div className="hp-content">
+              <div className="hp-section-head reveal">
+                <span className="hp-mono">Kind Words</span>
+                <h2 id="hp-testimonials-title">What people say</h2>
+              </div>
+              <div className="hp-testimonial-carousel reveal">
+                <div className="hp-testimonial-viewport">
+                  <div
+                    className="hp-testimonial-track"
+                    style={{ transform: `translateX(-${testimonialIndex * 100}%)` }}
+                  >
+                    {FEATURED_TESTIMONIALS.map((client) => {
+                      const logoKey = TESTIMONIAL_LOGOS[client.name] ?? null;
+                      return (
+                        <figure className="hp-testimonial" key={client.name}>
+                          <blockquote>“{client.text}”</blockquote>
+                          <figcaption>
+                            <span>
+                              <strong>{client.name}</strong>
+                              <em>{client.title}</em>
+                            </span>
+                            {logoKey ? (
+                              <span className="hp-tst-logo">
+                                <img src={assets[logoKey]} alt={client.company} />
+                              </span>
+                            ) : (
+                              <span className="hp-tst-logo is-text">{client.company}</span>
+                            )}
+                          </figcaption>
+                        </figure>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                <div className="hp-testimonial-controls">
                   <button
                     type="button"
-                    className="testimonials-carousel__arrow"
-                    onClick={() => goToSlide(activeSlide - 1)}
-                    aria-label="Previous testimonials"
+                    className="hp-testimonial-arrow"
+                    onClick={() => goToTestimonial(testimonialIndex - 1)}
+                    aria-label="Previous testimonial"
                   >
-                    <i className={`uil uil-${config.ICONS_MAP.ARROW_LEFT}`} />
+                    <span className="uil uil-angle-left" aria-hidden="true" />
                   </button>
-                  <div className="testimonials-carousel__dots">
-                    {TESTIMONIAL_SLIDES.map((_, slideIndex) => (
+                  <div className="hp-testimonial-dots" role="tablist" aria-label="Select testimonial">
+                    {FEATURED_TESTIMONIALS.map((client, index) => (
                       <button
                         type="button"
-                        key={slideIndex}
-                        className={`testimonials-carousel__dot${slideIndex === activeSlide ? ' is-active' : ''}`}
-                        onClick={() => goToSlide(slideIndex)}
-                        aria-label={`Go to testimonials ${slideIndex + 1}`}
-                        aria-current={slideIndex === activeSlide}
+                        key={client.name}
+                        className={`hp-testimonial-dot${index === testimonialIndex ? ' is-active' : ''}`}
+                        onClick={() => goToTestimonial(index)}
+                        role="tab"
+                        aria-selected={index === testimonialIndex}
+                        aria-label={`Testimonial ${index + 1} of ${testimonialCount}`}
                       />
                     ))}
                   </div>
                   <button
                     type="button"
-                    className="testimonials-carousel__arrow"
-                    onClick={() => goToSlide(activeSlide + 1)}
-                    aria-label="Next testimonials"
+                    className="hp-testimonial-arrow"
+                    onClick={() => goToTestimonial(testimonialIndex + 1)}
+                    aria-label="Next testimonial"
                   >
-                    <i className={`uil uil-${config.ICONS_MAP.ARROW_RIGHT}`} />
+                    <span className="uil uil-angle-right" aria-hidden="true" />
                   </button>
                 </div>
-              ) : null}
+              </div>
             </div>
           </section>
-        </div>
+
+          <section className="hp-writing" id="writing" aria-labelledby="hp-writing-title">
+            <div className="hp-content">
+              <div className="hp-section-head reveal">
+                <span className="hp-mono">Writing</span>
+                <h2 id="hp-writing-title">Writing on UX, AI, fintech, and product decisions</h2>
+                <p className="hp-section-sub">Practical thinking from real product questions, not design theory.</p>
+              </div>
+              <div className="hp-article-cards reveal">
+                {FEATURED_ARTICLES.map((article) => {
+                  const content = article.en;
+                  return (
+                    <Link className="hp-article-card" to={`/articles/${article.slug}`} key={article.slug}>
+                      <div className="hp-article-thumb">
+                        {assets[article.image] ? (
+                          <img className="cover" src={assets[article.image]} alt="" loading="lazy" />
+                        ) : null}
+                        {article.tags[0] ? <span className="cat">{article.tags[0]}</span> : null}
+                      </div>
+                      <div className="hp-article-body">
+                        <p className="hp-art-meta">Article · {content.readingTime}</p>
+                        <h3>{content.title}</h3>
+                        <span className="hp-article-read">
+                          Read article <span aria-hidden="true">→</span>
+                        </span>
+                      </div>
+                    </Link>
+                  );
+                })}
+              </div>
+              <div className="hp-writing-more">
+                <Link className="hp-text-link" to="/articles">
+                  View all articles
+                </Link>
+              </div>
+            </div>
+          </section>
+
+          <section className="hp-final-cta" id="contact" aria-labelledby="hp-cta-title">
+            <div className="hp-content">
+              <span className="hp-mono">Contact</span>
+              <h2 id="hp-cta-title">Have a complex product decision to move forward?</h2>
+              <Link className="hp-btn" to="/business-card">
+                Get in touch
+              </Link>
+              <p className="hp-footer-note">Dekel Nissim — UX Research · Product Strategy</p>
+            </div>
+          </section>
+        </main>
       </div>
     </>
   );
