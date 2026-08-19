@@ -19,7 +19,10 @@ const article: SocialMetadata = {
   type: 'article',
   publishedTime: '2026-06-22',
   tags: ['UX Design', 'Trust'],
-  image: { path: 'https://storage.googleapis.com/dkl-portfolio/new/articles/interface-trust-broken-verification.png', alt: 'Trust' },
+  image: {
+    path: 'https://storage.googleapis.com/dkl-portfolio/new/articles/interface-trust-broken-verification.png',
+    alt: 'Trust',
+  },
 };
 
 describe('renderSocialTags', () => {
@@ -87,7 +90,9 @@ describe('injectSocialTags', () => {
 
   it('rewrites the canonical link to the requested route', () => {
     const result = injectSocialTags(shell, article, BASE);
-    expect(result).toContain('<link rel="canonical" href="https://example.com/articles/interface-trust-broken-verification" />');
+    expect(result).toContain(
+      '<link rel="canonical" href="https://example.com/articles/interface-trust-broken-verification" />',
+    );
     expect(result).not.toContain('<link rel="canonical" href="https://dkl-portfolio.herokuapp.com/" />');
   });
 

@@ -39,7 +39,9 @@ describe('routeToMarkdownKey', () => {
     expect(routeToMarkdownKey('/')).toBe('index');
     expect(routeToMarkdownKey('/about')).toBe('about');
     expect(routeToMarkdownKey('/about/')).toBe('about');
-    expect(routeToMarkdownKey('/articles/interface-trust-broken-verification?lang=en#top')).toBe('articles/interface-trust-broken-verification');
+    expect(routeToMarkdownKey('/articles/interface-trust-broken-verification?lang=en#top')).toBe(
+      'articles/interface-trust-broken-verification',
+    );
   });
 });
 
