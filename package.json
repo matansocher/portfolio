@@ -55,6 +55,7 @@
     "sitemap": "node scripts/generate-sitemap.mjs",
     "rss": "node scripts/generate-rss.mjs",
     "agent-skills": "node scripts/generate-agent-skills.mjs",
+    "indexnow": "node scripts/indexnow-ping.mjs",
     "build": "npm run sitemap && npm run rss && npm run agent-skills && tsc --noEmit && vite build && node scripts/generate-markdown.mjs",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",

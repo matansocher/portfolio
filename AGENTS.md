@@ -100,6 +100,7 @@ Seven surfaces make the site readable by AI agents, answer engines, and chat app
 | Markdown content negotiation (`Accept: text/markdown`) | `server.js` + `vite.config.ts` | Yes — `build/_markdown/**.md` |
 | Open Graph / Twitter link previews | `server.js` + `vite.config.ts`, from `build/_social-metadata.json` | Yes — `scripts/social-metadata.mjs` |
 | Agent Skills discovery index | served at `/.well-known/agent-skills/index.json` (+ one `SKILL.md` per skill) | Yes — `npm run agent-skills` (`scripts/generate-agent-skills.mjs`), also runs as part of `npm run build` |
+| IndexNow key file + deploy ping | key served at `/<key>.txt` (`public/<key>.txt`); `scripts/indexnow-ping.mjs` POSTs every sitemap URL to `https://api.indexnow.org/indexnow` | Key file hand-maintained; the ping runs automatically in Heroku's `release:` phase (`npm run indexnow`), never in `build`/CI |
 | JSON-LD structured data | `index.html` (Person, WebSite, ItemList) and `src/screens/Article.tsx` (per-article `BlogPosting` via `StructuredData`) | No — hand-maintained |
 | WebMCP tools | `src/components/WebMcp.tsx` (registration) + `src/webmcpTools.ts` (definitions) | No — hand-maintained |
 | MCP Server Card ([SEP-1649/2127](https://github.com/modelcontextprotocol/modelcontextprotocol/pull/2127)) | served at `/.well-known/mcp/server-card.json` from `public/.well-known/mcp/server-card.json`; real MCP endpoint at `/mcp` (streamable-http, stateless, read-only tools: `list_pages`, `list_projects`, `list_articles`, `get_article`, `get_page`, `search_content`) | No — hand-maintained |
@@ -348,6 +349,7 @@ npm run lint       # ESLint (flat config, TS + React + hooks + a11y)
 npm run format     # Prettier write (format:check to verify only)
 npm run sitemap    # regenerate public/sitemap.xml + the robots.txt Sitemap line
 npm run agent-skills # regenerate public/.well-known/agent-skills/ (index.json + per-skill SKILL.md)
+npm run indexnow   # ping IndexNow (Bing/Seznam/Naver/Yandex) with every sitemap URL; --dry-run prints the payload. Runs automatically in Heroku's release phase, not in build/CI
 npm run build      # sitemap + agent-skills + typecheck + vite build + generated markdown & social metadata → build/
 npm run preview    # serve the production build locally (Vite preview)
 npm run serve      # serve build/ the way Heroku does (server.js: markdown negotiation + Link headers + OG tags, honors $PORT)
