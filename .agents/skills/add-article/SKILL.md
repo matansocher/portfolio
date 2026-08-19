@@ -132,7 +132,8 @@ Commit the regenerated `public/sitemap.xml` alongside the article. (`npm run bui
 
 The other agent-discovery surfaces need no manual edit: `/llms.txt` and the `Accept: text/markdown`
 response for `/articles/<slug>` are both derived from the article's `en.md` + `meta.ts` at build time,
-and the per-article JSON-LD is rendered by `Article.tsx`.
+the per-article JSON-LD is rendered by `Article.tsx`, and the Open Graph link preview (the card Slack
+or Telegram shows) is generated from `meta.ts` too — title, description, and the article's own image.
 
 ### Step 7: Validate
 

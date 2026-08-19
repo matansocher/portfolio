@@ -49,9 +49,9 @@ npm run test       # Vitest run (test:watch for watch mode)
 npm run lint       # ESLint (TS + React + hooks + a11y)
 npm run format     # Prettier write (format:check to verify)
 npm run sitemap    # regenerate public/sitemap.xml + the robots.txt Sitemap line
-npm run build      # sitemap + typecheck + vite build + generated markdown → build/
+npm run build      # sitemap + typecheck + vite build + generated markdown & social metadata → build/
 npm run preview    # serve the production build locally (Vite preview)
-npm run serve      # serve build/ the way Heroku does (server.js: sirv + markdown negotiation, honors $PORT)
+npm run serve      # serve build/ the way Heroku does (server.js: markdown negotiation + OG tags + sirv, honors $PORT)
 ```
 
 Tests use Vitest + Testing Library (jsdom), co-located as `*.test.tsx`. CI runs the full
@@ -75,15 +75,16 @@ The live site is discoverable without executing JavaScript:
 - **`/robots.txt`** allows everything, declares a [Content Signals](https://contentsignals.org/) preference, allowlists the AI agents that read and cite pages, and denies the two AI-training-consent tokens (`Google-Extended`, `Applebot-Extended`).
 - **JSON-LD** (`Person`, `WebSite`, `ItemList` in the HTML shell; `BlogPosting` per article) describes the site in structured form.
 - **RFC 8288 `Link` headers** on HTML responses point at `/llms.txt` via `rel="describedby"`.
+- **Open Graph / Twitter Card tags** are injected per route at request time, so a link pasted into Slack, Telegram, WhatsApp, or LinkedIn unfurls with the right title, description, and image (articles use their own image).
 
 See the "Agent discoverability" and "Markdown for Agents" sections in `AGENTS.md` for how each piece is produced.
 
 ## Deployment
 
 Deployed on **Heroku**. On deploy, the Node buildpack runs `heroku-postbuild`
-(`npm run build`) to produce `build/` plus the generated sitemap and markdown, then
-the `Procfile` (`web: npm run serve`) serves that static output via `server.js` — a
-thin Node server around [`sirv`](https://github.com/lukeed/sirv) with SPA fallback
-enabled (client-side routes resolve to `index.html`), binding to Heroku's `$PORT`,
-handling `Accept: text/markdown` content negotiation, and attaching
-[RFC 8288](https://www.rfc-editor.org/rfc/rfc8288) `Link` headers to HTML responses.
+(`npm run build`) to produce `build/` plus the generated sitemap, markdown, and link-preview
+metadata, then the `Procfile` (`web: npm run serve`) serves that static output via `server.js` — a
+thin Node server that binds to Heroku's `$PORT`, serves the HTML shell itself for client-side
+routes (injecting per-route Open Graph tags), handles `Accept: text/markdown` content negotiation,
+attaches [RFC 8288](https://www.rfc-editor.org/rfc/rfc8288) `Link` headers, and delegates real
+static assets to [`sirv`](https://github.com/lukeed/sirv).

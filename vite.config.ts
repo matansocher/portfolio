@@ -4,6 +4,8 @@ import { fileURLToPath, URL } from 'node:url';
 import { applyLinkHeader } from './scripts/link-headers.mjs';
 import { buildLlmsTxt, buildMarkdownRoutes } from './scripts/markdown-content.mjs';
 import { isDocumentRequest, routeToMarkdownKey, sendMarkdown, wantsMarkdown } from './scripts/markdown-negotiation.mjs';
+import { buildSocialMetadata } from './scripts/social-metadata.mjs';
+import { injectSocialTags } from './scripts/social-tags.mjs';
 
 // Mirrors the RFC 8288 Link headers that server.js sends in production.
 function linkHeaders(): Plugin {
@@ -63,8 +65,26 @@ function markdownForAgents(): Plugin {
   };
 }
 
+// Mirrors the per-route Open Graph injection that server.js does in production, so
+// link previews can be checked with `npm run dev` instead of only after a deploy.
+function socialTags(): Plugin {
+  return {
+    name: 'social-tags',
+    apply: 'serve',
+    transformIndexHtml: {
+      order: 'post',
+      async handler(html, ctx) {
+        const origin = ctx.server?.config.server.origin ?? '';
+        const metadata = await buildSocialMetadata();
+        const key = routeToMarkdownKey(ctx.originalUrl ?? ctx.path ?? '/');
+        return injectSocialTags(html, metadata.get(key) ?? metadata.get('index'), origin);
+      },
+    },
+  };
+}
+
 export default defineConfig({
-  plugins: [react(), linkHeaders(), markdownForAgents()],
+  plugins: [react(), linkHeaders(), markdownForAgents(), socialTags()],
   resolve: {
     alias: {
       '~': fileURLToPath(new URL('.', import.meta.url)),
