@@ -8,7 +8,7 @@ export default function Employees() {
   return (
     <>
       <SiteNav transparent={true} />
-      <div className="employees">
+      <main id="content" className="employees">
         <section className="employees-top" style={{ backgroundImage: `url('${assets.employeesTopBg}')` }}>
           <div className="container">
             <h1>Employee Onboarding Page</h1>
@@ -187,7 +187,7 @@ export default function Employees() {
             <img alt="screen example" src={assets.employeesFinishedDesign} />
           </div>
         </section>
-      </div>
+      </main>
 
       <BottomNavigation pathname="employees" />
     </>

@@ -10,7 +10,7 @@ export default function Myco() {
   return (
     <>
       <SiteNav transparent={true} />
-      <div className="myco">
+      <main id="content" className="myco">
         <section className="myco-top" style={{ backgroundImage: `url('${assets.mycoTopBg}')` }}>
           <div className="container">
             <h1>Myco</h1>
@@ -257,7 +257,7 @@ export default function Myco() {
         </section>
 
         <BottomNavigation pathname="myco" />
-      </div>
+      </main>
     </>
   );
 }

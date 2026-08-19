@@ -187,7 +187,7 @@ export default function Home() {
     <>
       <SiteNav />
       <div className="home-page" ref={rootRef}>
-        <main>
+        <main id="content">
           <section className="hp-hero" aria-labelledby="hp-hero-title">
             <div className="hp-content">
               <p className="hp-hero-eyebrow hp-mono reveal">UX Research · Product Strategy</p>

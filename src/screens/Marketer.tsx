@@ -6,7 +6,7 @@ export default function Marketer() {
   return (
     <>
       <SiteNav transparent={true} />
-      <div className="marketer">
+      <main id="content" className="marketer">
         <section className="marketer-top" style={{ backgroundImage: `url('${assets.marketerTopBg}')` }}>
           <div className="container">
             <h1>Marketer</h1>
@@ -55,7 +55,7 @@ export default function Marketer() {
         <section className="marketer-bottom">
           <img alt="app screens examples" src={assets.marketerBottom1} />
         </section>
-      </div>
+      </main>
 
       <BottomNavigation pathname="marketer" />
     </>
