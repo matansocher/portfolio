@@ -6,11 +6,11 @@
 // run the JavaScript that would set them -- get a correct link preview.
 
 import { createServer } from 'node:http';
-import { readFile } from 'node:fs/promises';
+import { readdir, readFile } from 'node:fs/promises';
 import { fileURLToPath, URL } from 'node:url';
 import sirv from 'sirv';
 import { LINK_HEADER } from './scripts/link-headers.mjs';
-import { isDocumentRequest, routeToMarkdownKey, sendMarkdown, wantsMarkdown } from './scripts/markdown-negotiation.mjs';
+import { isDocumentRequest, mdUrlToKey, routeToMarkdownKey, sendMarkdown, wantsMarkdown } from './scripts/markdown-negotiation.mjs';
 import { injectSocialTags } from './scripts/social-tags.mjs';
 
 const PORT = Number(process.env.PORT) || 3000;
@@ -24,6 +24,26 @@ const [shell, socialMetadata] = await Promise.all([
   readFile(new URL('index.html', BUILD_URL), 'utf8'),
   readFile(new URL('_social-metadata.json', BUILD_URL), 'utf8').then(JSON.parse),
 ]);
+
+// Build the set of known markdown keys once at boot so .md URL routing can validate
+// against it without reading from user-controlled paths.
+async function loadMarkdownKeys(dir) {
+  const keys = new Set();
+  async function walk(base, prefix) {
+    const entries = await readdir(base, { withFileTypes: true });
+    for (const entry of entries) {
+      if (entry.isDirectory()) {
+        await walk(new URL(`${entry.name}/`, base), `${prefix}${entry.name}/`);
+      } else if (entry.name.endsWith('.md')) {
+        keys.add(`${prefix}${entry.name.slice(0, -3)}`);
+      }
+    }
+  }
+  await walk(dir, '');
+  return keys;
+}
+
+const markdownKeys = await loadMarkdownKeys(MARKDOWN_DIR);
 
 // Absolute origin for og:url and relative image paths. Heroku terminates TLS at the
 // router, so x-forwarded-proto is the only way to know the public scheme; a direct
@@ -84,6 +104,19 @@ const assets = sirv(BUILD_DIR, { gzip: true, brotli: true });
 
 createServer(async (req, res) => {
   const url = req.url ?? '/';
+
+  // Handle explicit .md URLs (e.g. /salaries.md, /articles/slug.md) before the
+  // isDocumentRequest check, which would otherwise treat them as static assets.
+  // Keys are validated against the known set loaded at boot — never from user input.
+  const mdKey = mdUrlToKey(url, markdownKeys);
+  if (mdKey !== null) {
+    const markdown = await readMarkdown(mdKey);
+    if (markdown) {
+      res.setHeader('Link', LINK_HEADER);
+      sendMarkdown(res, markdown);
+      return;
+    }
+  }
 
   if (isDocumentRequest(url)) {
     const key = routeToMarkdownKey(url);

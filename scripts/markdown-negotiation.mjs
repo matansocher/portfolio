@@ -47,6 +47,24 @@ export function routeToMarkdownKey(url) {
   return trimmed === '' ? 'index' : trimmed;
 }
 
+// If the request path ends in `.md` and the rest matches a known markdown route,
+// strip the extension and return the key; otherwise return null (not an .md route).
+// Accepts a Set/Map of known keys so server and dev plugin can pass their route map.
+export function mdUrlToKey(url, knownKeys) {
+  const path = pathnameOf(url);
+  if (!path.endsWith('.md')) {
+    return null;
+  }
+  // Strip leading slash and trailing .md
+  const withoutExt = path.replace(/^\/+/, '').replace(/\.md$/, '');
+  // /index.md → 'index'
+  const key = withoutExt === '' ? 'index' : withoutExt;
+  if (knownKeys.has(key)) {
+    return key;
+  }
+  return null;
+}
+
 // Rough token estimate; the spec asks for `x-markdown-tokens` "if available" and we
 // have no tokenizer in the runtime dependency set.
 export function estimateTokens(markdown) {

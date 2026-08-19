@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { estimateTokens, isDocumentRequest, routeToMarkdownKey, wantsMarkdown } from './markdown-negotiation.mjs';
+import { estimateTokens, isDocumentRequest, mdUrlToKey, routeToMarkdownKey, wantsMarkdown } from './markdown-negotiation.mjs';
 
 describe('wantsMarkdown', () => {
   it('matches an explicit markdown request', () => {
@@ -31,6 +31,7 @@ describe('isDocumentRequest', () => {
     expect(isDocumentRequest('/favicon.ico')).toBe(false);
     expect(isDocumentRequest('/assets/index-abc123.js')).toBe(false);
     expect(isDocumentRequest('/llms.txt')).toBe(false);
+    expect(isDocumentRequest('/salaries.md')).toBe(false);
   });
 });
 
@@ -42,6 +43,40 @@ describe('routeToMarkdownKey', () => {
     expect(routeToMarkdownKey('/articles/interface-trust-broken-verification?lang=en#top')).toBe(
       'articles/interface-trust-broken-verification',
     );
+  });
+});
+
+describe('mdUrlToKey', () => {
+  const keys = new Set(['index', 'about', 'salaries', 'articles/some-slug']);
+
+  it('maps known .md URLs to their markdown key', () => {
+    expect(mdUrlToKey('/salaries.md', keys)).toBe('salaries');
+    expect(mdUrlToKey('/about.md', keys)).toBe('about');
+    expect(mdUrlToKey('/articles/some-slug.md', keys)).toBe('articles/some-slug');
+    expect(mdUrlToKey('/index.md', keys)).toBe('index');
+  });
+
+  it('ignores query strings when matching', () => {
+    expect(mdUrlToKey('/salaries.md?foo=bar', keys)).toBe('salaries');
+  });
+
+  it('returns null for unknown routes', () => {
+    expect(mdUrlToKey('/unknown.md', keys)).toBeNull();
+  });
+
+  it('returns null for non-.md URLs', () => {
+    expect(mdUrlToKey('/salaries', keys)).toBeNull();
+    expect(mdUrlToKey('/llms.txt', keys)).toBeNull();
+  });
+
+  it('returns null for path-traversal attempts', () => {
+    expect(mdUrlToKey('/../../etc/passwd.md', keys)).toBeNull();
+  });
+
+  it('works with a Map as the knownKeys argument', () => {
+    const map = new Map([['salaries', 'content']]);
+    expect(mdUrlToKey('/salaries.md', map)).toBe('salaries');
+    expect(mdUrlToKey('/about.md', map)).toBeNull();
   });
 });
 
