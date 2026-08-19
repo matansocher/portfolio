@@ -4,6 +4,7 @@ import Chip from './Chip';
 import CircleIcon from './CircleIcon';
 import Client from './Client';
 import ContactForm from './ContactForm';
+import Faq from './Faq';
 import HomeProject from './HomeProject';
 import LanguageToggle from './LanguageToggle';
 import Logos from './Logos';
@@ -21,6 +22,7 @@ export {
   CircleIcon,
   Client,
   ContactForm,
+  Faq,
   HomeProject,
   LanguageToggle,
   Logos,
