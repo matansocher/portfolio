@@ -1,9 +1,21 @@
 import './styles/Articles.scss';
 import { Link } from 'react-router-dom';
-import { LanguageToggle, SiteNav } from '../components';
+import { LanguageToggle, SiteNav, StructuredData } from '../components';
 import useArticleLanguage from '../hooks/useArticleLanguage';
 import articles from '../data/articles';
 import assets from '../assets';
+
+const articlesListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Articles',
+  itemListElement: articles.map((article, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: article.en.title,
+    url: `https://dkl-portfolio.herokuapp.com/articles/${article.slug}`,
+  })),
+};
 
 export default function Articles() {
   const [language] = useArticleLanguage();
@@ -11,6 +23,7 @@ export default function Articles() {
 
   return (
     <>
+      <StructuredData data={articlesListSchema} />
       <SiteNav />
       <main className="articles page">
         <section className="articles-header">
