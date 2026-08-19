@@ -24,7 +24,7 @@ describe('isDocumentRequest', () => {
   it('treats extensionless paths as negotiable documents', () => {
     expect(isDocumentRequest('/')).toBe(true);
     expect(isDocumentRequest('/about')).toBe(true);
-    expect(isDocumentRequest('/articles/hate-lies?x=1')).toBe(true);
+    expect(isDocumentRequest('/articles/interface-trust-broken-verification?x=1')).toBe(true);
   });
 
   it('leaves real assets alone', () => {
@@ -39,7 +39,7 @@ describe('routeToMarkdownKey', () => {
     expect(routeToMarkdownKey('/')).toBe('index');
     expect(routeToMarkdownKey('/about')).toBe('about');
     expect(routeToMarkdownKey('/about/')).toBe('about');
-    expect(routeToMarkdownKey('/articles/hate-lies?lang=en#top')).toBe('articles/hate-lies');
+    expect(routeToMarkdownKey('/articles/interface-trust-broken-verification?lang=en#top')).toBe('articles/interface-trust-broken-verification');
   });
 });
 

@@ -1,7 +1,7 @@
 import type { ArticleMeta } from '../../../types';
 
 const meta: ArticleMeta = {
-  slug: 'whats-real',
+  slug: 'deepfakes-losing-what-is-real',
   date: '22-06-2026',
   image: 'articleWhatsReal',
   tags: ['AI', 'Ethics', 'Product'],

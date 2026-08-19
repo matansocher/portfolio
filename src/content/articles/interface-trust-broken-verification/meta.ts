@@ -1,7 +1,7 @@
 import type { ArticleMeta } from '../../../types';
 
 const meta: ArticleMeta = {
-  slug: 'hate-lies',
+  slug: 'interface-trust-broken-verification',
   date: '22-06-2026',
   image: 'articleHateLies',
   tags: ['UX Design', 'Trust', 'Product'],

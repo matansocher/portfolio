@@ -1,7 +1,7 @@
 import type { ArticleMeta } from '../../../types';
 
 const meta: ArticleMeta = {
-  slug: 'really-need-it',
+  slug: 'good-product-insisting-on-quality',
   date: '22-06-2026',
   image: 'articleReallyNeedIt',
   tags: ['Product', 'Design Process', 'UX Design'],
