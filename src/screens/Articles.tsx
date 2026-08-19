@@ -11,6 +11,7 @@ export default function Articles() {
 
   return (
     <>
+      <title>Articles — Dekel Nissim</title>
       <SiteNav />
       <main className="articles page">
         <section className="articles-header">

@@ -59,8 +59,14 @@ describe('renderSocialTags', () => {
     const tags = renderSocialTags(article, BASE);
     expect(tags).toContain('<meta property="og:type" content="article" />');
     expect(tags).toContain('<meta property="article:published_time" content="2026-06-22" />');
+    expect(tags).toContain('<meta property="article:author" content="Dekel Nissim" />');
     expect(tags).toContain('<meta property="article:tag" content="UX Design" />');
     expect(renderSocialTags(page, BASE)).not.toContain('article:');
+  });
+
+  it('always emits og:locale as en_US', () => {
+    expect(renderSocialTags(page, BASE)).toContain('<meta property="og:locale" content="en_US" />');
+    expect(renderSocialTags(article, BASE)).toContain('<meta property="og:locale" content="en_US" />');
   });
 
   it('always requests a large summary card', () => {
@@ -71,6 +77,8 @@ describe('renderSocialTags', () => {
 describe('injectSocialTags', () => {
   const shell = [
     '<head>',
+    '    <title>Dekel Nissim</title>',
+    '    <meta name="description" content="Dekel Nissim — Product Designer &amp; UX Researcher" />',
     '    <link rel="canonical" href="https://dkl-portfolio.herokuapp.com/" />',
     '    <!-- social-tags:start — fallback -->',
     '    <meta property="og:title" content="Dekel Nissim" />',
@@ -94,6 +102,20 @@ describe('injectSocialTags', () => {
       '<link rel="canonical" href="https://example.com/articles/interface-trust-broken-verification" />',
     );
     expect(result).not.toContain('<link rel="canonical" href="https://dkl-portfolio.herokuapp.com/" />');
+  });
+
+  it('rewrites the <title> element to the route title', () => {
+    const result = injectSocialTags(shell, article, BASE);
+    expect(result).toContain(
+      '<title>When an Interface Acts Like Someone You Can\u2019t Trust — Dekel Nissim</title>',
+    );
+    expect(result).not.toContain('<title>Dekel Nissim</title>');
+  });
+
+  it('rewrites the meta description to the route description', () => {
+    const result = injectSocialTags(shell, article, BASE);
+    expect(result).toContain('<meta name="description" content="A bug is not only a usability problem." />');
+    expect(result).not.toContain('Product Designer');
   });
 
   it('leaves the fallback in place when there is no metadata', () => {
