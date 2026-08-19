@@ -12,7 +12,7 @@ export default function Articles() {
   return (
     <>
       <SiteNav />
-      <main className="articles page">
+      <main id="content" className="articles page">
         <section className="articles-header">
           <div className="container">
             <div className="articles-header-top">

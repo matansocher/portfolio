@@ -9,7 +9,7 @@ export default function Salaries() {
   return (
     <>
       <SiteNav transparent={true} />
-      <div className="salaries">
+      <main id="content" className="salaries">
         <section className="salaries-top" style={{ backgroundImage: `url('${assets.salariesTopBg}')` }}>
           <div className="container">
             <h1>Salary Additions</h1>
@@ -404,7 +404,7 @@ export default function Salaries() {
         </section>
 
         <BottomNavigation pathname="salaries" />
-      </div>
+      </main>
     </>
   );
 }

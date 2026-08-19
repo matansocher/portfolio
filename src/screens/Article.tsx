@@ -15,7 +15,7 @@ export default function Article() {
     return (
       <>
         <SiteNav />
-        <main className="article page">
+        <main id="content" className="article page">
           <section className="article-missing">
             <div className="container">
               <h1>Article not found</h1>
@@ -52,7 +52,7 @@ export default function Article() {
     <>
       <StructuredData data={articleSchema} />
       <SiteNav />
-      <main className="article page">
+      <main id="content" className="article page">
         <div className="article-hero">
           <div className="container">
             <div className="article-hero-top">
