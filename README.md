@@ -1,8 +1,8 @@
 # Portfolio
 
-A single-page **portfolio site** for Dekel Nissim (Product Designer & UX Researcher). Built with **Vite** — React 19, TypeScript, `react-router-dom` v7, and SASS. Case-study screens plus a freelance business card with a contact form backed by a separate Heroku service.
+A single-page **portfolio site** for Dekel Nissim (Product Designer & UX Researcher), live at **[dekelnissim.com](https://dekelnissim.com)**. Built with **Vite** — React 19, TypeScript, `react-router-dom` v7, and SASS. Case-study screens plus a freelance business card with a contact form backed by a separate Heroku service.
 
-**🤖 [AGENTS.md](./AGENTS.md)** — canonical onboarding for AI agents and humans &nbsp;·&nbsp; **⚡ [Quick Start](#quick-start)**
+**🌐 [dekelnissim.com](https://dekelnissim.com)** — live site &nbsp;·&nbsp; **🤖 [AGENTS.md](./AGENTS.md)** — canonical onboarding for AI agents and humans &nbsp;·&nbsp; **⚡ [Quick Start](#quick-start)**
 
 ## Quick Start
 
