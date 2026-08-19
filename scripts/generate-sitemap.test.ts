@@ -26,7 +26,23 @@ describe('generate-sitemap', () => {
     }
     for (const folder of folders) {
       expect(xml).toContain(`<loc>${BASE_URL}/articles/${folder}</loc>`);
+      expect(xml).toContain(`<loc>${BASE_URL}/he/articles/${folder}</loc>`);
     }
+  });
+
+  it('declares the xhtml namespace and emits hreflang alternates on both language entries', () => {
+    const xml = buildSitemap([{ slug: 'sample', lastmod: '2026-06-22' }], '2026-01-01', () => '2026-01-01');
+    const parsed = new DOMParser().parseFromString(xml, 'application/xml');
+
+    expect(parsed.querySelector('parsererror')).toBeNull();
+    expect(parsed.documentElement.getAttribute('xmlns:xhtml')).toBe('http://www.w3.org/1999/xhtml');
+    expect(xml).toContain(`<loc>${BASE_URL}/articles/sample</loc>`);
+    expect(xml).toContain(`<loc>${BASE_URL}/he/articles/sample</loc>`);
+    expect(xml).toContain(`<xhtml:link rel="alternate" hreflang="en" href="${BASE_URL}/articles/sample" />`);
+    expect(xml).toContain(`<xhtml:link rel="alternate" hreflang="he" href="${BASE_URL}/he/articles/sample" />`);
+    expect(xml).toContain(`<xhtml:link rel="alternate" hreflang="x-default" href="${BASE_URL}/articles/sample" />`);
+    // Both the English and Hebrew <url> entries carry the full alternate set.
+    expect([...xml.matchAll(/<xhtml:link rel="alternate" hreflang="he"/g)]).toHaveLength(2);
   });
 
   it('produces parseable XML with W3C lastmod dates', () => {

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { buildLlmsFullTxt, buildLlmsTxt } from './markdown-content.mjs';
+import { buildLlmsFullTxt, buildLlmsTxt, buildMarkdownRoutes } from './markdown-content.mjs';
 
 const BASE = 'https://example.com';
 
@@ -12,6 +12,24 @@ function makeRoutes(extra: Record<string, string> = {}): Map<string, string> {
     ...Object.entries(extra),
   ]);
 }
+
+describe('buildMarkdownRoutes', () => {
+  it('serves a Hebrew markdown route per article alongside the English one', async () => {
+    const routes = await buildMarkdownRoutes();
+    const enKeys = [...routes.keys()].filter((key) => key.startsWith('articles/'));
+    expect(enKeys.length).toBeGreaterThan(0);
+
+    for (const enKey of enKeys) {
+      const heKey = `he/${enKey}`;
+      expect(routes.has(heKey), `missing ${heKey}`).toBe(true);
+      // The Hebrew document must contain Hebrew characters, and differ from the English one.
+      const heDoc = routes.get(heKey)!;
+      expect(/[\u0590-\u05FF]/.test(heDoc)).toBe(true);
+      expect(heDoc).not.toBe(routes.get(enKey));
+      expect(heDoc).toContain('דקות קריאה');
+    }
+  });
+});
 
 describe('buildLlmsTxt', () => {
   it('links to .md URLs for all pages', () => {

@@ -58,27 +58,46 @@ export function buildSitemap(
   today = new Date().toISOString().slice(0, 10),
   resolveStaticLastmod = getGitLastmodDate,
 ) {
-  const urls = [
-    ...STATIC_ROUTES.map((route) => {
-      const contentFile = route === '/' ? 'src/content/pages/index.md' : `src/content/pages/${route.slice(1)}.md`;
-      const lastmod = resolveStaticLastmod(contentFile, today);
-      return { loc: route, lastmod };
-    }),
-    ...articles.map((article) => ({ loc: `/articles/${article.slug}`, lastmod: article.lastmod ?? today })),
-  ];
+  const staticUrls = STATIC_ROUTES.map((route) => {
+    const contentFile = route === '/' ? 'src/content/pages/index.md' : `src/content/pages/${route.slice(1)}.md`;
+    const lastmod = resolveStaticLastmod(contentFile, today);
+    return { loc: route, lastmod };
+  });
 
-  const entries = urls
-    .map(({ loc, lastmod }) =>
+  const staticEntries = staticUrls.map(({ loc, lastmod }) =>
+    [
+      '  <url>',
+      `    <loc>${escapeXml(`${BASE_URL}${loc}`)}</loc>`,
+      `    <lastmod>${lastmod}</lastmod>`,
+      '  </url>',
+    ].join('\n'),
+  );
+
+  // Each article gets two entries (English + Hebrew), and every entry carries the full
+  // set of xhtml:link hreflang alternates so search engines can pair the two languages.
+  const alternates = (slug) =>
+    [
+      `    <xhtml:link rel="alternate" hreflang="en" href="${escapeXml(`${BASE_URL}/articles/${slug}`)}" />`,
+      `    <xhtml:link rel="alternate" hreflang="he" href="${escapeXml(`${BASE_URL}/he/articles/${slug}`)}" />`,
+      `    <xhtml:link rel="alternate" hreflang="x-default" href="${escapeXml(`${BASE_URL}/articles/${slug}`)}" />`,
+    ].join('\n');
+
+  const articleEntries = articles.flatMap((article) => {
+    const lastmod = article.lastmod ?? today;
+    return ['/articles', '/he/articles'].map((prefix) =>
       [
         '  <url>',
-        `    <loc>${escapeXml(`${BASE_URL}${loc}`)}</loc>`,
+        `    <loc>${escapeXml(`${BASE_URL}${prefix}/${article.slug}`)}</loc>`,
         `    <lastmod>${lastmod}</lastmod>`,
+        alternates(article.slug),
         '  </url>',
       ].join('\n'),
-    )
-    .join('\n');
+    );
+  });
 
-  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${entries}\n</urlset>\n`;
+  const entries = [...staticEntries, ...articleEntries].join('\n');
+
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${entries}\n</urlset>\n`;
 }
 
 // Idempotent: strips any existing Sitemap: line before appending the current one.
@@ -97,5 +116,5 @@ if (isDirectRun) {
   const articles = collectArticles();
   writeFileSync(SITEMAP_PATH, buildSitemap(articles));
   writeFileSync(ROBOTS_PATH, buildRobots(readFileSync(ROBOTS_PATH, 'utf8')));
-  console.log(`sitemap.xml written with ${STATIC_ROUTES.length + articles.length} URLs`);
+  console.log(`sitemap.xml written with ${STATIC_ROUTES.length + articles.length * 2} URLs`);
 }

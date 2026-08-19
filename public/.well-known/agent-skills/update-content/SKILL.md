@@ -29,11 +29,11 @@ markdown response, and JSON-LD, so they need no edits here.
 
 | Surface | Generated from | Script |
 |---|---|---|
-| `/sitemap.xml` | `STATIC_ROUTES` + article folders | `scripts/generate-sitemap.mjs` |
+| `/sitemap.xml` | `STATIC_ROUTES` + article folders (EN + HE URLs, each with `xhtml:link` hreflang alternates) | `scripts/generate-sitemap.mjs` |
 | `robots.txt` `Sitemap:` line | generator (idempotent) | `scripts/generate-sitemap.mjs` |
 | `/llms.txt` | `src/content/pages/` + articles + **hardcoded case-study list** | `scripts/markdown-content.mjs` |
-| `Accept: text/markdown` per route | `src/content/pages/*.md` + articles | `scripts/markdown-content.mjs` |
-| Open Graph / Twitter tags per route | `src/content/pages/*.md` + article `meta.ts` + **hand-written `PAGE_DESCRIPTIONS`** | `scripts/social-metadata.mjs` |
+| `Accept: text/markdown` per route (incl. `he/articles/<slug>`) | `src/content/pages/*.md` + articles (en.md + he.md) | `scripts/markdown-content.mjs` |
+| Open Graph / Twitter tags + hreflang alternates per route | `src/content/pages/*.md` + article `meta.ts` (en + he) + **hand-written `PAGE_DESCRIPTIONS`** | `scripts/social-metadata.mjs` + `scripts/social-tags.mjs` |
 | Per-article JSON-LD (`BlogPosting`) | `meta.ts` at runtime | `src/screens/Article.tsx` |
 
 **Hand-maintained — these are the drift points this skill exists for.** A code change elsewhere
@@ -134,7 +134,7 @@ committed files stay in sync with the build output.
 ```bash
 node server.js &                 # serves build/ on PORT (default 3000)
 curl -s localhost:3000/llms.txt                 # case studies + pages correct, right host
-curl -s localhost:3000/sitemap.xml | grep -c "<loc>"   # URL count matches routes + articles
+curl -s localhost:3000/sitemap.xml | grep -c "<loc>"   # URL count = STATIC_ROUTES + articles×2 (EN + HE)
 curl -s -H "Accept: text/markdown" localhost:3000/<route>   # returns the page markdown
 ```
 

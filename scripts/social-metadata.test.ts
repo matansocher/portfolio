@@ -45,4 +45,41 @@ describe('buildSocialMetadata', () => {
   it('falls back to the bundled card for non-article pages', async () => {
     expect((await buildSocialMetadata()).get('salaries')?.image).toEqual(DEFAULT_IMAGE);
   });
+
+  it('adds a Hebrew article entry with he_IL locale and Hebrew title', async () => {
+    const metadata = await buildSocialMetadata();
+    const heKeys = [...metadata.keys()].filter((key) => key.startsWith('he/articles/'));
+    expect(heKeys.length).toBeGreaterThan(0);
+
+    for (const key of heKeys) {
+      const entry = metadata.get(key)!;
+      expect(entry.type, key).toBe('article');
+      expect(entry.locale, key).toBe('he_IL');
+      expect(entry.url, key).toBe(`https://dkl-portfolio.herokuapp.com/${key}`);
+      expect(/[\u0590-\u05FF]/.test(entry.title), key).toBe(true);
+      expect(entry.publishedTime, key).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+    }
+  });
+
+  it('gives article entries the shared hreflang alternate set', async () => {
+    const metadata = await buildSocialMetadata();
+    const [enKey, enEntry] = [...metadata.entries()].find(([key]) => key.startsWith('articles/'))!;
+    const slug = enKey.replace('articles/', '');
+    const expected = [
+      { hreflang: 'en', href: `https://dkl-portfolio.herokuapp.com/articles/${slug}` },
+      { hreflang: 'he', href: `https://dkl-portfolio.herokuapp.com/he/articles/${slug}` },
+      { hreflang: 'x-default', href: `https://dkl-portfolio.herokuapp.com/articles/${slug}` },
+    ];
+    expect(enEntry.alternates).toEqual(expected);
+    expect(metadata.get(`he/articles/${slug}`)?.alternates).toEqual(expected);
+    // Non-article pages carry no alternates.
+    expect(metadata.get('salaries')?.alternates).toBeUndefined();
+  });
+
+  it('marks English pages and articles with the en_US locale', async () => {
+    const metadata = await buildSocialMetadata();
+    expect(metadata.get('index')?.locale).toBe('en_US');
+    const [, enArticle] = [...metadata.entries()].find(([key]) => key.startsWith('articles/'))!;
+    expect(enArticle.locale).toBe('en_US');
+  });
 });

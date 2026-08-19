@@ -9,6 +9,7 @@ const page: SocialMetadata = {
   description: 'Product Designer & UX Researcher',
   url: 'https://example.com/',
   type: 'website',
+  locale: 'en_US',
   image: { path: '/og-image.png', alt: 'Dekel Nissim', width: 1999, height: 1023 },
 };
 
@@ -17,6 +18,7 @@ const article: SocialMetadata = {
   description: 'A bug is not only a usability problem.',
   url: 'https://example.com/articles/interface-trust-broken-verification',
   type: 'article',
+  locale: 'en_US',
   publishedTime: '2026-06-22',
   tags: ['UX Design', 'Trust'],
   image: {
@@ -64,9 +66,10 @@ describe('renderSocialTags', () => {
     expect(renderSocialTags(page, BASE)).not.toContain('article:');
   });
 
-  it('always emits og:locale as en_US', () => {
+  it('emits og:locale from the metadata locale', () => {
     expect(renderSocialTags(page, BASE)).toContain('<meta property="og:locale" content="en_US" />');
-    expect(renderSocialTags(article, BASE)).toContain('<meta property="og:locale" content="en_US" />');
+    const hebrew: SocialMetadata = { ...article, locale: 'he_IL' };
+    expect(renderSocialTags(hebrew, BASE)).toContain('<meta property="og:locale" content="he_IL" />');
   });
 
   it('always requests a large summary card', () => {
@@ -114,6 +117,26 @@ describe('injectSocialTags', () => {
     const result = injectSocialTags(shell, article, BASE);
     expect(result).toContain('<meta name="description" content="A bug is not only a usability problem." />');
     expect(result).not.toContain('Product Designer');
+  });
+
+  it('injects hreflang alternates from metadata alongside the canonical link', () => {
+    const withAlternates: SocialMetadata = {
+      ...article,
+      alternates: [
+        { hreflang: 'en', href: 'https://example.com/articles/x' },
+        { hreflang: 'he', href: 'https://example.com/he/articles/x' },
+        { hreflang: 'x-default', href: 'https://example.com/articles/x' },
+      ],
+    };
+    const result = injectSocialTags(shell, withAlternates, BASE);
+    expect(result).toContain('<link rel="alternate" hreflang="en" href="https://example.com/articles/x" />');
+    expect(result).toContain('<link rel="alternate" hreflang="he" href="https://example.com/he/articles/x" />');
+    expect(result).toContain('<link rel="alternate" hreflang="x-default" href="https://example.com/articles/x" />');
+  });
+
+  it('omits hreflang alternates when metadata has none', () => {
+    const result = injectSocialTags(shell, page, BASE);
+    expect(result).not.toContain('rel="alternate" hreflang');
   });
 
   it('leaves the fallback in place when there is no metadata', () => {

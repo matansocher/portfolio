@@ -47,7 +47,11 @@ export default function Articles() {
               {articles.map((article) => {
                 const content = article[language];
                 return (
-                  <Link key={article.slug} to={`/articles/${article.slug}`} className="article-card">
+                  <Link
+                    key={article.slug}
+                    to={isRtl ? `/he/articles/${article.slug}` : `/articles/${article.slug}`}
+                    className="article-card"
+                  >
                     {assets[article.image] ? (
                       <div className="article-card-image">
                         <img src={assets[article.image]} alt={content.title} loading="lazy" />
