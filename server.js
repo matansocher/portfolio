@@ -24,6 +24,13 @@ import { injectSocialTags } from './scripts/social-tags.mjs';
 import { buildMcpServer } from './scripts/mcp-server.mjs';
 
 const PORT = Number(process.env.PORT) || 3000;
+
+// The legacy Heroku platform host still resolves (Heroku keeps serving it), so requests
+// that arrive on it are 301'd to the canonical custom domain to consolidate SEO authority
+// and avoid duplicate content. Set CANONICAL_HOST='' to disable, or override either value.
+const LEGACY_HOST = process.env.LEGACY_HOST ?? 'dkl-portfolio.herokuapp.com';
+const CANONICAL_HOST = process.env.CANONICAL_HOST ?? 'dekelnissim.com';
+
 const BUILD_DIR = fileURLToPath(new URL('./build/', import.meta.url));
 const BUILD_URL = new URL('./build/', import.meta.url);
 const MARKDOWN_DIR = new URL('./build/_markdown/', import.meta.url);
@@ -96,6 +103,21 @@ function originOf(req) {
   const forwarded = req.headers['x-forwarded-proto'];
   const proto = forwarded ?? (req.socket.encrypted ? 'https' : 'http');
   return `${String(proto).split(',')[0]}://${String(host).split(',')[0]}`;
+}
+
+// If the request arrived on the legacy Heroku host, return the canonical URL to 301 to;
+// otherwise null. The custom domain and localhost pass through untouched. Uses the same
+// x-forwarded-proto/host discipline as originOf since Heroku terminates TLS at its router.
+function legacyRedirectLocation(req) {
+  if (!CANONICAL_HOST || !LEGACY_HOST) {
+    return null;
+  }
+  const rawHost = req.headers['x-forwarded-host'] ?? req.headers.host ?? '';
+  const host = String(rawHost).split(',')[0].split(':')[0].trim().toLowerCase();
+  if (host !== LEGACY_HOST) {
+    return null;
+  }
+  return `https://${CANONICAL_HOST}${req.url ?? '/'}`;
 }
 
 // Rewrites the build-time base URL to the host actually serving the request, so
@@ -208,6 +230,18 @@ const assets = sirv(BUILD_DIR, {
 createServer(async (req, res) => {
   const url = req.url ?? '/';
   const pathname = url.split('?')[0];
+
+  // Consolidate SEO onto the canonical domain: any request that reaches the legacy
+  // Heroku host is permanently redirected to the same path on the custom domain.
+  // Runs first so it applies uniformly to documents, .md URLs, /mcp, and assets.
+  const legacyLocation = legacyRedirectLocation(req);
+  if (legacyLocation) {
+    res.statusCode = 301;
+    res.setHeader('Location', legacyLocation);
+    res.setHeader('Cache-Control', 'no-cache');
+    res.end();
+    return;
+  }
 
   // MCP endpoint: handle POST/GET/DELETE on /mcp using stateless StreamableHTTP.
   // Must come before isDocumentRequest so /mcp never falls through to the shell.

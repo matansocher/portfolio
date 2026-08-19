@@ -130,7 +130,7 @@ describe('generate-rss', () => {
     const feed = buildRssFeed(articles);
 
     expect(feed).toContain(BASE_URL);
-    expect(feed).toContain('https://dkl-portfolio.herokuapp.com');
+    expect(feed).toContain('https://dekelnissim.com');
 
     const parsed = new DOMParser().parseFromString(feed, 'application/xml');
     const links = parsed.querySelectorAll('item > link');

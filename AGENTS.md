@@ -91,7 +91,7 @@ This is a live portfolio. Unless explicitly asked otherwise, **do not change run
 
 ### Agent discoverability
 
-Seven surfaces make the site readable by AI agents, answer engines, and chat apps. All of them assume the canonical host `https://dkl-portfolio.herokuapp.com`.
+Seven surfaces make the site readable by AI agents, answer engines, and chat apps. All of them assume the canonical host `https://dekelnissim.com`.
 
 | Surface | Where | Generated? |
 |---|---|---|

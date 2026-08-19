@@ -49,7 +49,7 @@ const PROJECTS = [
  */
 export function buildMcpServer({ readMarkdown, articles }) {
   const server = new McpServer({
-    name: 'dkl-portfolio.herokuapp.com/portfolio',
+    name: 'dekelnissim.com/portfolio',
     version: '0.1.0',
   });
 

@@ -17,7 +17,7 @@ Trigger when the user changes existing content, specifically:
 - Edits a **case study** screen (`Salaries`, `Marketer`, `Myco`, `Employees`) — its name, description, or removing/adding one.
 - Edits **page copy** for Home, About, Articles, or Business-card.
 - **Adds or removes a route** in `src/App.tsx`.
-- Changes the **canonical host** (e.g. moving off `dkl-portfolio.herokuapp.com` to a custom domain).
+- Changes the **canonical host** (e.g. moving off `dekelnissim.com` to a custom domain).
 
 **Do NOT use this for adding a new article** — the `add-article` skill already covers articles
 (including regenerating the sitemap). Articles fully auto-derive their sitemap entry, llms.txt line,
@@ -44,7 +44,7 @@ will NOT touch them; you must edit them by hand:
 3. **`STATIC_ROUTES`** — hardcoded in `scripts/generate-sitemap.mjs`, must mirror `src/App.tsx`.
 4. **Case-study page copy** — `src/content/pages/{salaries,marketer,myco,employees}.md` mirror the React screens by hand; editing a screen does not update them.
 5. **`PAGE_DESCRIPTIONS`** — hardcoded in `scripts/social-metadata.mjs`, one entry per non-article page. Feeds the link-preview card description; a missing entry silently falls back to the page's H1.
-6. **Canonical host** `https://dkl-portfolio.herokuapp.com` — hardcoded in three places (see the canonical-host section below).
+6. **Canonical host** `https://dekelnissim.com` — hardcoded in three places (see the canonical-host section below).
 
 ## Checklist by change type
 
@@ -101,18 +101,26 @@ is usually enough — only touch `buildLlmsTxt` if the short description of the 
 
 ### D) Changed the canonical host
 
-`https://dkl-portfolio.herokuapp.com` is hardcoded in three independent places. Change all three:
+The canonical host is hardcoded in several independent places. Change all of them:
 
 ```
-- [ ] scripts/generate-sitemap.mjs — `export const BASE_URL` (also feeds llms.txt and markdown-content.mjs, which import it)
+- [ ] scripts/generate-sitemap.mjs — `export const BASE_URL` (also feeds llms.txt, markdown-content.mjs, and social-metadata.mjs, which import it)
+- [ ] scripts/generate-rss.mjs — `export const BASE_URL` (RSS feed)
+- [ ] scripts/mcp-server.mjs — the MCP server `name` identifier
+- [ ] public/.well-known/mcp/server-card.json — `name`, `websiteUrl`, `endpoint`, and the tool `url`
 - [ ] index.html — the <link rel="canonical">, the og:/twitter: fallback tags in the social-tags block, and every URL/@id in the JSON-LD @graph
-- [ ] src/screens/Article.tsx — the two hardcoded article/author URLs in articleSchema
+- [ ] src/screens/Article.tsx — the hardcoded SITE_ORIGIN + article/author URLs in articleSchema
+- [ ] src/screens/Articles.tsx — the hardcoded article URL in the ItemList schema
+- [ ] test files under scripts/ that assert the host (generate-sitemap, generate-rss, social-metadata, social-tags, indexnow-ping)
 - [ ] Validate + build; grep to confirm no stale host remains (see below)
 ```
 
+Do NOT change `STORAGE_BASE_URL` or `PORTFOLIO_BACKEND` in `src/config.ts` — those are the CDN
+bucket and the separate backend app, not the site host.
+
 ```bash
-grep -rn "dkl-portfolio.herokuapp.com" src/ index.html scripts/ server.js
-# after the change, every hit should be the NEW host
+grep -rn "herokuapp.com" src/ index.html scripts/ server.js public/.well-known/
+# after the change, the only hits should be the CDN/backend in src/config.ts
 ```
 
 ## Validate

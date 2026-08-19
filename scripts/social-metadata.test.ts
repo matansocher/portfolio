@@ -55,7 +55,7 @@ describe('buildSocialMetadata', () => {
       const entry = metadata.get(key)!;
       expect(entry.type, key).toBe('article');
       expect(entry.locale, key).toBe('he_IL');
-      expect(entry.url, key).toBe(`https://dkl-portfolio.herokuapp.com/${key}`);
+      expect(entry.url, key).toBe(`https://dekelnissim.com/${key}`);
       expect(/[\u0590-\u05FF]/.test(entry.title), key).toBe(true);
       expect(entry.publishedTime, key).toMatch(/^\d{4}-\d{2}-\d{2}$/);
     }
@@ -66,9 +66,9 @@ describe('buildSocialMetadata', () => {
     const [enKey, enEntry] = [...metadata.entries()].find(([key]) => key.startsWith('articles/'))!;
     const slug = enKey.replace('articles/', '');
     const expected = [
-      { hreflang: 'en', href: `https://dkl-portfolio.herokuapp.com/articles/${slug}` },
-      { hreflang: 'he', href: `https://dkl-portfolio.herokuapp.com/he/articles/${slug}` },
-      { hreflang: 'x-default', href: `https://dkl-portfolio.herokuapp.com/articles/${slug}` },
+      { hreflang: 'en', href: `https://dekelnissim.com/articles/${slug}` },
+      { hreflang: 'he', href: `https://dekelnissim.com/he/articles/${slug}` },
+      { hreflang: 'x-default', href: `https://dekelnissim.com/articles/${slug}` },
     ];
     expect(enEntry.alternates).toEqual(expected);
     expect(metadata.get(`he/articles/${slug}`)?.alternates).toEqual(expected);

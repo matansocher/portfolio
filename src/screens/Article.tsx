@@ -57,7 +57,7 @@ export default function Article({ language: forcedLanguage }: { language?: Artic
   const image = assets[article.image];
   const [day, month, year] = article.date.split('-');
 
-  const SITE_ORIGIN = 'https://dkl-portfolio.herokuapp.com';
+  const SITE_ORIGIN = 'https://dekelnissim.com';
   const enUrl = `${SITE_ORIGIN}/articles/${article.slug}`;
   const heUrl = `${SITE_ORIGIN}/he/articles/${article.slug}`;
   const articleUrl = language === 'he' ? heUrl : enUrl;
@@ -79,17 +79,17 @@ export default function Article({ language: forcedLanguage }: { language?: Artic
         ...(image ? { image } : {}),
         author: {
           '@type': 'Person',
-          '@id': 'https://dkl-portfolio.herokuapp.com/#person',
+          '@id': 'https://dekelnissim.com/#person',
           name: 'Dekel Nissim',
-          url: 'https://dkl-portfolio.herokuapp.com/',
+          url: 'https://dekelnissim.com/',
         },
-        publisher: { '@id': 'https://dkl-portfolio.herokuapp.com/#person' },
+        publisher: { '@id': 'https://dekelnissim.com/#person' },
       },
       {
         '@type': 'BreadcrumbList',
         itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://dkl-portfolio.herokuapp.com/' },
-          { '@type': 'ListItem', position: 2, name: 'Articles', item: 'https://dkl-portfolio.herokuapp.com/articles' },
+          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://dekelnissim.com/' },
+          { '@type': 'ListItem', position: 2, name: 'Articles', item: 'https://dekelnissim.com/articles' },
           { '@type': 'ListItem', position: 3, name: content.title, item: articleUrl },
         ],
       },

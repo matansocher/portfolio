@@ -8,7 +8,7 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const ARTICLES_DIR = join(ROOT, 'src', 'content', 'articles');
 const FEED_PATH = join(ROOT, 'public', 'feed.xml');
 
-export const BASE_URL = 'https://dkl-portfolio.herokuapp.com';
+export const BASE_URL = 'https://dekelnissim.com';
 
 function escapeXml(value) {
   return value

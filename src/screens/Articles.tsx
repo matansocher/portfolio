@@ -13,7 +13,7 @@ const articlesListSchema = {
     '@type': 'ListItem',
     position: index + 1,
     name: article.en.title,
-    url: `https://dkl-portfolio.herokuapp.com/articles/${article.slug}`,
+    url: `https://dekelnissim.com/articles/${article.slug}`,
   })),
 };
 
