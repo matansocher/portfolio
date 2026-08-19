@@ -21,11 +21,11 @@ describe('App routing', () => {
     expect(screen.getByRole('heading', { name: 'Employee Onboarding Screen' })).toBeInTheDocument();
   });
 
-  it('redirects /projects to the Home screen', () => {
+  it('shows the NotFound screen for unknown routes', () => {
     window.history.pushState({}, '', '/projects');
     render(<App />);
 
-    expect(screen.getByRole('heading', { name: /decisions teams can trust/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /page not found/i })).toBeInTheDocument();
   });
 
   it('renders the Articles list screen', () => {

@@ -25,6 +25,10 @@ const [shell, socialMetadata] = await Promise.all([
   readFile(new URL('_social-metadata.json', BUILD_URL), 'utf8').then(JSON.parse),
 ]);
 
+// Build the known-route set from the metadata map so 404 detection stays in sync with
+// the sitemap and OG data automatically. The 'index' key maps to '/'.
+const KNOWN_ROUTE_KEYS = new Set(Object.keys(socialMetadata));
+
 // Absolute origin for og:url and relative image paths. Heroku terminates TLS at the
 // router, so x-forwarded-proto is the only way to know the public scheme; a direct
 // connection is only encrypted if the socket says so.
@@ -63,12 +67,13 @@ async function readMarkdown(key) {
   }
 }
 
-function sendShell(req, res, key) {
+function sendShell(req, res, key, status = 200) {
   const origin = originOf(req);
   // Unknown paths fall back to the home page's tags, mirroring the SPA catch-all route.
   const metadata = localize(socialMetadata[key] ?? socialMetadata.index, origin);
   const body = Buffer.from(injectSocialTags(shell, metadata, origin ?? ''), 'utf8');
 
+  res.statusCode = status;
   res.setHeader('Content-Type', 'text/html; charset=utf-8');
   res.setHeader('Content-Length', body.byteLength);
   res.setHeader('Vary', 'Accept');
@@ -87,9 +92,10 @@ createServer(async (req, res) => {
 
   if (isDocumentRequest(url)) {
     const key = routeToMarkdownKey(url);
+    const isKnownRoute = KNOWN_ROUTE_KEYS.has(key);
 
     if (wantsMarkdown(req.headers.accept)) {
-      const markdown = (await readMarkdown(key)) ?? (await readMarkdown('index'));
+      const markdown = (await readMarkdown(key)) ?? (isKnownRoute ? null : await readMarkdown('index'));
       if (markdown) {
         res.setHeader('Link', LINK_HEADER);
         sendMarkdown(res, markdown);
@@ -97,7 +103,7 @@ createServer(async (req, res) => {
       }
     }
 
-    sendShell(req, res, key);
+    sendShell(req, res, key, isKnownRoute ? 200 : 404);
     return;
   }
 

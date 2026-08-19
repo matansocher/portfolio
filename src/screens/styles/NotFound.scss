@@ -1,0 +1,31 @@
+@use '~/src/styles/_colors.scss' as *;
+
+$text-dark: #151b21;
+$text-muted: #52606d;
+$accent: #2e97ff;
+
+.not-found {
+  font-family: system-ui;
+
+  &-body {
+    padding: 60px 0 120px;
+    text-align: center;
+
+    h1 {
+      font-size: 40px;
+      color: $text-dark;
+      margin-bottom: 16px;
+    }
+
+    p {
+      color: $text-muted;
+      margin-bottom: 24px;
+    }
+  }
+
+  &-link {
+    color: $accent;
+    font-weight: 600;
+    text-decoration: none;
+  }
+}

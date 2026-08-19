@@ -15,7 +15,6 @@ export const BASE_URL = 'https://dkl-portfolio.herokuapp.com';
 // Mirrors the public routes declared in src/App.tsx.
 export const STATIC_ROUTES = [
   '/',
-  '/about',
   '/articles',
   '/salaries',
   '/marketer',
