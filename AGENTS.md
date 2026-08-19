@@ -91,7 +91,7 @@ This is a live portfolio. Unless explicitly asked otherwise, **do not change run
 
 ### Agent discoverability
 
-Six surfaces make the site readable by AI agents, answer engines, and chat apps. All of them assume the canonical host `https://dkl-portfolio.herokuapp.com`.
+Seven surfaces make the site readable by AI agents, answer engines, and chat apps. All of them assume the canonical host `https://dkl-portfolio.herokuapp.com`.
 
 | Surface | Where | Generated? |
 |---|---|---|
@@ -101,6 +101,7 @@ Six surfaces make the site readable by AI agents, answer engines, and chat apps.
 | Open Graph / Twitter link previews | `server.js` + `vite.config.ts`, from `build/_social-metadata.json` | Yes — `scripts/social-metadata.mjs` |
 | Agent Skills discovery index | served at `/.well-known/agent-skills/index.json` (+ one `SKILL.md` per skill) | Yes — `npm run agent-skills` (`scripts/generate-agent-skills.mjs`), also runs as part of `npm run build` |
 | JSON-LD structured data | `index.html` (Person, WebSite, ItemList) and `src/screens/Article.tsx` (per-article `BlogPosting` via `StructuredData`) | No — hand-maintained |
+| MCP Server Card ([SEP-1649/2127](https://github.com/modelcontextprotocol/modelcontextprotocol/pull/2127)) | served at `/.well-known/mcp/server-card.json` from `public/.well-known/mcp/server-card.json` | No — hand-maintained |
 
 `robots.txt` is hand-maintained apart from its `Sitemap:` line, and declares an `Allow: /` for `*`, a [Content Signals](https://contentsignals.org/) directive (`ai-train=no, search=yes, ai-input=yes`), and an explicit allowlist for the AI agents that read and cite pages (GPTBot, OAI-SearchBot, ChatGPT-User, ClaudeBot, Claude-User, PerplexityBot, Bingbot). `Google-Extended` and `Applebot-Extended` are `Disallow`ed instead: they are training-consent tokens rather than crawlers, so denying them is what actually enforces `ai-train=no` for Gemini and Apple Intelligence, while Googlebot and Bingbot keep indexing the site for search. The sitemap generator rewrites only the `Sitemap:` line and is idempotent, so the rest of the file survives re-runs.
 
@@ -369,6 +370,7 @@ Each skill is `.agents/skills/{name}/SKILL.md` with standard frontmatter (`name`
 - Change site-wide JSON-LD (Person, WebSite, case-study list) → `index.html`; per-article JSON-LD → `src/screens/Article.tsx` via the `StructuredData` component.
 - Change crawler policy or AI-training signals → `public/robots.txt`.
 - Add/remove/rename a project-local skill → drop it under `.agents/skills/`; `npm run agent-skills` (part of `npm run build`) regenerates `public/.well-known/agent-skills/index.json` and the per-skill `SKILL.md` copies, so no hand-editing is needed.
+- Change the MCP Server Card (identity, endpoint, capabilities, or canonical host) → `public/.well-known/mcp/server-card.json`.
 - Change the default link-preview card → replace `public/og-image.png` (keep ≈1.91:1) and update `DEFAULT_IMAGE` dimensions in `scripts/social-metadata.mjs`.
 
 ---
