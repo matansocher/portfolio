@@ -10,7 +10,13 @@ import { readdir, readFile } from 'node:fs/promises';
 import { fileURLToPath, URL } from 'node:url';
 import sirv from 'sirv';
 import { LINK_HEADER } from './scripts/link-headers.mjs';
-import { isDocumentRequest, mdUrlToKey, routeToMarkdownKey, sendMarkdown, wantsMarkdown } from './scripts/markdown-negotiation.mjs';
+import {
+  isDocumentRequest,
+  mdUrlToKey,
+  routeToMarkdownKey,
+  sendMarkdown,
+  wantsMarkdown,
+} from './scripts/markdown-negotiation.mjs';
 import { injectSocialTags } from './scripts/social-tags.mjs';
 
 const PORT = Number(process.env.PORT) || 3000;

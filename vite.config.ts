@@ -3,7 +3,13 @@ import react from '@vitejs/plugin-react';
 import { fileURLToPath, URL } from 'node:url';
 import { applyLinkHeader } from './scripts/link-headers.mjs';
 import { buildLlmsFullTxt, buildLlmsTxt, buildMarkdownRoutes } from './scripts/markdown-content.mjs';
-import { isDocumentRequest, mdUrlToKey, routeToMarkdownKey, sendMarkdown, wantsMarkdown } from './scripts/markdown-negotiation.mjs';
+import {
+  isDocumentRequest,
+  mdUrlToKey,
+  routeToMarkdownKey,
+  sendMarkdown,
+  wantsMarkdown,
+} from './scripts/markdown-negotiation.mjs';
 import { buildSocialMetadata } from './scripts/social-metadata.mjs';
 import { injectSocialTags } from './scripts/social-tags.mjs';
 
