@@ -45,8 +45,7 @@ describe('generate-sitemap', () => {
     const mockResolver = (filePath: string, fallback: string): string => {
       const map: Record<string, string> = {
         'src/content/pages/index.md': '2026-01-15',
-        'src/content/pages/about.md': '2026-02-20',
-        'src/content/pages/articles.md': '2026-03-10',
+        'src/content/pages/articles.md': '2026-02-20',
       };
       return map[filePath] ?? fallback;
     };
@@ -55,7 +54,7 @@ describe('generate-sitemap', () => {
 
     expect(xml).toContain('<loc>https://dkl-portfolio.herokuapp.com/</loc>');
     expect(xml).toContain('<lastmod>2026-01-15</lastmod>');
-    expect(xml).toContain('<loc>https://dkl-portfolio.herokuapp.com/about</loc>');
+    expect(xml).toContain('<loc>https://dkl-portfolio.herokuapp.com/articles</loc>');
     expect(xml).toContain('<lastmod>2026-02-20</lastmod>');
   });
 
