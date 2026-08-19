@@ -25,7 +25,7 @@ describe('App routing', () => {
     window.history.pushState({}, '', '/projects');
     render(<App />);
 
-    expect(screen.getByRole('heading', { name: /page not found/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /unexpected turn/i })).toBeInTheDocument();
   });
 
   it('renders the Articles list screen', () => {
