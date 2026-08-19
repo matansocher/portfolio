@@ -5,6 +5,7 @@ import { fileURLToPath, URL } from 'node:url';
 import { applyLinkHeader } from './scripts/link-headers.mjs';
 import { buildLlmsTxt, buildMarkdownRoutes } from './scripts/markdown-content.mjs';
 import { isDocumentRequest, routeToMarkdownKey, sendMarkdown, wantsMarkdown } from './scripts/markdown-negotiation.mjs';
+import { buildPrerenderRoutes } from './scripts/prerender-content.mjs';
 import { buildSocialMetadata } from './scripts/social-metadata.mjs';
 import { injectSocialTags } from './scripts/social-tags.mjs';
 
@@ -84,6 +85,30 @@ function socialTags(): Plugin {
   };
 }
 
+// Mirrors the production prerender injection (see server.js sendShell) during
+// `npm run dev`, reading straight from src/content so edits show up without a
+// rebuild. Runs after socialTags in the plugin order below so it edits the same
+// already-tagged HTML.
+function prerenderForAgents(): Plugin {
+  return {
+    name: 'prerender-for-agents',
+    apply: 'serve',
+    transformIndexHtml: {
+      order: 'post',
+      async handler(html, ctx) {
+        const routes = await buildMarkdownRoutes();
+        const key = routeToMarkdownKey(ctx.originalUrl ?? ctx.path ?? '/');
+        const prerendered = buildPrerenderRoutes(routes);
+        const fragment = prerendered.get(key) ?? prerendered.get('index');
+        if (!fragment) {
+          return html;
+        }
+        return html.replace('<div id="root"></div>', `<div id="root">${fragment}</div>`);
+      },
+    },
+  };
+}
+
 // Precompresses text assets (js, css, html, svg, json, xml, txt, md) for both
 // brotli and gzip so sirv can serve them without runtime CPU overhead.
 const TEXT_ASSET_RE = /\.(js|css|html|svg|json|xml|txt|md)$/;
@@ -97,6 +122,7 @@ export default defineConfig({
     linkHeaders(),
     markdownForAgents(),
     socialTags(),
+    prerenderForAgents(),
     compression({ algorithms: ['brotliCompress'], include: TEXT_ASSET_RE }),
     compression({ algorithms: ['gzip'], include: TEXT_ASSET_RE }),
   ],
