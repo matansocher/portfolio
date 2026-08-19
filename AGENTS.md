@@ -91,7 +91,7 @@ This is a live portfolio. Unless explicitly asked otherwise, **do not change run
 
 ### Agent discoverability
 
-Five surfaces make the site readable by AI agents, answer engines, and chat apps. All of them assume the canonical host `https://dkl-portfolio.herokuapp.com`.
+Six surfaces make the site readable by AI agents, answer engines, and chat apps. All of them assume the canonical host `https://dkl-portfolio.herokuapp.com`.
 
 | Surface | Where | Generated? |
 |---|---|---|
@@ -100,6 +100,29 @@ Five surfaces make the site readable by AI agents, answer engines, and chat apps
 | Markdown content negotiation (`Accept: text/markdown`) | `server.js` + `vite.config.ts` | Yes — `build/_markdown/**.md` |
 | Open Graph / Twitter link previews | `server.js` + `vite.config.ts`, from `build/_social-metadata.json` | Yes — `scripts/social-metadata.mjs` |
 | JSON-LD structured data | `index.html` (Person, WebSite, ItemList) and `src/screens/Article.tsx` (per-article `BlogPosting` via `StructuredData`) | No — hand-maintained |
+| WebMCP tools | `src/components/WebMcp.tsx` (registration) + `src/webmcpTools.ts` (definitions) | No — hand-maintained |
+
+#### WebMCP (in-browser agent tools)
+
+[WebMCP](https://webmachinelearning.github.io/webmcp/) lets the page expose structured "tools" that a
+browser's AI agent can call directly, instead of scraping the DOM. Unlike the other surfaces above
+(which serve agents that fetch the page over HTTP), WebMCP targets agents running *inside the browser*
+on the live SPA.
+
+- `src/webmcpTools.ts` builds the tool definitions (pure + unit-tested in `src/webmcpTools.test.ts`).
+  It reuses the same data the UI renders — `config.PROJECTS` and `src/data/articles` — so the tools
+  never drift from the site content. Tools exposed: `navigate`, `list_pages`, `list_projects`,
+  `list_articles`, `get_article`, `search_content`. All are read-only (`readOnlyHint: true`); the only
+  side effect is `navigate`, which uses React Router.
+- `src/components/WebMcp.tsx` registers them on load from inside `<BrowserRouter>` (it needs
+  `useNavigate`). It supports both the current spec (`document.modelContext.registerTool`) and the
+  earlier draft (`navigator.modelContext.provideContext`), and feature-detects — on browsers without
+  WebMCP it does nothing. Tools are unregistered via an `AbortController` on unmount.
+
+To add a tool, add its definition to `buildWebMcpTools` in `src/webmcpTools.ts` (with a JSON Schema
+`inputSchema` and an `execute` callback) and cover it in `src/webmcpTools.test.ts`. No wiring change is
+needed — `WebMcp` registers whatever the builder returns.
+
 
 `robots.txt` is hand-maintained apart from its `Sitemap:` line, and declares an `Allow: /` for `*`, a [Content Signals](https://contentsignals.org/) directive (`ai-train=no, search=yes, ai-input=yes`), and an explicit allowlist for the AI agents that read and cite pages (GPTBot, OAI-SearchBot, ChatGPT-User, ClaudeBot, Claude-User, PerplexityBot, Bingbot). `Google-Extended` and `Applebot-Extended` are `Disallow`ed instead: they are training-consent tokens rather than crawlers, so denying them is what actually enforces `ai-train=no` for Gemini and Apple Intelligence, while Googlebot and Bingbot keep indexing the site for search. The sitemap generator rewrites only the `Sitemap:` line and is idempotent, so the rest of the file survives re-runs.
 

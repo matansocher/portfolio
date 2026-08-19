@@ -12,6 +12,7 @@ import PercentageCircle from './PercentageCircle';
 import ScrollToTopOnPageLoad from './ScrollToTopOnPageLoad';
 import SiteNav from './SiteNav';
 import StructuredData from './StructuredData';
+import WebMcp from './WebMcp';
 
 export {
   Analytics,
@@ -28,4 +29,5 @@ export {
   ScrollToTopOnPageLoad,
   SiteNav,
   StructuredData,
+  WebMcp,
 };
