@@ -100,7 +100,7 @@ Four surfaces make the site readable by AI agents and answer engines. All of the
 | Markdown content negotiation (`Accept: text/markdown`) | `server.js` + `vite.config.ts` | Yes — `build/_markdown/**.md` |
 | JSON-LD structured data | `index.html` (Person, WebSite, ItemList) and `src/screens/Article.tsx` (per-article `BlogPosting` via `StructuredData`) | No — hand-maintained |
 
-`robots.txt` is hand-maintained apart from its `Sitemap:` line, and declares an `Allow: /` for `*`, a [Content Signals](https://contentsignals.org/) directive (`ai-train=no, search=yes, ai-input=yes`), and an explicit allowlist for AI crawlers (GPTBot, OAI-SearchBot, ChatGPT-User, ClaudeBot, Claude-User, PerplexityBot, Google-Extended, Applebot-Extended, Bingbot). The sitemap generator rewrites only the `Sitemap:` line and is idempotent, so the rest of the file survives re-runs.
+`robots.txt` is hand-maintained apart from its `Sitemap:` line, and declares an `Allow: /` for `*`, a [Content Signals](https://contentsignals.org/) directive (`ai-train=no, search=yes, ai-input=yes`), and an explicit allowlist for the AI agents that read and cite pages (GPTBot, OAI-SearchBot, ChatGPT-User, ClaudeBot, Claude-User, PerplexityBot, Bingbot). `Google-Extended` and `Applebot-Extended` are `Disallow`ed instead: they are training-consent tokens rather than crawlers, so denying them is what actually enforces `ai-train=no` for Gemini and Apple Intelligence, while Googlebot and Bingbot keep indexing the site for search. The sitemap generator rewrites only the `Sitemap:` line and is idempotent, so the rest of the file survives re-runs.
 
 HTML and markdown responses both carry:
 
@@ -286,6 +286,7 @@ So `.agents/skills/` is read directly by Copilot CLI and, through the symlink, b
 | Skill            | Use for                                                                 |
 |------------------|-------------------------------------------------------------------------|
 | `add-article`    | Add a new bilingual (EN/HE) article to the Articles section from Google Docs text + a CDN image. |
+| `update-content` | Keep the agent/SEO discovery surfaces (sitemap, llms.txt, JSON-LD, per-route markdown) in sync after editing a case study, page copy, a route, or the canonical host. |
 | `ui-ux-pro-max`  | UI/UX design intelligence — styles, palettes, font pairings, UX guidelines (React stack). |
 | `playwright`     | Browser automation — test pages, fill forms, screenshots, responsive/UX checks. |
 | `fact-checker`   | Verify factual claims in docs via web search + propose corrections.     |

@@ -52,6 +52,9 @@ describe('generate-sitemap', () => {
       'User-agent: GPTBot',
       'Allow: /',
       '',
+      'User-agent: Google-Extended',
+      'Disallow: /',
+      '',
       'Sitemap: https://example.com/old-sitemap.xml',
       '',
     ].join('\n');
@@ -60,6 +63,7 @@ describe('generate-sitemap', () => {
 
     expect(rewritten).toContain('Content-Signal: ai-train=no, search=yes, ai-input=yes');
     expect(rewritten).toContain('User-agent: GPTBot');
+    expect(rewritten).toContain('User-agent: Google-Extended\nDisallow: /');
     expect(rewritten).not.toContain('old-sitemap.xml');
     expect(rewritten.match(/Sitemap:/g)).toHaveLength(1);
   });

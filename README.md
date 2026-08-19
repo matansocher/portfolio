@@ -72,7 +72,7 @@ The live site is discoverable without executing JavaScript:
 - **`Accept: text/markdown`** on any route returns a markdown version of that page instead of the SPA shell. HTML stays the default for browsers.
 - **`/llms.txt`** is a plain-text index of every page, case study, and article.
 - **`/sitemap.xml`** lists all 17 URLs, generated from the route table and the article folders.
-- **`/robots.txt`** allows everything, declares a [Content Signals](https://contentsignals.org/) preference, and explicitly allowlists the major AI crawlers.
+- **`/robots.txt`** allows everything, declares a [Content Signals](https://contentsignals.org/) preference, allowlists the AI agents that read and cite pages, and denies the two AI-training-consent tokens (`Google-Extended`, `Applebot-Extended`).
 - **JSON-LD** (`Person`, `WebSite`, `ItemList` in the HTML shell; `BlogPosting` per article) describes the site in structured form.
 - **RFC 8288 `Link` headers** on HTML responses point at `/llms.txt` via `rel="describedby"`.
 

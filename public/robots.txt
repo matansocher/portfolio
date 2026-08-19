@@ -24,13 +24,16 @@ Allow: /
 User-agent: PerplexityBot
 Allow: /
 
-User-agent: Google-Extended
-Allow: /
-
-User-agent: Applebot-Extended
-Allow: /
-
 User-agent: Bingbot
 Allow: /
+
+# Training-consent tokens, not crawlers: Googlebot and Bingbot above still index
+# the site for search. These two control whether that content may also train
+# Gemini and Apple Intelligence, so they mirror the ai-train=no signal.
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: Applebot-Extended
+Disallow: /
 
 Sitemap: https://dkl-portfolio.herokuapp.com/sitemap.xml
