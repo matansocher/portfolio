@@ -47,4 +47,16 @@ describe('getRelatedArticles', () => {
     const result = getRelatedArticles(a1, [a1, a2]);
     expect(result).toHaveLength(1);
   });
+
+  it('tie-breaks chronologically, not lexicographically (regression: DD-MM-YYYY)', () => {
+    // '08-08-2026' (Aug 8 2026) vs '22-06-2026' (Jun 22 2026)
+    // Lexicographic: '22-06-2026' > '08-08-2026' (wrong — Aug is newer)
+    // Chronological: '08-08-2026' is newer (correct)
+    const newer = makeArticle('newer', ['ux'], '08-08-2026');
+    const older = makeArticle('older', ['ux'], '22-06-2026');
+    const current = makeArticle('current', ['ux'], '01-01-2025');
+    const result = getRelatedArticles(current, [current, newer, older]);
+    expect(result[0].slug).toBe('newer');
+    expect(result[1].slug).toBe('older');
+  });
 });
