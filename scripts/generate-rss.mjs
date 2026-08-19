@@ -20,19 +20,19 @@ function escapeXml(value) {
 }
 
 // Article meta dates are stored as DD-MM-YYYY; RSS requires RFC 2822.
-// Example: 21-08-2026 -> Wed, 21 Aug 2026 00:00:00 +0000
+// Example: 21-08-2026 -> Thu, 21 Aug 2026 00:00:00 GMT
 function toRfc2822(date) {
   const match = /^(\d{2})-(\d{2})-(\d{4})$/.exec(date);
   if (!match) return undefined;
   const [, day, month, year] = match.map(Number);
-  const d = new Date(year, month - 1, day, 0, 0, 0, 0);
+  const d = new Date(Date.UTC(year, month - 1, day, 0, 0, 0, 0));
   return d.toUTCString();
 }
 
 // Compare dates for sorting (newest first).
 function dateValue(date) {
   const [day, month, year] = date.split('-').map(Number);
-  return new Date(year, month - 1, day).getTime();
+  return new Date(Date.UTC(year, month - 1, day)).getTime();
 }
 
 export async function collectArticles(articlesDir = ARTICLES_DIR) {

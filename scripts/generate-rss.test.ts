@@ -65,7 +65,7 @@ describe('generate-rss', () => {
     });
   });
 
-  it('includes RFC 2822 pubDate for articles with dates', async () => {
+  it('includes RFC 2822 pubDate in UTC for articles with dates', async () => {
     const articles = await collectArticles();
     const feed = buildRssFeed(articles);
     const parsed = new DOMParser().parseFromString(feed, 'application/xml');
@@ -77,8 +77,26 @@ describe('generate-rss', () => {
         // Verify it parses as a valid date.
         const date = new Date(pubDate.textContent);
         expect(date.getTime()).not.toBeNaN();
+        // Verify it's midnight UTC (00:00:00 GMT).
+        expect(pubDate.textContent).toMatch(/00:00:00 GMT/);
       }
     });
+  });
+
+  it('builds pubDate in UTC to match article date exactly', () => {
+    // Test that 21-08-2026 produces exactly "Fri, 21 Aug 2026 00:00:00 GMT"
+    // regardless of local timezone.
+    const articles = [
+      {
+        slug: 'test',
+        date: '21-08-2026',
+        title: 'Test Article',
+        excerpt: 'Test excerpt',
+      },
+    ];
+
+    const feed = buildRssFeed(articles);
+    expect(feed).toContain('<pubDate>Fri, 21 Aug 2026 00:00:00 GMT</pubDate>');
   });
 
   it('escapes XML entities in titles and descriptions', () => {
