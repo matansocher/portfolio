@@ -378,7 +378,7 @@ export default function Home() {
                     <Link className="hp-article-card" to={`/articles/${article.slug}`} key={article.slug}>
                       <div className="hp-article-thumb">
                         {assets[article.image] ? (
-                          <img className="cover" src={assets[article.image]} alt="" loading="lazy" />
+                          <img className="cover" src={assets[article.image]} alt={content.title} loading="lazy" />
                         ) : null}
                         {article.tags[0] ? <span className="cat">{article.tags[0]}</span> : null}
                       </div>

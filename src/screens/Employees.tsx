@@ -87,19 +87,19 @@ export default function Employees() {
         <section className="employees-examples">
           <div className="content">
             <div className="content-item">
-              <img alt="screen example" src={assets.employeesExamples1} />
+              <img alt="screen example" src={assets.employeesExamples1} fetchPriority="high" />
               <p>Empathize</p>
             </div>
             <div className="content-item">
-              <img alt="screen example" src={assets.employeesExamples2} />
+              <img alt="screen example" src={assets.employeesExamples2} loading="lazy" />
               <p>Define & Ideate </p>
             </div>
             <div className="content-item">
-              <img alt="screen example" src={assets.employeesExamples3} />
+              <img alt="screen example" src={assets.employeesExamples3} loading="lazy" />
               <p>Wireframe</p>
             </div>
             <div className="content-item">
-              <img alt="screen example" src={assets.employeesExamples4} />
+              <img alt="screen example" src={assets.employeesExamples4} loading="lazy" />
               <p>Design</p>
             </div>
           </div>
@@ -122,7 +122,7 @@ export default function Employees() {
               categories of recurring issues, pain points, and insights. We then gathered the most important ones in a
               new category called 'key points.'
             </p>
-            <img alt="affinity diagram" src={assets.employeesInterviews} />
+            <img alt="affinity diagram" src={assets.employeesInterviews} loading="lazy" />
           </div>
         </section>
 
@@ -140,11 +140,11 @@ export default function Employees() {
             </p>
             <div className="special-grid">
               <div className="special-grid-left">
-                <img alt="ideas" src={assets.employeesTeam1} />
-                <img alt="zoom meeting" src={assets.employeesTeam2} />
+                <img alt="ideas" src={assets.employeesTeam1} loading="lazy" />
+                <img alt="zoom meeting" src={assets.employeesTeam2} loading="lazy" />
               </div>
               <div className="special-grid-right">
-                <img alt="zoom meeting with ideas" src={assets.employeesTeam3} />
+                <img alt="zoom meeting with ideas" src={assets.employeesTeam3} loading="lazy" />
               </div>
             </div>
             <p>
@@ -176,7 +176,7 @@ export default function Employees() {
               categories to better suit their needs.
             </p>
             <p>The solution was presented to the stakeholders, and it was unanimously approved by all of them.</p>
-            <img alt="screen example" src={assets.employeesTranslate} />
+            <img alt="screen example" src={assets.employeesTranslate} loading="lazy" />
           </div>
         </section>
 
@@ -184,7 +184,7 @@ export default function Employees() {
           <div className="content">
             <Chip text={'Design'} backgroundColor={'rgba(78, 95, 255, 0.2)'} icon={ICONS_MAP.BRACKETS} />
             <h2>Finished Design</h2>
-            <img alt="screen example" src={assets.employeesFinishedDesign} />
+            <img alt="screen example" src={assets.employeesFinishedDesign} loading="lazy" />
           </div>
         </section>
       </div>
