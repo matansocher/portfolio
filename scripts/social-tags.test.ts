@@ -106,9 +106,7 @@ describe('injectSocialTags', () => {
 
   it('rewrites the <title> element to the route title', () => {
     const result = injectSocialTags(shell, article, BASE);
-    expect(result).toContain(
-      '<title>When an Interface Acts Like Someone You Can\u2019t Trust — Dekel Nissim</title>',
-    );
+    expect(result).toContain('<title>When an Interface Acts Like Someone You Can\u2019t Trust — Dekel Nissim</title>');
     expect(result).not.toContain('<title>Dekel Nissim</title>');
   });
 
