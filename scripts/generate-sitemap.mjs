@@ -13,15 +13,7 @@ const ROBOTS_PATH = join(ROOT, 'public', 'robots.txt');
 export const BASE_URL = 'https://dkl-portfolio.herokuapp.com';
 
 // Mirrors the public routes declared in src/App.tsx.
-export const STATIC_ROUTES = [
-  '/',
-  '/articles',
-  '/salaries',
-  '/marketer',
-  '/myco',
-  '/employees',
-  '/business-card',
-];
+export const STATIC_ROUTES = ['/', '/articles', '/salaries', '/marketer', '/myco', '/employees', '/business-card'];
 
 function escapeXml(value) {
   return value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
