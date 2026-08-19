@@ -1,5 +1,6 @@
 import { defineConfig, type Plugin, type PreviewServer, type ViteDevServer } from 'vite';
 import react from '@vitejs/plugin-react';
+import { compression } from 'vite-plugin-compression2';
 import { fileURLToPath, URL } from 'node:url';
 import { applyLinkHeader } from './scripts/link-headers.mjs';
 import { buildLlmsFullTxt, buildLlmsTxt, buildMarkdownRoutes } from './scripts/markdown-content.mjs';
@@ -108,8 +109,19 @@ function socialTags(): Plugin {
   };
 }
 
+// Precompresses text assets (js, css, html, svg, json, xml, txt, md) for both
+// brotli and gzip so sirv can serve them without runtime CPU overhead.
+const TEXT_ASSET_RE = /\.(js|css|html|svg|json|xml|txt|md)$/;
+
 export default defineConfig({
-  plugins: [react(), linkHeaders(), markdownForAgents(), socialTags()],
+  plugins: [
+    react(),
+    linkHeaders(),
+    markdownForAgents(),
+    socialTags(),
+    compression({ algorithms: ['brotliCompress'], include: TEXT_ASSET_RE }),
+    compression({ algorithms: ['gzip'], include: TEXT_ASSET_RE }),
+  ],
   resolve: {
     alias: {
       '~': fileURLToPath(new URL('.', import.meta.url)),

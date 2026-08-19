@@ -4,6 +4,7 @@ import {
   isDocumentRequest,
   mdUrlToKey,
   routeToMarkdownKey,
+  sendMarkdown,
   wantsMarkdown,
 } from './markdown-negotiation.mjs';
 
@@ -90,5 +91,19 @@ describe('estimateTokens', () => {
   it('always reports at least one token', () => {
     expect(estimateTokens('')).toBe(1);
     expect(estimateTokens('a'.repeat(400))).toBe(100);
+  });
+});
+
+describe('sendMarkdown', () => {
+  it('sets Vary: Accept, Accept-Encoding', () => {
+    const headers: Record<string, string> = {};
+    const res = {
+      setHeader(k: string, v: string) {
+        headers[k.toLowerCase()] = v;
+      },
+      end() {},
+    } as unknown as import('node:http').ServerResponse;
+    sendMarkdown(res, 'hello');
+    expect(headers['vary']).toBe('Accept, Accept-Encoding');
   });
 });

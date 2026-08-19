@@ -6,8 +6,10 @@
 // run the JavaScript that would set them -- get a correct link preview.
 
 import { createServer } from 'node:http';
-import { readdir, readFile } from 'node:fs/promises';
+import { readFile } from 'node:fs/promises';
 import { fileURLToPath, URL } from 'node:url';
+import { createBrotliCompress, createGzip } from 'node:zlib';
+import { Readable } from 'node:stream';
 import sirv from 'sirv';
 import { LINK_HEADER } from './scripts/link-headers.mjs';
 import {
@@ -31,25 +33,9 @@ const [shell, socialMetadata] = await Promise.all([
   readFile(new URL('_social-metadata.json', BUILD_URL), 'utf8').then(JSON.parse),
 ]);
 
-// Build the set of known markdown keys once at boot so .md URL routing can validate
-// against it without reading from user-controlled paths.
-async function loadMarkdownKeys(dir) {
-  const keys = new Set();
-  async function walk(base, prefix) {
-    const entries = await readdir(base, { withFileTypes: true });
-    for (const entry of entries) {
-      if (entry.isDirectory()) {
-        await walk(new URL(`${entry.name}/`, base), `${prefix}${entry.name}/`);
-      } else if (entry.name.endsWith('.md')) {
-        keys.add(`${prefix}${entry.name.slice(0, -3)}`);
-      }
-    }
-  }
-  await walk(dir, '');
-  return keys;
-}
-
-const markdownKeys = await loadMarkdownKeys(MARKDOWN_DIR);
+// Build the known-route set from the metadata map so 404 detection stays in sync with
+// the sitemap and OG data automatically. The 'index' key maps to '/'.
+const KNOWN_ROUTE_KEYS = new Set(Object.keys(socialMetadata));
 
 // Absolute origin for og:url and relative image paths. Heroku terminates TLS at the
 // router, so x-forwarded-proto is the only way to know the public scheme; a direct
@@ -89,54 +75,95 @@ async function readMarkdown(key) {
   }
 }
 
-function sendShell(req, res, key) {
+// Sends a response body with optional brotli or gzip encoding based on Accept-Encoding.
+// Buffer-in, stream-out: the compressed body is written to res.
+function sendCompressed(req, res, body, contentType) {
+  const ae = req.headers['accept-encoding'] ?? '';
+  res.setHeader('Content-Type', contentType);
+  res.setHeader('Vary', 'Accept, Accept-Encoding');
+  if (ae.includes('br')) {
+    res.setHeader('Content-Encoding', 'br');
+    Readable.from(body).pipe(createBrotliCompress()).pipe(res);
+  } else if (ae.includes('gzip')) {
+    res.setHeader('Content-Encoding', 'gzip');
+    Readable.from(body).pipe(createGzip()).pipe(res);
+  } else {
+    res.setHeader('Content-Length', body.byteLength);
+    res.end(body);
+  }
+}
+
+function sendShell(req, res, key, status = 200) {
   const origin = originOf(req);
   // Unknown paths fall back to the home page's tags, mirroring the SPA catch-all route.
   const metadata = localize(socialMetadata[key] ?? socialMetadata.index, origin);
   const body = Buffer.from(injectSocialTags(shell, metadata, origin ?? ''), 'utf8');
 
-  res.setHeader('Content-Type', 'text/html; charset=utf-8');
-  res.setHeader('Content-Length', body.byteLength);
-  res.setHeader('Vary', 'Accept');
-  res.setHeader('Link', LINK_HEADER);
+  res.statusCode = status;
   // The shell is rebuilt on every deploy and references hashed assets, so it must not
   // be cached; a stale shell would point at assets that no longer exist.
   res.setHeader('Cache-Control', 'no-cache');
-  res.end(body);
+  res.setHeader('Link', LINK_HEADER);
+  sendCompressed(req, res, body, 'text/html; charset=utf-8');
 }
 
+// Hashed asset paths look like /assets/index-AbCd1234.js — the hash guarantees
+// content never changes for a given URL, so an immutable long max-age is safe.
+// Deploy-time files (sitemap, llms.txt, robots.txt, manifest) change each deploy
+// but carry no hash, so they get no-cache to avoid serving stale content.
+const HASHED_ASSET_RE = /^\/assets\/[^/]+-[A-Za-z0-9_]{8,}\.[^/]+$/;
+const NO_CACHE_RE = /\/(sitemap\.xml|llms\.txt|robots\.txt|manifest\.json)$/;
+
 // Only assets reach sirv now, so no Vary/Link handling is needed in setHeaders.
-const assets = sirv(BUILD_DIR, { gzip: true, brotli: true });
+const assets = sirv(BUILD_DIR, {
+  gzip: true,
+  brotli: true,
+  setHeaders(res, pathname) {
+    if (HASHED_ASSET_RE.test(pathname)) {
+      res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+    } else if (NO_CACHE_RE.test(pathname)) {
+      res.setHeader('Cache-Control', 'no-cache');
+    }
+  },
+});
 
 createServer(async (req, res) => {
   const url = req.url ?? '/';
 
   // Handle explicit .md URLs (e.g. /salaries.md, /articles/slug.md) before the
   // isDocumentRequest check, which would otherwise treat them as static assets.
-  // Keys are validated against the known set loaded at boot — never from user input.
-  const mdKey = mdUrlToKey(url, markdownKeys);
+  // Keys are validated against the known set — never derived from user-controlled paths.
+  const mdKey = mdUrlToKey(url, KNOWN_ROUTE_KEYS);
   if (mdKey !== null) {
+    // Known .md route: serve markdown with 200.
     const markdown = await readMarkdown(mdKey);
     if (markdown) {
       res.setHeader('Link', LINK_HEADER);
       sendMarkdown(res, markdown);
       return;
     }
+  } else if (url.split('?')[0].endsWith('.md')) {
+    // .md extension on an unknown route: 404 rather than falling through to sirv.
+    res.statusCode = 404;
+    res.end('Not found');
+    return;
   }
 
   if (isDocumentRequest(url)) {
     const key = routeToMarkdownKey(url);
+    const isKnownRoute = KNOWN_ROUTE_KEYS.has(key);
 
     if (wantsMarkdown(req.headers.accept)) {
-      const markdown = (await readMarkdown(key)) ?? (await readMarkdown('index'));
+      const markdown = (await readMarkdown(key)) ?? (isKnownRoute ? null : await readMarkdown('index'));
       if (markdown) {
+        res.statusCode = isKnownRoute ? 200 : 404;
         res.setHeader('Link', LINK_HEADER);
         sendMarkdown(res, markdown);
         return;
       }
     }
 
-    sendShell(req, res, key);
+    sendShell(req, res, key, isKnownRoute ? 200 : 404);
     return;
   }
 

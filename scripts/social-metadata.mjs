@@ -30,7 +30,6 @@ export const DEFAULT_IMAGE = {
 const PAGE_DESCRIPTIONS = {
   index:
     'Product Designer & UX Researcher specializing in UX for complex systems — internal tools, dashboards, and mobile platforms.',
-  about: 'Background, services, and how I work: Understand, Define, Design, Deliver.',
   articles: 'Writing on UX research and product design, in English and Hebrew.',
   'business-card': 'Freelance UX research and product design. Get in touch.',
   salaries: 'Automating salary calculations and approvals for a municipal HR department.',

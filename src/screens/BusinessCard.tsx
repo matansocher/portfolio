@@ -5,7 +5,7 @@ export default function BusinessCard() {
   return (
     <>
       <SiteNav />
-      <main className="contact-page">
+      <main id="content" className="contact-page">
         <section className="cp-hero">
           <div className="cp-content">
             <div className="cp-grid">

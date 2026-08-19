@@ -128,7 +128,6 @@ export function buildLlmsTxt(routes, baseUrl = BASE_URL) {
     '## Pages',
     '',
     `- [Home](${mdUrl('index')}): Selected work and client testimonials`,
-    `- [About](${mdUrl('about')}): Background, services, and the Understand / Define / Design / Deliver process`,
     `- [Articles](${mdUrl('articles')}): Writing on UX research and product design, in English and Hebrew`,
     `- [Business Card](${mdUrl('business-card')}): Freelance services and contact form`,
     '',

@@ -17,7 +17,6 @@ describe('buildLlmsTxt', () => {
   it('links to .md URLs for all pages', () => {
     const result = buildLlmsTxt(makeRoutes(), BASE);
     expect(result).toContain('https://example.com/index.md');
-    expect(result).toContain('https://example.com/about.md');
     expect(result).toContain('https://example.com/salaries.md');
     expect(result).toContain('https://example.com/articles/my-post.md');
   });
