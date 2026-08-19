@@ -156,13 +156,31 @@ function useReveal() {
   return rootRef;
 }
 
+const TESTIMONIALS_PER_PAGE_QUERY = '(max-width: 900px)';
+
+function useTestimonialsPerPage() {
+  const [perPage, setPerPage] = useState(2);
+
+  useEffect(() => {
+    const mql = window.matchMedia(TESTIMONIALS_PER_PAGE_QUERY);
+    const update = () => setPerPage(mql.matches ? 1 : 2);
+    update();
+    mql.addEventListener('change', update);
+    return () => mql.removeEventListener('change', update);
+  }, []);
+
+  return perPage;
+}
+
 export default function Home() {
   const rootRef = useReveal();
-  const [testimonialIndex, setTestimonialIndex] = useState(0);
-  const testimonialCount = FEATURED_TESTIMONIALS.length;
+  const [testimonialPage, setTestimonialPage] = useState(0);
+  const perPage = useTestimonialsPerPage();
+  const pageCount = Math.max(1, Math.ceil(FEATURED_TESTIMONIALS.length / perPage));
+  const clampedPage = Math.min(testimonialPage, pageCount - 1);
 
-  const goToTestimonial = (index: number) => {
-    setTestimonialIndex((index + testimonialCount) % testimonialCount);
+  const goToTestimonial = (page: number) => {
+    setTestimonialPage((page + pageCount) % pageCount);
   };
 
   return (
@@ -283,7 +301,9 @@ export default function Home() {
                 <div className="hp-testimonial-viewport">
                   <div
                     className="hp-testimonial-track"
-                    style={{ transform: `translateX(-${testimonialIndex * 100}%)` }}
+                    style={{
+                      transform: `translateX(calc(${clampedPage} * (-100% - var(--hp-tst-gap))))`,
+                    }}
                   >
                     {FEATURED_TESTIMONIALS.map((client) => {
                       const logoKey = TESTIMONIAL_LOGOS[client.name] ?? null;
@@ -313,29 +333,29 @@ export default function Home() {
                   <button
                     type="button"
                     className="hp-testimonial-arrow"
-                    onClick={() => goToTestimonial(testimonialIndex - 1)}
-                    aria-label="Previous testimonial"
+                    onClick={() => goToTestimonial(clampedPage - 1)}
+                    aria-label="Previous testimonials"
                   >
                     <span className="uil uil-angle-left" aria-hidden="true" />
                   </button>
-                  <div className="hp-testimonial-dots" role="tablist" aria-label="Select testimonial">
-                    {FEATURED_TESTIMONIALS.map((client, index) => (
+                  <div className="hp-testimonial-dots" role="tablist" aria-label="Select testimonials">
+                    {Array.from({ length: pageCount }, (_, page) => (
                       <button
                         type="button"
-                        key={client.name}
-                        className={`hp-testimonial-dot${index === testimonialIndex ? ' is-active' : ''}`}
-                        onClick={() => goToTestimonial(index)}
+                        key={page}
+                        className={`hp-testimonial-dot${page === clampedPage ? ' is-active' : ''}`}
+                        onClick={() => goToTestimonial(page)}
                         role="tab"
-                        aria-selected={index === testimonialIndex}
-                        aria-label={`Testimonial ${index + 1} of ${testimonialCount}`}
+                        aria-selected={page === clampedPage}
+                        aria-label={`Testimonials page ${page + 1} of ${pageCount}`}
                       />
                     ))}
                   </div>
                   <button
                     type="button"
                     className="hp-testimonial-arrow"
-                    onClick={() => goToTestimonial(testimonialIndex + 1)}
-                    aria-label="Next testimonial"
+                    onClick={() => goToTestimonial(clampedPage + 1)}
+                    aria-label="Next testimonials"
                   >
                     <span className="uil uil-angle-right" aria-hidden="true" />
                   </button>

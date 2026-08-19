@@ -514,6 +514,7 @@
 
   .hp-testimonial-carousel {
     position: relative;
+    --hp-tst-gap: 24px;
   }
 
   .hp-testimonial-viewport {
@@ -522,13 +523,15 @@
 
   .hp-testimonial-track {
     display: flex;
+    gap: var(--hp-tst-gap);
     transition: transform 0.5s var(--hp-ease);
+    will-change: transform;
   }
 
   .hp-testimonial {
-    flex: 0 0 100%;
-    width: 100%;
+    flex: 0 0 calc(50% - var(--hp-tst-gap) / 2);
     box-sizing: border-box;
+    margin: 0;
     background: var(--hp-paper);
     border: 1px solid var(--hp-border);
     border-radius: 8px;
@@ -539,7 +542,7 @@
     min-height: 220px;
 
     blockquote {
-      font-size: 17px;
+      font-size: 14px;
       line-height: 1.7;
       color: var(--hp-fg);
     }
@@ -810,6 +813,7 @@
       grid-template-columns: 1fr;
     }
     .hp-testimonial {
+      flex: 0 0 100%;
       padding: 34px 26px;
     }
     .hp-article-cards {
