@@ -1,7 +1,7 @@
 import type { ArticleMeta } from '../../../types';
 
 const meta: ArticleMeta = {
-  slug: 'social-media',
+  slug: 'social-media-attention-anxiety-fatigue',
   date: '22-06-2026',
   image: 'articleSocialMedia',
   tags: ['Psychology', 'Product', 'UX Design'],

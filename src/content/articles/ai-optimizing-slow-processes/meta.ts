@@ -1,7 +1,7 @@
 import type { ArticleMeta } from '../../../types';
 
 const meta: ArticleMeta = {
-  slug: 'outsource-understanding',
+  slug: 'ai-optimizing-slow-processes',
   date: '22-06-2026',
   image: 'articleOutsourceUnderstanding',
   tags: ['AI', 'Design Process', 'Product'],

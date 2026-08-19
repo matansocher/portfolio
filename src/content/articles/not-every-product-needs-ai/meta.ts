@@ -1,7 +1,7 @@
 import type { ArticleMeta } from '../../../types';
 
 const meta: ArticleMeta = {
-  slug: 'missing-ai-value',
+  slug: 'not-every-product-needs-ai',
   date: '22-06-2026',
   image: 'articleMissingAiValue',
   tags: ['AI', 'Product', 'UX Design'],

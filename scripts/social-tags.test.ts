@@ -15,11 +15,14 @@ const page: SocialMetadata = {
 const article: SocialMetadata = {
   title: 'When an Interface Acts Like Someone You Can\u2019t Trust — Dekel Nissim',
   description: 'A bug is not only a usability problem.',
-  url: 'https://example.com/articles/hate-lies',
+  url: 'https://example.com/articles/interface-trust-broken-verification',
   type: 'article',
   publishedTime: '2026-06-22',
   tags: ['UX Design', 'Trust'],
-  image: { path: 'https://storage.googleapis.com/dkl-portfolio/new/articles/hate-lies.png', alt: 'Trust' },
+  image: {
+    path: 'https://storage.googleapis.com/dkl-portfolio/new/articles/interface-trust-broken-verification.png',
+    alt: 'Trust',
+  },
 };
 
 describe('renderSocialTags', () => {
@@ -31,7 +34,7 @@ describe('renderSocialTags', () => {
 
   it('leaves an absolute CDN image URL untouched', () => {
     expect(renderSocialTags(article, BASE)).toContain(
-      '<meta property="og:image" content="https://storage.googleapis.com/dkl-portfolio/new/articles/hate-lies.png" />',
+      '<meta property="og:image" content="https://storage.googleapis.com/dkl-portfolio/new/articles/interface-trust-broken-verification.png" />',
     );
   });
 
@@ -82,12 +85,14 @@ describe('injectSocialTags', () => {
     expect(result).not.toContain('social-tags:end');
     expect(result.match(/property="og:title"/g)).toHaveLength(1);
     expect(result.match(/property="og:url"/g)).toHaveLength(1);
-    expect(result).toContain('content="https://example.com/articles/hate-lies"');
+    expect(result).toContain('content="https://example.com/articles/interface-trust-broken-verification"');
   });
 
   it('rewrites the canonical link to the requested route', () => {
     const result = injectSocialTags(shell, article, BASE);
-    expect(result).toContain('<link rel="canonical" href="https://example.com/articles/hate-lies" />');
+    expect(result).toContain(
+      '<link rel="canonical" href="https://example.com/articles/interface-trust-broken-verification" />',
+    );
     expect(result).not.toContain('<link rel="canonical" href="https://dkl-portfolio.herokuapp.com/" />');
   });
 
