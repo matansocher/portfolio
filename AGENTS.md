@@ -91,7 +91,7 @@ This is a live portfolio. Unless explicitly asked otherwise, **do not change run
 
 ### Agent discoverability
 
-Five surfaces make the site readable by AI agents, answer engines, and chat apps. All of them assume the canonical host `https://dkl-portfolio.herokuapp.com`.
+Six surfaces make the site readable by AI agents, answer engines, and chat apps. All of them assume the canonical host `https://dkl-portfolio.herokuapp.com`.
 
 | Surface | Where | Generated? |
 |---|---|---|
@@ -99,6 +99,7 @@ Five surfaces make the site readable by AI agents, answer engines, and chat apps
 | `llms.txt` | served at `/llms.txt` | Yes — built by `scripts/markdown-content.mjs`, written into `build/` by `scripts/generate-markdown.mjs`, served from memory in dev |
 | Markdown content negotiation (`Accept: text/markdown`) | `server.js` + `vite.config.ts` | Yes — `build/_markdown/**.md` |
 | Open Graph / Twitter link previews | `server.js` + `vite.config.ts`, from `build/_social-metadata.json` | Yes — `scripts/social-metadata.mjs` |
+| Agent Skills discovery index | served at `/.well-known/agent-skills/index.json` (+ one `SKILL.md` per skill) | Yes — `npm run agent-skills` (`scripts/generate-agent-skills.mjs`), also runs as part of `npm run build` |
 | JSON-LD structured data | `index.html` (Person, WebSite, ItemList) and `src/screens/Article.tsx` (per-article `BlogPosting` via `StructuredData`) | No — hand-maintained |
 
 `robots.txt` is hand-maintained apart from its `Sitemap:` line, and declares an `Allow: /` for `*`, a [Content Signals](https://contentsignals.org/) directive (`ai-train=no, search=yes, ai-input=yes`), and an explicit allowlist for the AI agents that read and cite pages (GPTBot, OAI-SearchBot, ChatGPT-User, ClaudeBot, Claude-User, PerplexityBot, Bingbot). `Google-Extended` and `Applebot-Extended` are `Disallow`ed instead: they are training-consent tokens rather than crawlers, so denying them is what actually enforces `ai-train=no` for Gemini and Apple Intelligence, while Googlebot and Bingbot keep indexing the site for search. The sitemap generator rewrites only the `Sitemap:` line and is idempotent, so the rest of the file survives re-runs.
@@ -140,6 +141,28 @@ Articles use their own CDN image instead. The CDN `?a=<timestamp>` cache-buster 
 **omitted** from preview URLs — scrapers cache preview images hard, and a per-build URL would defeat
 that. `og:image:width`/`height` are only emitted for the bundled default, whose dimensions are known.
 
+#### Agent Skills discovery index
+
+The site publishes its project-local skills at `/.well-known/agent-skills/index.json` per the
+[Agent Skills Discovery RFC](https://github.com/cloudflare/agent-skills-discovery-rfc) v0.2.0, so
+agents can discover "what skills does this site publish?" from a single predictable URL.
+
+`scripts/generate-agent-skills.mjs` (`npm run agent-skills`, and part of `npm run build`) reads every
+skill folder under `.agents/skills/`, parses each `SKILL.md`'s frontmatter `name` + `description`, and
+writes two things into `public/.well-known/agent-skills/`:
+
+- one `SKILL.md` copy per skill at `<name>/SKILL.md` (the `name` comes from frontmatter, so the
+  `playwright` folder publishes as `playwright-skill/`), and
+- `index.json` — a `$schema` field plus a `skills` array where each entry has `name`, `type`
+  (`"skill-md"`), `description`, `url` (`/.well-known/agent-skills/<name>/SKILL.md`), and a
+  `sha256:` `digest` computed over the copied file's exact bytes.
+
+The generator rebuilds the whole `public/.well-known/agent-skills/` tree each run, so renamed or
+removed skills never leave stale copies behind. These are plain files with extensions, so
+`isDocumentRequest` treats them as static assets: `sirv` serves `index.json` as `application/json`
+and `SKILL.md` as `text/markdown`, and neither passes through markdown negotiation or OG injection.
+No hand-maintenance is needed — adding a skill folder is enough.
+
 ---
 
 ## Project Structure
@@ -153,6 +176,7 @@ portfolio/
 ├── tsconfig.json           # TypeScript config (strict, react-jsx, bundler resolution)
 ├── scripts/
 │   ├── generate-sitemap.mjs      # `npm run sitemap`: writes public/sitemap.xml + robots.txt Sitemap line
+│   ├── generate-agent-skills.mjs # `npm run agent-skills`: writes public/.well-known/agent-skills/ (index.json + SKILL.md copies)
 │   ├── markdown-content.mjs      # Builds the route → markdown map + llms.txt from src/content
 │   ├── markdown-negotiation.mjs  # Shared Accept-header helpers (server.js + vite.config.ts)
 │   ├── link-headers.mjs          # Shared RFC 8288 Link header value + document-request rule
@@ -296,7 +320,8 @@ npm run test       # Vitest (run once); test:watch for watch mode
 npm run lint       # ESLint (flat config, TS + React + hooks + a11y)
 npm run format     # Prettier write (format:check to verify only)
 npm run sitemap    # regenerate public/sitemap.xml + the robots.txt Sitemap line
-npm run build      # sitemap + typecheck + vite build + generated markdown & social metadata → build/
+npm run agent-skills # regenerate public/.well-known/agent-skills/ (index.json + per-skill SKILL.md)
+npm run build      # sitemap + agent-skills + typecheck + vite build + generated markdown & social metadata → build/
 npm run preview    # serve the production build locally (Vite preview)
 npm run serve      # serve build/ the way Heroku does (server.js: markdown negotiation + Link headers + OG tags, honors $PORT)
 ```
@@ -343,6 +368,7 @@ Each skill is `.agents/skills/{name}/SKILL.md` with standard frontmatter (`name`
 - Change user-facing copy on a screen → update the matching `src/content/pages/*.md` too.
 - Change site-wide JSON-LD (Person, WebSite, case-study list) → `index.html`; per-article JSON-LD → `src/screens/Article.tsx` via the `StructuredData` component.
 - Change crawler policy or AI-training signals → `public/robots.txt`.
+- Add/remove/rename a project-local skill → drop it under `.agents/skills/`; `npm run agent-skills` (part of `npm run build`) regenerates `public/.well-known/agent-skills/index.json` and the per-skill `SKILL.md` copies, so no hand-editing is needed.
 - Change the default link-preview card → replace `public/og-image.png` (keep ≈1.91:1) and update `DEFAULT_IMAGE` dimensions in `scripts/social-metadata.mjs`.
 
 ---
