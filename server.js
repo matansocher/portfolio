@@ -190,7 +190,7 @@ async function sendShell(req, res, key, status = 200) {
 // Deploy-time files (sitemap, llms.txt, robots.txt, manifest) change each deploy
 // but carry no hash, so they get no-cache to avoid serving stale content.
 const HASHED_ASSET_RE = /^\/assets\/[^/]+-[A-Za-z0-9_]{8,}\.[^/]+$/;
-const NO_CACHE_RE = /\/(sitemap\.xml|llms\.txt|robots\.txt|manifest\.json)$/;
+const NO_CACHE_RE = /\/(sitemap\.xml|llms\.txt|robots\.txt|manifest\.json|feed\.xml)$/;
 
 // Only assets reach sirv now, so no Vary/Link handling is needed in setHeaders.
 const assets = sirv(BUILD_DIR, {
@@ -231,8 +231,10 @@ createServer(async (req, res) => {
       sendMarkdown(res, markdown);
       return;
     }
-  } else if (pathname.endsWith('.md')) {
-    // .md extension on an unknown route: 404 rather than falling through to sirv.
+  } else if (pathname.endsWith('.md') && !pathname.startsWith('/.well-known/')) {
+    // .md extension on an unknown SPA route: 404 rather than falling through to sirv.
+    // Paths under /.well-known/ are real static files (e.g. agent-skills SKILL.md)
+    // and must reach sirv — only exclude the synthetic SPA-markdown namespace here.
     res.statusCode = 404;
     res.end('Not found');
     return;
