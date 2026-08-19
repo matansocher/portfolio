@@ -41,7 +41,7 @@ export function renderSocialTags(metadata, baseUrl) {
     tags.push(meta('property', 'og:image:width', image.width), meta('property', 'og:image:height', image.height));
   }
 
-  tags.push(meta('property', 'og:locale', 'en_US'));
+  tags.push(meta('property', 'og:locale', metadata.locale ?? 'en_US'));
 
   if (metadata.type === 'article') {
     tags.push(meta('property', 'article:published_time', metadata.publishedTime));
@@ -76,12 +76,18 @@ export function injectSocialTags(html, metadata, baseUrl) {
   if (!metadata) {
     return html;
   }
+  const alternateTags = (metadata.alternates ?? [])
+    .map(
+      (alt) =>
+        `<link rel="alternate" hreflang="${escapeAttribute(alt.hreflang)}" href="${escapeAttribute(alt.href)}" />`,
+    )
+    .join('\n    ');
+  const canonicalBlock = `<link rel="canonical" href="${escapeAttribute(metadata.url)}" />${
+    alternateTags ? `\n    ${alternateTags}` : ''
+  }`;
   return html
     .replace(BLOCK_PATTERN, `    ${renderSocialTags(metadata, baseUrl)}`)
-    .replace(
-      /<link rel="canonical" href="[^"]*" \/>/,
-      `<link rel="canonical" href="${escapeAttribute(metadata.url)}" />`,
-    )
+    .replace(/<link rel="canonical" href="[^"]*" \/>/, canonicalBlock)
     .replace(/<title>[^<]*<\/title>/, `<title>${escapeAttribute(metadata.title)}</title>`)
     .replace(
       /<meta name="description" content="[^"]*" \/>/,

@@ -54,12 +54,23 @@ function isoDate(date) {
   return `${year}-${month}-${day}`;
 }
 
+// hreflang alternate set shared by an article's English and Hebrew entries. The
+// server injects these as <link rel="alternate"> tags so crawlers pair the two
+// language URLs; x-default points at English.
+function articleAlternates(slug) {
+  return [
+    { hreflang: 'en', href: `${BASE_URL}/articles/${slug}` },
+    { hreflang: 'he', href: `${BASE_URL}/he/articles/${slug}` },
+    { hreflang: 'x-default', href: `${BASE_URL}/articles/${slug}` },
+  ];
+}
+
 // Resolved lazily and cached: importing the TS config eagerly would make this module
 // unusable in environments that cannot load it.
 let cdnBase;
 let assetList;
 
-async function cdnImageFor(meta) {
+async function cdnImageFor(meta, language = 'en') {
   if (!assetList) {
     const [config, assets] = await Promise.all([
       import(pathToFileURL(join(ROOT, 'src', 'config.ts')).href),
@@ -75,7 +86,7 @@ async function cdnImageFor(meta) {
   }
   // No cache-busting query here: unlike the runtime asset map, preview images are
   // fetched by scrapers that cache aggressively, and a per-build URL would defeat that.
-  return { path: `${cdnBase}/new/${asset.file}`, alt: meta.en.title };
+  return { path: `${cdnBase}/new/${asset.file}`, alt: meta[language].title };
 }
 
 /**
@@ -93,6 +104,7 @@ export async function buildSocialMetadata() {
       description: PAGE_DESCRIPTIONS[key] ?? titleOf(markdown),
       url: `${BASE_URL}${key === 'index' ? '/' : `/${key}`}`,
       type: 'website',
+      locale: 'en_US',
       image: DEFAULT_IMAGE,
     });
   }
@@ -105,9 +117,24 @@ export async function buildSocialMetadata() {
       description: meta.en.excerpt,
       url: `${BASE_URL}/articles/${meta.slug}`,
       type: 'article',
+      locale: 'en_US',
       publishedTime: isoDate(meta.date),
       tags: meta.tags,
-      image: await cdnImageFor(meta),
+      image: await cdnImageFor(meta, 'en'),
+      alternates: articleAlternates(meta.slug),
+    });
+    // Hebrew version lives at its own crawlable URL so it can be indexed and ranked
+    // independently; server.js gates document routes on these keys, so it must exist here.
+    metadata.set(`he/articles/${meta.slug}`, {
+      title: `${meta.he.title} — ${SITE_NAME}`,
+      description: meta.he.excerpt,
+      url: `${BASE_URL}/he/articles/${meta.slug}`,
+      type: 'article',
+      locale: 'he_IL',
+      publishedTime: isoDate(meta.date),
+      tags: meta.tags,
+      image: await cdnImageFor(meta, 'he'),
+      alternates: articleAlternates(meta.slug),
     });
   }
 

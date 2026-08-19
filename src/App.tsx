@@ -21,6 +21,7 @@ export default function App() {
         <Route path="employees" element={<Employees />} />
         <Route path="articles" element={<Articles />} />
         <Route path="articles/:slug" element={<Article />} />
+        <Route path="he/articles/:slug" element={<Article language="he" />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

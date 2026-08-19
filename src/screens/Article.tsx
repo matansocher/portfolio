@@ -6,12 +6,14 @@ import { SiteNav, StructuredData } from '../components';
 import useArticleLanguage from '../hooks/useArticleLanguage';
 import articles from '../data/articles';
 import assets from '../assets';
+import type { ArticleLanguage } from '../types';
 import { getRelatedArticles } from '../utils/relatedArticles';
 
-export default function Article() {
+export default function Article({ language: forcedLanguage }: { language?: ArticleLanguage } = {}) {
   const { slug } = useParams();
   const article = articles.find((item) => item.slug === slug);
-  const [language] = useArticleLanguage();
+  const [toggleLanguage, setToggleLanguage] = useArticleLanguage();
+  const language: ArticleLanguage = forcedLanguage ?? toggleLanguage;
 
   useEffect(() => {
     document.documentElement.lang = language;
@@ -19,6 +21,17 @@ export default function Article() {
       document.documentElement.lang = 'en';
     };
   }, [language]);
+
+  // Keep the shared toggle state in sync with the URL-forced language so the
+  // articles index and related links stay consistent after navigating here.
+  useEffect(() => {
+    if (forcedLanguage && forcedLanguage !== toggleLanguage) {
+      setToggleLanguage(forcedLanguage);
+    }
+  }, [forcedLanguage, toggleLanguage, setToggleLanguage]);
+
+  const articlePath = (targetLanguage: ArticleLanguage, targetSlug: string) =>
+    targetLanguage === 'he' ? `/he/articles/${targetSlug}` : `/articles/${targetSlug}`;
 
   if (!article) {
     return (
@@ -44,7 +57,10 @@ export default function Article() {
   const image = assets[article.image];
   const [day, month, year] = article.date.split('-');
 
-  const articleUrl = `https://dkl-portfolio.herokuapp.com/articles/${article.slug}`;
+  const SITE_ORIGIN = 'https://dkl-portfolio.herokuapp.com';
+  const enUrl = `${SITE_ORIGIN}/articles/${article.slug}`;
+  const heUrl = `${SITE_ORIGIN}/he/articles/${article.slug}`;
+  const articleUrl = language === 'he' ? heUrl : enUrl;
   const wordCount = content.markdown.trim().split(/\s+/).filter(Boolean).length;
 
   const articleSchema = {
@@ -138,7 +154,7 @@ export default function Article() {
                     const relContent = rel[language];
                     const relImage = assets[rel.image];
                     return (
-                      <Link key={rel.slug} to={`/articles/${rel.slug}`} className="article-card">
+                      <Link key={rel.slug} to={articlePath(language, rel.slug)} className="article-card">
                         {relImage ? (
                           <div className="article-card-image">
                             <img src={relImage} alt={relContent.title} loading="lazy" />

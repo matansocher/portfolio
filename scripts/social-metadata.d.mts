@@ -10,9 +10,11 @@ export interface SocialMetadata {
   description: string;
   url: string;
   type: 'website' | 'article';
+  locale: string;
   image: SocialImage;
   publishedTime?: string;
   tags?: string[];
+  alternates?: { hreflang: string; href: string }[];
 }
 
 export declare const DEFAULT_IMAGE: SocialImage;

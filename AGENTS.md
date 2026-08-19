@@ -246,7 +246,8 @@ Routes are declared in `src/App.tsx`. All screens are default-exported and re-ex
 | `/employees`     | `Employees`    | Case study                                                   |
 | `/business-card` | `BusinessCard` | Freelance one-pager with `ContactForm`                       |
 | `/articles`      | `Articles`     | Article listing                                              |
-| `/articles/:slug`| `Article`      | Single article                                               |
+| `/articles/:slug`| `Article`      | Single article (English default, client-side HE toggle)     |
+| `/he/articles/:slug`| `Article`   | Hebrew version of an article at its own crawlable URL (forced HE) |
 | `*`              | `NotFound`     | Returns HTTP 404 with a "Page not found" screen              |
 
 `config.NAVIGATION_DICTIONARY` drives the prev/next links in `BottomNavigation` between case studies.
@@ -328,6 +329,31 @@ the article markdown directly.
 
 To add a new route, add a screen as usual, drop a matching `src/content/pages/<route>.md`, and add
 the route to `STATIC_ROUTES` in `scripts/generate-sitemap.mjs`.
+
+### Per-language article URLs & hreflang
+
+Each article is reachable in two languages at two URLs: English at `/articles/<slug>` and Hebrew at
+`/he/articles/<slug>` (the `Article` screen takes a `language` prop, forced to `he` on the `/he/`
+route; on `/articles/<slug>` it follows the localStorage toggle). Both are fully crawlable:
+
+- **Route keys are path-derived** (`articles/<slug>` and `he/articles/<slug>`), so markdown negotiation,
+  `.md` URLs, and the `server.js` known-route 404 gate all work for Hebrew automatically once the keys
+  exist in the maps.
+- **`scripts/social-metadata.mjs`** emits an entry per language: the Hebrew one uses `he.title`/`he.excerpt`,
+  `locale: 'he_IL'`, and a `he/articles/<slug>` URL. Both language entries carry the same `alternates`
+  array (en, he, x-default → English). **Missing a `he/articles/` entry here makes that URL 404 in prod.**
+- **`scripts/social-tags.mjs`** injects the `<link rel="alternate" hreflang>` set and a self-referential
+  canonical into the served HTML head from that `alternates` array, and emits `og:locale` from the
+  entry's `locale`. These hreflang/canonical tags are server-injected (not React-rendered) so crawlers
+  see them without running JS.
+- **`scripts/markdown-content.mjs`** serves the Hebrew `he.md` body (with Hebrew date + reading time) for
+  `he/articles/<slug>` keys, so markdown, prerender, and `llms-full.txt` all include Hebrew. `llms.txt`
+  and the RSS feed stay English-only by design.
+- **`scripts/generate-sitemap.mjs`** lists both URLs and puts the full `xhtml:link` hreflang alternate set
+  on both entries (`<urlset>` declares `xmlns:xhtml`).
+
+The `add-article` skill needs no extra step for this — a new article gets both URLs, hreflang, and the
+Hebrew markdown automatically once its `meta.ts` + `he.md` exist.
 
 ---
 
