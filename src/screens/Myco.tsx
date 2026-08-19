@@ -10,7 +10,7 @@ export default function Myco() {
   return (
     <>
       <SiteNav transparent={true} />
-      <div className="myco">
+      <main id="content" className="myco">
         <section className="myco-top" style={{ backgroundImage: `url('${assets.mycoTopBg}')` }}>
           <div className="container">
             <h1>Myco</h1>
@@ -51,7 +51,7 @@ export default function Myco() {
               </ul>
             </div>
             <div className="content-right">
-              <img alt="design system example" src={assets.mycoPassRight} />
+              <img alt="design system example" src={assets.mycoPassRight} fetchPriority="high" />
             </div>
           </div>
         </section>
@@ -94,25 +94,25 @@ export default function Myco() {
               <p>Research questions:</p>
               <ul>
                 <li>
-                  <img alt="question mark icon" src={assets.mycoUserInterviewsQm} />
+                  <img alt="question mark icon" src={assets.mycoUserInterviewsQm} loading="lazy" />
                   <p>Can you walk me through a typical project you manage and the steps involved in it?</p>
                 </li>
                 <li>
-                  <img alt="question mark icon" src={assets.mycoUserInterviewsQm} />
+                  <img alt="question mark icon" src={assets.mycoUserInterviewsQm} loading="lazy" />
                   <p>What are the primary challenges you face with the current system?</p>
                 </li>
                 <li>
-                  <img alt="question mark icon" src={assets.mycoUserInterviewsQm} />
+                  <img alt="question mark icon" src={assets.mycoUserInterviewsQm} loading="lazy" />
                   <p>What are your thoughts on the alternatives to the current system?</p>
                 </li>
                 <li>
-                  <img alt="question mark icon" src={assets.mycoUserInterviewsQm} />
+                  <img alt="question mark icon" src={assets.mycoUserInterviewsQm} loading="lazy" />
                   <p>What are the most important aspects you look for in an Event management app?</p>
                 </li>
               </ul>
             </div>
             <div className="content-right">
-              <img alt="user interviews examples" src={assets.mycoUserInterviews} />
+              <img alt="user interviews examples" src={assets.mycoUserInterviews} loading="lazy" />
             </div>
           </div>
         </section>
@@ -126,13 +126,13 @@ export default function Myco() {
               websites that sell tickets for events.
             </p>
             <div className="content-row first">
-              <img alt="app screen example" src={assets.mycoBenchmarking1} />
-              <img alt="app screen example" src={assets.mycoBenchmarking2} />
-              <img alt="app screen example" src={assets.mycoBenchmarking3} />
+              <img alt="app screen example" src={assets.mycoBenchmarking1} loading="lazy" />
+              <img alt="app screen example" src={assets.mycoBenchmarking2} loading="lazy" />
+              <img alt="app screen example" src={assets.mycoBenchmarking3} loading="lazy" />
             </div>
             <div className="content-row second">
-              <img alt="app screen example" src={assets.mycoBenchmarking4} />
-              <img alt="app screen example" src={assets.mycoBenchmarking5} />
+              <img alt="app screen example" src={assets.mycoBenchmarking4} loading="lazy" />
+              <img alt="app screen example" src={assets.mycoBenchmarking5} loading="lazy" />
             </div>
           </div>
         </section>
@@ -151,16 +151,16 @@ export default function Myco() {
               The purpose of user flows was to visualize the steps a user takes to achieve a goal and identify any
               friction points or areas for improvement along the way.
             </p>
-            <img alt="flow chart" src={assets.mycoConvert1} />
+            <img alt="flow chart" src={assets.mycoConvert1} loading="lazy" />
             <h3>First sketches</h3>
             <p>
               Initially, wireframes were created by hand with pencil and paper during the ideation stage to translate
               requirements into screen layouts.
             </p>
             <div className="content-side-by-side">
-              <img alt="sketch example" src={assets.mycoConvert2} />
-              <img alt="sketch example" src={assets.mycoConvert3} />
-              <img alt="sketch example" src={assets.mycoConvert4} />
+              <img alt="sketch example" src={assets.mycoConvert2} loading="lazy" />
+              <img alt="sketch example" src={assets.mycoConvert3} loading="lazy" />
+              <img alt="sketch example" src={assets.mycoConvert4} loading="lazy" />
             </div>
           </div>
         </section>
@@ -168,7 +168,7 @@ export default function Myco() {
         <section className="myco-wireframes">
           <div className="myco-wireframes-content">
             <h3>Wireframes</h3>
-            <img alt="wireframes examples" src={assets.mycoWireframes} />
+            <img alt="wireframes examples" src={assets.mycoWireframes} loading="lazy" />
           </div>
         </section>
 
@@ -183,7 +183,7 @@ export default function Myco() {
             </p>
           </div>
           <div className="myco-redesign-content">
-            <img alt="app screens examples" src={assets.mycoRedesign1} />
+            <img alt="app screens examples" src={assets.mycoRedesign1} loading="lazy" />
           </div>
         </section>
 
@@ -208,8 +208,8 @@ export default function Myco() {
                   </p>
                 </div>
                 <div className="right">
-                  <img alt="app screen example" src={assets.mycoProducers1} />
-                  <img alt="app screen example" src={assets.mycoProducers2} />
+                  <img alt="app screen example" src={assets.mycoProducers1} loading="lazy" />
+                  <img alt="app screen example" src={assets.mycoProducers2} loading="lazy" />
                 </div>
               </div>
             </div>
@@ -225,10 +225,10 @@ export default function Myco() {
             </div>
             <div className="content-images">
               <div className="content-images">
-                <img alt="app screen example" src={assets.mycoProducers3} />
-                <img alt="app screen example" src={assets.mycoProducers4} />
-                <img alt="app screen example" src={assets.mycoProducers5} />
-                <img alt="app screen example" src={assets.mycoProducers6} />
+                <img alt="app screen example" src={assets.mycoProducers3} loading="lazy" />
+                <img alt="app screen example" src={assets.mycoProducers4} loading="lazy" />
+                <img alt="app screen example" src={assets.mycoProducers5} loading="lazy" />
+                <img alt="app screen example" src={assets.mycoProducers6} loading="lazy" />
               </div>
             </div>
           </div>
@@ -251,13 +251,13 @@ export default function Myco() {
               </p>
             </div>
             <div className="content-right">
-              <img alt="illustration of a happy man using the app" src={assets.mycoThoughts1} />
+              <img alt="illustration of a happy man using the app" src={assets.mycoThoughts1} loading="lazy" />
             </div>
           </div>
         </section>
 
         <BottomNavigation pathname="myco" />
-      </div>
+      </main>
     </>
   );
 }

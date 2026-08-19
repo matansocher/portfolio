@@ -238,12 +238,15 @@ Routes are declared in `src/App.tsx`. All screens are default-exported and re-ex
 
 | Path             | Screen         | Notes                                                        |
 |------------------|----------------|-------------------------------------------------------------|
-| `/`  (catch-all) | `Home`         | Landing page — hero, client logos, project list, testimonials |
+| `/`              | `Home`         | Landing page — hero, client logos, project list, testimonials |
 | `/salaries`      | `Salaries`     | Case study                                                   |
 | `/marketer`      | `Marketer`     | Case study                                                   |
 | `/myco`          | `Myco`         | Case study                                                   |
 | `/employees`     | `Employees`    | Case study                                                   |
 | `/business-card` | `BusinessCard` | Freelance one-pager with `ContactForm`                       |
+| `/articles`      | `Articles`     | Article listing                                              |
+| `/articles/:slug`| `Article`      | Single article                                               |
+| `*`              | `NotFound`     | Returns HTTP 404 with a "Page not found" screen              |
 
 `config.NAVIGATION_DICTIONARY` drives the prev/next links in `BottomNavigation` between case studies.
 

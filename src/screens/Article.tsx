@@ -1,21 +1,30 @@
 import './styles/Article.scss';
+import { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import { SiteNav, StructuredData } from '../components';
 import useArticleLanguage from '../hooks/useArticleLanguage';
 import articles from '../data/articles';
 import assets from '../assets';
+import { getRelatedArticles } from '../utils/relatedArticles';
 
 export default function Article() {
   const { slug } = useParams();
   const article = articles.find((item) => item.slug === slug);
   const [language] = useArticleLanguage();
 
+  useEffect(() => {
+    document.documentElement.lang = language;
+    return () => {
+      document.documentElement.lang = 'en';
+    };
+  }, [language]);
+
   if (!article) {
     return (
       <>
         <SiteNav />
-        <main className="article page">
+        <main id="content" className="article page">
           <section className="article-missing">
             <div className="container">
               <h1>Article not found</h1>
@@ -35,24 +44,47 @@ export default function Article() {
   const image = assets[article.image];
   const [day, month, year] = article.date.split('-');
 
+  const articleUrl = `https://dkl-portfolio.herokuapp.com/articles/${article.slug}`;
+  const wordCount = content.markdown.trim().split(/\s+/).filter(Boolean).length;
+
   const articleSchema = {
     '@context': 'https://schema.org',
-    '@type': 'BlogPosting',
-    headline: content.title,
-    description: content.excerpt,
-    datePublished: `${year}-${month}-${day}`,
-    inLanguage: language,
-    keywords: article.tags.join(', '),
-    url: `https://dkl-portfolio.herokuapp.com/articles/${article.slug}`,
-    ...(image ? { image } : {}),
-    author: { '@type': 'Person', name: 'Dekel Nissim', url: 'https://dkl-portfolio.herokuapp.com/' },
+    '@graph': [
+      {
+        '@type': 'BlogPosting',
+        headline: content.title,
+        description: content.excerpt,
+        datePublished: `${year}-${month}-${day}`,
+        inLanguage: language,
+        keywords: article.tags.join(', '),
+        url: articleUrl,
+        wordCount,
+        mainEntityOfPage: { '@type': 'WebPage', '@id': articleUrl },
+        ...(image ? { image } : {}),
+        author: {
+          '@type': 'Person',
+          '@id': 'https://dkl-portfolio.herokuapp.com/#person',
+          name: 'Dekel Nissim',
+          url: 'https://dkl-portfolio.herokuapp.com/',
+        },
+        publisher: { '@id': 'https://dkl-portfolio.herokuapp.com/#person' },
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://dkl-portfolio.herokuapp.com/' },
+          { '@type': 'ListItem', position: 2, name: 'Articles', item: 'https://dkl-portfolio.herokuapp.com/articles' },
+          { '@type': 'ListItem', position: 3, name: content.title, item: articleUrl },
+        ],
+      },
+    ],
   };
 
   return (
     <>
       <StructuredData data={articleSchema} />
       <SiteNav />
-      <main className="article page">
+      <main id="content" className="article page">
         <div className="article-hero">
           <div className="container">
             <div className="article-hero-top">
@@ -92,6 +124,47 @@ export default function Article() {
             <ReactMarkdown>{content.markdown}</ReactMarkdown>
           </div>
         </article>
+
+        {(() => {
+          const related = getRelatedArticles(article, articles);
+          if (related.length === 0) return null;
+          return (
+            <section className="article-related" dir={isRtl ? 'rtl' : 'ltr'}>
+              <div className="container">
+                <h2 className="article-related-heading">{isRtl ? 'מאמרים נוספים' : 'Related articles'}</h2>
+                <div className="article-related-list">
+                  {related.map((rel) => {
+                    const relContent = rel[language];
+                    const relImage = assets[rel.image];
+                    return (
+                      <Link key={rel.slug} to={`/articles/${rel.slug}`} className="article-card">
+                        {relImage ? (
+                          <div className="article-card-image">
+                            <img src={relImage} alt={relContent.title} loading="lazy" />
+                          </div>
+                        ) : null}
+                        <div className="article-card-body">
+                          <div className="article-card-meta">
+                            <span>{relContent.displayDate}</span>
+                            <span className="dot" aria-hidden="true">
+                              •
+                            </span>
+                            <span>{relContent.readingTime}</span>
+                          </div>
+                          <h2>{relContent.title}</h2>
+                          <span className="article-card-link">
+                            {isRtl ? 'קראו את המאמר' : 'Read article'}
+                            <i className={isRtl ? 'uil uil-arrow-left' : 'uil uil-arrow-right'} aria-hidden="true" />
+                          </span>
+                        </div>
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
+            </section>
+          );
+        })()}
       </main>
     </>
   );

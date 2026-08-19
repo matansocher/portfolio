@@ -88,7 +88,7 @@ $accent: #2e97ff;
   }
 
   &-body {
-    padding: 40px 0 100px;
+    padding: 40px 0 0;
 
     .container {
       max-width: 720px;
@@ -169,6 +169,29 @@ $accent: #2e97ff;
     }
   }
 
+  &-related {
+    padding: 60px 0 100px;
+    border-top: 1px solid #eef0f3;
+
+    .container {
+      max-width: 800px;
+    }
+
+    &-heading {
+      font-size: 24px;
+      color: $text-dark;
+      margin: 0 0 24px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    &-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+  }
+
   &-missing {
     padding: 60px 0 120px;
     text-align: center;
@@ -223,5 +246,15 @@ $accent: #2e97ff;
         line-height: 30px;
       }
     }
+
+    &-related-list {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .article-related-list {
+    grid-template-columns: 1fr;
   }
 }
