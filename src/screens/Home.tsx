@@ -187,7 +187,7 @@ export default function Home() {
     <>
       <SiteNav />
       <div className="home-page" ref={rootRef}>
-        <main>
+        <main id="content">
           <section className="hp-hero" aria-labelledby="hp-hero-title">
             <div className="hp-content">
               <p className="hp-hero-eyebrow hp-mono reveal">UX Research · Product Strategy</p>
@@ -378,7 +378,7 @@ export default function Home() {
                     <Link className="hp-article-card" to={`/articles/${article.slug}`} key={article.slug}>
                       <div className="hp-article-thumb">
                         {assets[article.image] ? (
-                          <img className="cover" src={assets[article.image]} alt="" loading="lazy" />
+                          <img className="cover" src={assets[article.image]} alt={content.title} loading="lazy" />
                         ) : null}
                         {article.tags[0] ? <span className="cat">{article.tags[0]}</span> : null}
                       </div>

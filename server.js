@@ -8,6 +8,8 @@
 import { createServer } from 'node:http';
 import { readFile } from 'node:fs/promises';
 import { fileURLToPath, URL } from 'node:url';
+import { createBrotliCompress, createGzip } from 'node:zlib';
+import { Readable } from 'node:stream';
 import sirv from 'sirv';
 import { LINK_HEADER } from './scripts/link-headers.mjs';
 import { isDocumentRequest, routeToMarkdownKey, sendMarkdown, wantsMarkdown } from './scripts/markdown-negotiation.mjs';
@@ -67,6 +69,24 @@ async function readMarkdown(key) {
   }
 }
 
+// Sends a response body with optional brotli or gzip encoding based on Accept-Encoding.
+// Buffer-in, stream-out: the compressed body is written to res.
+function sendCompressed(req, res, body, contentType) {
+  const ae = req.headers['accept-encoding'] ?? '';
+  res.setHeader('Content-Type', contentType);
+  res.setHeader('Vary', 'Accept, Accept-Encoding');
+  if (ae.includes('br')) {
+    res.setHeader('Content-Encoding', 'br');
+    Readable.from(body).pipe(createBrotliCompress()).pipe(res);
+  } else if (ae.includes('gzip')) {
+    res.setHeader('Content-Encoding', 'gzip');
+    Readable.from(body).pipe(createGzip()).pipe(res);
+  } else {
+    res.setHeader('Content-Length', body.byteLength);
+    res.end(body);
+  }
+}
+
 function sendShell(req, res, key, status = 200) {
   const origin = originOf(req);
   // Unknown paths fall back to the home page's tags, mirroring the SPA catch-all route.
@@ -74,18 +94,32 @@ function sendShell(req, res, key, status = 200) {
   const body = Buffer.from(injectSocialTags(shell, metadata, origin ?? ''), 'utf8');
 
   res.statusCode = status;
-  res.setHeader('Content-Type', 'text/html; charset=utf-8');
-  res.setHeader('Content-Length', body.byteLength);
-  res.setHeader('Vary', 'Accept');
-  res.setHeader('Link', LINK_HEADER);
   // The shell is rebuilt on every deploy and references hashed assets, so it must not
   // be cached; a stale shell would point at assets that no longer exist.
   res.setHeader('Cache-Control', 'no-cache');
-  res.end(body);
+  res.setHeader('Link', LINK_HEADER);
+  sendCompressed(req, res, body, 'text/html; charset=utf-8');
 }
 
+// Hashed asset paths look like /assets/index-AbCd1234.js — the hash guarantees
+// content never changes for a given URL, so an immutable long max-age is safe.
+// Deploy-time files (sitemap, llms.txt, robots.txt, manifest) change each deploy
+// but carry no hash, so they get no-cache to avoid serving stale content.
+const HASHED_ASSET_RE = /^\/assets\/[^/]+-[A-Za-z0-9_]{8,}\.[^/]+$/;
+const NO_CACHE_RE = /\/(sitemap\.xml|llms\.txt|robots\.txt|manifest\.json)$/;
+
 // Only assets reach sirv now, so no Vary/Link handling is needed in setHeaders.
-const assets = sirv(BUILD_DIR, { gzip: true, brotli: true });
+const assets = sirv(BUILD_DIR, {
+  gzip: true,
+  brotli: true,
+  setHeaders(res, pathname) {
+    if (HASHED_ASSET_RE.test(pathname)) {
+      res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+    } else if (NO_CACHE_RE.test(pathname)) {
+      res.setHeader('Cache-Control', 'no-cache');
+    }
+  },
+});
 
 createServer(async (req, res) => {
   const url = req.url ?? '/';
@@ -97,6 +131,7 @@ createServer(async (req, res) => {
     if (wantsMarkdown(req.headers.accept)) {
       const markdown = (await readMarkdown(key)) ?? (isKnownRoute ? null : await readMarkdown('index'));
       if (markdown) {
+        res.statusCode = isKnownRoute ? 200 : 404;
         res.setHeader('Link', LINK_HEADER);
         sendMarkdown(res, markdown);
         return;

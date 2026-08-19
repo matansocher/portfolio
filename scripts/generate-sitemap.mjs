@@ -4,6 +4,7 @@
 import { readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { execSync } from 'node:child_process';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const ARTICLES_DIR = join(ROOT, 'src', 'content', 'articles');
@@ -19,12 +20,25 @@ function escapeXml(value) {
   return value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 
-// Article meta dates are stored as DD-MM-YYYY; sitemaps require W3C YYYY-MM-DD.
 function toIsoDate(date) {
   const match = /^(\d{2})-(\d{2})-(\d{4})$/.exec(date);
   if (!match) return undefined;
   const [, day, month, year] = match;
   return `${year}-${month}-${day}`;
+}
+
+// Derives lastmod date from git history. Returns ISO date (YYYY-MM-DD) or undefined if unavailable.
+export function getGitLastmodDate(filePath, fallbackDate = new Date().toISOString().slice(0, 10)) {
+  try {
+    const date = execSync(`git log -1 --format=%cs -- "${filePath}"`, {
+      encoding: 'utf8',
+      stdio: ['pipe', 'pipe', 'pipe'],
+    }).trim();
+    return date || fallbackDate;
+  } catch {
+    // git is unavailable or file has no history; use fallback
+    return fallbackDate;
+  }
 }
 
 export function collectArticles(articlesDir = ARTICLES_DIR) {
@@ -39,9 +53,17 @@ export function collectArticles(articlesDir = ARTICLES_DIR) {
     .sort((a, b) => a.slug.localeCompare(b.slug));
 }
 
-export function buildSitemap(articles, today = new Date().toISOString().slice(0, 10)) {
+export function buildSitemap(
+  articles,
+  today = new Date().toISOString().slice(0, 10),
+  resolveStaticLastmod = getGitLastmodDate,
+) {
   const urls = [
-    ...STATIC_ROUTES.map((route) => ({ loc: route, lastmod: today })),
+    ...STATIC_ROUTES.map((route) => {
+      const contentFile = route === '/' ? 'src/content/pages/index.md' : `src/content/pages/${route.slice(1)}.md`;
+      const lastmod = resolveStaticLastmod(contentFile, today);
+      return { loc: route, lastmod };
+    }),
     ...articles.map((article) => ({ loc: `/articles/${article.slug}`, lastmod: article.lastmod ?? today })),
   ];
 

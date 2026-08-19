@@ -6,6 +6,9 @@ import '@/styles/_shared.scss';
 export default function App() {
   return (
     <BrowserRouter>
+      <a href="#content" className="skip-to-content">
+        Skip to content
+      </a>
       <Analytics />
       <ScrollToTopOnPageLoad />
       <WebMcp />
