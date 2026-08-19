@@ -1,0 +1,54 @@
+{
+  "$schema": "https://schemas.agentskills.io/discovery/0.2.0/schema.json",
+  "skills": [
+    {
+      "name": "add-article",
+      "type": "skill-md",
+      "description": "Add a new bilingual (English + Hebrew) article to the portfolio's Articles section from Google Docs text plus an image. Use when the user wants to publish, add, or create a new article or blog post. Covers the content-folder structure, meta.ts, the Google Docs link/formatting quirks, CDN image handling, and validation. Not for adding case-study Projects (Salaries, Marketer, Myco, Employees), which use a separate component-based system.",
+      "url": "/.well-known/agent-skills/add-article/SKILL.md",
+      "digest": "sha256:94e53fdb9f0311b184d833596cf59648bf1db1a317f09e21b9d434a013fc8705"
+    },
+    {
+      "name": "fact-checker",
+      "type": "skill-md",
+      "description": "Verifies factual claims in documents using web search and official sources, then proposes corrections with user confirmation. Use when the user asks to fact-check, verify information, validate claims, check accuracy, or update outdated information in documents. Supports AI model specs, technical documentation, statistics, and general factual statements.",
+      "url": "/.well-known/agent-skills/fact-checker/SKILL.md",
+      "digest": "sha256:8018567b7a2daf5e936aba3c947b967a439818f67f246544f0a3e3d558a23ff4"
+    },
+    {
+      "name": "humanizer",
+      "type": "skill-md",
+      "description": "Remove signs of AI-generated writing from text. Use when editing or reviewing text to make it sound more natural and human-written. Based on Wikipedia's comprehensive \"Signs of AI writing\" guide. Detects and fixes patterns including: inflated symbolism, promotional language, superficial -ing analyses, vague attributions, em dash overuse, rule of three, AI vocabulary words, passive voice, negative parallelisms, and filler phrases.",
+      "url": "/.well-known/agent-skills/humanizer/SKILL.md",
+      "digest": "sha256:be4eab84b6ff00bea0579d083fe06ddc228693e313eb95aa307f8075d1b1643c"
+    },
+    {
+      "name": "playwright-skill",
+      "type": "skill-md",
+      "description": "Complete browser automation with Playwright. Auto-detects dev servers, writes clean test scripts to /tmp. Test pages, fill forms, take screenshots, check responsive design, validate UX, test login flows, check links, automate any browser task. Use when user wants to test websites, automate browser interactions, validate web functionality, or perform any browser-based testing.",
+      "url": "/.well-known/agent-skills/playwright-skill/SKILL.md",
+      "digest": "sha256:8b183baa315e0c023bd8bf9e2c6ba213e499421d2b082fcd37741a914ee65ac0"
+    },
+    {
+      "name": "prompt-master",
+      "type": "skill-md",
+      "description": "Generates optimized prompts for AI tools. Activates only when the user explicitly asks to write, fix, improve, or adapt a prompt for a specific AI tool (LLM, Cursor, Midjourney, image AI, video AI, coding agents, etc.). Does not activate for general conversation, coding tasks, document writing, or other non-prompt-engineering work.",
+      "url": "/.well-known/agent-skills/prompt-master/SKILL.md",
+      "digest": "sha256:1191d74f0640295c7307b0dd52a0baa14467e5dc8263c686255feddc84e3ac07"
+    },
+    {
+      "name": "ui-ux-pro-max",
+      "type": "skill-md",
+      "description": "UI/UX design intelligence for web and mobile. Includes 50+ styles, 161 color palettes, 57 font pairings, 161 product types, 99 UX guidelines, and 25 chart types across 10 stacks (React, Next.js, Vue, Svelte, SwiftUI, React Native, Flutter, Tailwind, shadcn/ui, and HTML/CSS). Actions: plan, build, create, design, implement, review, fix, improve, optimize, enhance, refactor, and check UI/UX code. Projects: website, landing page, dashboard, admin panel, e-commerce, SaaS, portfolio, blog, and mobile app. Elements: button, modal, navbar, sidebar, card, table, form, and chart. Styles: glassmorphism, claymorphism, minimalism, brutalism, neumorphism, bento grid, dark mode, responsive, skeuomorphism, and flat design. Topics: color systems, accessibility, animation, layout, typography, font pairing, spacing, interaction states, shadow, and gradient. Integrations: shadcn/ui MCP for component search and examples.",
+      "url": "/.well-known/agent-skills/ui-ux-pro-max/SKILL.md",
+      "digest": "sha256:58fe081898866a04a578e7947faae083c1a18ffad502c3486f633c25aa69c7a3"
+    },
+    {
+      "name": "update-content",
+      "type": "skill-md",
+      "description": "Keep the portfolio's agent/SEO discovery surfaces in sync after changing existing site content. Use when editing or renaming a case study (Salaries, Marketer, Myco, Employees), editing Home/About/Articles/Business-card page copy, adding or removing a route, or changing the canonical host. Covers both the build-time generated surfaces and the hand-maintained ones (JSON-LD, llms.txt case-study list, STATIC_ROUTES, canonical host) that silently drift. NOT for adding a new article — use add-article.",
+      "url": "/.well-known/agent-skills/update-content/SKILL.md",
+      "digest": "sha256:a41eb17e31e6a5d7c8d891370e88e6f54f655d382155b90361fe3ad976e638dc"
+    }
+  ]
+}
