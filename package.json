@@ -45,14 +45,16 @@
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.65.0",
     "vite": "^8.2.0",
+    "vite-plugin-compression2": "^2.5.3",
     "vitest": "^4.1.10"
   },
   "scripts": {
     "start": "vite",
     "dev": "vite",
     "sitemap": "node scripts/generate-sitemap.mjs",
+    "rss": "node scripts/generate-rss.mjs",
     "agent-skills": "node scripts/generate-agent-skills.mjs",
-    "build": "npm run sitemap && npm run agent-skills && tsc --noEmit && vite build && node scripts/generate-markdown.mjs",
+    "build": "npm run sitemap && npm run rss && npm run agent-skills && tsc --noEmit && vite build && node scripts/generate-markdown.mjs",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
