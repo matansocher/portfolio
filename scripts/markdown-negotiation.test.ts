@@ -1,5 +1,11 @@
 import { describe, expect, it } from 'vitest';
-import { estimateTokens, isDocumentRequest, routeToMarkdownKey, sendMarkdown, wantsMarkdown } from './markdown-negotiation.mjs';
+import {
+  estimateTokens,
+  isDocumentRequest,
+  routeToMarkdownKey,
+  sendMarkdown,
+  wantsMarkdown,
+} from './markdown-negotiation.mjs';
 
 describe('wantsMarkdown', () => {
   it('matches an explicit markdown request', () => {
