@@ -15,7 +15,7 @@
     "react-markdown": "^10.1.0",
     "react-router-dom": "^7.18.2",
     "react-scroll": "^1.8.7",
-    "sirv-cli": "^3.0.1"
+    "sirv": "^3.0.2"
   },
   "devDependencies": {
     "@commitlint/cli": "^21.2.1",
@@ -49,17 +49,18 @@
   "scripts": {
     "start": "vite",
     "dev": "vite",
-    "build": "tsc --noEmit && vite build",
+    "sitemap": "node scripts/generate-sitemap.mjs",
+    "build": "npm run sitemap && tsc --noEmit && vite build && node scripts/generate-markdown.mjs",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
     "preview": "vite preview",
-    "serve": "sirv build --single --host --port ${PORT:-3000}",
+    "serve": "node server.js",
     "heroku-postbuild": "npm run build",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,scss,css}\" \"*.{js,mjs,cjs,ts}\"",
-    "format:check": "prettier --check \"src/**/*.{js,jsx,ts,tsx,scss,css}\" \"*.{js,mjs,cjs,ts}\"",
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,scss,css}\" \"scripts/**/*.{mjs,mts,ts}\" \"*.{js,mjs,cjs,ts}\"",
+    "format:check": "prettier --check \"src/**/*.{js,jsx,ts,tsx,scss,css}\" \"scripts/**/*.{mjs,mts,ts}\" \"*.{js,mjs,cjs,ts}\"",
     "prepare": "husky"
   },
   "lint-staged": {

@@ -1,3 +1,39 @@
 # https://www.robotstxt.org/robotstxt.html
+# Content Signals: https://contentsignals.org/
+
 User-agent: *
-Disallow:
+Allow: /
+Content-Signal: ai-train=no, search=yes, ai-input=yes
+
+# AI assistants and answer engines are explicitly welcome to read and cite this site.
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Training-consent tokens, not crawlers: Googlebot and Bingbot above still index
+# the site for search. These two control whether that content may also train
+# Gemini and Apple Intelligence, so they mirror the ai-train=no signal.
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: Applebot-Extended
+Disallow: /
+
+Sitemap: https://dkl-portfolio.herokuapp.com/sitemap.xml

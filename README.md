@@ -48,9 +48,10 @@ npm run typecheck  # tsc --noEmit — type errors only, no output
 npm run test       # Vitest run (test:watch for watch mode)
 npm run lint       # ESLint (TS + React + hooks + a11y)
 npm run format     # Prettier write (format:check to verify)
-npm run build      # typecheck + production build → build/
+npm run sitemap    # regenerate public/sitemap.xml + the robots.txt Sitemap line
+npm run build      # sitemap + typecheck + vite build + generated markdown & social metadata → build/
 npm run preview    # serve the production build locally (Vite preview)
-npm run serve      # serve build/ the way Heroku does (sirv, SPA fallback, honors $PORT)
+npm run serve      # serve build/ the way Heroku does (server.js: markdown negotiation + OG tags + sirv, honors $PORT)
 ```
 
 Tests use Vitest + Testing Library (jsdom), co-located as `*.test.tsx`. CI runs the full
@@ -64,10 +65,26 @@ The app currently requires **no environment variables**. Vite exposes browser va
 
 `AGENTS.md` at the repo root is the canonical onboarding doc — conventions, patterns, file layout, env vars, and how the CDN asset pipeline works. `CLAUDE.md`, `GEMINI.md`, and `.github/copilot-instructions.md` are symlinks to it, so every agent reads the same source. If you change conventions or architecture, **update `AGENTS.md`**.
 
+### For agents crawling the deployed site
+
+The live site is discoverable without executing JavaScript:
+
+- **`Accept: text/markdown`** on any route returns a markdown version of that page instead of the SPA shell. HTML stays the default for browsers.
+- **`/llms.txt`** is a plain-text index of every page, case study, and article.
+- **`/sitemap.xml`** lists all 17 URLs, generated from the route table and the article folders.
+- **`/robots.txt`** allows everything, declares a [Content Signals](https://contentsignals.org/) preference, allowlists the AI agents that read and cite pages, and denies the two AI-training-consent tokens (`Google-Extended`, `Applebot-Extended`).
+- **JSON-LD** (`Person`, `WebSite`, `ItemList` in the HTML shell; `BlogPosting` per article) describes the site in structured form.
+- **RFC 8288 `Link` headers** on HTML responses point at `/llms.txt` via `rel="describedby"`.
+- **Open Graph / Twitter Card tags** are injected per route at request time, so a link pasted into Slack, Telegram, WhatsApp, or LinkedIn unfurls with the right title, description, and image (articles use their own image).
+
+See the "Agent discoverability" and "Markdown for Agents" sections in `AGENTS.md` for how each piece is produced.
+
 ## Deployment
 
 Deployed on **Heroku**. On deploy, the Node buildpack runs `heroku-postbuild`
-(`vite build`) to produce `build/`, then the `Procfile` (`web: npm run serve`)
-serves that static output with [`sirv`](https://github.com/lukeed/sirv) — SPA
-fallback enabled (client-side routes resolve to `index.html`) and binding to
-Heroku's `$PORT`.
+(`npm run build`) to produce `build/` plus the generated sitemap, markdown, and link-preview
+metadata, then the `Procfile` (`web: npm run serve`) serves that static output via `server.js` — a
+thin Node server that binds to Heroku's `$PORT`, serves the HTML shell itself for client-side
+routes (injecting per-route Open Graph tags), handles `Accept: text/markdown` content negotiation,
+attaches [RFC 8288](https://www.rfc-editor.org/rfc/rfc8288) `Link` headers, and delegates real
+static assets to [`sirv`](https://github.com/lukeed/sirv).

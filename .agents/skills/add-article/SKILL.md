@@ -36,8 +36,9 @@ Add Article Progress:
 - [ ] Step 3: Fix Google Docs link/formatting quirks in en.md
 - [ ] Step 4: Create meta.ts
 - [ ] Step 5: Register the image in assetsConfig.ts
-- [ ] Step 6: Validate (typecheck, lint, test, build)
-- [ ] Step 7: Browser-verify EN + HE, card, and image
+- [ ] Step 6: Regenerate the sitemap
+- [ ] Step 7: Validate (typecheck, lint, test, build)
+- [ ] Step 8: Browser-verify EN + HE, card, and image
 ```
 
 ### Step 1: Pick a slug
@@ -121,18 +122,31 @@ const articleAssets: AssetConfig[] = [
   ```
   A `200` means it's live. If it's not up yet, the card/hero image will just be blank until the user uploads it — that's expected, not a bug.
 
-### Step 6: Validate
+### Step 6: Regenerate the sitemap
+
+```bash
+npm run sitemap     # picks the new article folder up automatically
+```
+
+Commit the regenerated `public/sitemap.xml` alongside the article. (`npm run build` regenerates it too, so this is mainly so the committed file stays in sync.)
+
+The other agent-discovery surfaces need no manual edit: `/llms.txt` and the `Accept: text/markdown`
+response for `/articles/<slug>` are both derived from the article's `en.md` + `meta.ts` at build time,
+the per-article JSON-LD is rendered by `Article.tsx`, and the Open Graph link preview (the card Slack
+or Telegram shows) is generated from `meta.ts` too — title, description, and the article's own image.
+
+### Step 7: Validate
 
 ```bash
 npm run typecheck   # tsc --noEmit
 npm run lint        # 0 errors expected (a few pre-existing warnings are fine)
 npm run test        # Vitest
-npm run build       # typecheck + production build
+npm run build       # sitemap + typecheck + production build + generated markdown
 ```
 
 If `App.test.tsx` asserts on specific article slugs/titles/counts, update it. (The chunk >500kB build warning is pre-existing and not an error.)
 
-### Step 7: Browser-verify
+### Step 8: Browser-verify
 
 Start the dev server on a unique port for the worktree (any free port, e.g. 3141) and check the new article:
 

@@ -87,7 +87,58 @@ This is a live portfolio. Unless explicitly asked otherwise, **do not change run
 - Icons come from **Unicons** (`uil uil-<name>` classes; the font/CSS is loaded in `index.html`), driven by `config.ICONS_MAP`.
 
 ### Deployment
-- `Procfile` (`web: npm run serve`) → deployed on **Heroku**. On deploy the Node buildpack runs `heroku-postbuild` (`vite build`) to produce `build/`, then `npm run serve` serves that static output with `sirv` (SPA fallback so client-side routes resolve to `index.html`, binds to Heroku's `$PORT`). `sirv-cli` is a runtime **dependency** (not devDependency) because Heroku prunes dev deps in production.
+- `Procfile` (`web: npm run serve`) → deployed on **Heroku**. On deploy the Node buildpack runs `heroku-postbuild` (`npm run build`) to produce `build/` plus the generated sitemap, markdown, and link-preview metadata, then `npm run serve` runs `server.js` — a small Node server that binds to Heroku's `$PORT`, serves the HTML shell itself for client-side routes (injecting per-route Open Graph tags), handles markdown content negotiation, attaches RFC 8288 `Link` headers, and delegates real static assets to `sirv`. `sirv` is a runtime **dependency** (not devDependency) because Heroku prunes dev deps in production.
+
+### Agent discoverability
+
+Five surfaces make the site readable by AI agents, answer engines, and chat apps. All of them assume the canonical host `https://dkl-portfolio.herokuapp.com`.
+
+| Surface | Where | Generated? |
+|---|---|---|
+| `sitemap.xml` + `robots.txt` `Sitemap:` line | `public/` | Yes — `npm run sitemap` (`scripts/generate-sitemap.mjs`), also runs as part of `npm run build` |
+| `llms.txt` | served at `/llms.txt` | Yes — built by `scripts/markdown-content.mjs`, written into `build/` by `scripts/generate-markdown.mjs`, served from memory in dev |
+| Markdown content negotiation (`Accept: text/markdown`) | `server.js` + `vite.config.ts` | Yes — `build/_markdown/**.md` |
+| Open Graph / Twitter link previews | `server.js` + `vite.config.ts`, from `build/_social-metadata.json` | Yes — `scripts/social-metadata.mjs` |
+| JSON-LD structured data | `index.html` (Person, WebSite, ItemList) and `src/screens/Article.tsx` (per-article `BlogPosting` via `StructuredData`) | No — hand-maintained |
+
+`robots.txt` is hand-maintained apart from its `Sitemap:` line, and declares an `Allow: /` for `*`, a [Content Signals](https://contentsignals.org/) directive (`ai-train=no, search=yes, ai-input=yes`), and an explicit allowlist for the AI agents that read and cite pages (GPTBot, OAI-SearchBot, ChatGPT-User, ClaudeBot, Claude-User, PerplexityBot, Bingbot). `Google-Extended` and `Applebot-Extended` are `Disallow`ed instead: they are training-consent tokens rather than crawlers, so denying them is what actually enforces `ai-train=no` for Gemini and Apple Intelligence, while Googlebot and Bingbot keep indexing the site for search. The sitemap generator rewrites only the `Sitemap:` line and is idempotent, so the rest of the file survives re-runs.
+
+HTML and markdown responses both carry:
+
+```
+Link: </llms.txt>; rel="describedby"; type="text/plain", </manifest.json>; rel="manifest"
+```
+
+`scripts/link-headers.mjs` holds the header value and the "is this a document request?" rule (plain `.mjs` so both the Node server and the Vite config can import it). `server.js` applies it in production; the `link-headers` plugin in `vite.config.ts` mirrors it in `npm run dev` and `npm run preview`.
+
+#### Link previews (Open Graph)
+
+When a URL is pasted into Slack, Telegram, WhatsApp, iMessage, LinkedIn, or X, the app fetches the
+page and builds a preview card from its `og:` / `twitter:` meta tags. Those scrapers **do not run
+JavaScript**, so React cannot supply the tags — they have to be in the HTML that comes off the wire.
+
+Because this is an SPA with a single `index.html`, the tags are **injected per route at request time**:
+
+1. `scripts/social-metadata.mjs` builds a route → `{ title, description, image, type, publishedTime }`
+   map from the same sources as the markdown (`src/content/pages/*.md`, article `meta.ts`).
+2. `scripts/generate-markdown.mjs` writes it to `build/_social-metadata.json` during `npm run build`.
+3. `server.js` reads that file at boot and, for every document request, replaces the
+   `<!-- social-tags:start … social-tags:end -->` block in the shell with the tags for that route
+   (and rewrites `og:url` + `<link rel=canonical>` to the requesting host). The `social-tags` plugin
+   in `vite.config.ts` does the same in dev, so the two cannot drift.
+
+Two things to know when changing content:
+
+- **Adding a page requires a `PAGE_DESCRIPTIONS` entry** in `scripts/social-metadata.mjs`. Page
+  markdown bodies are far too long for a preview card, so descriptions are hand-authored there. Miss
+  it and the preview silently falls back to the page's H1 as its description.
+- **Articles are automatic.** Title, description, and image come from the article's `meta.ts`, so a
+  new article gets a correct preview with no extra step.
+
+The default preview image is `public/og-image.png` (1999×1023, ≈1.91:1 as the platforms expect).
+Articles use their own CDN image instead. The CDN `?a=<timestamp>` cache-buster is deliberately
+**omitted** from preview URLs — scrapers cache preview images hard, and a per-build URL would defeat
+that. `og:image:width`/`height` are only emitted for the bundled default, whose dimensions are known.
 
 ---
 
@@ -95,10 +146,19 @@ This is a live portfolio. Unless explicitly asked otherwise, **do not change run
 
 ```
 portfolio/
-├── public/                 # Static assets served as-is (favicon, manifest, robots.txt, logos)
-├── index.html              # Vite HTML entry (loads /src/index.tsx)
-├── vite.config.ts          # Vite config (React plugin, `~` + `@` aliases, dev server, build outDir)
+├── public/                 # Static assets served as-is (favicon, manifest, robots.txt, sitemap.xml, og-image.png, logos)
+├── index.html              # Vite HTML entry (loads /src/index.tsx) + site-wide JSON-LD + social-tags block
+├── server.js               # Production server (sirv + markdown negotiation + Link headers + OG tag injection)
+├── vite.config.ts          # Vite config (React plugin, link-headers + markdown-for-agents + social-tags plugins, aliases, build outDir)
 ├── tsconfig.json           # TypeScript config (strict, react-jsx, bundler resolution)
+├── scripts/
+│   ├── generate-sitemap.mjs      # `npm run sitemap`: writes public/sitemap.xml + robots.txt Sitemap line
+│   ├── markdown-content.mjs      # Builds the route → markdown map + llms.txt from src/content
+│   ├── markdown-negotiation.mjs  # Shared Accept-header helpers (server.js + vite.config.ts)
+│   ├── link-headers.mjs          # Shared RFC 8288 Link header value + document-request rule
+│   ├── social-metadata.mjs       # Builds the route → link-preview metadata map (PAGE_DESCRIPTIONS lives here)
+│   ├── social-tags.mjs           # Renders + injects the og:/twitter: tag block into the HTML shell
+│   └── generate-markdown.mjs     # Build step: writes build/_markdown/**.md, build/llms.txt, build/_social-metadata.json
 ├── .agents/skills/         # Reusable SKILL.md skills (canonical copy)
 ├── .claude/skills          # symlink → ../.agents/skills
 ├── src/
@@ -110,6 +170,9 @@ portfolio/
 │   ├── assets/
 │   │   ├── assetsConfig.ts # AssetConfig[] list of every CDN image, grouped by screen
 │   │   └── index.ts        # Builds `{ name: cdnUrl }` map from assetsConfig (default export `assets`)
+│   ├── content/
+│   │   ├── articles/       # Per-article folder: en.md, he.md, meta.ts
+│   │   └── pages/          # Markdown mirror of each non-article route (agent responses only)
 │   ├── components/         # Reusable UI (default-exported), re-exported from components/index.ts
 │   │   └── styles/         # One .scss per component
 │   ├── screens/            # Route-level pages, re-exported from screens/index.ts
@@ -176,6 +239,46 @@ The backend is a separate Heroku app and is **not** in this repo.
 
 ---
 
+## Markdown for Agents
+
+The site answers `Accept: text/markdown` with a markdown version of each page. HTML stays the
+default for browsers. This exists because the site is a client-rendered SPA — an agent fetching
+the HTML only gets an empty `<div id="root">`, so markdown is the only way it can read content.
+
+**How it works**
+
+1. `scripts/markdown-content.mjs` builds a route → markdown map from two sources: `src/content/pages/*.md`
+   (one file per non-article route) and `src/content/articles/*/` (`en.md` + `meta.ts`, the same files
+   the React app renders). It also builds `llms.txt`.
+2. `scripts/generate-markdown.mjs` runs after `vite build` and writes `build/_markdown/**.md`,
+   `build/llms.txt`, and `build/_social-metadata.json`.
+3. `server.js` serves the build. For extensionless document routes it checks the `Accept` header
+   and, when markdown is explicitly requested, responds with `Content-Type: text/markdown; charset=utf-8`,
+   an `x-markdown-tokens` estimate, and `Vary: Accept`. Otherwise it serves the HTML shell itself with
+   per-route Open Graph tags injected. Only real static assets fall through to `sirv`.
+4. The `markdownForAgents` plugin in `vite.config.ts` mirrors the same behavior in `npm run dev`,
+   reading from `src/content` so edits appear without a rebuild.
+
+`scripts/markdown-negotiation.mjs` holds the Accept-header logic and is shared by the server and the
+dev plugin so the two cannot drift. It is covered by `scripts/markdown-negotiation.test.ts` — the
+"HTML stays the default" rule matters most there, since a wildcard `*/*` from a browser must never
+return markdown.
+
+Two safety properties the server relies on, both covered by comments in `server.js`:
+
+- Documents never reach `sirv`, so `Vary: Accept` is set once in `sendShell` and cannot be clobbered by `sirv`'s own `Vary`. Otherwise a cache could serve HTML to an agent or markdown to a browser.
+- Markdown route keys come from the request URL, so the resolved path is confined to `build/_markdown/`. Without that, a crafted route like `/../../secret` would read arbitrary files.
+
+**Maintenance caveat:** `src/content/pages/*.md` is written by hand and mirrors copy that lives in
+the screen components. If you change user-facing copy in `src/screens/`, update the matching page
+markdown in the same commit or the two will drift. Articles have no such problem — they read from
+the article markdown directly.
+
+To add a new route, add a screen as usual, drop a matching `src/content/pages/<route>.md`, and add
+the route to `STATIC_ROUTES` in `scripts/generate-sitemap.mjs`.
+
+---
+
 ## Environment Variables
 
 The app currently requires **no environment variables**. Vite exposes browser vars
@@ -192,9 +295,10 @@ npm run typecheck  # tsc --noEmit (no output, just type errors)
 npm run test       # Vitest (run once); test:watch for watch mode
 npm run lint       # ESLint (flat config, TS + React + hooks + a11y)
 npm run format     # Prettier write (format:check to verify only)
-npm run build      # typecheck + production build → build/
+npm run sitemap    # regenerate public/sitemap.xml + the robots.txt Sitemap line
+npm run build      # sitemap + typecheck + vite build + generated markdown & social metadata → build/
 npm run preview    # serve the production build locally (Vite preview)
-npm run serve      # serve build/ the way Heroku does (sirv, SPA fallback, honors $PORT)
+npm run serve      # serve build/ the way Heroku does (server.js: markdown negotiation + Link headers + OG tags, honors $PORT)
 ```
 
 Tests use **Vitest** + **@testing-library/react** in a **jsdom** environment (config in
@@ -216,6 +320,7 @@ So `.agents/skills/` is read directly by Copilot CLI and, through the symlink, b
 | Skill            | Use for                                                                 |
 |------------------|-------------------------------------------------------------------------|
 | `add-article`    | Add a new bilingual (EN/HE) article to the Articles section from Google Docs text + a CDN image. |
+| `update-content` | Keep the agent/SEO discovery surfaces (sitemap, llms.txt, JSON-LD, per-route markdown) in sync after editing a case study, page copy, a route, or the canonical host. |
 | `ui-ux-pro-max`  | UI/UX design intelligence — styles, palettes, font pairings, UX guidelines (React stack). |
 | `playwright`     | Browser automation — test pages, fill forms, screenshots, responsive/UX checks. |
 | `fact-checker`   | Verify factual claims in docs via web search + propose corrections.     |
@@ -228,12 +333,17 @@ Each skill is `.agents/skills/{name}/SKILL.md` with standard frontmatter (`name`
 
 ## Quick Reference
 
-- Add a route → `src/App.tsx` + a screen in `src/screens/` + export from `src/screens/index.ts`.
+- Add a route → `src/App.tsx` + a screen in `src/screens/` + export from `src/screens/index.ts` + a page markdown file in `src/content/pages/` + the route in `STATIC_ROUTES` (`scripts/generate-sitemap.mjs`) + a `PAGE_DESCRIPTIONS` entry (`scripts/social-metadata.mjs`).
 - Add a reusable component → `src/components/` + a `styles/*.scss` + export from `src/components/index.ts`.
 - Add/adjust prev-next case-study nav → `config.NAVIGATION_DICTIONARY`.
 - Add a testimonial → `config.CLIENTS_DATA`.
 - Change colors → prefer `src/styles/_colors.scss` (note: several components still hardcode hex values inline).
 - Change backend URL/endpoints → `src/config.ts`.
+- Add an article → the `add-article` skill covers it; `sitemap.xml` and `llms.txt` regenerate themselves, so only `npm run sitemap` is needed.
+- Change user-facing copy on a screen → update the matching `src/content/pages/*.md` too.
+- Change site-wide JSON-LD (Person, WebSite, case-study list) → `index.html`; per-article JSON-LD → `src/screens/Article.tsx` via the `StructuredData` component.
+- Change crawler policy or AI-training signals → `public/robots.txt`.
+- Change the default link-preview card → replace `public/og-image.png` (keep ≈1.91:1) and update `DEFAULT_IMAGE` dimensions in `scripts/social-metadata.mjs`.
 
 ---
 

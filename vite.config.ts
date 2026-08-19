@@ -1,9 +1,90 @@
-import { defineConfig } from 'vite';
+import { defineConfig, type Plugin, type PreviewServer, type ViteDevServer } from 'vite';
 import react from '@vitejs/plugin-react';
 import { fileURLToPath, URL } from 'node:url';
+import { applyLinkHeader } from './scripts/link-headers.mjs';
+import { buildLlmsTxt, buildMarkdownRoutes } from './scripts/markdown-content.mjs';
+import { isDocumentRequest, routeToMarkdownKey, sendMarkdown, wantsMarkdown } from './scripts/markdown-negotiation.mjs';
+import { buildSocialMetadata } from './scripts/social-metadata.mjs';
+import { injectSocialTags } from './scripts/social-tags.mjs';
+
+// Mirrors the RFC 8288 Link headers that server.js sends in production.
+function linkHeaders(): Plugin {
+  const use = (server: ViteDevServer | PreviewServer) => {
+    server.middlewares.use((req, res, next) => {
+      applyLinkHeader(res, req.url);
+      next();
+    });
+  };
+
+  return {
+    name: 'link-headers',
+    configureServer: use,
+    configurePreviewServer: use,
+  };
+}
+
+// Mirrors the production markdown negotiation (see server.js) during `npm run dev`,
+// reading straight from src/content so edits show up without a rebuild.
+function markdownForAgents(): Plugin {
+  return {
+    name: 'markdown-for-agents',
+    apply: 'serve',
+    configureServer(server) {
+      server.middlewares.use(async (req, res, next) => {
+        const url = req.url ?? '/';
+
+        if (url.split('?')[0] === '/llms.txt') {
+          const routes = await buildMarkdownRoutes();
+          res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+          res.end(buildLlmsTxt(routes));
+          return;
+        }
+
+        if (!isDocumentRequest(url)) {
+          next();
+          return;
+        }
+
+        res.setHeader('Vary', 'Accept');
+
+        if (!wantsMarkdown(req.headers.accept)) {
+          next();
+          return;
+        }
+
+        const routes = await buildMarkdownRoutes();
+        const markdown = routes.get(routeToMarkdownKey(url)) ?? routes.get('index');
+        if (!markdown) {
+          next();
+          return;
+        }
+
+        sendMarkdown(res, markdown);
+      });
+    },
+  };
+}
+
+// Mirrors the per-route Open Graph injection that server.js does in production, so
+// link previews can be checked with `npm run dev` instead of only after a deploy.
+function socialTags(): Plugin {
+  return {
+    name: 'social-tags',
+    apply: 'serve',
+    transformIndexHtml: {
+      order: 'post',
+      async handler(html, ctx) {
+        const origin = ctx.server?.config.server.origin ?? '';
+        const metadata = await buildSocialMetadata();
+        const key = routeToMarkdownKey(ctx.originalUrl ?? ctx.path ?? '/');
+        return injectSocialTags(html, metadata.get(key) ?? metadata.get('index'), origin);
+      },
+    },
+  };
+}
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), linkHeaders(), markdownForAgents(), socialTags()],
   resolve: {
     alias: {
       '~': fileURLToPath(new URL('.', import.meta.url)),
