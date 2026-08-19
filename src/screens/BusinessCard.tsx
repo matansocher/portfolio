@@ -4,6 +4,7 @@ import { ContactForm, SiteNav } from '../components';
 export default function BusinessCard() {
   return (
     <>
+      <title>Finding Solutions for your Design Challenges — Dekel Nissim</title>
       <SiteNav />
       <main id="content" className="contact-page">
         <section className="cp-hero">

@@ -82,6 +82,7 @@ export default function Article() {
 
   return (
     <>
+      <title>{content.title} — Dekel Nissim</title>
       <StructuredData data={articleSchema} />
       <SiteNav />
       <main id="content" className="article page">

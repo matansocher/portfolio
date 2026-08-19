@@ -25,6 +25,7 @@ const PORT = Number(process.env.PORT) || 3000;
 const BUILD_DIR = fileURLToPath(new URL('./build/', import.meta.url));
 const BUILD_URL = new URL('./build/', import.meta.url);
 const MARKDOWN_DIR = new URL('./build/_markdown/', import.meta.url);
+const PRERENDER_DIR = new URL('./build/_prerender/', import.meta.url);
 
 // Read once at boot: the shell and the metadata are build artifacts and cannot change
 // while the process is alive.
@@ -75,6 +76,22 @@ async function readMarkdown(key) {
   }
 }
 
+// Same path-confinement discipline as readMarkdown above, applied to the prerendered
+// HTML fragments instead. Content comes from this repo's own markdown, so injecting
+// it unescaped into the shell is safe as long as the resolved path stays inside
+// PRERENDER_DIR.
+async function readPrerendered(key) {
+  const target = new URL(`${key}.html`, PRERENDER_DIR);
+  if (!target.href.startsWith(PRERENDER_DIR.href)) {
+    return null;
+  }
+  try {
+    return await readFile(target, 'utf8');
+  } catch {
+    return null;
+  }
+}
+
 // Sends a response body with optional brotli or gzip encoding based on Accept-Encoding.
 // Buffer-in, stream-out: the compressed body is written to res.
 function sendCompressed(req, res, body, contentType) {
@@ -93,11 +110,25 @@ function sendCompressed(req, res, body, contentType) {
   }
 }
 
-function sendShell(req, res, key, status = 200) {
+async function sendShell(req, res, key, status = 200) {
   const origin = originOf(req);
   // Unknown paths fall back to the home page's tags, mirroring the SPA catch-all route.
   const metadata = localize(socialMetadata[key] ?? socialMetadata.index, origin);
-  const body = Buffer.from(injectSocialTags(shell, metadata, origin ?? ''), 'utf8');
+  let html = injectSocialTags(shell, metadata, origin ?? '');
+
+  // Fill the empty SPA mount point with real markup so crawlers that only read
+  // text/html (Bing, DuckDuckGo, most AI bots - unlike Googlebot, they don't
+  // reliably execute JS) see actual content instead of an empty <div id="root">.
+  // The app uses createRoot().render (not hydrateRoot), so React replaces this
+  // markup wholesale on mount rather than reconciling against it - no hydration
+  // mismatch, and no flash since the replacement is the same synchronous paint
+  // that would otherwise have rendered into an empty div.
+  const prerendered = (await readPrerendered(key)) ?? (await readPrerendered('index'));
+  if (prerendered) {
+    html = html.replace('<div id="root"></div>', `<div id="root">${prerendered}</div>`);
+  }
+
+  const body = Buffer.from(html, 'utf8');
 
   res.statusCode = status;
   // The shell is rebuilt on every deploy and references hashed assets, so it must not
@@ -163,7 +194,7 @@ createServer(async (req, res) => {
       }
     }
 
-    sendShell(req, res, key, isKnownRoute ? 200 : 404);
+    await sendShell(req, res, key, isKnownRoute ? 200 : 404);
     return;
   }
 

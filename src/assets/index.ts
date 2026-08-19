@@ -2,7 +2,7 @@ import config from '../config';
 import assetsConfig from './assetsConfig';
 import type { Assets } from '../types';
 
-const query_param = `a=${new Date().getTime()}`;
+const query_param = `a=${__BUILD_TIME__}`;
 
 const files: Assets = {};
 
