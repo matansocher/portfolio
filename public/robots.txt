@@ -36,4 +36,4 @@ Disallow: /
 User-agent: Applebot-Extended
 Disallow: /
 
-Sitemap: https://dkl-portfolio.herokuapp.com/sitemap.xml
+Sitemap: https://dekelnissim.com/sitemap.xml

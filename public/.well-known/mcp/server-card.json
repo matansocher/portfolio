@@ -1,15 +1,15 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/v1/server-card.schema.json",
-  "name": "dkl-portfolio.herokuapp.com/portfolio",
+  "name": "dekelnissim.com/portfolio",
   "title": "Dekel Nissim — Portfolio",
   "description": "Portfolio content for Dekel Nissim, Product Designer & UX Researcher.",
   "version": "0.1.0",
-  "websiteUrl": "https://dkl-portfolio.herokuapp.com/",
+  "websiteUrl": "https://dekelnissim.com/",
   "serverInfo": {
-    "name": "dkl-portfolio.herokuapp.com/portfolio",
+    "name": "dekelnissim.com/portfolio",
     "version": "0.1.0"
   },
-  "endpoint": "https://dkl-portfolio.herokuapp.com/mcp",
+  "endpoint": "https://dekelnissim.com/mcp",
   "transport": "streamable-http",
   "capabilities": {
     "tools": {},
@@ -19,7 +19,7 @@
   "remotes": [
     {
       "type": "streamable-http",
-      "url": "https://dkl-portfolio.herokuapp.com/mcp"
+      "url": "https://dekelnissim.com/mcp"
     }
   ]
 }

@@ -2,69 +2,69 @@
 <rss version="2.0">
   <channel>
     <title>Dekel Nissim — Articles</title>
-    <link>https://dkl-portfolio.herokuapp.com</link>
+    <link>https://dekelnissim.com</link>
     <description>Articles on Product Design, UX Research, and Building Better Products</description>
     <language>en</language>
   <item>
     <title>Why Does a Familiar Solution Feel So Right?</title>
-    <link>https://dkl-portfolio.herokuapp.com/articles/why-familiar-solution-feels-right</link>
-    <guid>https://dkl-portfolio.herokuapp.com/articles/why-familiar-solution-feels-right</guid>
+    <link>https://dekelnissim.com/articles/why-familiar-solution-feels-right</link>
+    <guid>https://dekelnissim.com/articles/why-familiar-solution-feels-right</guid>
     <pubDate>Fri, 21 Aug 2026 00:00:00 GMT</pubDate>
     <description>With too little data, a familiar solution can feel right — not because it fits the problem, but because it is easier to process and defend. Don’t confuse familiarity with proof.</description>
   </item>
   <item>
     <title>Making Financial Information Accessible Is a Huge Step Forward. That Is Exactly Why We Need to Be Careful About the Next Step.</title>
-    <link>https://dkl-portfolio.herokuapp.com/articles/making-financial-information-accessible</link>
-    <guid>https://dkl-portfolio.herokuapp.com/articles/making-financial-information-accessible</guid>
+    <link>https://dekelnissim.com/articles/making-financial-information-accessible</link>
+    <guid>https://dekelnissim.com/articles/making-financial-information-accessible</guid>
     <pubDate>Sat, 08 Aug 2026 00:00:00 GMT</pubDate>
     <description>Financial companies are connecting AI to our data so we can ask questions about our money. A big step forward — and exactly why we must not outsource our understanding and decisions to AI.</description>
   </item>
   <item>
     <title>Not Every Slow Process Needs to Be Optimized With AI</title>
-    <link>https://dkl-portfolio.herokuapp.com/articles/ai-optimizing-slow-processes</link>
-    <guid>https://dkl-portfolio.herokuapp.com/articles/ai-optimizing-slow-processes</guid>
+    <link>https://dekelnissim.com/articles/ai-optimizing-slow-processes</link>
+    <guid>https://dekelnissim.com/articles/ai-optimizing-slow-processes</guid>
     <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
     <description>Not every effort is wasted work. Sometimes the mental process we try to shorten with AI is exactly the part that builds understanding, intuition and expertise.</description>
   </item>
   <item>
     <title>An Assembly Line for Fakes - Have We Lost the Ability to Know What Is Real?</title>
-    <link>https://dkl-portfolio.herokuapp.com/articles/deepfakes-losing-what-is-real</link>
-    <guid>https://dkl-portfolio.herokuapp.com/articles/deepfakes-losing-what-is-real</guid>
+    <link>https://dekelnissim.com/articles/deepfakes-losing-what-is-real</link>
+    <guid>https://dekelnissim.com/articles/deepfakes-losing-what-is-real</guid>
     <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
     <description>As deepfakes and synthetic media scale, our ability to tell what is real gets strained — with implications not just for media literacy, but for trust, institutions and a shared reality.</description>
   </item>
   <item>
     <title>A Good Product Is Often the Result of Someone Insisting</title>
-    <link>https://dkl-portfolio.herokuapp.com/articles/good-product-insisting-on-quality</link>
-    <guid>https://dkl-portfolio.herokuapp.com/articles/good-product-insisting-on-quality</guid>
+    <link>https://dekelnissim.com/articles/good-product-insisting-on-quality</link>
+    <guid>https://dekelnissim.com/articles/good-product-insisting-on-quality</guid>
     <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
     <description>A good product is often born less from a good idea and more from insisting on good execution despite constraints and compromises. Quality is a business asset, and it comes with a cost.</description>
   </item>
   <item>
     <title>When an Interface Acts Like Someone You Can’t Trust</title>
-    <link>https://dkl-portfolio.herokuapp.com/articles/interface-trust-broken-verification</link>
-    <guid>https://dkl-portfolio.herokuapp.com/articles/interface-trust-broken-verification</guid>
+    <link>https://dekelnissim.com/articles/interface-trust-broken-verification</link>
+    <guid>https://dekelnissim.com/articles/interface-trust-broken-verification</guid>
     <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
     <description>A bug is not only a usability problem. When a system sends a verification code and then rejects it, it breaks a small agreement and damages trust.</description>
   </item>
   <item>
     <title>Not Every Product Needs AI. Definitely Not Everywhere.</title>
-    <link>https://dkl-portfolio.herokuapp.com/articles/not-every-product-needs-ai</link>
-    <guid>https://dkl-portfolio.herokuapp.com/articles/not-every-product-needs-ai</guid>
+    <link>https://dekelnissim.com/articles/not-every-product-needs-ai</link>
+    <guid>https://dekelnissim.com/articles/not-every-product-needs-ai</guid>
     <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
     <description>AI is no longer novel enough to be interesting on its own. The question is not whether we added AI, but whether it actually fits the user’s goal or solves a problem that was hard before.</description>
   </item>
   <item>
     <title>There Is a Huge Difference Between Passing Information Along and Building Understanding</title>
-    <link>https://dkl-portfolio.herokuapp.com/articles/passing-information-vs-building-understanding</link>
-    <guid>https://dkl-portfolio.herokuapp.com/articles/passing-information-vs-building-understanding</guid>
+    <link>https://dekelnissim.com/articles/passing-information-vs-building-understanding</link>
+    <guid>https://dekelnissim.com/articles/passing-information-vs-building-understanding</guid>
     <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
     <description>We overload people with information because it feels reassuring, but too much of it creates confusion. The goal is not to transfer information, but to help the other side build understanding.</description>
   </item>
   <item>
     <title>What Lowers Attention, Increases Anxiety, Causes Fatigue and Drains Us Emotionally?</title>
-    <link>https://dkl-portfolio.herokuapp.com/articles/social-media-attention-anxiety-fatigue</link>
-    <guid>https://dkl-portfolio.herokuapp.com/articles/social-media-attention-anxiety-fatigue</guid>
+    <link>https://dekelnissim.com/articles/social-media-attention-anxiety-fatigue</link>
+    <guid>https://dekelnissim.com/articles/social-media-attention-anxiety-fatigue</guid>
     <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
     <description>We used to split social media use into active (connection) and passive (comparison, FoMO, alienation). In recent years that distinction has started to feel insufficient.</description>
   </item>

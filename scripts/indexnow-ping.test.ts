@@ -3,9 +3,9 @@ import { INDEXNOW_ENDPOINT, INDEXNOW_KEY, buildPayload, extractUrls, pingIndexNo
 
 const SAMPLE_SITEMAP = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://dkl-portfolio.herokuapp.com/</loc><lastmod>2026-01-01</lastmod></url>
-  <url><loc>https://dkl-portfolio.herokuapp.com/articles</loc><lastmod>2026-01-01</lastmod></url>
-  <url><loc>https://dkl-portfolio.herokuapp.com/a?x=1&amp;y=2</loc><lastmod>2026-01-01</lastmod></url>
+  <url><loc>https://dekelnissim.com/</loc><lastmod>2026-01-01</lastmod></url>
+  <url><loc>https://dekelnissim.com/articles</loc><lastmod>2026-01-01</lastmod></url>
+  <url><loc>https://dekelnissim.com/a?x=1&amp;y=2</loc><lastmod>2026-01-01</lastmod></url>
 </urlset>`;
 
 describe('indexnow-ping', () => {
@@ -15,9 +15,9 @@ describe('indexnow-ping', () => {
 
   it('extracts and XML-unescapes every <loc> URL', () => {
     expect(extractUrls(SAMPLE_SITEMAP)).toEqual([
-      'https://dkl-portfolio.herokuapp.com/',
-      'https://dkl-portfolio.herokuapp.com/articles',
-      'https://dkl-portfolio.herokuapp.com/a?x=1&y=2',
+      'https://dekelnissim.com/',
+      'https://dekelnissim.com/articles',
+      'https://dekelnissim.com/a?x=1&y=2',
     ]);
   });
 
@@ -26,18 +26,18 @@ describe('indexnow-ping', () => {
   });
 
   it('builds a spec-compliant payload with host and keyLocation', () => {
-    const payload = buildPayload(['https://dkl-portfolio.herokuapp.com/', 'https://dkl-portfolio.herokuapp.com/a']);
+    const payload = buildPayload(['https://dekelnissim.com/', 'https://dekelnissim.com/a']);
     expect(payload).toEqual({
-      host: 'dkl-portfolio.herokuapp.com',
+      host: 'dekelnissim.com',
       key: INDEXNOW_KEY,
-      keyLocation: `https://dkl-portfolio.herokuapp.com/${INDEXNOW_KEY}.txt`,
-      urlList: ['https://dkl-portfolio.herokuapp.com/', 'https://dkl-portfolio.herokuapp.com/a'],
+      keyLocation: `https://dekelnissim.com/${INDEXNOW_KEY}.txt`,
+      urlList: ['https://dekelnissim.com/', 'https://dekelnissim.com/a'],
     });
   });
 
   it('POSTs JSON to the injected endpoint and returns the status', async () => {
     const fetchImpl = vi.fn().mockResolvedValue({ status: 202 });
-    const payload = buildPayload(['https://dkl-portfolio.herokuapp.com/']);
+    const payload = buildPayload(['https://dekelnissim.com/']);
 
     const status = await pingIndexNow(payload, { fetchImpl });
 

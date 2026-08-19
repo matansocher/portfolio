@@ -11,7 +11,7 @@ const ARTICLES_DIR = join(ROOT, 'src', 'content', 'articles');
 const SITEMAP_PATH = join(ROOT, 'public', 'sitemap.xml');
 const ROBOTS_PATH = join(ROOT, 'public', 'robots.txt');
 
-export const BASE_URL = 'https://dkl-portfolio.herokuapp.com';
+export const BASE_URL = 'https://dekelnissim.com';
 
 // Mirrors the public routes declared in src/App.tsx.
 export const STATIC_ROUTES = ['/', '/articles', '/salaries', '/marketer', '/myco', '/employees', '/business-card'];

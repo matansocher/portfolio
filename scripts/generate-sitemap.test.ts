@@ -68,9 +68,9 @@ describe('generate-sitemap', () => {
 
     const xml = buildSitemap([], '2026-01-01', mockResolver);
 
-    expect(xml).toContain('<loc>https://dkl-portfolio.herokuapp.com/</loc>');
+    expect(xml).toContain('<loc>https://dekelnissim.com/</loc>');
     expect(xml).toContain('<lastmod>2026-01-15</lastmod>');
-    expect(xml).toContain('<loc>https://dkl-portfolio.herokuapp.com/articles</loc>');
+    expect(xml).toContain('<loc>https://dekelnissim.com/articles</loc>');
     expect(xml).toContain('<lastmod>2026-02-20</lastmod>');
   });
 
@@ -80,8 +80,8 @@ describe('generate-sitemap', () => {
     const xml = buildSitemap([{ slug: 'test-article', lastmod: '2026-07-01' }], '2026-08-19', mockResolver);
 
     // Static routes should use the fallback
-    expect(xml).toContain('<loc>https://dkl-portfolio.herokuapp.com/</loc>');
-    expect(xml).toMatch(/<loc>https:\/\/dkl-portfolio\.herokuapp\.com\/<\/loc>\s*<lastmod>2026-08-19<\/lastmod>/);
+    expect(xml).toContain('<loc>https://dekelnissim.com/</loc>');
+    expect(xml).toMatch(/<loc>https:\/\/dekelnissim\.com\/<\/loc>\s*<lastmod>2026-08-19<\/lastmod>/);
   });
 
   it('uses article lastmod when available, fallback otherwise', () => {
@@ -96,9 +96,9 @@ describe('generate-sitemap', () => {
       mockResolver,
     );
 
-    expect(xml).toContain('<loc>https://dkl-portfolio.herokuapp.com/articles/with-date</loc>');
+    expect(xml).toContain('<loc>https://dekelnissim.com/articles/with-date</loc>');
     expect(xml).toContain('<lastmod>2026-05-15</lastmod>');
-    expect(xml).toContain('<loc>https://dkl-portfolio.herokuapp.com/articles/without-date</loc>');
+    expect(xml).toContain('<loc>https://dekelnissim.com/articles/without-date</loc>');
     expect(xml).toContain('<lastmod>2026-08-19</lastmod>');
   });
 

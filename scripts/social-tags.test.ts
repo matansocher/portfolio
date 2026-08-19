@@ -82,10 +82,10 @@ describe('injectSocialTags', () => {
     '<head>',
     '    <title>Dekel Nissim</title>',
     '    <meta name="description" content="Dekel Nissim — Product Designer &amp; UX Researcher" />',
-    '    <link rel="canonical" href="https://dkl-portfolio.herokuapp.com/" />',
+    '    <link rel="canonical" href="https://dekelnissim.com/" />',
     '    <!-- social-tags:start — fallback -->',
     '    <meta property="og:title" content="Dekel Nissim" />',
-    '    <meta property="og:url" content="https://dkl-portfolio.herokuapp.com/" />',
+    '    <meta property="og:url" content="https://dekelnissim.com/" />',
     '    <!-- social-tags:end -->',
     '</head>',
   ].join('\n');
@@ -104,7 +104,7 @@ describe('injectSocialTags', () => {
     expect(result).toContain(
       '<link rel="canonical" href="https://example.com/articles/interface-trust-broken-verification" />',
     );
-    expect(result).not.toContain('<link rel="canonical" href="https://dkl-portfolio.herokuapp.com/" />');
+    expect(result).not.toContain('<link rel="canonical" href="https://dekelnissim.com/" />');
   });
 
   it('rewrites the <title> element to the route title', () => {
