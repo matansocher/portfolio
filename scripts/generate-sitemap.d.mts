@@ -8,4 +8,3 @@ export declare function buildSitemap(
 export declare function buildRobots(existing: string): string;
 export declare const BASE_URL: string;
 export declare const STATIC_ROUTES: string[];
-

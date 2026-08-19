@@ -42,8 +42,7 @@ export function getGitLastmodDate(filePath, fallbackDate = new Date().toISOStrin
     const date = execSync(`git log -1 --format=%cs -- "${filePath}"`, {
       encoding: 'utf8',
       stdio: ['pipe', 'pipe', 'pipe'],
-    })
-      .trim();
+    }).trim();
     return date || fallbackDate;
   } catch {
     // git is unavailable or file has no history; use fallback
@@ -63,7 +62,11 @@ export function collectArticles(articlesDir = ARTICLES_DIR) {
     .sort((a, b) => a.slug.localeCompare(b.slug));
 }
 
-export function buildSitemap(articles, today = new Date().toISOString().slice(0, 10), resolveStaticLastmod = getGitLastmodDate) {
+export function buildSitemap(
+  articles,
+  today = new Date().toISOString().slice(0, 10),
+  resolveStaticLastmod = getGitLastmodDate,
+) {
   const urls = [
     ...STATIC_ROUTES.map((route) => {
       const contentFile = route === '/' ? 'src/content/pages/index.md' : `src/content/pages/${route.slice(1)}.md`;

@@ -2,7 +2,14 @@ import { describe, expect, it } from 'vitest';
 import { readdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { BASE_URL, STATIC_ROUTES, buildRobots, buildSitemap, collectArticles, getGitLastmodDate } from './generate-sitemap.mjs';
+import {
+  BASE_URL,
+  STATIC_ROUTES,
+  buildRobots,
+  buildSitemap,
+  collectArticles,
+  getGitLastmodDate,
+} from './generate-sitemap.mjs';
 
 const ARTICLES_DIR = join(dirname(fileURLToPath(import.meta.url)), '..', 'src', 'content', 'articles');
 
