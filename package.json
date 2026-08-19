@@ -7,6 +7,7 @@
     "node": "24"
   },
   "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0",
     "axios": "^1.19.0",
     "react": "^19.2.8",
     "react-copy-to-clipboard": "^5.1.0",
