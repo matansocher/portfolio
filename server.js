@@ -6,11 +6,12 @@
 // run the JavaScript that would set them -- get a correct link preview.
 
 import { createServer } from 'node:http';
-import { readFile } from 'node:fs/promises';
-import { fileURLToPath, URL } from 'node:url';
+import { readFile, readdir } from 'node:fs/promises';
+import { fileURLToPath, pathToFileURL, URL } from 'node:url';
 import { createBrotliCompress, createGzip } from 'node:zlib';
 import { Readable } from 'node:stream';
 import sirv from 'sirv';
+import { StreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/streamableHttp.js';
 import { LINK_HEADER } from './scripts/link-headers.mjs';
 import {
   isDocumentRequest,
@@ -20,12 +21,14 @@ import {
   wantsMarkdown,
 } from './scripts/markdown-negotiation.mjs';
 import { injectSocialTags } from './scripts/social-tags.mjs';
+import { buildMcpServer } from './scripts/mcp-server.mjs';
 
 const PORT = Number(process.env.PORT) || 3000;
 const BUILD_DIR = fileURLToPath(new URL('./build/', import.meta.url));
 const BUILD_URL = new URL('./build/', import.meta.url);
 const MARKDOWN_DIR = new URL('./build/_markdown/', import.meta.url);
 const PRERENDER_DIR = new URL('./build/_prerender/', import.meta.url);
+const ARTICLES_DIR = new URL('./src/content/articles/', import.meta.url);
 
 // Read once at boot: the shell and the metadata are build artifacts and cannot change
 // while the process is alive.
@@ -37,6 +40,50 @@ const [shell, socialMetadata] = await Promise.all([
 // Build the known-route set from the metadata map so 404 detection stays in sync with
 // the sitemap and OG data automatically. The 'index' key maps to '/'.
 const KNOWN_ROUTE_KEYS = new Set(Object.keys(socialMetadata));
+
+// Load article metadata from the source tree for the MCP server.
+// Node 24 strips TypeScript type annotations on import so meta.ts is directly importable.
+const MONTHS_EN = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
+async function loadArticleMeta() {
+  const entries = await readdir(ARTICLES_DIR, { withFileTypes: true });
+  const results = await Promise.all(
+    entries
+      .filter((e) => e.isDirectory())
+      .map(async (entry) => {
+        const folder = new URL(`${entry.name}/`, ARTICLES_DIR);
+        const meta = (await import(pathToFileURL(fileURLToPath(new URL('meta.ts', folder))).href)).default;
+        const en = await readFile(new URL('en.md', folder), 'utf8');
+        const wordCount = en.trim().split(/\s+/).filter(Boolean).length;
+        const readingTime = `${Math.max(1, Math.round(wordCount / 200))} min read`;
+        const [, month, year] = meta.date.split('-').map(Number);
+        const displayDate = `${MONTHS_EN[month - 1]} ${year}`;
+        return {
+          slug: meta.slug,
+          title: meta.en.title,
+          excerpt: meta.en.excerpt,
+          tags: meta.tags,
+          displayDate,
+          readingTime,
+        };
+      }),
+  );
+  return results;
+}
+
+const mcpArticles = await loadArticleMeta();
 
 // Absolute origin for og:url and relative image paths. Heroku terminates TLS at the
 // router, so x-forwarded-proto is the only way to know the public scheme; a direct
@@ -160,6 +207,17 @@ const assets = sirv(BUILD_DIR, {
 
 createServer(async (req, res) => {
   const url = req.url ?? '/';
+  const pathname = url.split('?')[0];
+
+  // MCP endpoint: handle POST/GET/DELETE on /mcp using stateless StreamableHTTP.
+  // Must come before isDocumentRequest so /mcp never falls through to the shell.
+  if (pathname === '/mcp') {
+    const transport = new StreamableHTTPServerTransport({ sessionIdGenerator: undefined });
+    const mcpServer = buildMcpServer({ readMarkdown, articles: mcpArticles });
+    await mcpServer.connect(transport);
+    await transport.handleRequest(req, res);
+    return;
+  }
 
   // Handle explicit .md URLs (e.g. /salaries.md, /articles/slug.md) before the
   // isDocumentRequest check, which would otherwise treat them as static assets.
@@ -173,7 +231,7 @@ createServer(async (req, res) => {
       sendMarkdown(res, markdown);
       return;
     }
-  } else if (url.split('?')[0].endsWith('.md')) {
+  } else if (pathname.endsWith('.md')) {
     // .md extension on an unknown route: 404 rather than falling through to sirv.
     res.statusCode = 404;
     res.end('Not found');

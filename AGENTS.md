@@ -102,7 +102,7 @@ Seven surfaces make the site readable by AI agents, answer engines, and chat app
 | Agent Skills discovery index | served at `/.well-known/agent-skills/index.json` (+ one `SKILL.md` per skill) | Yes — `npm run agent-skills` (`scripts/generate-agent-skills.mjs`), also runs as part of `npm run build` |
 | JSON-LD structured data | `index.html` (Person, WebSite, ItemList) and `src/screens/Article.tsx` (per-article `BlogPosting` via `StructuredData`) | No — hand-maintained |
 | WebMCP tools | `src/components/WebMcp.tsx` (registration) + `src/webmcpTools.ts` (definitions) | No — hand-maintained |
-| MCP Server Card ([SEP-1649/2127](https://github.com/modelcontextprotocol/modelcontextprotocol/pull/2127)) | served at `/.well-known/mcp/server-card.json` from `public/.well-known/mcp/server-card.json` | No — hand-maintained |
+| MCP Server Card ([SEP-1649/2127](https://github.com/modelcontextprotocol/modelcontextprotocol/pull/2127)) | served at `/.well-known/mcp/server-card.json` from `public/.well-known/mcp/server-card.json`; real MCP endpoint at `/mcp` (streamable-http, stateless, read-only tools: `list_pages`, `list_projects`, `list_articles`, `get_article`, `get_page`, `search_content`) | No — hand-maintained |
 
 #### WebMCP (in-browser agent tools)
 
