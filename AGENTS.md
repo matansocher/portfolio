@@ -91,7 +91,7 @@ This is a live portfolio. Unless explicitly asked otherwise, **do not change run
 
 ### Agent discoverability
 
-Six surfaces make the site readable by AI agents, answer engines, and chat apps. All of them assume the canonical host `https://dkl-portfolio.herokuapp.com`.
+Seven surfaces make the site readable by AI agents, answer engines, and chat apps. All of them assume the canonical host `https://dkl-portfolio.herokuapp.com`.
 
 | Surface | Where | Generated? |
 |---|---|---|
@@ -101,6 +101,7 @@ Six surfaces make the site readable by AI agents, answer engines, and chat apps.
 | Open Graph / Twitter link previews | `server.js` + `vite.config.ts`, from `build/_social-metadata.json` | Yes — `scripts/social-metadata.mjs` |
 | JSON-LD structured data | `index.html` (Person, WebSite, ItemList) and `src/screens/Article.tsx` (per-article `BlogPosting` via `StructuredData`) | No — hand-maintained |
 | WebMCP tools | `src/components/WebMcp.tsx` (registration) + `src/webmcpTools.ts` (definitions) | No — hand-maintained |
+| MCP Server Card ([SEP-1649/2127](https://github.com/modelcontextprotocol/modelcontextprotocol/pull/2127)) | served at `/.well-known/mcp/server-card.json` from `public/.well-known/mcp/server-card.json` | No — hand-maintained |
 
 #### WebMCP (in-browser agent tools)
 
@@ -366,6 +367,7 @@ Each skill is `.agents/skills/{name}/SKILL.md` with standard frontmatter (`name`
 - Change user-facing copy on a screen → update the matching `src/content/pages/*.md` too.
 - Change site-wide JSON-LD (Person, WebSite, case-study list) → `index.html`; per-article JSON-LD → `src/screens/Article.tsx` via the `StructuredData` component.
 - Change crawler policy or AI-training signals → `public/robots.txt`.
+- Change the MCP Server Card (identity, endpoint, capabilities, or canonical host) → `public/.well-known/mcp/server-card.json`.
 - Change the default link-preview card → replace `public/og-image.png` (keep ≈1.91:1) and update `DEFAULT_IMAGE` dimensions in `scripts/social-metadata.mjs`.
 
 ---
