@@ -41,8 +41,11 @@ export function renderSocialTags(metadata, baseUrl) {
     tags.push(meta('property', 'og:image:width', image.width), meta('property', 'og:image:height', image.height));
   }
 
+  tags.push(meta('property', 'og:locale', 'en_US'));
+
   if (metadata.type === 'article') {
     tags.push(meta('property', 'article:published_time', metadata.publishedTime));
+    tags.push(meta('property', 'article:author', 'Dekel Nissim'));
     for (const tag of metadata.tags ?? []) {
       tags.push(meta('property', 'article:tag', tag));
     }
@@ -78,5 +81,10 @@ export function injectSocialTags(html, metadata, baseUrl) {
     .replace(
       /<link rel="canonical" href="[^"]*" \/>/,
       `<link rel="canonical" href="${escapeAttribute(metadata.url)}" />`,
+    )
+    .replace(/<title>[^<]*<\/title>/, `<title>${escapeAttribute(metadata.title)}</title>`)
+    .replace(
+      /<meta name="description" content="[^"]*" \/>/,
+      `<meta name="description" content="${escapeAttribute(metadata.description)}" />`,
     );
 }
