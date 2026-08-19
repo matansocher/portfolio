@@ -58,6 +58,6 @@ export function sendMarkdown(res, markdown) {
   res.setHeader('Content-Type', 'text/markdown; charset=utf-8');
   res.setHeader('Content-Length', body.byteLength);
   res.setHeader('x-markdown-tokens', String(estimateTokens(markdown)));
-  res.setHeader('Vary', 'Accept');
+  res.setHeader('Vary', 'Accept, Accept-Encoding');
   res.end(body);
 }

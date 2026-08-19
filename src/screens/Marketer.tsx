@@ -7,7 +7,7 @@ export default function Marketer() {
     <>
       <title>Marketer — Dekel Nissim</title>
       <SiteNav transparent={true} />
-      <div className="marketer">
+      <main id="content" className="marketer">
         <section className="marketer-top" style={{ backgroundImage: `url('${assets.marketerTopBg}')` }}>
           <div className="container">
             <h1>Marketer</h1>
@@ -23,8 +23,8 @@ export default function Marketer() {
         <section className="marketer-design-system">
           <div className="content">
             <div className="top">
-              <img alt="design system example" src={assets.marketerDesignSystem1} />
-              <img alt="design system example" src={assets.marketerDesignSystem2} />
+              <img alt="design system example" src={assets.marketerDesignSystem1} fetchPriority="high" />
+              <img alt="design system example" src={assets.marketerDesignSystem2} loading="lazy" />
             </div>
             <div className="middle">
               <h2>Design System</h2>
@@ -32,31 +32,31 @@ export default function Marketer() {
                 The UI was planned to be clean & minimalistic and support the concept of an all-in-one place to manage &
                 track the organization’s marketing operations.
               </p>
-              <img alt="design system example" src={assets.marketerDesignSystem3} />
-              <img alt="design system example" src={assets.marketerDesignSystem4} />
+              <img alt="design system example" src={assets.marketerDesignSystem3} loading="lazy" />
+              <img alt="design system example" src={assets.marketerDesignSystem4} loading="lazy" />
             </div>
           </div>
         </section>
 
         <section className="marketer-examples">
           <div className="content">
-            <img alt="marketer app screen example" src={assets.marketerExamples1} />
+            <img alt="marketer app screen example" src={assets.marketerExamples1} loading="lazy" />
           </div>
         </section>
 
         <section className="marketer-graphs">
           <div className="content">
             <h2>Graphs</h2>
-            <img alt="graphs example" src={assets.marketerGraphs1} />
-            <img alt="graphs example" src={assets.marketerGraphs2} />
-            <img alt="graphs example" src={assets.marketerGraphs3} />
+            <img alt="graphs example" src={assets.marketerGraphs1} loading="lazy" />
+            <img alt="graphs example" src={assets.marketerGraphs2} loading="lazy" />
+            <img alt="graphs example" src={assets.marketerGraphs3} loading="lazy" />
           </div>
         </section>
 
         <section className="marketer-bottom">
-          <img alt="app screens examples" src={assets.marketerBottom1} />
+          <img alt="app screens examples" src={assets.marketerBottom1} loading="lazy" />
         </section>
-      </div>
+      </main>
 
       <BottomNavigation pathname="marketer" />
     </>

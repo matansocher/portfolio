@@ -6,7 +6,7 @@ export default function BusinessCard() {
     <>
       <title>Finding Solutions for your Design Challenges — Dekel Nissim</title>
       <SiteNav />
-      <main className="contact-page">
+      <main id="content" className="contact-page">
         <section className="cp-hero">
           <div className="cp-content">
             <div className="cp-grid">

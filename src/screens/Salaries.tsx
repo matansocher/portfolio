@@ -10,7 +10,7 @@ export default function Salaries() {
     <>
       <title>Salary Additions — Dekel Nissim</title>
       <SiteNav transparent={true} />
-      <div className="salaries">
+      <main id="content" className="salaries">
         <section className="salaries-top" style={{ backgroundImage: `url('${assets.salariesTopBg}')` }}>
           <div className="container">
             <h1>Salary Additions</h1>
@@ -24,8 +24,13 @@ export default function Salaries() {
 
         <section className="salaries-main-app-screen">
           <div className="screens">
-            <img className="screens-left" alt="main app screen" src={assets.salariesMainAppScreen1} />
-            <img className="screens-right" alt="main app screen" src={assets.salariesMainAppScreen2} />
+            <img
+              className="screens-left"
+              alt="main app screen"
+              src={assets.salariesMainAppScreen1}
+              fetchPriority="high"
+            />
+            <img className="screens-right" alt="main app screen" src={assets.salariesMainAppScreen2} loading="lazy" />
           </div>
         </section>
 
@@ -188,8 +193,8 @@ export default function Salaries() {
               <br />I also preformed observations while they we’re working, in order to understand their work flow.
             </p>
             <div className="content-content">
-              <img alt="observations example" src={assets.salariesObservations1} />
-              <img alt="observations example" src={assets.salariesObservations2} />
+              <img alt="observations example" src={assets.salariesObservations1} loading="lazy" />
+              <img alt="observations example" src={assets.salariesObservations2} loading="lazy" />
             </div>
           </div>
         </section>
@@ -212,12 +217,12 @@ export default function Salaries() {
                 </p>
               </div>
               <div className="side-by-side-right">
-                <img alt="flow example" src={assets.salariesFlows1} />
+                <img alt="flow example" src={assets.salariesFlows1} loading="lazy" />
               </div>
             </div>
             <div className="content-part">
               <h4>2. Calculate salary additions</h4>
-              <img alt="flow example" src={assets.salariesFlows2} />
+              <img alt="flow example" src={assets.salariesFlows2} loading="lazy" />
             </div>
             <div className="content-part side-by-side">
               <div className="side-by-side-left">
@@ -233,14 +238,14 @@ export default function Salaries() {
                 <p>You can also see two examples of these flow charts - the root flow charts for basic calculations.</p>
               </div>
               <div className="side-by-side-right">
-                <img alt="flow example" src={assets.salariesFlows3} />
+                <img alt="flow example" src={assets.salariesFlows3} loading="lazy" />
               </div>
             </div>
             <div className="content-part">
-              <img alt="flow example" src={assets.salariesFlows4} />
+              <img alt="flow example" src={assets.salariesFlows4} loading="lazy" />
             </div>
             <div className="content-part">
-              <img alt="flow example" src={assets.salariesFlows5} />
+              <img alt="flow example" src={assets.salariesFlows5} loading="lazy" />
             </div>
           </div>
         </section>
@@ -255,9 +260,9 @@ export default function Salaries() {
             </p>
             <div className="content-part">
               <h4>Wireframes</h4>
-              <img alt="app screen example" src={assets.salariesTest1} />
-              <img alt="app screen example" src={assets.salariesTest2} />
-              <img alt="app screen example" src={assets.salariesTest3} />
+              <img alt="app screen example" src={assets.salariesTest1} loading="lazy" />
+              <img alt="app screen example" src={assets.salariesTest2} loading="lazy" />
+              <img alt="app screen example" src={assets.salariesTest3} loading="lazy" />
             </div>
             <div className="content-part">
               <h4>First stage testing</h4>
@@ -347,9 +352,9 @@ export default function Salaries() {
             </ul>
             <div className="content-bottom">
               <h3>Dashboard</h3>
-              <img alt="main screen and ui" src={assets.salariesMainScreenAndUI1} />
+              <img alt="main screen and ui" src={assets.salariesMainScreenAndUI1} loading="lazy" />
               <h3>Digital Attendance Card</h3>
-              <img alt="main screen and ui" src={assets.salariesMainScreenAndUI2} />
+              <img alt="main screen and ui" src={assets.salariesMainScreenAndUI2} loading="lazy" />
             </div>
           </div>
         </section>
@@ -405,7 +410,7 @@ export default function Salaries() {
         </section>
 
         <BottomNavigation pathname="salaries" />
-      </div>
+      </main>
     </>
   );
 }
