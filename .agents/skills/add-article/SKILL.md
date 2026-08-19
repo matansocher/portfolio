@@ -121,6 +121,15 @@ const articleAssets: AssetConfig[] = [
   curl -s -o /dev/null -w "%{http_code}" "https://storage.googleapis.com/dkl-portfolio/new/articles/<image-filename>.png"
   ```
   A `200` means it's live. If it's not up yet, the card/hero image will just be blank until the user uploads it — that's expected, not a bug.
+- **Set a long cache header on the uploaded image.** New CDN uploads default to `Cache-Control: public, max-age=3600` (1 hour). Since every asset URL carries a per-build cache-buster (`?a=<timestamp>`), the object at a given URL never changes and should be cached for a year. Set it once the image is up (via Google Cloud Shell — `gsutil` is pre-installed there):
+  ```bash
+  gsutil setmeta -h "Cache-Control:public, max-age=31536000, immutable" "gs://dkl-portfolio/new/articles/<image-filename>.png"
+  ```
+  Or re-apply to every object in one idempotent pass (safe to repeat any time):
+  ```bash
+  gsutil -m setmeta -h "Cache-Control:public, max-age=31536000, immutable" "gs://dkl-portfolio/new/**"
+  ```
+  This only edits metadata, never the image bytes. Verify with `gsutil stat gs://dkl-portfolio/new/articles/<image-filename>.png | grep -i cache`.
 
 ### Step 6: Regenerate the sitemap
 

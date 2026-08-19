@@ -6,7 +6,7 @@
       "type": "skill-md",
       "description": "Add a new bilingual (English + Hebrew) article to the portfolio's Articles section from Google Docs text plus an image. Use when the user wants to publish, add, or create a new article or blog post. Covers the content-folder structure, meta.ts, the Google Docs link/formatting quirks, CDN image handling, and validation. Not for adding case-study Projects (Salaries, Marketer, Myco, Employees), which use a separate component-based system.",
       "url": "/.well-known/agent-skills/add-article/SKILL.md",
-      "digest": "sha256:94e53fdb9f0311b184d833596cf59648bf1db1a317f09e21b9d434a013fc8705"
+      "digest": "sha256:c01630252caca986d95e05a461da09f235910e0ed6aebaaa41894ddffe6eb566"
     },
     {
       "name": "fact-checker",
