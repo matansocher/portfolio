@@ -113,6 +113,8 @@ export async function buildMarkdownRoutes() {
 
 export function buildLlmsTxt(routes, baseUrl = BASE_URL) {
   const url = (path) => `${baseUrl}${path}`;
+  // Route key → .md URL (index maps to /index.md for agents)
+  const mdUrl = (key) => `${baseUrl}/${key === 'index' ? 'index' : key}.md`;
 
   const lines = [
     '# Dekel Nissim',
@@ -121,20 +123,20 @@ export function buildLlmsTxt(routes, baseUrl = BASE_URL) {
     '',
     'Services: UX research, product design, design systems, and product strategy. Contact: dklnsm@gmail.com',
     '',
-    'Every page on this site is available as markdown by sending `Accept: text/markdown`.',
+    'Every page on this site is available as markdown at `<route>.md` (e.g. `/salaries.md`) or by sending `Accept: text/markdown` to the extensionless route.',
     '',
     '## Pages',
     '',
-    `- [Home](${url('/')}): Selected work and client testimonials`,
-    `- [Articles](${url('/articles')}): Writing on UX research and product design, in English and Hebrew`,
-    `- [Business Card](${url('/business-card')}): Freelance services and contact form`,
+    `- [Home](${mdUrl('index')}): Selected work and client testimonials`,
+    `- [Articles](${mdUrl('articles')}): Writing on UX research and product design, in English and Hebrew`,
+    `- [Business Card](${mdUrl('business-card')}): Freelance services and contact form`,
     '',
     '## Case Studies',
     '',
-    `- [Salary Additions](${url('/salaries')}): Automating salary calculations and approvals for a municipal HR department`,
-    `- [Marketer](${url('/marketer')}): Design system for an early-stage marketing platform`,
-    `- [Myco](${url('/myco')}): Two mobile apps for community events and event producers`,
-    `- [Employee Onboarding Page](${url('/employees')}): A flexible onboarding template for a global workforce`,
+    `- [Salary Additions](${mdUrl('salaries')}): Automating salary calculations and approvals for a municipal HR department`,
+    `- [Marketer](${mdUrl('marketer')}): Design system for an early-stage marketing platform`,
+    `- [Myco](${mdUrl('myco')}): Two mobile apps for community events and event producers`,
+    `- [Employee Onboarding Page](${mdUrl('employees')}): A flexible onboarding template for a global workforce`,
     '',
     '## Articles',
     '',
@@ -143,7 +145,7 @@ export function buildLlmsTxt(routes, baseUrl = BASE_URL) {
   for (const key of routes.keys()) {
     if (key.startsWith('articles/')) {
       const title = routes.get(key).split('\n')[0].replace(/^#\s*/, '');
-      lines.push(`- [${title}](${url(`/${key}`)})`);
+      lines.push(`- [${title}](${mdUrl(key)})`);
     }
   }
 
@@ -155,7 +157,22 @@ export function buildLlmsTxt(routes, baseUrl = BASE_URL) {
     '- Articles are published in English and Hebrew, toggled client-side on the same URL. The markdown responses serve the English text.',
     '- There is no public API. The only backend endpoint is the contact form submission on a separate service.',
     `- Machine-readable index: ${url('/sitemap.xml')}. Crawler policy: ${url('/robots.txt')}.`,
+    `- Full content of all pages concatenated: ${url('/llms-full.txt')}.`,
   );
 
   return `${lines.join('\n')}\n`;
+}
+
+const LLMS_FULL_SEPARATOR = '\n\n---\n\n';
+
+export function buildLlmsFullTxt(routes, baseUrl = BASE_URL) {
+  const header = buildLlmsTxt(routes, baseUrl);
+  const sections = [];
+
+  for (const [key, markdown] of routes) {
+    const sectionHeader = `# Source: /${key === 'index' ? '' : key}\n\n`;
+    sections.push(`${sectionHeader}${markdown.trim()}`);
+  }
+
+  return `${header}${LLMS_FULL_SEPARATOR}${sections.join(LLMS_FULL_SEPARATOR)}\n`;
 }

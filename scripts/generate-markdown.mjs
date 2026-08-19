@@ -4,7 +4,7 @@
 import { mkdir, writeFile } from 'node:fs/promises';
 import { dirname } from 'node:path';
 import { fileURLToPath, URL } from 'node:url';
-import { buildLlmsTxt, buildMarkdownRoutes } from './markdown-content.mjs';
+import { buildLlmsFullTxt, buildLlmsTxt, buildMarkdownRoutes } from './markdown-content.mjs';
 import { buildPrerenderRoutes } from './prerender-content.mjs';
 import { buildSocialMetadata } from './social-metadata.mjs';
 
@@ -31,6 +31,7 @@ for (const [key, html] of prerendered) {
 }
 
 await writeFile(fileURLToPath(new URL('llms.txt', BUILD_DIR)), buildLlmsTxt(routes), 'utf8');
+await writeFile(fileURLToPath(new URL('llms-full.txt', BUILD_DIR)), buildLlmsFullTxt(routes), 'utf8');
 
 // Emitted as JSON so the server can inject per-route preview tags without importing
 // anything under src/ at runtime.
@@ -42,5 +43,5 @@ await writeFile(
 );
 
 console.log(
-  `Generated ${routes.size} markdown documents, ${prerendered.size} prerendered HTML fragments, llms.txt, and ${social.size} social metadata entries`,
+  `Generated ${routes.size} markdown documents, ${prerendered.size} prerendered HTML fragments, llms.txt, llms-full.txt, and ${social.size} social metadata entries`,
 );

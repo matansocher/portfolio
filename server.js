@@ -12,7 +12,13 @@ import { createBrotliCompress, createGzip } from 'node:zlib';
 import { Readable } from 'node:stream';
 import sirv from 'sirv';
 import { LINK_HEADER } from './scripts/link-headers.mjs';
-import { isDocumentRequest, routeToMarkdownKey, sendMarkdown, wantsMarkdown } from './scripts/markdown-negotiation.mjs';
+import {
+  isDocumentRequest,
+  mdUrlToKey,
+  routeToMarkdownKey,
+  sendMarkdown,
+  wantsMarkdown,
+} from './scripts/markdown-negotiation.mjs';
 import { injectSocialTags } from './scripts/social-tags.mjs';
 
 const PORT = Number(process.env.PORT) || 3000;
@@ -154,6 +160,25 @@ const assets = sirv(BUILD_DIR, {
 
 createServer(async (req, res) => {
   const url = req.url ?? '/';
+
+  // Handle explicit .md URLs (e.g. /salaries.md, /articles/slug.md) before the
+  // isDocumentRequest check, which would otherwise treat them as static assets.
+  // Keys are validated against the known set — never derived from user-controlled paths.
+  const mdKey = mdUrlToKey(url, KNOWN_ROUTE_KEYS);
+  if (mdKey !== null) {
+    // Known .md route: serve markdown with 200.
+    const markdown = await readMarkdown(mdKey);
+    if (markdown) {
+      res.setHeader('Link', LINK_HEADER);
+      sendMarkdown(res, markdown);
+      return;
+    }
+  } else if (url.split('?')[0].endsWith('.md')) {
+    // .md extension on an unknown route: 404 rather than falling through to sirv.
+    res.statusCode = 404;
+    res.end('Not found');
+    return;
+  }
 
   if (isDocumentRequest(url)) {
     const key = routeToMarkdownKey(url);

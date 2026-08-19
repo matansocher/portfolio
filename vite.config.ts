@@ -3,8 +3,14 @@ import react from '@vitejs/plugin-react';
 import { compression } from 'vite-plugin-compression2';
 import { fileURLToPath, URL } from 'node:url';
 import { applyLinkHeader } from './scripts/link-headers.mjs';
-import { buildLlmsTxt, buildMarkdownRoutes } from './scripts/markdown-content.mjs';
-import { isDocumentRequest, routeToMarkdownKey, sendMarkdown, wantsMarkdown } from './scripts/markdown-negotiation.mjs';
+import { buildLlmsFullTxt, buildLlmsTxt, buildMarkdownRoutes } from './scripts/markdown-content.mjs';
+import {
+  isDocumentRequest,
+  mdUrlToKey,
+  routeToMarkdownKey,
+  sendMarkdown,
+  wantsMarkdown,
+} from './scripts/markdown-negotiation.mjs';
 import { buildPrerenderRoutes } from './scripts/prerender-content.mjs';
 import { buildSocialMetadata } from './scripts/social-metadata.mjs';
 import { injectSocialTags } from './scripts/social-tags.mjs';
@@ -34,12 +40,32 @@ function markdownForAgents(): Plugin {
     configureServer(server) {
       server.middlewares.use(async (req, res, next) => {
         const url = req.url ?? '/';
+        const path = url.split('?')[0];
 
-        if (url.split('?')[0] === '/llms.txt') {
+        if (path === '/llms.txt') {
           const routes = await buildMarkdownRoutes();
           res.setHeader('Content-Type', 'text/plain; charset=utf-8');
           res.end(buildLlmsTxt(routes));
           return;
+        }
+
+        if (path === '/llms-full.txt') {
+          const routes = await buildMarkdownRoutes();
+          res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+          res.end(buildLlmsFullTxt(routes));
+          return;
+        }
+
+        // Handle explicit .md URLs before isDocumentRequest, which treats them as assets.
+        const routes = await buildMarkdownRoutes();
+        const mdKey = mdUrlToKey(url, routes);
+        if (mdKey !== null) {
+          const markdown = routes.get(mdKey);
+          if (markdown) {
+            res.setHeader('Link', '');
+            sendMarkdown(res, markdown);
+            return;
+          }
         }
 
         if (!isDocumentRequest(url)) {
@@ -54,7 +80,6 @@ function markdownForAgents(): Plugin {
           return;
         }
 
-        const routes = await buildMarkdownRoutes();
         const markdown = routes.get(routeToMarkdownKey(url)) ?? routes.get('index');
         if (!markdown) {
           next();
