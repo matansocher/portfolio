@@ -89,6 +89,9 @@ function socialTags(): Plugin {
 const TEXT_ASSET_RE = /\.(js|css|html|svg|json|xml|txt|md)$/;
 
 export default defineConfig({
+  define: {
+    __BUILD_TIME__: JSON.stringify(Date.now()),
+  },
   plugins: [
     react(),
     linkHeaders(),
