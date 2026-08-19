@@ -1,4 +1,5 @@
 import './styles/Article.scss';
+import { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import { SiteNav, StructuredData } from '../components';
@@ -10,6 +11,13 @@ export default function Article() {
   const { slug } = useParams();
   const article = articles.find((item) => item.slug === slug);
   const [language] = useArticleLanguage();
+
+  useEffect(() => {
+    document.documentElement.lang = language;
+    return () => {
+      document.documentElement.lang = 'en';
+    };
+  }, [language]);
 
   if (!article) {
     return (
