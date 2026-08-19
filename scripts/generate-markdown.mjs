@@ -30,4 +30,6 @@ await writeFile(
   'utf8',
 );
 
-console.log(`Generated ${routes.size} markdown documents, llms.txt, llms-full.txt, and ${social.size} social metadata entries`);
+console.log(
+  `Generated ${routes.size} markdown documents, llms.txt, llms-full.txt, and ${social.size} social metadata entries`,
+);
