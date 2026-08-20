@@ -1,5 +1,6 @@
 import config from '@/config';
 import articles from '@/data/articles';
+import { searchContent } from '@/utils/search';
 import type { ArticleLanguage } from '@/types';
 
 export interface WebMcpToolContext {
@@ -24,21 +25,6 @@ const LANGUAGE_ENUM: ArticleLanguage[] = ['en', 'he'];
 
 function resolveLanguage(value: unknown): ArticleLanguage {
   return value === 'he' ? 'he' : 'en';
-}
-
-function articleSummary(slug: string, language: ArticleLanguage) {
-  const article = articles.find((item) => item.slug === slug);
-  if (!article) return null;
-  const locale = article[language];
-  return {
-    slug: article.slug,
-    title: locale.title,
-    excerpt: locale.excerpt,
-    tags: article.tags,
-    date: locale.displayDate,
-    readingTime: locale.readingTime,
-    url: `/articles/${article.slug}`,
-  };
 }
 
 export function buildWebMcpTools({ navigate }: WebMcpToolContext): WebMcpToolDefinition[] {
@@ -187,31 +173,27 @@ export function buildWebMcpTools({ navigate }: WebMcpToolContext): WebMcpToolDef
         required: ['query'],
       },
       execute: (input) => {
-        const query = (typeof input.query === 'string' ? input.query : '').trim().toLowerCase();
+        const query = typeof input.query === 'string' ? input.query : '';
         const language = resolveLanguage(input.language);
-        if (!query) {
-          return { projects: [], articles: [] };
-        }
+        const { projects, articles: matchedArticles } = searchContent(query, language);
 
-        const projects = config.PROJECTS.filter((project) =>
-          `${project.title} ${project.summary}`.toLowerCase().includes(query),
-        ).map((project) => ({
-          key: project.key,
-          title: project.title,
-          summary: project.summary,
-          url: project.path,
-        }));
-
-        const matchedArticles = articles
-          .filter((article) => {
-            const locale = article[language];
-            const haystack = `${locale.title} ${locale.excerpt} ${article.tags.join(' ')}`.toLowerCase();
-            return haystack.includes(query);
-          })
-          .map((article) => articleSummary(article.slug, language))
-          .filter((item): item is NonNullable<typeof item> => item !== null);
-
-        return { projects, articles: matchedArticles };
+        return {
+          projects: projects.map((project) => ({
+            key: project.key,
+            title: project.title,
+            summary: project.summary,
+            url: project.url,
+          })),
+          articles: matchedArticles.map((article) => ({
+            slug: article.slug,
+            title: article.title,
+            excerpt: article.excerpt,
+            tags: article.tags,
+            date: article.date,
+            readingTime: article.readingTime,
+            url: `/articles/${article.slug}`,
+          })),
+        };
       },
     },
   ];

@@ -10,7 +10,7 @@ export default function Myco() {
   return (
     <>
       <title>Myco — Dekel Nissim</title>
-      <SiteNav transparent={true} />
+      <SiteNav />
       <main id="content" className="myco">
         <section className="myco-top" style={{ backgroundImage: `url('${assets.mycoTopBg}')` }}>
           <div className="container">

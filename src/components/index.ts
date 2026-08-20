@@ -12,6 +12,7 @@ import Logos from './Logos';
 import Navbar from './Navbar';
 import PercentageCircle from './PercentageCircle';
 import ScrollToTopOnPageLoad from './ScrollToTopOnPageLoad';
+import SearchDialog from './SearchDialog';
 import SiteNav from './SiteNav';
 import StructuredData from './StructuredData';
 import WebMcp from './WebMcp';
@@ -31,6 +32,7 @@ export {
   Navbar,
   PercentageCircle,
   ScrollToTopOnPageLoad,
+  SearchDialog,
   SiteNav,
   StructuredData,
   WebMcp,
