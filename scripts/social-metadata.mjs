@@ -21,7 +21,7 @@ export const DEFAULT_IMAGE = {
   path: '/og-image.png',
   width: 1999,
   height: 1023,
-  alt: 'Dekel Nissim — Product design for complex products',
+  alt: 'Dekel Nissim - Product design for complex products',
 };
 
 // Hand-written descriptions for the static pages. The page markdown leads with an
@@ -32,7 +32,7 @@ const PAGE_DESCRIPTIONS = {
     'Product designer, UX strategist, and researcher helping product teams turn complex workflows, AI-assisted design processes, design systems, and product questions into clearer decisions.',
   articles: 'Writing on UX research and product design, in English and Hebrew.',
   'business-card': 'Freelance UX research and product design. Get in touch.',
-  faq: 'Answers to common questions about working with Dekel Nissim — services, products, and how to get in touch.',
+  faq: 'Answers to common questions about working with Dekel Nissim - services, products, and how to get in touch.',
   salaries: 'Automating salary calculations and approvals for a municipal HR department.',
   marketer: 'Design system for an early-stage marketing platform.',
   myco: 'Two mobile apps for community events and event producers.',
@@ -59,8 +59,8 @@ function titleOf(markdown) {
 // `og:title` is rendered next to `og:site_name`, but the home page uses its full
 // positioning line as the title so search results and previews read clearly.
 function pageTitle(key, markdown) {
-  if (key === 'index') return 'Dekel Nissim — Product Designer, UX Strategist & Researcher';
-  return `${PAGE_TITLES[key] ?? titleOf(markdown)} — ${SITE_NAME}`;
+  if (key === 'index') return 'Dekel Nissim - Product Designer, UX Strategist & Researcher';
+  return `${PAGE_TITLES[key] ?? titleOf(markdown)} - ${SITE_NAME}`;
 }
 
 function isoDate(date) {
@@ -128,7 +128,7 @@ export async function buildSocialMetadata() {
   for (const entry of folders.filter((folder) => folder.isDirectory())) {
     const meta = (await import(pathToFileURL(join(ARTICLES_DIR, entry.name, 'meta.ts')).href)).default;
     metadata.set(`articles/${meta.slug}`, {
-      title: `${meta.en.title} — ${SITE_NAME}`,
+      title: `${meta.en.title} - ${SITE_NAME}`,
       description: meta.en.excerpt,
       url: `${BASE_URL}/articles/${meta.slug}`,
       type: 'article',
@@ -141,7 +141,7 @@ export async function buildSocialMetadata() {
     // Hebrew version lives at its own crawlable URL so it can be indexed and ranked
     // independently; server.js gates document routes on these keys, so it must exist here.
     metadata.set(`he/articles/${meta.slug}`, {
-      title: `${meta.he.title} — ${SITE_NAME}`,
+      title: `${meta.he.title} - ${SITE_NAME}`,
       description: meta.he.excerpt,
       url: `${BASE_URL}/he/articles/${meta.slug}`,
       type: 'article',

@@ -2,17 +2,17 @@
 // Kept pure and dependency-injected so it can be unit-tested without a real filesystem.
 //
 // Tools exposed (read-only, mirroring the in-browser WebMCP surface):
-//   list_pages       — all navigable routes with path + description
-//   list_projects    — case-study projects with title, summary, url
-//   list_articles    — all published articles (title, excerpt, tags, date, readingTime)
-//   get_article      — full markdown content for one article by slug
-//   get_page         — raw markdown for any route (e.g. /salaries, /articles/some-slug)
-//   search_content   — substring search across all markdown content
+//   list_pages       - all navigable routes with path + description
+//   list_projects    - case-study projects with title, summary, url
+//   list_articles    - all published articles (title, excerpt, tags, date, readingTime)
+//   get_article      - full markdown content for one article by slug
+//   get_page         - raw markdown for any route (e.g. /salaries, /articles/some-slug)
+//   search_content   - substring search across all markdown content
 
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
 
-// Static data that mirrors src/webmcpTools.ts — kept here so the server has no
+// Static data that mirrors src/webmcpTools.ts - kept here so the server has no
 // dependency on the React/Vite source tree.
 const PAGES = [
   { path: '/', title: 'Home', description: "Landing page with Dekel Nissim's projects and testimonials" },

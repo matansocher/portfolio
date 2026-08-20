@@ -19,7 +19,7 @@ export const FAQ_ITEMS: FaqItem[] = [
   {
     question: 'What kinds of products does Dekel specialize in?',
     answer:
-      'Complex systems and internal tools — for example an internal salary calculation and approval system, a marketing management system, and an event management app — spanning both desktop and mobile.',
+      'Complex systems and internal tools - for example an internal salary calculation and approval system, a marketing management system, and an event management app - spanning both desktop and mobile.',
   },
   {
     question: 'What services does Dekel offer?',
@@ -34,7 +34,7 @@ export const FAQ_ITEMS: FaqItem[] = [
   {
     question: 'What does Dekel write about?',
     answer:
-      'Dekel writes articles on UX design, product, design process, and the thoughtful use of AI in products — arguing that not every product or slow process needs AI.',
+      'Dekel writes articles on UX design, product, design process, and the thoughtful use of AI in products - arguing that not every product or slow process needs AI.',
   },
   {
     question: 'How can I get in touch with Dekel?',
@@ -46,7 +46,7 @@ export const FAQ_ITEMS: FaqItem[] = [
 const SITE_ORIGIN = 'https://dekelnissim.com';
 
 // FAQPage structured data. Rendered once site-wide on the dedicated /faq screen
-// (Google guideline: mark up a page's FAQ only once) — not on /business-card,
+// (Google guideline: mark up a page's FAQ only once) - not on /business-card,
 // which keeps only the visible list below.
 export const faqPageSchema = {
   '@context': 'https://schema.org',

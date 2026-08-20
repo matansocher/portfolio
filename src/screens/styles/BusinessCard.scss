@@ -1,4 +1,4 @@
-/* Contact ("business card") page — matches the Home page look and feel.
+/* Contact ("business card") page - matches the Home page look and feel.
    Scoped under .contact-page so it overrides the global element styles in
    styles/index.scss (Raleway, oversized h1, etc.). */
 
@@ -167,7 +167,7 @@
     }
   }
 
-  /* Right column — form card */
+  /* Right column - form card */
   .cp-form-card {
     background: var(--cp-paper);
     border: 1px solid var(--cp-border);

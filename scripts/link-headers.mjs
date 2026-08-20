@@ -3,7 +3,7 @@
 
 export const LINK_HEADER = '</llms.txt>; rel="describedby"; type="text/plain", </manifest.json>; rel="manifest"';
 
-// Only HTML documents carry the header — static assets (js/css/images) do not.
+// Only HTML documents carry the header - static assets (js/css/images) do not.
 export function shouldSendLinkHeader(pathname) {
   const lastSegment = pathname.slice(pathname.lastIndexOf('/') + 1);
   return !lastSegment.includes('.') || lastSegment.endsWith('.html');

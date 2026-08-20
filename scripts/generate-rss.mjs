@@ -1,4 +1,4 @@
-// Generates public/feed.xml — an RSS 2.0 feed of articles ordered by date (newest first).
+// Generates public/feed.xml - an RSS 2.0 feed of articles ordered by date (newest first).
 
 import { readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
@@ -80,7 +80,7 @@ export function buildRssFeed(articles) {
     '<?xml version="1.0" encoding="UTF-8"?>',
     '<rss version="2.0">',
     '  <channel>',
-    '    <title>Dekel Nissim — Articles</title>',
+    '    <title>Dekel Nissim - Articles</title>',
     `    <link>${BASE_URL}</link>`,
     '    <description>Articles on Product Design, UX Research, and Building Better Products</description>',
     '    <language>en</language>',

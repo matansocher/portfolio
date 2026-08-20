@@ -35,7 +35,7 @@ export interface SearchResults {
 }
 
 export const SEARCHABLE_PAGES: SearchPageResult[] = [
-  { type: 'page', path: '/', title: 'Home', description: "Dekel Nissim's portfolio — projects and testimonials" },
+  { type: 'page', path: '/', title: 'Home', description: "Dekel Nissim's portfolio - projects and testimonials" },
   {
     type: 'page',
     path: '/articles',

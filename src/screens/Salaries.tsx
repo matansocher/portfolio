@@ -8,7 +8,7 @@ export default function Salaries() {
 
   return (
     <>
-      <title>Salary Additions — Dekel Nissim</title>
+      <title>Salary Additions - Dekel Nissim</title>
       <SiteNav />
       <main id="content" className="salaries">
         <section className="salaries-top" style={{ backgroundImage: `url('${assets.salariesTopBg}')` }}>

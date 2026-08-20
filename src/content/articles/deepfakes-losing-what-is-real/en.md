@@ -1,4 +1,4 @@
-**TL;DR:** The assembly line of fakes — deepfakes, synthetic content, and expertly edited media — creates a new layer of uncertainty. As fake content scales, our ability to distinguish what is real becomes strained, and that has implications not only for media literacy but for trust, institutions and the social fabric that depends on a shared reality.
+**TL;DR:** The assembly line of fakes - deepfakes, synthetic content, and expertly edited media - creates a new layer of uncertainty. As fake content scales, our ability to distinguish what is real becomes strained, and that has implications not only for media literacy but for trust, institutions and the social fabric that depends on a shared reality.
 
 
 ## **An Assembly Line for Fakes**
@@ -10,7 +10,7 @@ This is not only about celebrity deepfakes or political manipulation. It is abou
 
 ## **When We Lose the Ability to Know What Is Real**
 
-If what we see and hear can be cheaply manufactured, the shared basis for many social actions — eyewitness testimony, journalistic evidence, even casual social proof — becomes shaky.
+If what we see and hear can be cheaply manufactured, the shared basis for many social actions - eyewitness testimony, journalistic evidence, even casual social proof - becomes shaky.
 
 For designers and product people, this challenge is practical. How do we design interfaces that surface trust and provenance? How do we signal uncertainty? How do we build patterns that help people verify what they encounter?
 
@@ -24,7 +24,7 @@ There is an interplay between technical solutions and social norms: technology c
 
 ## **A New Literacy**
 
-Perhaps the long-term solution is a new kind of literacy — both a public education effort and new UX patterns that make provenance visible without creating noise.
+Perhaps the long-term solution is a new kind of literacy - both a public education effort and new UX patterns that make provenance visible without creating noise.
 
 This is not purely technical. It is cultural. It requires new habits and expectations about how much we trust a file, a clip, a voice, or a snapshot.
 

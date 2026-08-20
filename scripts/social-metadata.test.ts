@@ -24,8 +24,8 @@ describe('buildSocialMetadata', () => {
 
   it('titles the home page with the full positioning line and suffixes the rest', async () => {
     const metadata = await buildSocialMetadata();
-    expect(metadata.get('index')?.title).toBe('Dekel Nissim — Product Designer, UX Strategist & Researcher');
-    expect(metadata.get('articles')?.title).toMatch(/ — Dekel Nissim$/);
+    expect(metadata.get('index')?.title).toBe('Dekel Nissim - Product Designer, UX Strategist & Researcher');
+    expect(metadata.get('articles')?.title).toMatch(/ - Dekel Nissim$/);
   });
 
   it('marks articles as articles and dates them ISO-first', async () => {

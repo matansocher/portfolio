@@ -98,7 +98,7 @@ export default function Article({ language: forcedLanguage }: { language?: Artic
 
   return (
     <>
-      <title>{content.title} — Dekel Nissim</title>
+      <title>{content.title} - Dekel Nissim</title>
       <StructuredData data={articleSchema} />
       <SiteNav />
       <main id="content" className="article page">

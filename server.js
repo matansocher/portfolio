@@ -208,7 +208,7 @@ async function sendShell(req, res, key, status = 200) {
   sendCompressed(req, res, body, 'text/html; charset=utf-8');
 }
 
-// Hashed asset paths look like /assets/index-AbCd1234.js — the hash guarantees
+// Hashed asset paths look like /assets/index-AbCd1234.js - the hash guarantees
 // content never changes for a given URL, so an immutable long max-age is safe.
 // Deploy-time files (sitemap, llms.txt, robots.txt, manifest) change each deploy
 // but carry no hash, so they get no-cache to avoid serving stale content.
@@ -260,7 +260,7 @@ createServer(async (req, res) => {
 
   // Handle explicit .md URLs (e.g. /salaries.md, /articles/slug.md) before the
   // isDocumentRequest check, which would otherwise treat them as static assets.
-  // Keys are validated against the known set — never derived from user-controlled paths.
+  // Keys are validated against the known set - never derived from user-controlled paths.
   const mdKey = mdUrlToKey(url, KNOWN_ROUTE_KEYS);
   if (mdKey !== null) {
     // Known .md route: serve markdown with 200.
@@ -273,7 +273,7 @@ createServer(async (req, res) => {
   } else if (pathname.endsWith('.md') && !pathname.startsWith('/.well-known/')) {
     // .md extension on an unknown SPA route: 404 rather than falling through to sirv.
     // Paths under /.well-known/ are real static files (e.g. agent-skills SKILL.md)
-    // and must reach sirv — only exclude the synthetic SPA-markdown namespace here.
+    // and must reach sirv - only exclude the synthetic SPA-markdown namespace here.
     res.statusCode = 404;
     res.end('Not found');
     return;
