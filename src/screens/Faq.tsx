@@ -6,7 +6,7 @@ import { faqPageSchema } from '../components/Faq';
 export default function Faq() {
   return (
     <>
-      <title>FAQ — Dekel Nissim</title>
+      <title>FAQ - Dekel Nissim</title>
       <StructuredData data={faqPageSchema} />
       <SiteNav />
       <main id="content" className="contact-page faq-page">
@@ -15,7 +15,7 @@ export default function Faq() {
             <span className="cp-mono">Help center</span>
             <h1>Frequently asked questions</h1>
             <p className="cp-lead">
-              Common questions about working with Dekel Nissim — services, the kinds of products, and how to get in
+              Common questions about working with Dekel Nissim - services, the kinds of products, and how to get in
               touch. Have something else in mind? <Link to="/business-card">Send a note</Link>.
             </p>
           </div>

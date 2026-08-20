@@ -23,7 +23,7 @@ export default function Articles() {
 
   return (
     <>
-      <title>Articles — Dekel Nissim</title>
+      <title>Articles - Dekel Nissim</title>
       <StructuredData data={articlesListSchema} />
       <SiteNav />
       <main id="content" className="articles page">

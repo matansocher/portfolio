@@ -1,6 +1,6 @@
 # Frequently asked questions
 
-Common questions about working with Dekel Nissim — services, the kinds of products, and how to get in touch.
+Common questions about working with Dekel Nissim - services, the kinds of products, and how to get in touch.
 
 ## What does Dekel Nissim do?
 
@@ -8,7 +8,7 @@ Dekel is a freelance UX/UI designer who helps teams solve complex product decisi
 
 ## What kinds of products does Dekel specialize in?
 
-Complex systems and internal tools — for example an internal salary calculation and approval system, a marketing management system, and an event management app — spanning both desktop and mobile.
+Complex systems and internal tools - for example an internal salary calculation and approval system, a marketing management system, and an event management app - spanning both desktop and mobile.
 
 ## What services does Dekel offer?
 
@@ -20,7 +20,7 @@ Yes. Dekel joined a marketing-management startup as its first Product Designer a
 
 ## What does Dekel write about?
 
-Dekel writes articles on UX design, product, design process, and the thoughtful use of AI in products — arguing that not every product or slow process needs AI.
+Dekel writes articles on UX design, product, design process, and the thoughtful use of AI in products - arguing that not every product or slow process needs AI.
 
 ## How can I get in touch with Dekel?
 

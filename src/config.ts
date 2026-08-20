@@ -45,7 +45,7 @@ const config: Config = {
       path: '/myco',
       title: 'Myco',
       summary:
-        'Two mobile apps for community events — one for ticket buyers and one for event producers — I designed end to end.',
+        'Two mobile apps for community events - one for ticket buyers and one for event producers - I designed end to end.',
       imageKey: 'homeMycoImage',
     },
     {

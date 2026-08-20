@@ -1,17 +1,17 @@
-# Dekel Nissim — Product Designer, UX Strategist & Researcher
+# Dekel Nissim - Product Designer, UX Strategist & Researcher
 
 Turning complex product requirements into clear UX solutions.
 
-UX research, product thinking, and systems thinking — applied to complex workflows, competitive research, and AI-assisted design processes.
+UX research, product thinking, and systems thinking - applied to complex workflows, competitive research, and AI-assisted design processes.
 
 ## Where I Help
 
-- **Complex workflows that need structure** — roles, states, edge cases, and dependencies become flows teams can build.
-- **AI workflows that save real team time** — practical AI-assisted steps for handoff, design-system upkeep, and fast validation.
-- **Competitive research that sharpens the product** — competitor and market patterns become sharper decisions and fewer reinventions.
-- **Design systems that are easier to maintain** — components, rules, and docs that connect cleanly to implementation.
-- **From product idea to stronger UX flow** — requirements, constraints, and research shaped into complete, testable flows.
-- **Evidence teams can act on quickly** — tests, interviews, and product data turned into clear next steps.
+- **Complex workflows that need structure** - roles, states, edge cases, and dependencies become flows teams can build.
+- **AI workflows that save real team time** - practical AI-assisted steps for handoff, design-system upkeep, and fast validation.
+- **Competitive research that sharpens the product** - competitor and market patterns become sharper decisions and fewer reinventions.
+- **Design systems that are easier to maintain** - components, rules, and docs that connect cleanly to implementation.
+- **From product idea to stronger UX flow** - requirements, constraints, and research shaped into complete, testable flows.
+- **Evidence teams can act on quickly** - tests, interviews, and product data turned into clear next steps.
 
 ## Selected Work
 
@@ -21,7 +21,7 @@ _Municipal HR system · Complex internal workflow_
 
 Tags: Complex workflows, Calculation logic, Internal tools, Stakeholder alignment, Data-heavy UX
 
-Paper-based salary calculations reshaped into a reliable digital approval workflow — mapping the process, calculation logic, and stakeholder alignment.
+Paper-based salary calculations reshaped into a reliable digital approval workflow - mapping the process, calculation logic, and stakeholder alignment.
 
 [View case study](/salaries)
 
@@ -59,6 +59,6 @@ _Enterprise HR tool · Global onboarding_
 
 Tags: Complex workflows, User interviews, Template strategy, Stakeholder alignment, Enterprise UX
 
-A template-based onboarding structure spanning countries, branches, and roles — built to scale and to maintain.
+A template-based onboarding structure spanning countries, branches, and roles - built to scale and to maintain.
 
 [View case study](/employees)

@@ -33,7 +33,7 @@ describe('generate-rss', () => {
     expect(parsed.documentElement.tagName).toBe('rss');
     expect(parsed.documentElement.getAttribute('version')).toBe('2.0');
     expect(parsed.querySelector('channel > title')).toBeTruthy();
-    expect(parsed.querySelector('channel > title')?.textContent).toBe('Dekel Nissim — Articles');
+    expect(parsed.querySelector('channel > title')?.textContent).toBe('Dekel Nissim - Articles');
   });
 
   it('includes article metadata in each item', async () => {

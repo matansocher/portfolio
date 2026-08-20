@@ -5,7 +5,7 @@ import { BottomNavigation, SiteNav } from '../components';
 export default function Marketer() {
   return (
     <>
-      <title>Marketer — Dekel Nissim</title>
+      <title>Marketer - Dekel Nissim</title>
       <SiteNav />
       <main id="content" className="marketer">
         <section className="marketer-top" style={{ backgroundImage: `url('${assets.marketerTopBg}')` }}>

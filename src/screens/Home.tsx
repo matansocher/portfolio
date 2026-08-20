@@ -80,7 +80,7 @@ const HOME_PROJECTS: HomeProject[] = [
     meta: 'Municipal HR system · Complex internal workflow',
     title: 'Salary Exceptions & HR Dashboard',
     description:
-      'Paper-based salary calculations reshaped into a reliable digital approval workflow — mapping the process, calculation logic, and stakeholder alignment.',
+      'Paper-based salary calculations reshaped into a reliable digital approval workflow - mapping the process, calculation logic, and stakeholder alignment.',
     tags: ['Complex workflows', 'Calculation logic', 'Internal tools', 'Stakeholder alignment', 'Data-heavy UX'],
     imageKey: 'homeCaseSalaries',
     path: '/salaries',
@@ -119,7 +119,7 @@ const HOME_PROJECTS: HomeProject[] = [
     meta: 'Enterprise HR tool · Global onboarding',
     title: 'Employee Onboarding Screen',
     description:
-      'A template-based onboarding structure spanning countries, branches, and roles — built to scale and to maintain.',
+      'A template-based onboarding structure spanning countries, branches, and roles - built to scale and to maintain.',
     tags: ['Complex workflows', 'User interviews', 'Template strategy', 'Stakeholder alignment', 'Enterprise UX'],
     imageKey: 'homeCaseEmployee',
     path: '/employees',
@@ -191,7 +191,7 @@ export default function Home() {
 
   return (
     <>
-      <title>Dekel Nissim — Product Designer, UX Strategist & Researcher</title>
+      <title>Dekel Nissim - Product Designer, UX Strategist & Researcher</title>
       <SiteNav />
       <div className="home-page" ref={rootRef}>
         <main id="content">
@@ -422,7 +422,7 @@ export default function Home() {
               <Link className="hp-btn" to="/business-card">
                 Get in touch
               </Link>
-              <p className="hp-footer-note">Dekel Nissim — UX Research · Product Strategy</p>
+              <p className="hp-footer-note">Dekel Nissim - UX Research · Product Strategy</p>
             </div>
           </section>
         </main>

@@ -7,7 +7,7 @@ export default function Employees() {
   const { ICONS_MAP } = config;
   return (
     <>
-      <title>Employee Onboarding Page — Dekel Nissim</title>
+      <title>Employee Onboarding Page - Dekel Nissim</title>
       <SiteNav />
       <main id="content" className="employees">
         <section className="employees-top" style={{ backgroundImage: `url('${assets.employeesTopBg}')` }}>

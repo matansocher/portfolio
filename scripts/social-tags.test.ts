@@ -14,7 +14,7 @@ const page: SocialMetadata = {
 };
 
 const article: SocialMetadata = {
-  title: 'When an Interface Acts Like Someone You Can\u2019t Trust — Dekel Nissim',
+  title: 'When an Interface Acts Like Someone You Can\u2019t Trust - Dekel Nissim',
   description: 'A bug is not only a usability problem.',
   url: 'https://example.com/articles/interface-trust-broken-verification',
   type: 'article',
@@ -95,9 +95,9 @@ describe('injectSocialTags', () => {
   const shell = [
     '<head>',
     '    <title>Dekel Nissim</title>',
-    '    <meta name="description" content="Dekel Nissim — Product Designer &amp; UX Researcher" />',
+    '    <meta name="description" content="Dekel Nissim - Product Designer &amp; UX Researcher" />',
     '    <link rel="canonical" href="https://dekelnissim.com/" />',
-    '    <!-- social-tags:start — fallback -->',
+    '    <!-- social-tags:start - fallback -->',
     '    <meta property="og:title" content="Dekel Nissim" />',
     '    <meta property="og:url" content="https://dekelnissim.com/" />',
     '    <!-- social-tags:end -->',
@@ -123,7 +123,7 @@ describe('injectSocialTags', () => {
 
   it('rewrites the <title> element to the route title', () => {
     const result = injectSocialTags(shell, article, BASE);
-    expect(result).toContain('<title>When an Interface Acts Like Someone You Can\u2019t Trust — Dekel Nissim</title>');
+    expect(result).toContain('<title>When an Interface Acts Like Someone You Can\u2019t Trust - Dekel Nissim</title>');
     expect(result).not.toContain('<title>Dekel Nissim</title>');
   });
 

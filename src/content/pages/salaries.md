@@ -27,7 +27,7 @@ The entire process of designing the system, including:
 
 \*Due to budget & time limitations, extensive compromises had to be done. The visual design is focused on a usable level with focus on functionality.
 
-## TL;DR — Key points leading to project success
+## TL;DR - Key points leading to project success
 
 - Users like **flexibility** in the system
 - **Ongoing communication** with stakeholders & users led to high engagement
