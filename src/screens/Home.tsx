@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import assets from '@/assets';
 import config from '@/config';
 import articles from '@/data/articles';
-import { SiteNav } from '@/components';
+import { Footer, SiteNav } from '@/components';
 
 const CLIENT_LOGOS: { key: string; alt: string; className: string }[] = [
   { key: 'logoPersonetics', alt: 'Personetics', className: 'logo-personetics' },
@@ -414,6 +414,7 @@ export default function Home() {
           </section>
         </main>
       </div>
+      <Footer />
     </>
   );
 }
