@@ -8,7 +8,7 @@ export default function Employees() {
   return (
     <>
       <title>Employee Onboarding Page — Dekel Nissim</title>
-      <SiteNav transparent={true} />
+      <SiteNav />
       <main id="content" className="employees">
         <section className="employees-top" style={{ backgroundImage: `url('${assets.employeesTopBg}')` }}>
           <div className="container">

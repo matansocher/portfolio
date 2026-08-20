@@ -2,22 +2,36 @@ import './styles/SiteNav.scss';
 import { useState, useRef, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import config from '../config';
+import SearchDialog from './SearchDialog';
 
-export default function SiteNav({ transparent = false }: { transparent?: boolean }) {
+export default function SiteNav() {
   const location = useLocation();
   const [isProjectsOpen, setIsProjectsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const projectsRef = useRef<HTMLLIElement>(null);
 
   useEffect(() => {
     setIsProjectsOpen(false);
+    setIsSearchOpen(false);
   }, [location.pathname]);
 
   useEffect(() => {
-    const onScroll = () => setIsScrolled(document.documentElement.scrollTop > 30);
-    onScroll();
-    document.addEventListener('scroll', onScroll, true);
-    return () => document.removeEventListener('scroll', onScroll, true);
+    const isTypingTarget = (target: EventTarget | null) => {
+      const el = target as HTMLElement | null;
+      if (!el) return false;
+      const tag = el.tagName;
+      return tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || el.isContentEditable;
+    };
+    const onKeyDown = (event: KeyboardEvent) => {
+      const isCmdK = (event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k';
+      const isSlash = event.key === '/' && !event.metaKey && !event.ctrlKey && !event.altKey;
+      if (isCmdK || (isSlash && !isTypingTarget(event.target))) {
+        event.preventDefault();
+        setIsSearchOpen((open) => !open);
+      }
+    };
+    document.addEventListener('keydown', onKeyDown);
+    return () => document.removeEventListener('keydown', onKeyDown);
   }, []);
 
   useEffect(() => {
@@ -42,15 +56,28 @@ export default function SiteNav({ transparent = false }: { transparent?: boolean
 
   const isProjectsActive = config.PROJECTS.some((project) => isActive(project.path));
 
-  const classNames = ['site-nav'];
-  if (transparent && !isScrolled) classNames.push('transparent');
-
   return (
-    <header className={classNames.join(' ')} aria-label="Primary">
+    <header className="site-nav" aria-label="Primary">
       <div className="site-nav-inner">
         <Link to="/" className="site-nav-brand">
           Dekel Nissim
         </Link>
+
+        <div className="site-nav-center">
+          <button
+            type="button"
+            className="site-nav-search"
+            onClick={() => setIsSearchOpen(true)}
+            aria-label="Search"
+            aria-haspopup="dialog"
+          >
+            <i className="uil uil-search" aria-hidden="true" />
+            <span className="site-nav-search-label">Search</span>
+            <span className="site-nav-search-kbd" aria-hidden="true">
+              ⌘K
+            </span>
+          </button>
+        </div>
 
         <div className="site-nav-right">
           <ul className="site-nav-links">
@@ -105,6 +132,8 @@ export default function SiteNav({ transparent = false }: { transparent?: boolean
           </Link>
         </div>
       </div>
+
+      <SearchDialog isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
     </header>
   );
 }
