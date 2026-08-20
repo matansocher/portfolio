@@ -37,14 +37,15 @@ const config: Config = {
       path: '/marketer',
       title: 'Marketer',
       summary:
-        'A design system I created for a new startup building a marketing management system, as the first Product Designer.',
+        'A marketing-operations platform I built end to end for an early-stage B2B startup, as the first Product Designer, including a design system from scratch.',
       imageKey: 'homeMarketerImage',
     },
     {
       key: 'myco',
       path: '/myco',
       title: 'Myco',
-      summary: 'A marketing management system and producers interface I designed end to end.',
+      summary:
+        'Two mobile apps for community events — one for ticket buyers and one for event producers — I designed end to end.',
       imageKey: 'homeMycoImage',
     },
     {
