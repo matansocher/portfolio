@@ -271,15 +271,15 @@ export default function Home() {
                       </div>
                       {project.path ? (
                         <>
+                          <Link to={project.path} className="hp-text-link hp-project-cta">
+                            View case study
+                          </Link>
                           <Link
                             to={project.path}
                             className="hp-project-link"
                             aria-label={`View ${project.title} case study`}
                           >
                             {Visual}
-                          </Link>
-                          <Link to={project.path} className="hp-text-link hp-project-cta">
-                            View case study
                           </Link>
                         </>
                       ) : (
