@@ -245,6 +245,7 @@ Routes are declared in `src/App.tsx`. All screens are default-exported and re-ex
 | `/myco`          | `Myco`         | Case study                                                   |
 | `/employees`     | `Employees`    | Case study                                                   |
 | `/business-card` | `BusinessCard` | Freelance one-pager with `ContactForm`                       |
+| `/faq`           | `Faq`          | Dedicated FAQ page with `FAQPage` JSON-LD (single site-wide FAQ markup) |
 | `/articles`      | `Articles`     | Article listing                                              |
 | `/articles/:slug`| `Article`      | Single article (English default, client-side HE toggle)     |
 | `/he/articles/:slug`| `Article`   | Hebrew version of an article at its own crawlable URL (forced HE) |

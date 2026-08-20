@@ -51,4 +51,12 @@ describe('App routing', () => {
 
     expect(screen.getByRole('heading', { name: /Article not found/i })).toBeInTheDocument();
   });
+
+  it('renders the FAQ screen on /faq', () => {
+    window.history.pushState({}, '', '/faq');
+    render(<App />);
+
+    expect(screen.getByRole('heading', { level: 1, name: /frequently asked questions/i })).toBeInTheDocument();
+    expect(screen.getByText(/What does Dekel Nissim do\?/i)).toBeInTheDocument();
+  });
 });

@@ -90,6 +90,16 @@ export default function SiteNav({ transparent = false }: { transparent?: boolean
             })}
           </ul>
 
+          <a
+            href="https://www.linkedin.com/in/dekelnissim/"
+            className="site-nav-social"
+            target="_blank"
+            rel="me noopener noreferrer"
+            aria-label="Dekel Nissim on LinkedIn"
+          >
+            <i className="uil uil-linkedin" aria-hidden="true" />
+          </a>
+
           <Link to="/business-card" className="site-nav-contact">
             Contact
           </Link>

@@ -42,4 +42,13 @@ describe('SiteNav', () => {
     renderSiteNav('/articles');
     expect(screen.getByRole('link', { name: 'Articles' })).toHaveClass('active');
   });
+
+  it('exposes a verified LinkedIn profile link with rel="me"', () => {
+    renderSiteNav();
+
+    const linkedin = screen.getByRole('link', { name: /LinkedIn/i });
+    expect(linkedin).toHaveAttribute('href', 'https://www.linkedin.com/in/dekelnissim/');
+    expect(linkedin).toHaveAttribute('rel', 'me noopener noreferrer');
+    expect(linkedin).toHaveAttribute('target', '_blank');
+  });
 });

@@ -32,10 +32,17 @@ const PAGE_DESCRIPTIONS = {
     'Product Designer & UX Researcher specializing in UX for complex systems — internal tools, dashboards, and mobile platforms.',
   articles: 'Writing on UX research and product design, in English and Hebrew.',
   'business-card': 'Freelance UX research and product design. Get in touch.',
+  faq: 'Answers to common questions about working with Dekel Nissim — services, products, and how to get in touch.',
   salaries: 'Automating salary calculations and approvals for a municipal HR department.',
   marketer: 'Design system for an early-stage marketing platform.',
   myco: 'Two mobile apps for community events and event producers.',
   employees: 'A flexible onboarding template for a global workforce.',
+};
+
+// Overrides for the meta/OG title where the page's markdown H1 makes a poor,
+// long, or redundant title tag. The visible H1 stays as authored.
+const PAGE_TITLES = {
+  faq: 'FAQ',
 };
 
 function titleOf(markdown) {
@@ -46,7 +53,8 @@ function titleOf(markdown) {
 // `og:title` is rendered next to `og:site_name`, so repeating the name in both is
 // redundant. The home page is the one place the bare site name is the right title.
 function pageTitle(key, markdown) {
-  return key === 'index' ? SITE_NAME : `${titleOf(markdown)} — ${SITE_NAME}`;
+  if (key === 'index') return SITE_NAME;
+  return `${PAGE_TITLES[key] ?? titleOf(markdown)} — ${SITE_NAME}`;
 }
 
 function isoDate(date) {
