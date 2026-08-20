@@ -128,7 +128,7 @@ export default function SiteNav() {
           </a>
 
           <Link to="/business-card" className="site-nav-contact">
-            Contact
+            Let’s talk
           </Link>
         </div>
       </div>

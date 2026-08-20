@@ -5,7 +5,7 @@ export default function ContactButton() {
   return (
     <div className="contact-button-wrapper">
       <Link to="/contact" className="contact-button">
-        Contact
+        Let’s talk
       </Link>
     </div>
   );

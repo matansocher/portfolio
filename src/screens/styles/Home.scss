@@ -156,13 +156,17 @@
     border-color: var(--hp-accent);
     color: var(--hp-accent);
     box-shadow: none;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 8px;
 
     &:hover {
       background: var(--hp-accent);
       border-color: var(--hp-accent);
       color: #fff;
-      transform: translateY(-1px);
-      box-shadow: 0 6px 20px -8px rgba(138, 62, 212, 0.6);
+      transform: none;
+      box-shadow: none;
     }
   }
 
@@ -192,11 +196,11 @@
       font-family: 'IBM Plex Sans', sans-serif;
       font-size: 12px;
       font-weight: 500;
-      color: var(--hp-secondary);
-      background: #ecebe6;
-      border: 1px solid var(--hp-border);
+      color: var(--hp-accent);
+      background: transparent;
+      border: 1px solid var(--hp-accent);
       padding: 5px 11px;
-      border-radius: 4px;
+      border-radius: 6px;
     }
   }
 
@@ -467,6 +471,20 @@
   /* Work — stacked projects */
   .hp-work {
     border-bottom: 1px solid var(--hp-border);
+
+    .hp-section-head {
+      text-align: center;
+
+      .hp-mono {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      h2 {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
   }
 
   .hp-work-list {
@@ -529,6 +547,7 @@
 
   .hp-project-visual {
     width: 100%;
+    margin: 0;
     border: 1px solid var(--hp-border);
     border-radius: 16px;
     overflow: hidden;

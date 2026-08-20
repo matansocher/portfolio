@@ -214,20 +214,23 @@ $nav-height-mobile: 54px;
   }
 
   &-contact {
-    color: #fff;
-    background: $nav-accent;
+    color: $nav-accent;
+    background: transparent;
     font-family: 'DM Sans', sans-serif;
     font-size: 13px;
     font-weight: 600;
     text-decoration: none;
     padding: 6px 14px;
     border-radius: 8px;
-    border: none;
+    border: 1px solid $nav-accent;
     cursor: pointer;
-    transition: background 0.2s ease;
+    transition:
+      background 0.2s ease,
+      color 0.2s ease;
 
     &:hover {
-      background: #7a2fc4;
+      background: $nav-accent;
+      color: #fff;
     }
 
     &:focus-visible {

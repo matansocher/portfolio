@@ -23,7 +23,7 @@ describe('SiteNav', () => {
   it('renders a Contact button linking to the business card page', () => {
     renderSiteNav();
 
-    const contact = screen.getByRole('link', { name: 'Contact' });
+    const contact = screen.getByRole('link', { name: 'Let’s talk' });
     expect(contact).toBeInTheDocument();
     expect(contact).toHaveAttribute('href', '/business-card');
   });
