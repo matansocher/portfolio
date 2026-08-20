@@ -75,6 +75,20 @@ describe('renderSocialTags', () => {
   it('always requests a large summary card', () => {
     expect(renderSocialTags(page, BASE)).toContain('<meta name="twitter:card" content="summary_large_image" />');
   });
+
+  it('prefers ogDescription for the card and keeps description elsewhere', () => {
+    const split: SocialMetadata = { ...page, description: 'Long meta description.', ogDescription: 'Short card copy.' };
+    const tags = renderSocialTags(split, BASE);
+    expect(tags).toContain('<meta property="og:description" content="Short card copy." />');
+    expect(tags).toContain('<meta name="twitter:description" content="Short card copy." />');
+    expect(tags).not.toContain('Long meta description.');
+  });
+
+  it('falls back to description when ogDescription is absent', () => {
+    expect(renderSocialTags(page, BASE)).toContain(
+      '<meta property="og:description" content="Product Designer &amp; UX Researcher" />',
+    );
+  });
 });
 
 describe('injectSocialTags', () => {

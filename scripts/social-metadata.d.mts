@@ -8,6 +8,7 @@ export interface SocialImage {
 export interface SocialMetadata {
   title: string;
   description: string;
+  ogDescription?: string;
   url: string;
   type: 'website' | 'article';
   locale: string;

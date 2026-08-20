@@ -23,12 +23,14 @@ export function renderSocialTags(metadata, baseUrl) {
   const image = metadata.image;
   // og:image must be absolute; relative paths are ignored by most consumers.
   const imageUrl = image.path.startsWith('http') ? image.path : `${baseUrl}${image.path}`;
+  // The OG/Twitter card can carry a shorter description than <meta name="description">.
+  const ogDescription = metadata.ogDescription ?? metadata.description;
 
   const tags = [
     meta('property', 'og:type', metadata.type),
     meta('property', 'og:site_name', 'Dekel Nissim'),
     meta('property', 'og:title', metadata.title),
-    meta('property', 'og:description', metadata.description),
+    meta('property', 'og:description', ogDescription),
     meta('property', 'og:url', metadata.url),
     meta('property', 'og:image', imageUrl),
     meta('property', 'og:image:alt', image.alt),
@@ -54,7 +56,7 @@ export function renderSocialTags(metadata, baseUrl) {
   tags.push(
     meta('name', 'twitter:card', 'summary_large_image'),
     meta('name', 'twitter:title', metadata.title),
-    meta('name', 'twitter:description', metadata.description),
+    meta('name', 'twitter:description', ogDescription),
     meta('name', 'twitter:image', imageUrl),
     meta('name', 'twitter:image:alt', image.alt),
   );

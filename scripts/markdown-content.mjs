@@ -153,9 +153,9 @@ export function buildLlmsTxt(routes, baseUrl = BASE_URL) {
   const lines = [
     '# Dekel Nissim',
     '',
-    '> Product Designer & UX Researcher specializing in UX for complex systems — internal tools, dashboards, and mobile platforms. Partners with startups, enterprises, and public-sector teams to turn messy problems into clear, human-centered products, backed by research rather than opinion.',
+    '> Product designer, UX strategist, and researcher helping product teams turn complex workflows, AI-assisted design processes, design systems, and product questions into clearer decisions. Partners with startups and enterprises, backed by research rather than opinion.',
     '',
-    'Services: UX research, product design, design systems, and product strategy. Contact: dklnsm@gmail.com',
+    'Services: UX research, UX strategy, product design, design systems, and AI-assisted design workflows. Contact: dklnsm@gmail.com',
     '',
     'Every page on this site is available as markdown at `<route>.md` (e.g. `/salaries.md`) or by sending `Accept: text/markdown` to the extensionless route.',
     '',
