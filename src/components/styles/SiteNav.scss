@@ -107,11 +107,32 @@ $nav-height-mobile: 60px;
     }
   }
 
-  &-contact {
+  &-social {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: #8a3ed4;
+    width: 36px;
+    height: 36px;
+    border-radius: 4px;
+    color: $nav-secondary;
+    text-decoration: none;
+    font-size: 20px;
+    transition:
+      color 0.2s ease,
+      background 0.2s ease;
+
+    &:hover {
+      color: $nav-accent;
+      background: rgba(138, 62, 212, 0.08);
+    }
+
+    &:focus-visible {
+      outline: 2px solid $nav-accent;
+      outline-offset: 2px;
+    }
+  }
+
+  &-contact {
     color: #fff;
     font-family: 'DM Sans', sans-serif;
     font-size: 15px;
@@ -235,6 +256,12 @@ $nav-height-mobile: 60px;
     &-link {
       font-size: 14px;
       padding: 6px 8px;
+    }
+
+    &-social {
+      width: 32px;
+      height: 32px;
+      font-size: 18px;
     }
 
     &-contact {

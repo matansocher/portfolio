@@ -164,6 +164,7 @@ export function buildLlmsTxt(routes, baseUrl = BASE_URL) {
     `- [Home](${mdUrl('index')}): Selected work and client testimonials`,
     `- [Articles](${mdUrl('articles')}): Writing on UX research and product design, in English and Hebrew`,
     `- [Business Card](${mdUrl('business-card')}): Freelance services and contact form`,
+    `- [FAQ](${mdUrl('faq')}): Answers to common questions about working with Dekel Nissim`,
     '',
     '## Case Studies',
     '',

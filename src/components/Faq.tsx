@@ -1,5 +1,5 @@
 import './styles/Faq.scss';
-import StructuredData from './StructuredData';
+import { Link } from 'react-router-dom';
 
 export interface FaqItem {
   question: string;
@@ -7,8 +7,9 @@ export interface FaqItem {
 }
 
 // Grounded only in real site content (business-card page copy, config projects,
-// testimonials and articles). The same array feeds both the visible UI and the
-// FAQPage JSON-LD so the schema text always matches what the page renders.
+// testimonials and articles). This single array feeds the visible UI here, the
+// dedicated /faq screen, and the FAQPage JSON-LD, so the schema text always
+// matches what the page renders.
 export const FAQ_ITEMS: FaqItem[] = [
   {
     question: 'What does Dekel Nissim do?',
@@ -44,10 +45,13 @@ export const FAQ_ITEMS: FaqItem[] = [
 
 const SITE_ORIGIN = 'https://dekelnissim.com';
 
-const faqSchema = {
+// FAQPage structured data. Rendered once site-wide on the dedicated /faq screen
+// (Google guideline: mark up a page's FAQ only once) — not on /business-card,
+// which keeps only the visible list below.
+export const faqPageSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
-  url: `${SITE_ORIGIN}/business-card`,
+  url: `${SITE_ORIGIN}/faq`,
   mainEntity: FAQ_ITEMS.map((item) => ({
     '@type': 'Question',
     name: item.question,
@@ -58,13 +62,28 @@ const faqSchema = {
   })),
 };
 
-export default function Faq() {
+interface FaqProps {
+  // When true, renders a link to the dedicated /faq page below the list.
+  showFaqPageLink?: boolean;
+  // When true, hides the section's own eyebrow + heading (used on the dedicated
+  // /faq screen, which already provides an <h1> in its hero).
+  hideHeading?: boolean;
+}
+
+export default function Faq({ showFaqPageLink = false, hideHeading = false }: FaqProps) {
   return (
-    <section className="cp-faq" aria-labelledby="faq-heading">
-      <StructuredData data={faqSchema} />
+    <section
+      className="cp-faq"
+      aria-labelledby={hideHeading ? undefined : 'faq-heading'}
+      aria-label={hideHeading ? 'Frequently asked questions' : undefined}
+    >
       <div className="cp-content">
-        <span className="cp-mono">FAQ</span>
-        <h2 id="faq-heading">Frequently asked questions</h2>
+        {!hideHeading && (
+          <>
+            <span className="cp-mono">FAQ</span>
+            <h2 id="faq-heading">Frequently asked questions</h2>
+          </>
+        )}
         <ul className="cp-faq-list">
           {FAQ_ITEMS.map((item) => (
             <li key={item.question} className="cp-faq-item">
@@ -78,6 +97,11 @@ export default function Faq() {
             </li>
           ))}
         </ul>
+        {showFaqPageLink && (
+          <p className="cp-faq-more">
+            <Link to="/faq">See all frequently asked questions</Link>
+          </p>
+        )}
       </div>
     </section>
   );

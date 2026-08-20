@@ -1,0 +1,37 @@
+/* Dedicated /faq screen. Reuses the .contact-page design tokens (--cp-*) and the
+   shared Faq section styling; this file only adds the page hero spacing. */
+
+.faq-page {
+  .faq-page-hero {
+    padding-top: calc(80px + 64px);
+    padding-bottom: 32px;
+
+    .cp-content {
+      max-width: 820px;
+    }
+
+    h1 {
+      font-size: clamp(1.9rem, 4vw, 2.8rem);
+      font-weight: 600;
+      margin: 8px 0 16px;
+      color: var(--cp-fg);
+    }
+
+    .cp-lead {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: var(--cp-secondary);
+
+      a {
+        color: var(--cp-accent);
+        text-decoration: underline;
+      }
+    }
+  }
+
+  @media screen and (max-width: 800px) {
+    .faq-page-hero {
+      padding-top: calc(60px + 40px);
+    }
+  }
+}

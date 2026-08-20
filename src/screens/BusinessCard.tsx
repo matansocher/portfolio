@@ -38,7 +38,7 @@ export default function BusinessCard() {
           </div>
         </section>
 
-        <Faq />
+        <Faq showFaqPageLink />
       </main>
     </>
   );
