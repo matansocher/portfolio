@@ -185,7 +185,7 @@ export default function Home() {
 
   return (
     <>
-      <title>Dekel Nissim</title>
+      <title>Dekel Nissim — Product Designer, UX Strategist & Researcher</title>
       <SiteNav />
       <div className="home-page" ref={rootRef}>
         <main id="content">

@@ -21,15 +21,15 @@ export const DEFAULT_IMAGE = {
   path: '/og-image.png',
   width: 1999,
   height: 1023,
-  alt: 'Dekel Nissim — Product Designer & UX Researcher',
+  alt: 'Dekel Nissim — Product design for complex products',
 };
 
 // Hand-written descriptions for the static pages. The page markdown leads with an
 // H1 plus body copy that is too long for a preview card, so these are authored
-// rather than extracted.
+// rather than extracted. This value feeds the <meta name="description"> tag.
 const PAGE_DESCRIPTIONS = {
   index:
-    'Product Designer & UX Researcher specializing in UX for complex systems — internal tools, dashboards, and mobile platforms.',
+    'Product designer, UX strategist, and researcher helping product teams turn complex workflows, AI-assisted design processes, design systems, and product questions into clearer decisions.',
   articles: 'Writing on UX research and product design, in English and Hebrew.',
   'business-card': 'Freelance UX research and product design. Get in touch.',
   faq: 'Answers to common questions about working with Dekel Nissim — services, products, and how to get in touch.',
@@ -37,6 +37,12 @@ const PAGE_DESCRIPTIONS = {
   marketer: 'Design system for an early-stage marketing platform.',
   myco: 'Two mobile apps for community events and event producers.',
   employees: 'A flexible onboarding template for a global workforce.',
+};
+
+// Shorter descriptions for the OG/Twitter preview card, where a long meta
+// description reads poorly. Falls back to PAGE_DESCRIPTIONS when absent.
+const PAGE_OG_DESCRIPTIONS = {
+  index: 'UX strategy, research, AI-assisted workflows, and design systems for complex products.',
 };
 
 // Overrides for the meta/OG title where the page's markdown H1 makes a poor,
@@ -50,10 +56,10 @@ function titleOf(markdown) {
   return heading ? heading.slice(2).trim() : SITE_NAME;
 }
 
-// `og:title` is rendered next to `og:site_name`, so repeating the name in both is
-// redundant. The home page is the one place the bare site name is the right title.
+// `og:title` is rendered next to `og:site_name`, but the home page uses its full
+// positioning line as the title so search results and previews read clearly.
 function pageTitle(key, markdown) {
-  if (key === 'index') return SITE_NAME;
+  if (key === 'index') return 'Dekel Nissim — Product Designer, UX Strategist & Researcher';
   return `${PAGE_TITLES[key] ?? titleOf(markdown)} — ${SITE_NAME}`;
 }
 
@@ -110,6 +116,7 @@ export async function buildSocialMetadata() {
     metadata.set(key, {
       title: pageTitle(key, markdown),
       description: PAGE_DESCRIPTIONS[key] ?? titleOf(markdown),
+      ogDescription: PAGE_OG_DESCRIPTIONS[key],
       url: `${BASE_URL}${key === 'index' ? '/' : `/${key}`}`,
       type: 'website',
       locale: 'en_US',

@@ -10,7 +10,11 @@ const ROUTES: { path: string; title: string; description: string }[] = [
   { path: '/', title: 'Home', description: "Landing page with Dekel Nissim's projects and testimonials" },
   { path: '/salaries', title: 'Salary Additions', description: 'Case study: automating salary calculations' },
   { path: '/marketer', title: 'Marketer', description: 'Case study: design system for a marketing startup' },
-  { path: '/myco', title: 'Myco', description: 'Case study: marketing management system and producers interface' },
+  {
+    path: '/myco',
+    title: 'Myco',
+    description: 'Case study: mobile apps for community events (ticket buyers and event producers)',
+  },
   { path: '/employees', title: 'Employee Onboarding', description: 'Case study: employee onboarding experience' },
   { path: '/articles', title: 'Articles', description: 'List of written articles on UX, research and product' },
   { path: '/business-card', title: 'Business card', description: 'Freelance one-pager with a contact form' },
