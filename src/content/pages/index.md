@@ -1,6 +1,6 @@
 # Dekel Nissim — Product Designer, UX Strategist & Researcher
 
-Turning complex product questions into decisions teams can trust.
+Turning complex product requirements into clear UX solutions.
 
 UX research, product thinking, and systems thinking — applied to complex workflows, competitive research, and AI-assisted design processes.
 

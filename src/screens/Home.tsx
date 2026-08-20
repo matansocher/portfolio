@@ -31,30 +31,36 @@ const TESTIMONIAL_LOGOS: Record<string, string> = {
   'Ariel Zamir': 'logoBeacon',
 };
 
-const HELP_ITEMS: { title: string; description: string }[] = [
+const HELP_ITEMS: { title: string; description: string; icon: string }[] = [
   {
     title: 'Complex workflows that need structure',
     description: 'Roles, states, edge cases, and dependencies become flows teams can build.',
+    icon: 'helpWorkflows',
   },
   {
     title: 'AI workflows that save real team time',
     description: 'Practical AI-assisted steps for handoff, design-system upkeep, and fast validation.',
+    icon: 'helpAiWorkflows',
   },
   {
     title: 'Competitive research that sharpens the product',
     description: 'Competitor and market patterns become sharper decisions and fewer reinventions.',
+    icon: 'helpResearch',
   },
   {
     title: 'Design systems that are easier to maintain',
     description: 'Components, rules, and docs that connect cleanly to implementation.',
+    icon: 'helpDesignSystems',
   },
   {
     title: 'From product idea to stronger UX flow',
     description: 'Requirements, constraints, and research shaped into complete, testable flows.',
+    icon: 'helpUxFlow',
   },
   {
     title: 'Evidence teams can act on quickly',
     description: 'Tests, interviews, and product data turned into clear next steps.',
+    icon: 'helpEvidence',
   },
 ];
 
@@ -191,21 +197,24 @@ export default function Home() {
         <main id="content">
           <section className="hp-hero" aria-labelledby="hp-hero-title">
             <div className="hp-content">
-              <p className="hp-hero-eyebrow hp-mono reveal">UX Research · Product Strategy</p>
               <h1 id="hp-hero-title" className="reveal">
-                Turning complex product questions into <span className="hp-accent">decisions teams can trust.</span>
+                Turning complex <img className="hp-hero-hedgehog" src={assets.hedgehog} alt="" aria-hidden="true" />
+                <br />
+                product requirements
+                <br />
+                <span className="hp-accent">into clear UX solutions</span>
               </h1>
               <p className="hp-hero-subcopy reveal">
-                UX research, product thinking, and systems thinking — applied to <strong>complex workflows</strong>,{' '}
+                UX research, product thinking, and systems thinking - applied to <strong>complex workflows</strong>,{' '}
                 <strong>competitive research</strong>, and <strong>AI-assisted design processes</strong>.
               </p>
               <div className="hp-hero-cta reveal">
-                <a className="hp-btn hp-btn-accent" href="#work">
-                  View selected work
-                </a>
-                <Link className="hp-text-link" to="/business-card">
-                  Get in touch
+                <Link className="hp-btn hp-btn-outline" to="/business-card">
+                  Let’s talk
                 </Link>
+                <a className="hp-text-link" href="#work">
+                  Selected work
+                </a>
               </div>
             </div>
           </section>
@@ -234,13 +243,17 @@ export default function Home() {
                 <span className="hp-mono">Where I Help</span>
                 <h2 id="hp-problems-title">Where product teams get more clarity</h2>
               </div>
-              <div className="hp-problem-grid reveal">
-                {HELP_ITEMS.map((item) => (
-                  <article key={item.title}>
-                    <h3>{item.title}</h3>
-                    <p>{item.description}</p>
-                  </article>
-                ))}
+              <div className="hp-problem-wrap reveal">
+                <img className="hp-problem-hedgehog" src={assets.hedgehog} alt="" aria-hidden="true" />
+                <div className="hp-problem-grid">
+                  {HELP_ITEMS.map((item) => (
+                    <article key={item.title}>
+                      <img className="hp-problem-icon" src={assets[item.icon]} alt="" aria-hidden="true" />
+                      <h3>{item.title}</h3>
+                      <p>{item.description}</p>
+                    </article>
+                  ))}
+                </div>
               </div>
             </div>
           </section>

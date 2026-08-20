@@ -112,6 +112,13 @@ const articleAssets: AssetConfig[] = [
 
 const sharedAssets: AssetConfig[] = [
   { name: 'dekel', file: 'shared/dekel.png' },
+  { name: 'hedgehog', file: 'shared/hedgehog.svg' },
+  { name: 'helpWorkflows', file: 'shared/help-workflows.svg' },
+  { name: 'helpAiWorkflows', file: 'shared/help-ai-workflows.svg' },
+  { name: 'helpResearch', file: 'shared/help-research.svg' },
+  { name: 'helpDesignSystems', file: 'shared/help-design-systems.svg' },
+  { name: 'helpUxFlow', file: 'shared/help-ux-flow.svg' },
+  { name: 'helpEvidence', file: 'shared/help-evidence.svg' },
   { name: 'navigationArrow', file: 'shared/navigation-arrow.svg' },
   { name: 'logoPractitest', file: 'shared/logo-practitest.png' },
   { name: 'logoPersonetics', file: 'shared/logo-personetics.png' },

@@ -151,6 +151,21 @@
     }
   }
 
+  .hp-btn-outline {
+    background: transparent;
+    border-color: var(--hp-accent);
+    color: var(--hp-accent);
+    box-shadow: none;
+
+    &:hover {
+      background: var(--hp-accent);
+      border-color: var(--hp-accent);
+      color: #fff;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px -8px rgba(138, 62, 212, 0.6);
+    }
+  }
+
   .hp-text-link {
     font-weight: 500;
     font-size: 14.5px;
@@ -191,10 +206,14 @@
     padding: calc(80px + 118px) 0 96px;
     border-bottom: 1px solid var(--hp-border);
     overflow: hidden;
+    text-align: center;
 
     .hp-content {
       position: relative;
       z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     &::before {
@@ -229,16 +248,25 @@
 
     h1 {
       font-family: 'DM Sans', 'IBM Plex Sans', sans-serif;
-      font-weight: 600;
+      font-weight: 700;
       font-size: clamp(38px, 5.4vw, 68px);
-      line-height: 1.06;
-      letter-spacing: -0.025em;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
       color: var(--hp-fg);
-      max-width: 16ch;
+      max-width: 18ch;
     }
 
     h1 .hp-accent {
       color: var(--hp-accent);
+    }
+
+    .hp-hero-hedgehog {
+      display: inline-block;
+      vertical-align: baseline;
+      height: 0.72em;
+      width: auto;
+      margin: 0 0.12em;
+      transform: translateY(0.04em);
     }
   }
 
@@ -265,6 +293,7 @@
     color: var(--hp-secondary);
     font-size: 16.5px;
     line-height: 1.65;
+    text-align: center;
 
     strong {
       color: var(--hp-fg);
@@ -276,6 +305,7 @@
     margin-top: 40px;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 22px;
     flex-wrap: wrap;
   }
@@ -383,7 +413,21 @@
   /* Problems / Where I help */
   .hp-problems {
     border-bottom: 1px solid var(--hp-border);
-    counter-reset: prob;
+  }
+
+  .hp-problem-wrap {
+    position: relative;
+    margin-bottom: 108px;
+  }
+
+  .hp-problem-hedgehog {
+    position: absolute;
+    bottom: 100%;
+    right: 32px;
+    height: 52px;
+    width: auto;
+    z-index: 1;
+    pointer-events: none;
   }
 
   .hp-problem-grid {
@@ -392,22 +436,17 @@
     gap: 1px;
     background: var(--hp-border);
     border: 1px solid var(--hp-border);
-    margin-bottom: 108px;
 
     article {
       background: var(--hp-bg);
       padding: 32px 28px;
+    }
 
-      &::before {
-        counter-increment: prob;
-        content: counter(prob, decimal-leading-zero);
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 12px;
-        font-weight: 500;
-        color: var(--hp-muted);
-        display: block;
-        margin-bottom: 20px;
-      }
+    .hp-problem-icon {
+      display: block;
+      width: 26px;
+      height: 26px;
+      margin-bottom: 20px;
     }
 
     h3 {
