@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react';
 import { compression } from 'vite-plugin-compression2';
 import { fileURLToPath, URL } from 'node:url';
 import { applyLinkHeader } from './scripts/link-headers.mjs';
+import { applySecurityHeaders } from './scripts/security-headers.mjs';
 import { buildLlmsFullTxt, buildLlmsTxt, buildMarkdownRoutes } from './scripts/markdown-content.mjs';
 import {
   isDocumentRequest,
@@ -15,10 +16,12 @@ import { buildPrerenderRoutes } from './scripts/prerender-content.mjs';
 import { buildSocialMetadata } from './scripts/social-metadata.mjs';
 import { injectSocialTags } from './scripts/social-tags.mjs';
 
-// Mirrors the RFC 8288 Link headers that server.js sends in production.
+// Mirrors the RFC 8288 Link headers and the baseline security headers that server.js
+// sends in production, so both can be verified with `npm run dev` / `npm run preview`.
 function linkHeaders(): Plugin {
   const use = (server: ViteDevServer | PreviewServer) => {
     server.middlewares.use((req, res, next) => {
+      applySecurityHeaders(res);
       applyLinkHeader(res, req.url);
       next();
     });

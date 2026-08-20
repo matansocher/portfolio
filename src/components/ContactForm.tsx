@@ -52,22 +52,36 @@ export default function ContactForm() {
   return (
     <form onSubmit={handleSubmit} className="contact-form">
       <div className="form-element">
-        <label>Your name</label>
-        <input type="text" ref={nameRef} />
+        <label htmlFor="contact-name">Your name</label>
+        <input id="contact-name" name="name" type="text" autoComplete="name" ref={nameRef} />
       </div>
       <div className="form-element">
-        <label>Your Email</label>
-        <input type="email" ref={emailRef} />
+        <label htmlFor="contact-email">Your Email</label>
+        <input id="contact-email" name="email" type="email" autoComplete="email" ref={emailRef} />
       </div>
       <div className="form-element">
-        <label>Something you want to ask / say</label>
-        <textarea ref={textRef} rows={6} placeholder="Just a fellow salsa dancer saying hi:)" />
+        <label htmlFor="contact-message">Something you want to ask / say</label>
+        <textarea
+          id="contact-message"
+          name="message"
+          ref={textRef}
+          rows={6}
+          placeholder="Just a fellow salsa dancer saying hi:)"
+        />
       </div>
       <button type="submit" className="green-btn">
         Submit
       </button>
-      {showErrorText && <p className="error-message">error</p>}
-      {showSuccessText && <p className="success-message">success</p>}
+      {showErrorText && (
+        <p className="error-message" role="alert">
+          Something went wrong. Please fill in every field and try again.
+        </p>
+      )}
+      {showSuccessText && (
+        <p className="success-message" role="status">
+          Thanks! Your message has been sent.
+        </p>
+      )}
     </form>
   );
 }

@@ -56,12 +56,12 @@ export default function Navbar({
               setShowCopied(true);
             }}
           >
-            <div className="link">
+            <button type="button" className="link" aria-label="Copy email address dklnsm@gmail.com">
               <p>dklnsm@gmail.com</p>
               <div className="copied" style={{ opacity: showCopied ? 1 : 0 }}>
                 <p>Copied!</p>
               </div>
-            </div>
+            </button>
           </CopyToClipboard>
         </div>
       </div>

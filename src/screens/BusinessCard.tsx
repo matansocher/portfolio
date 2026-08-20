@@ -24,7 +24,7 @@ export default function BusinessCard() {
                   </li>
                   <li>
                     <span className="cp-details-label">LinkedIn</span>
-                    <a href="https://www.linkedin.com/in/dekelnissim/" target="_blank" rel="noreferrer">
+                    <a href="https://www.linkedin.com/in/dekelnissim/" target="_blank" rel="noopener noreferrer">
                       /in/dekelnissim
                     </a>
                   </li>
