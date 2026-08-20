@@ -13,6 +13,7 @@ import { Readable } from 'node:stream';
 import sirv from 'sirv';
 import { StreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/streamableHttp.js';
 import { LINK_HEADER } from './scripts/link-headers.mjs';
+import { applySecurityHeaders } from './scripts/security-headers.mjs';
 import {
   isDocumentRequest,
   mdUrlToKey,
@@ -230,6 +231,10 @@ const assets = sirv(BUILD_DIR, {
 createServer(async (req, res) => {
   const url = req.url ?? '/';
   const pathname = url.split('?')[0];
+
+  // Baseline security headers on every response (documents, markdown, /mcp, assets, and
+  // redirects). Set before any branching so no early return can skip them.
+  applySecurityHeaders(res);
 
   // Consolidate SEO onto the canonical domain: any request that reaches the legacy
   // Heroku host is permanently redirected to the same path on the custom domain.

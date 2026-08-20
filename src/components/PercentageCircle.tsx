@@ -18,7 +18,7 @@ export default function PercentageCircle(props: PercentageCircleProps) {
   return (
     <div className="percentage-circle">
       <div className="circle">
-        <svg>
+        <svg aria-hidden="true" focusable="false">
           <circle cx={circleSize} cy={circleSize} r={circleSize} style={{ stroke: innerCircleColor }}></circle>
           <circle
             cx={circleSize}

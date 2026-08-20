@@ -21,7 +21,7 @@ export default function Contact() {
 
             <ul className="contact-page__details">
               <li>
-                <a href="https://cal.com" target="_blank" rel="noreferrer">
+                <a href="https://cal.com" target="_blank" rel="noopener noreferrer">
                   Book a call: <span>30 Minute Consultation</span>
                 </a>
               </li>
@@ -35,7 +35,7 @@ export default function Contact() {
                 <a
                   href="https://maps.google.com/?q=3+Fan+Tan+Alley+Suite+400+Victoria+BC+V8W+3G9"
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                 >
                   Address: 3 Fan Tan Alley Suite 400, Victoria, BC, V8W 3G9
                 </a>
