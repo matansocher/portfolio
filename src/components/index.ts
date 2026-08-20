@@ -5,6 +5,7 @@ import CircleIcon from './CircleIcon';
 import Client from './Client';
 import ContactForm from './ContactForm';
 import Faq from './Faq';
+import Footer from './Footer';
 import HomeProject from './HomeProject';
 import LanguageToggle from './LanguageToggle';
 import Logos from './Logos';
@@ -23,6 +24,7 @@ export {
   Client,
   ContactForm,
   Faq,
+  Footer,
   HomeProject,
   LanguageToggle,
   Logos,

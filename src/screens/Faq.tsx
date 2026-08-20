@@ -1,6 +1,6 @@
 import './styles/Faq.scss';
 import { Link } from 'react-router-dom';
-import { Faq as FaqSection, SiteNav, StructuredData } from '../components';
+import { Faq as FaqSection, Footer, SiteNav, StructuredData } from '../components';
 import { faqPageSchema } from '../components/Faq';
 
 export default function Faq() {
@@ -23,6 +23,7 @@ export default function Faq() {
 
         <FaqSection hideHeading />
       </main>
+      <Footer />
     </>
   );
 }

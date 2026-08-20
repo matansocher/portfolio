@@ -1,6 +1,6 @@
 import './styles/NotFound.scss';
 import { Link } from 'react-router-dom';
-import { SiteNav } from '@/components';
+import { Footer, SiteNav } from '@/components';
 import config from '@/config';
 
 const SUGGESTED_LINKS: { label: string; description: string; to: string }[] = [
@@ -68,6 +68,7 @@ export default function NotFound() {
           </section>
         </main>
       </div>
+      <Footer />
     </>
   );
 }

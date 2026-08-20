@@ -1,5 +1,5 @@
 import './styles/BusinessCard.scss';
-import { ContactForm, Faq, SiteNav } from '../components';
+import { ContactForm, Faq, Footer, SiteNav } from '../components';
 
 export default function BusinessCard() {
   return (
@@ -40,6 +40,7 @@ export default function BusinessCard() {
 
         <Faq showFaqPageLink />
       </main>
+      <Footer />
     </>
   );
 }
