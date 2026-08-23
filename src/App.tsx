@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { BusinessCard, Faq, Home, Salaries, Myco, Marketer, Employees, Articles, Article, NotFound } from '@/screens';
-import { Analytics, ScrollToTopOnPageLoad, WebMcp } from '@/components';
+import { Analytics, EasterEgg, ScrollToTopOnPageLoad, WebMcp } from '@/components';
 import '@/styles/_shared.scss';
 
 export default function App() {
@@ -12,6 +12,7 @@ export default function App() {
       <Analytics />
       <ScrollToTopOnPageLoad />
       <WebMcp />
+      <EasterEgg />
       <Routes>
         <Route index element={<Home />} />
         <Route path="business-card" element={<BusinessCard />} />
