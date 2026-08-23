@@ -1,0 +1,78 @@
+.easter-egg-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(17, 18, 21, 0.55);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  animation: easter-egg-fade-in 0.18s ease;
+}
+
+.easter-egg {
+  position: relative;
+  max-width: min(90vw, 640px);
+  max-height: 85vh;
+  animation: easter-egg-pop-in 0.22s cubic-bezier(0.2, 0.8, 0.3, 1);
+
+  &-image {
+    display: block;
+    max-width: 100%;
+    max-height: 85vh;
+    width: auto;
+    height: auto;
+    border-radius: 16px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+  }
+
+  &-close {
+    position: absolute;
+    top: -14px;
+    right: -14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: #ffffff;
+    color: #17181b;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28);
+    transition:
+      transform 0.15s ease,
+      background 0.15s ease;
+
+    &:hover {
+      transform: scale(1.08);
+      background: #f2f2f2;
+    }
+  }
+}
+
+@keyframes easter-egg-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes easter-egg-pop-in {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

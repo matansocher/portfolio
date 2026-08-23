@@ -4,6 +4,7 @@ import Chip from './Chip';
 import CircleIcon from './CircleIcon';
 import Client from './Client';
 import ContactForm from './ContactForm';
+import EasterEgg from './EasterEgg';
 import Faq from './Faq';
 import Footer from './Footer';
 import HomeProject from './HomeProject';
@@ -24,6 +25,7 @@ export {
   CircleIcon,
   Client,
   ContactForm,
+  EasterEgg,
   Faq,
   Footer,
   HomeProject,
