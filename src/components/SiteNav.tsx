@@ -1,5 +1,6 @@
 import './styles/SiteNav.scss';
 import { useState, useRef, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { Link, useLocation } from 'react-router-dom';
 import config from '../config';
 import SearchDialog from './SearchDialog';
@@ -8,11 +9,15 @@ export default function SiteNav() {
   const location = useLocation();
   const [isProjectsOpen, setIsProjectsOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const projectsRef = useRef<HTMLLIElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     setIsProjectsOpen(false);
     setIsSearchOpen(false);
+    setIsMenuOpen(false);
   }, [location.pathname]);
 
   useEffect(() => {
@@ -49,6 +54,37 @@ export default function SiteNav() {
       document.removeEventListener('mousedown', onDocumentClick);
       document.removeEventListener('keydown', onKeyDown);
     };
+  }, []);
+
+  useEffect(() => {
+    if (!isMenuOpen) return undefined;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsMenuOpen(false);
+        menuButtonRef.current?.focus();
+      }
+    };
+    document.addEventListener('keydown', onKeyDown);
+    const id = window.requestAnimationFrame(() => {
+      menuRef.current?.querySelector<HTMLElement>('a, button')?.focus();
+    });
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener('keydown', onKeyDown);
+      window.cancelAnimationFrame(id);
+    };
+  }, [isMenuOpen]);
+
+  useEffect(() => {
+    const query = window.matchMedia('(min-width: 801px)');
+    const onChange = (event: MediaQueryListEvent | MediaQueryList) => {
+      if (event.matches) setIsMenuOpen(false);
+    };
+    onChange(query);
+    query.addEventListener('change', onChange);
+    return () => query.removeEventListener('change', onChange);
   }, []);
 
   const isActive = (path: string) =>
@@ -130,8 +166,92 @@ export default function SiteNav() {
           <Link to="/business-card" className="site-nav-contact">
             Let’s talk
           </Link>
+
+          <button
+            type="button"
+            ref={menuButtonRef}
+            className={`site-nav-burger ${isMenuOpen ? 'open' : ''}`}
+            onClick={() => setIsMenuOpen((open) => !open)}
+            aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={isMenuOpen}
+            aria-controls="site-nav-drawer"
+          >
+            <span className="site-nav-burger-box" aria-hidden="true">
+              <span className="site-nav-burger-bar" />
+              <span className="site-nav-burger-bar" />
+            </span>
+          </button>
         </div>
       </div>
+
+      {isMenuOpen
+        ? createPortal(
+            <>
+              <div className="site-nav-scrim" role="presentation" onClick={() => setIsMenuOpen(false)} />
+              <div
+                id="site-nav-drawer"
+                className="site-nav-drawer"
+                ref={menuRef}
+                role="dialog"
+                aria-modal="true"
+                aria-label="Site menu"
+              >
+                <nav className="site-nav-drawer-body">
+                  <p className="site-nav-drawer-label">Projects</p>
+                  <ul className="site-nav-drawer-list">
+                    {config.PROJECTS.map((project) => (
+                      <li key={project.key}>
+                        <Link
+                          to={project.path}
+                          className={`site-nav-drawer-link ${isActive(project.path) ? 'active' : ''}`}
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          {project.title}
+                          <i className="uil uil-angle-right-b" aria-hidden="true" />
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <p className="site-nav-drawer-label">More</p>
+                  <ul className="site-nav-drawer-list">
+                    {config.NAV_LINKS.filter((link) => link.label !== 'Projects').map((link) => (
+                      <li key={link.path}>
+                        <Link
+                          to={link.path}
+                          className={`site-nav-drawer-link ${isActive(link.path) ? 'active' : ''}`}
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          {link.label}
+                          <i className="uil uil-angle-right-b" aria-hidden="true" />
+                        </Link>
+                      </li>
+                    ))}
+                    <li>
+                      <a
+                        href="https://www.linkedin.com/in/dekelnissim/"
+                        className="site-nav-drawer-link"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        LinkedIn
+                        <i className="uil uil-external-link-alt" aria-hidden="true" />
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+
+                <div className="site-nav-drawer-footer">
+                  <Link to="/business-card" className="site-nav-drawer-cta" onClick={() => setIsMenuOpen(false)}>
+                    Let’s talk
+                  </Link>
+                </div>
+              </div>
+            </>,
+            document.body,
+          )
+        : null}
 
       <SearchDialog isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
     </header>
