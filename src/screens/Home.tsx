@@ -26,9 +26,12 @@ const CLIENT_LOGOS: { key: string; alt: string; className: string }[] = [
 
 const TESTIMONIAL_LOGOS: Record<string, string> = {
   'Yarden Strfansky': 'logoTeamStefansky',
-  'Barak Ze’evi': 'logoTlvMuni',
-  'Ira Pavlova': 'logoHippoCampus',
+  'Roy Akoka': 'logoTrustech',
   'Ariel Zamir': 'logoBeacon',
+  'Barak Ze’evi': 'logoTlvMuni',
+  'Doron Breuer': 'logoControlup',
+  'Ira Pavlova': 'logoHippoCampus',
+  'Netta Danziger': 'logoBeacon',
 };
 
 const HERO_METRICS: { value: string; label: string; description: string }[] = [
