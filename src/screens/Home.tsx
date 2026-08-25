@@ -1,5 +1,5 @@
 import './styles/Home.scss';
-import { useEffect, useRef, useState } from 'react';
+import { Fragment, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import assets from '@/assets';
 import config from '@/config';
@@ -308,8 +308,15 @@ export default function Home() {
                       <h3>{project.title}</h3>
                       <p className="hp-case-desc">{project.description}</p>
                       <div className="hp-tags">
-                        {project.tags.map((tag) => (
-                          <span key={tag}>{tag}</span>
+                        {project.tags.map((tag, index) => (
+                          <Fragment key={tag}>
+                            {index > 0 && (
+                              <span className="hp-tag-arrow" aria-hidden="true">
+                                &rarr;
+                              </span>
+                            )}
+                            <span className="hp-tag">{tag}</span>
+                          </Fragment>
                         ))}
                       </div>
                       {project.path ? (
