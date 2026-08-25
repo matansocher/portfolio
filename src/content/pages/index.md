@@ -1,17 +1,21 @@
 # Dekel Nissim - Product Designer, UX Strategist & Researcher
 
-Turning complex product requirements into clear UX solutions.
+Every UX problem has options. Let's find what works for yours.
 
 UX research, product thinking, and systems thinking - applied to complex workflows, competitive research, and AI-assisted design processes.
 
+- **8+ yrs Experience** - in complex Product design, Research & Design systems.
+- **20+ Projects** - complex UX, research, strategy & design systems.
+- **10+ Domains** - Fintech, AI products, Dev tools, B2B, IT, HR, and more.
+
 ## Where I Help
 
-- **Complex workflows that need structure** - roles, states, edge cases, and dependencies become flows teams can build.
-- **AI workflows that save real team time** - practical AI-assisted steps for handoff, design-system upkeep, and fast validation.
-- **Competitive research that sharpens the product** - competitor and market patterns become sharper decisions and fewer reinventions.
-- **Design systems that are easier to maintain** - components, rules, and docs that connect cleanly to implementation.
-- **From product idea to stronger UX flow** - requirements, constraints, and research shaped into complete, testable flows.
-- **Evidence teams can act on quickly** - tests, interviews, and product data turned into clear next steps.
+- **More confidence in product decisions** - tests, interviews, and product data help clarify what works, what doesn't, and what to do next.
+- **Taking features from idea to UX** - requirements, constraints, and research shaped into complete, testable flows.
+- **Design systems from Figma to code** - design-system expertise combined with Claude-assisted component building, keeping Figma, Storybook, and code aligned.
+- **Competitive research beyond direct competitors** - competitors, adjacent products, patterns, and best practices - understanding what works, and why.
+- **AI automation for faster design workflows** - practical AI-assisted steps for handoff, design-system upkeep, and fast validation.
+- **Complex workflows users can understand** - designed around product requirements, technical constraints, roles, states, and edge cases.
 
 ## Selected Work
 
