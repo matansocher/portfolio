@@ -1,5 +1,5 @@
 import './styles/Home.scss';
-import { useEffect, useRef, useState } from 'react';
+import { Fragment, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import assets from '@/assets';
 import config from '@/config';
@@ -31,36 +31,55 @@ const TESTIMONIAL_LOGOS: Record<string, string> = {
   'Ariel Zamir': 'logoBeacon',
 };
 
+const HERO_METRICS: { value: string; label: string; description: string }[] = [
+  {
+    value: '8+ yrs',
+    label: 'Experience',
+    description: 'in complex Product design, Research & Design systems',
+  },
+  {
+    value: '20+',
+    label: 'Projects',
+    description: 'Complex UX, research, strategy & design systems',
+  },
+  {
+    value: '10+',
+    label: 'Domains',
+    description: 'Fintech, AI products, Dev tools, B2B, IT, HR, and more',
+  },
+];
+
 const HELP_ITEMS: { title: string; description: string; icon: string }[] = [
   {
-    title: 'Complex workflows that need structure',
-    description: 'Roles, states, edge cases, and dependencies become flows teams can build.',
-    icon: 'helpWorkflows',
+    title: 'More confidence in product decisions',
+    description: 'Tests, interviews, and product data help clarify what works, what doesn’t, and what to do next.',
+    icon: 'helpEvidence',
   },
   {
-    title: 'AI workflows that save real team time',
-    description: 'Practical AI-assisted steps for handoff, design-system upkeep, and fast validation.',
-    icon: 'helpAiWorkflows',
-  },
-  {
-    title: 'Competitive research that sharpens the product',
-    description: 'Competitor and market patterns become sharper decisions and fewer reinventions.',
-    icon: 'helpResearch',
-  },
-  {
-    title: 'Design systems that are easier to maintain',
-    description: 'Components, rules, and docs that connect cleanly to implementation.',
-    icon: 'helpDesignSystems',
-  },
-  {
-    title: 'From product idea to stronger UX flow',
+    title: 'Taking features from idea to UX',
     description: 'Requirements, constraints, and research shaped into complete, testable flows.',
     icon: 'helpUxFlow',
   },
   {
-    title: 'Evidence teams can act on quickly',
-    description: 'Tests, interviews, and product data turned into clear next steps.',
-    icon: 'helpEvidence',
+    title: 'Design systems from Figma to code',
+    description:
+      'Design-system expertise combined with Claude-assisted component building, keeping Figma, Storybook, and code aligned.',
+    icon: 'helpDesignSystems',
+  },
+  {
+    title: 'Competitive research beyond direct competitors',
+    description: 'Competitors, adjacent products, patterns, and best practices - understanding what works, and why.',
+    icon: 'helpResearch',
+  },
+  {
+    title: 'AI automation for faster design workflows',
+    description: 'Practical AI-assisted steps for handoff, design-system upkeep, and fast validation.',
+    icon: 'helpAiWorkflows',
+  },
+  {
+    title: 'Complex workflows users can understand',
+    description: 'Designed around product requirements, technical constraints, roles, states, and edge cases.',
+    icon: 'helpWorkflows',
   },
 ];
 
@@ -198,11 +217,11 @@ export default function Home() {
           <section className="hp-hero" aria-labelledby="hp-hero-title">
             <div className="hp-content">
               <h1 id="hp-hero-title" className="reveal">
-                Turning complex <img className="hp-hero-hedgehog" src={assets.hedgehog} alt="" aria-hidden="true" />
+                Every UX problem <img className="hp-hero-hedgehog" src={assets.hedgehog} alt="" aria-hidden="true" />
                 <br />
-                product requirements
+                has options. Let’s find
                 <br />
-                <span className="hp-accent">into clear UX solutions</span>
+                <span className="hp-accent">what works for yours.</span>
               </h1>
               <p className="hp-hero-subcopy reveal">
                 UX research, product thinking, and systems thinking - applied to <strong>complex workflows</strong>,{' '}
@@ -216,6 +235,17 @@ export default function Home() {
                   Selected work
                 </a>
               </div>
+              <dl className="hp-hero-metrics reveal">
+                {HERO_METRICS.map((metric) => (
+                  <div className="hp-hero-metric" key={metric.label}>
+                    <dt>
+                      <span className="hp-hero-metric-value">{metric.value}</span>
+                      <span className="hp-hero-metric-label">{metric.label}</span>
+                    </dt>
+                    <dd>{metric.description}</dd>
+                  </div>
+                ))}
+              </dl>
             </div>
           </section>
 
@@ -241,7 +271,7 @@ export default function Home() {
             <div className="hp-content">
               <div className="hp-section-head reveal">
                 <span className="hp-mono">Where I Help</span>
-                <h2 id="hp-problems-title">Where product teams get more clarity</h2>
+                <h2 id="hp-problems-title">What I can help with</h2>
               </div>
               <div className="hp-problem-wrap reveal">
                 <img className="hp-problem-hedgehog" src={assets.hedgehog} alt="" aria-hidden="true" />
@@ -278,8 +308,15 @@ export default function Home() {
                       <h3>{project.title}</h3>
                       <p className="hp-case-desc">{project.description}</p>
                       <div className="hp-tags">
-                        {project.tags.map((tag) => (
-                          <span key={tag}>{tag}</span>
+                        {project.tags.map((tag, index) => (
+                          <Fragment key={tag}>
+                            {index > 0 && (
+                              <span className="hp-tag-arrow" aria-hidden="true">
+                                &rarr;
+                              </span>
+                            )}
+                            <span className="hp-tag">{tag}</span>
+                          </Fragment>
                         ))}
                       </div>
                       {project.path ? (

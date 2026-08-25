@@ -190,17 +190,24 @@
   .hp-tags {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     gap: 8px;
 
-    span {
+    .hp-tag {
       font-family: 'IBM Plex Sans', sans-serif;
       font-size: 12px;
       font-weight: 500;
       color: var(--hp-accent);
-      background: transparent;
-      border: 1px solid var(--hp-accent);
-      padding: 5px 11px;
-      border-radius: 6px;
+      background: var(--hp-accent-soft);
+      padding: 5px 12px;
+      border-radius: 999px;
+    }
+
+    .hp-tag-arrow {
+      color: var(--hp-accent);
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 1;
     }
   }
 
@@ -312,6 +319,50 @@
     justify-content: center;
     gap: 22px;
     flex-wrap: wrap;
+  }
+
+  .hp-hero-metrics {
+    margin: 56px auto 0;
+    max-width: 940px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    text-align: left;
+  }
+
+  .hp-hero-metric {
+    padding: 0;
+
+    dt {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-bottom: 9px;
+    }
+
+    dd {
+      margin: 0;
+      font-size: 14.5px;
+      color: var(--hp-secondary);
+      line-height: 1.55;
+    }
+  }
+
+  .hp-hero-metric-value {
+    font-family: 'DM Sans', 'IBM Plex Sans', sans-serif;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  .hp-hero-metric-label {
+    font-family: 'DM Sans', 'IBM Plex Sans', sans-serif;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
   }
 
   /* Clients marquee */
@@ -869,6 +920,10 @@
   @media (max-width: 900px) {
     .hp-problem-grid {
       grid-template-columns: 1fr;
+    }
+    .hp-hero-metrics {
+      grid-template-columns: 1fr;
+      margin-top: 44px;
     }
     .hp-testimonial {
       flex: 0 0 100%;

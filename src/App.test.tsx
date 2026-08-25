@@ -7,7 +7,7 @@ describe('App routing', () => {
     window.history.pushState({}, '', '/');
     render(<App />);
 
-    expect(screen.getByRole('heading', { name: /into clear UX solutions/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /what works for yours/i })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Salary Exceptions & HR Dashboard' })).toBeInTheDocument();
   });
 
