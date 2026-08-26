@@ -103,7 +103,13 @@ const HOME_PROJECTS: HomeProject[] = [
     title: 'Salary Exceptions & HR Dashboard',
     description:
       'Paper-based salary calculations reshaped into a reliable digital approval workflow - mapping the process, calculation logic, and stakeholder alignment.',
-    tags: ['Complex workflows', 'Calculation logic', 'Internal tools', 'Stakeholder alignment', 'Data-heavy UX'],
+    tags: [
+      'Manual process mapping',
+      'Define Logic',
+      'Design Approval workflows',
+      'Build reporting views',
+      'Usage analytics',
+    ],
     imageKey: 'homeCaseSalaries',
     path: '/salaries',
   },
@@ -113,7 +119,13 @@ const HOME_PROJECTS: HomeProject[] = [
     title: 'AppDX – Experience Monitoring',
     description:
       'A modular dashboard for monitoring real-user experience in web apps, aligned around clear priorities and a sharper product direction.',
-    tags: ['Technical UX', 'Data-heavy UX', 'Dashboard strategy', 'Design sprint', 'Product facilitation'],
+    tags: [
+      'Map Product requirements',
+      'Lead mini design sprint',
+      'Define sections',
+      'Align product direction',
+      'Validate with internal experts',
+    ],
     imageKey: 'homeCaseAppdx',
   },
   {
@@ -122,7 +134,12 @@ const HOME_PROJECTS: HomeProject[] = [
     title: 'Marketer – Internal Marketing Platform',
     description:
       'A marketing-operations platform built end to end, with structure and reusable patterns for a growing product.',
-    tags: ['B2B SaaS', 'Startup product', 'Design system from scratch', 'End-to-end ownership'],
+    tags: [
+      'Gather ui requirements',
+      'Design visual language',
+      'Build Design system (from scratch)',
+      'Create reusable patterns',
+    ],
     imageKey: 'homeCaseMarketer',
     path: '/marketer',
   },
@@ -132,7 +149,13 @@ const HOME_PROJECTS: HomeProject[] = [
     title: 'Myco – Mobile Apps for Community Events',
     description:
       'Two connected apps for ticket buyers and event producers, shaped through interviews, competitive research, and product flow design.',
-    tags: ['Mobile UX', 'Two-sided product', 'Competitive research', 'User research', 'Flow design'],
+    tags: [
+      'Understand Product requirements',
+      'Research competitors',
+      'Interview users',
+      'Define user flows',
+      'Design mobile apps',
+    ],
     imageKey: 'homeCaseMyco',
     path: '/myco',
   },
@@ -142,7 +165,12 @@ const HOME_PROJECTS: HomeProject[] = [
     title: 'Employee Onboarding Screen',
     description:
       'A template-based onboarding structure spanning countries, branches, and roles - built to scale and to maintain.',
-    tags: ['Complex workflows', 'User interviews', 'Template strategy', 'Stakeholder alignment', 'Enterprise UX'],
+    tags: [
+      'Gather global onboarding needs',
+      'Interview stakeholders & global users',
+      'Define flexible template',
+      'Design role-based content',
+    ],
     imageKey: 'homeCaseEmployee',
     path: '/employees',
   },
