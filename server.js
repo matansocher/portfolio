@@ -228,7 +228,7 @@ const assets = sirv(BUILD_DIR, {
   },
 });
 
-createServer(async (req, res) => {
+const server = createServer(async (req, res) => {
   const url = req.url ?? '/';
   const pathname = url.split('?')[0];
 
@@ -304,3 +304,18 @@ createServer(async (req, res) => {
 }).listen(PORT, () => {
   console.log(`Serving build on http://localhost:${PORT}`);
 });
+
+// Heroku restarts a dyno (e.g. after a deploy) by sending SIGTERM and then SIGKILL
+// ~30s later. Without a handler, Node exits abruptly with status 143 (128 + SIGTERM).
+// Closing the server first stops accepting new connections and lets in-flight requests
+// finish, so the dyno cycles cleanly and the logs show a graceful shutdown instead.
+function shutdown(signal) {
+  console.log(`Received ${signal}, shutting down gracefully.`);
+  server.close(() => {
+    console.log('Closed remaining connections, exiting.');
+    process.exit(0);
+  });
+}
+
+process.on('SIGTERM', () => shutdown('SIGTERM'));
+process.on('SIGINT', () => shutdown('SIGINT'));
