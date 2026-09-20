@@ -29,6 +29,17 @@
   }
   button {
   }
+
+  .form-privacy-notice {
+    margin-top: 12px;
+    font-size: 13px;
+    line-height: 1.5;
+
+    a {
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+  }
 }
 
 @media screen and (max-width: 950px) {

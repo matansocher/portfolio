@@ -257,6 +257,19 @@
       }
     }
 
+    .form-privacy-notice {
+      max-width: 48ch;
+      color: var(--cp-muted);
+      font-size: 12.5px;
+      line-height: 1.55;
+
+      a {
+        color: var(--cp-accent-strong);
+        text-decoration: underline;
+        text-underline-offset: 2px;
+      }
+    }
+
     .error-message,
     .success-message {
       margin: 0;

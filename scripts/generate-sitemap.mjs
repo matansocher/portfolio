@@ -23,6 +23,11 @@ export const STATIC_ROUTES = [
   '/employees',
   '/business-card',
   '/faq',
+  '/legal',
+  '/privacy',
+  '/cookies',
+  '/terms',
+  '/accessibility',
 ];
 
 function escapeXml(value) {
