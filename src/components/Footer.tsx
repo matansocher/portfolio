@@ -1,5 +1,6 @@
 import './styles/Footer.scss';
 import { Link } from 'react-router-dom';
+import { OPEN_COOKIE_NOTICE_EVENT } from '@/cookieNotice';
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -45,6 +46,29 @@ export default function Footer() {
               </li>
               <li>
                 <Link to="/business-card">Business card</Link>
+              </li>
+            </ul>
+          </nav>
+
+          <nav className="site-footer-col" aria-label="Legal">
+            <h4>Legal</h4>
+            <ul>
+              <li>
+                <Link to="/legal">Policies &amp; terms</Link>
+              </li>
+              <li>
+                <Link to="/privacy">Privacy</Link>
+              </li>
+              <li>
+                <Link to="/terms">Terms</Link>
+              </li>
+              <li>
+                <Link to="/accessibility">Accessibility</Link>
+              </li>
+              <li>
+                <button type="button" onClick={() => window.dispatchEvent(new Event(OPEN_COOKIE_NOTICE_EVENT))}>
+                  Cookie information
+                </button>
               </li>
             </ul>
           </nav>

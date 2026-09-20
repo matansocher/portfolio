@@ -33,6 +33,11 @@ const PAGE_DESCRIPTIONS = {
   articles: 'Writing on UX research and product design, in English and Hebrew.',
   'business-card': 'Freelance UX research and product design. Get in touch.',
   faq: 'Answers to common questions about working with Dekel Nissim - services, products, and how to get in touch.',
+  legal: 'Privacy, cookie, terms of use, and accessibility information for dekelnissim.com.',
+  privacy: 'How dekelnissim.com collects, uses, stores, and shares personal information.',
+  cookies: 'How dekelnissim.com uses browser storage and Google Analytics cookies.',
+  terms: 'The terms and conditions that apply when using dekelnissim.com.',
+  accessibility: 'The accessibility approach for dekelnissim.com and how to report an accessibility problem.',
   salaries: 'Automating salary calculations and approvals for a municipal HR department.',
   marketer: 'Design system for an early-stage marketing platform.',
   myco: 'Two mobile apps for community events and event producers.',
@@ -49,6 +54,11 @@ const PAGE_OG_DESCRIPTIONS = {
 // long, or redundant title tag. The visible H1 stays as authored.
 const PAGE_TITLES = {
   faq: 'FAQ',
+  legal: 'Policies & Terms',
+  privacy: 'Privacy Policy',
+  cookies: 'Cookie Policy',
+  terms: 'Terms of Use',
+  accessibility: 'Accessibility Statement',
 };
 
 function titleOf(markdown) {

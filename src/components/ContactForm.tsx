@@ -2,6 +2,7 @@ import './styles/ContactForm.scss';
 import axios from 'axios';
 import config from '../config';
 import { useRef, useState, type FormEvent } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function ContactForm() {
   const [showErrorText, setShowErrorText] = useState(false);
@@ -72,6 +73,10 @@ export default function ContactForm() {
       <button type="submit" className="green-btn">
         Submit
       </button>
+      <p className="form-privacy-notice">
+        By submitting, you ask Dekel to use your details to respond to your inquiry. See the{' '}
+        <Link to="/privacy">Privacy Policy</Link>.
+      </p>
       {showErrorText && (
         <p className="error-message" role="alert">
           Something went wrong. Please fill in every field and try again.

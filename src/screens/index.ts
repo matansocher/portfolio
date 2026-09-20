@@ -8,5 +8,6 @@ import NotFound from './NotFound';
 import Salaries from './Salaries';
 import Articles from './Articles';
 import Article from './Article';
+import Legal from './Legal';
 
-export { BusinessCard, Employees, Faq, Home, Myco, Marketer, NotFound, Salaries, Articles, Article };
+export { BusinessCard, Employees, Faq, Home, Myco, Marketer, NotFound, Salaries, Articles, Article, Legal };

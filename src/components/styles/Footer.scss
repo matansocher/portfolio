@@ -29,7 +29,7 @@ $footer-accent: #7a2fc4;
 
   .site-footer-cols {
     display: grid;
-    grid-template-columns: 1.4fr 1fr 1fr;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
     gap: 40px;
   }
 
@@ -80,6 +80,24 @@ $footer-accent: #7a2fc4;
 
     a:hover {
       color: $footer-accent;
+    }
+
+    button {
+      padding: 0;
+      color: inherit;
+      background: none;
+      border: 0;
+      font: inherit;
+      cursor: pointer;
+
+      &:hover {
+        color: $footer-accent;
+      }
+
+      &:focus-visible {
+        outline: 2px solid $footer-accent;
+        outline-offset: 3px;
+      }
     }
   }
 

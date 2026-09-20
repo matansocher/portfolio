@@ -6,6 +6,7 @@ import config from '@/config';
 export default function Analytics() {
   const { pathname, search } = useLocation();
   const initialized = useRef(false);
+  const lastPage = useRef('');
 
   useEffect(() => {
     if (!config.GA_MEASUREMENT_ID) return;
@@ -14,8 +15,11 @@ export default function Analytics() {
   }, []);
 
   useEffect(() => {
+    const page = `${pathname}${search}`;
     if (!initialized.current) return;
-    ReactGA.send({ hitType: 'pageview', page: `${pathname}${search}` });
+    if (lastPage.current === page) return;
+    ReactGA.send({ hitType: 'pageview', page });
+    lastPage.current = page;
   }, [pathname, search]);
 
   return null;
