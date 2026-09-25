@@ -16,7 +16,7 @@ describe('security headers', () => {
     expect(CONTENT_SECURITY_POLICY).toContain('https://unicons.iconscout.com');
     expect(CONTENT_SECURITY_POLICY).toContain('https://storage.googleapis.com');
     expect(CONTENT_SECURITY_POLICY).toContain('https://www.google-analytics.com');
-    expect(CONTENT_SECURITY_POLICY).toContain('https://dkl-portfolio-be.herokuapp.com');
+    expect(CONTENT_SECURITY_POLICY).toContain('https://mmps-a9baabab2459.herokuapp.com');
   });
 
   it('ships the standard hardening headers', () => {

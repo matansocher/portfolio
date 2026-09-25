@@ -7,7 +7,7 @@
 //   - Unicons icon-font CSS + font files (unicons.iconscout.com)
 //   - Client/case-study images on the GCS CDN (storage.googleapis.com)
 //   - Google Analytics 4 via react-ga4 (googletagmanager.com / google-analytics.com)
-//   - The contact-form backend (dkl-portfolio-be.herokuapp.com)
+//   - The contact-form backend (mmps-a9baabab2459.herokuapp.com, must match config.PORTFOLIO_BACKEND)
 // If any of those origins change, update the matching directive here.
 
 const CSP_DIRECTIVES = {
@@ -26,7 +26,7 @@ const CSP_DIRECTIVES = {
   'img-src': ["'self'", 'data:', 'https://storage.googleapis.com', 'https://www.google-analytics.com'],
   'connect-src': [
     "'self'",
-    'https://dkl-portfolio-be.herokuapp.com',
+    'https://mmps-a9baabab2459.herokuapp.com',
     'https://www.google-analytics.com',
     'https://www.googletagmanager.com',
   ],
