@@ -24,8 +24,7 @@ export default function CookieNotice() {
       <div className="cookie-notice-copy">
         <h2 id="cookie-notice-title">Cookie notice</h2>
         <p>
-          This site uses browser storage for preferences and Google Analytics cookies to understand visits and improve
-          the site. Read the <Link to="/cookies">Cookie Policy</Link>.
+          We use cookies for preferences and Google Analytics. Read our <Link to="/cookies">Cookie Policy</Link>.
         </p>
       </div>
       <button type="button" className="cookie-notice-dismiss" onClick={dismiss}>
