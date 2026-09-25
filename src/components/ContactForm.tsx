@@ -16,7 +16,7 @@ export default function ContactForm() {
     return {
       name: nameRef.current?.value ?? '',
       email: emailRef.current?.value ?? '',
-      text: textRef.current?.value ?? '',
+      message: textRef.current?.value ?? '',
     };
   };
 

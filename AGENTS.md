@@ -287,7 +287,7 @@ Match the existing conventions — they are consistent across the codebase:
 All network calls go through `axios` to `config.PORTFOLIO_BACKEND`:
 
 - **Password gate** — `Auth` POSTs `{ password }` to `/${config.PASSWORD_ENDPOINT}` (`is-password-valid`) and expects `{ isPasswordCorrect }`.
-- **Contact form** — `ContactForm` POSTs `{ name, email, text }` to `/${config.CONTACT_ENDPOINT}` (`contact`).
+- **Contact form** — `ContactForm` POSTs `{ name, email, message }` to `/${config.CONTACT_ENDPOINT}` (`portfolio/contact`) on the `mmps` backend (`matansocher/mmps`), which forwards it to Telegram. Rate-limited to 5 submissions/hour per IP.
 
 The backend is a separate Heroku app and is **not** in this repo.
 

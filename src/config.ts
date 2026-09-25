@@ -5,9 +5,9 @@ const config: Config = {
 
   STORAGE_BASE_URL: 'https://storage.googleapis.com/dkl-portfolio',
 
-  PORTFOLIO_BACKEND: 'https://dkl-portfolio-be.herokuapp.com',
+  PORTFOLIO_BACKEND: 'https://mmps-a9baabab2459.herokuapp.com',
 
-  CONTACT_ENDPOINT: 'contact',
+  CONTACT_ENDPOINT: 'portfolio/contact',
 
   MARKETER_URL: 'https://www.gomarketer.co',
 
